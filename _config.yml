@@ -12,3 +12,6 @@ github_username:  tonymadbrain
 
 # Build settings
 markdown: kramdown
+
+#
+permalink: title
