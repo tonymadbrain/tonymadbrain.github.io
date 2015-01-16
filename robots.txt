@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://rails.doam.ru/sitemap.xml 

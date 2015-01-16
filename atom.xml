@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://rails.doam.ru/atom.xml" rel="self"/>
+  <link href="http://rails.doam.ru/"/>
+  <updated>2015-01-15T13:50:31-05:00</updated>
+  <id>http://rails.doam.ru/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First Post]]></title>
+    <link href="http://rails.doam.ru/blog/2015/01/15/first-post/"/>
+    <updated>2015-01-15T13:49:52-05:00</updated>
+    <id>http://rails.doam.ru/blog/2015/01/15/first-post</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
