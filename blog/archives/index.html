@@ -10,7 +10,7 @@
 
   
   <meta name="description" content=" Blog Archive 2015 First Post
-Jan 15 2015 Recent Posts First Post ">
+Jan 15 2015 Recent Posts First Post GitHub Repos Status updating... @tonymadbrain on GitHub ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ Jan 15 2015 Recent Posts First Post ">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rails.doam.ru/blog/archives/">
+  <link rel="canonical" href="http://tonymadbrain.github.io/blog/archives/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
@@ -51,7 +51,7 @@ Jan 15 2015 Recent Posts First Post ">
   
 <form action="https://www.google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="rails.doam.ru">
+    <input type="hidden" name="sitesearch" value="tonymadbrain.github.io">
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -81,7 +81,7 @@ Jan 15 2015 Recent Posts First Post ">
 
 <article>
   
-<h1><a href="/blog/2015/01/15/first-post/">First Post</a></h1>
+<h1><a href="/first-post/">First Post</a></h1>
 <time datetime="2015-01-15T13:49:52-05:00" pubdate><span class='month'>Jan</span> <span class='day'>15</span> <span class='year'>2015</span></time>
 
 
@@ -101,10 +101,39 @@ Jan 15 2015 Recent Posts First Post ">
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/01/15/first-post/">First Post</a>
+        <a href="/first-post/">First Post</a>
       </li>
     
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/tonymadbrain">@tonymadbrain</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'tonymadbrain',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 

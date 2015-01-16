@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://rails.doam.ru/atom.xml" rel="self"/>
-  <link href="http://rails.doam.ru/"/>
-  <updated>2015-01-15T13:50:31-05:00</updated>
-  <id>http://rails.doam.ru/</id>
+  <link href="http://tonymadbrain.github.io/atom.xml" rel="self"/>
+  <link href="http://tonymadbrain.github.io/"/>
+  <updated>2015-01-16T07:14:30-05:00</updated>
+  <id>http://tonymadbrain.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[First Post]]></title>
-    <link href="http://rails.doam.ru/blog/2015/01/15/first-post/"/>
+    <link href="http://tonymadbrain.github.io/first-post/"/>
     <updated>2015-01-15T13:49:52-05:00</updated>
-    <id>http://rails.doam.ru/blog/2015/01/15/first-post</id>
+    <id>http://tonymadbrain.github.io/first-post</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
