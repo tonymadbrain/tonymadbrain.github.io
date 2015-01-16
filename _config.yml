@@ -14,4 +14,4 @@ github_username:  tonymadbrain
 markdown: kramdown
 
 #
-permalink: title
+permalink: :title
