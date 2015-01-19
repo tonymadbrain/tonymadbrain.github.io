@@ -13,5 +13,6 @@ github_username:  tonymadbrain
 # Build settings
 markdown: kramdown
 
-#
+#my settings
 permalink: :title
+paginate: 5
