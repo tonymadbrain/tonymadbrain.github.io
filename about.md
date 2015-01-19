@@ -1,6 +1,7 @@
 ---
 title: Ставка на новую эру
 layout: page
+permalink: /about/
 ---
 <a href="https://res.cloudinary.com/doam-ru/image/upload/v1409069957/circle_vz0le3.png" rel="lightbox[85]" title="circle"><img class="alignright wp-image-830 size-medium" src="https://res.cloudinary.com/doam-ru/image/upload/h_300,w_300/v1409069957/circle_vz0le3.png" alt="circle" width="300" height="300" /></a>Алоха, это стартовая страница моего блога. На данный момент на дворе 19.09.2012 вторник.  
 Текст этой страницы не будет меняться 4 года. Я студент 4 курса воронежского гос. тех. университета.  
