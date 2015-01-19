@@ -1,7 +1,7 @@
 ---
 title: Фриланс
-author: madman
 layout: page
+permalink: /uslugi-i-reklama/
 ---
 На фриланс я трачу  2-3 часа в сутки.
 
