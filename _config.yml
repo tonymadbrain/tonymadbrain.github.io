@@ -14,5 +14,5 @@ github_username:  tonymadbrain
 markdown: kramdown
 
 #my settings
-permalink: :title
+permalink: /chtivo/:title
 paginate: 5
