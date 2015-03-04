@@ -1,6 +1,5 @@
 ---
 title: Пешеход стой! Водитель проезжай!
-author: madman
 layout: post
 permalink: /peshehod-stoj-voditel-proezzhaj/
 categories:

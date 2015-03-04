@@ -1,6 +1,5 @@
 ---
 title: Рецепт приготовления debian на нетбуке
-author: madman
 layout: post
 permalink: /retsept-prigotovleniya-debian-na-netbuke/
 slider_image:

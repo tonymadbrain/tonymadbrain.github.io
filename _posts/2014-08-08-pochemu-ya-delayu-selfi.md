@@ -1,6 +1,5 @@
 ---
 title: Почему я делаю селфи?
-author: madman
 layout: post
 permalink: /pochemu-ya-delayu-selfi/
 categories:

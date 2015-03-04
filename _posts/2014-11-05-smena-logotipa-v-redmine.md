@@ -1,6 +1,5 @@
 ---
 title: Смена логотипа в Redmine
-author: madman
 layout: post
 permalink: /smena-logotipa-v-redmine/
 categories:

@@ -1,6 +1,5 @@
 ---
 title: Экзотический салат или обычная похлебка?
-author: madman
 layout: post
 permalink: /e-kzoticheskij-salat-ili-oby-chnaya-pohle/
 slider_image:

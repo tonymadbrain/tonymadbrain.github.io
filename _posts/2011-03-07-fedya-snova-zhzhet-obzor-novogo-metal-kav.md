@@ -1,6 +1,5 @@
 ---
 title: Федя снова жжет!
-author: madman
 layout: post
 permalink: /fedya-snova-zhzhet-obzor-novogo-metal-kav/
 categories:

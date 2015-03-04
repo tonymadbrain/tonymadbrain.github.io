@@ -1,6 +1,5 @@
 ---
 title: 'Дубна &#8212; Университет &#171;первое впечатление&#187;'
-author: madman
 layout: post
 permalink: /dubna-glava-iii-universitet-pervoe-vpechatlenie/
 categories:

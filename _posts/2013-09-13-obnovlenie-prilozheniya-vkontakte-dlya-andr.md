@@ -1,6 +1,5 @@
 ---
 title: Обновление приложения вконтакте для android
-author: madman
 layout: post
 permalink: /obnovlenie-prilozheniya-vkontakte-dlya-andr/
 categories:

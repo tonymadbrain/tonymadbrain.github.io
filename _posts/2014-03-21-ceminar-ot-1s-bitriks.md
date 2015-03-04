@@ -1,6 +1,5 @@
 ---
 title: Cеминар от 1С-битрикс
-author: madman
 layout: post
 permalink: /ceminar-ot-1s-bitriks/
 categories:

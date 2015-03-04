@@ -1,6 +1,5 @@
 ---
 title: Фотограф Дмитрий Вазенмиллер
-author: madman
 layout: post
 permalink: /fotograf-dmitrij-vazenmiller/
 categories:

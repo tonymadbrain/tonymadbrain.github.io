@@ -1,6 +1,5 @@
 ---
 title: Проблема с PGP ключами в Proxmox
-author: madman
 layout: post
 permalink: /problema-s-pgp-klyuchami-v-proxmox/
 categories:

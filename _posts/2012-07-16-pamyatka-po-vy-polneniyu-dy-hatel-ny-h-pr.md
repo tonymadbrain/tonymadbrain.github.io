@@ -1,6 +1,5 @@
 ---
 title: Памятка по выполнению дыхательных пранаям
-author: madman
 layout: post
 permalink: /pamyatka-po-vy-polneniyu-dy-hatel-ny-h-pr/
 categories:

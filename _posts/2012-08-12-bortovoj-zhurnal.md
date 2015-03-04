@@ -1,6 +1,5 @@
 ---
 title: Бортовой журнал
-author: madman
 layout: post
 permalink: /bortovoj-zhurnal/
 categories:

@@ -1,6 +1,5 @@
 ---
 title: 'Закусочная &#171;Ханара&#187;'
-author: madman
 layout: post
 permalink: /zakusochnaya-hanara/
 categories:

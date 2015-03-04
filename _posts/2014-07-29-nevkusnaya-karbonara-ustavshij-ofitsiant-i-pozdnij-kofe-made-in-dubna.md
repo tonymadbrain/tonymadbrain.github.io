@@ -1,6 +1,5 @@
 ---
 title: 'Невкусная карбонара, уставший официант и поздний кофе &#8212; &#171;made in Dubna&#187;'
-author: madman
 layout: post
 permalink: /nevkusnaya-karbonara-ustavshij-ofitsiant-i-pozdnij-kofe-made-in-dubna/
 categories:

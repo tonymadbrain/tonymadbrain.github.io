@@ -1,6 +1,5 @@
 ---
 title: Call of Duty.Мнение
-author: madman
 layout: post
 permalink: /call-of-duty-mnenie/
 categories:

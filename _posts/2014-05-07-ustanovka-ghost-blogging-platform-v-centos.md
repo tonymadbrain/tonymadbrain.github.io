@@ -1,6 +1,5 @@
 ---
 title: Установка Ghost blogging platform в CentOS
-author: madman
 layout: post
 permalink: /ustanovka-ghost-blogging-platform-v-centos/
 categories:

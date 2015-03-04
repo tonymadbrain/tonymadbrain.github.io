@@ -1,6 +1,5 @@
 ---
 title: На что уходит мое время, и что я решил
-author: madman
 layout: post
 permalink: /na-chto-uhodit-moe-vremya-i-chto-ya-reshil/
 categories:

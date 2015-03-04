@@ -1,6 +1,5 @@
 ---
 title: 'Дубна &#8212; &#171;Спонтанный пост про университет&#187;'
-author: madman
 layout: post
 permalink: /dubna-spontanny-j-post-pro-universitet/
 categories:

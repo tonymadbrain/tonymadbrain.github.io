@@ -1,6 +1,5 @@
 ---
 title: Немного рандомных фотографий
-author: madman
 layout: post
 permalink: /nemnogo-randomny-h-fotografij/
 categories:

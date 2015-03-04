@@ -1,6 +1,5 @@
 ---
 title: '&#171;Трон 1982&#8243; и &#171;Трон: наследие&#187;, тогда и сейчас.'
-author: madman
 layout: post
 permalink: /tron-1982-i-tron-nasledie-togda-i-sejchas/
 categories:

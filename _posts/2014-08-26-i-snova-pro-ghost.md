@@ -1,6 +1,5 @@
 ---
 title: И снова про Ghost
-author: madman
 layout: post
 permalink: /i-snova-pro-ghost/
 categories:

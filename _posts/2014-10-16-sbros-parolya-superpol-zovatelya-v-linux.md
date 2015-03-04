@@ -1,6 +1,5 @@
 ---
 title: Сброс пароля суперпользователя в linux
-author: madman
 layout: post
 permalink: /sbros-parolya-superpol-zovatelya-v-linux/
 categories:

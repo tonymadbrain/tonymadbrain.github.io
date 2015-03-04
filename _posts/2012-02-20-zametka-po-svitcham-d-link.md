@@ -1,6 +1,5 @@
 ---
 title: Заметка по свитчам D-link
-author: madman
 layout: post
 permalink: /zametka-po-svitcham-d-link/
 categories:

@@ -1,6 +1,5 @@
 ---
 title: Косяк с сетевой картой rtl8111/8168B
-author: madman
 layout: post
 permalink: /kosyak-s-setevoj-kartoj-rtl81118168b/
 categories:

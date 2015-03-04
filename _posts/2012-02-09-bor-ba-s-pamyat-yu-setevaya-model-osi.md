@@ -1,6 +1,5 @@
 ---
 title: Борьба с памятью (Сетевая модель OSI)
-author: madman
 layout: post
 permalink: /bor-ba-s-pamyat-yu-setevaya-model-osi/
 slider_image:

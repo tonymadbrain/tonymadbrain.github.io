@@ -1,6 +1,5 @@
 ---
 title: 'Новая рубрика &#8212; &#171;Посмотрите что за сайт&#187;'
-author: madman
 layout: post
 permalink: /novaya-rubrika-posmotrite-chto-za-sajt/
 categories:

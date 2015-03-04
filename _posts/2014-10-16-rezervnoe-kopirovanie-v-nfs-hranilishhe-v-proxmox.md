@@ -1,6 +1,5 @@
 ---
 title: Резервное копирование в NFS хранилище в Proxmox
-author: madman
 layout: post
 permalink: /rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/
 categories:

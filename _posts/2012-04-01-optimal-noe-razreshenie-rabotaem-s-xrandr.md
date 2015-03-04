@@ -1,6 +1,5 @@
 ---
 title: Оптимальное разрешение. Работаем с xrandr
-author: madman
 layout: post
 permalink: /optimal-noe-razreshenie-rabotaem-s-xrandr/
 slider_image:

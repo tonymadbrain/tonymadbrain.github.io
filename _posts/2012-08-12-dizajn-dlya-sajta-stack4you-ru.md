@@ -1,6 +1,5 @@
 ---
 title: Дизайн для сайта stack4you.ru
-author: madman
 layout: post
 permalink: /dizajn-dlya-sajta-stack4you-ru/
 categories:

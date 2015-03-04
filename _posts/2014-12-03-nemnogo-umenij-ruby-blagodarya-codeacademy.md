@@ -1,10 +1,9 @@
 ---
 title: Немного умений Ruby благодаря codeacademy
-author: madman
 layout: post
 permalink: /nemnogo-umenij-ruby-blagodarya-codeacademy/
-dsq_needs_sync:
-  - 1
+dsq_thread_id:
+  - 
 categories:
   - Новости
 tags:

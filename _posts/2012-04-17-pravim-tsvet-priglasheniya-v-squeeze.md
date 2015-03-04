@@ -1,6 +1,5 @@
 ---
 title: Правим цвет приглашения в squeeze
-author: madman
 layout: post
 permalink: /pravim-tsvet-priglasheniya-v-squeeze/
 slider_image:

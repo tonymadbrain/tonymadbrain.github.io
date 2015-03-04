@@ -1,6 +1,5 @@
 ---
 title: 'Бортовой журнал: переезд на гост'
-author: madman
 layout: post
 permalink: /bortovoj-zhurnal-pereezd-na-gost/
 categories:

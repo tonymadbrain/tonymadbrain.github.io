@@ -1,6 +1,5 @@
 ---
 title: 'Незаконченное&#8230;'
-author: madman
 layout: post
 permalink: /nezakonchennoe/
 categories:

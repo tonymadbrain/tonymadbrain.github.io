@@ -1,6 +1,5 @@
 ---
 title: Дубна пролог
-author: madman
 layout: post
 permalink: /dubna-prolog/
 categories:

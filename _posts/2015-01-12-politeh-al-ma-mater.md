@@ -1,6 +1,5 @@
 ---
 title: 'Политех &#8212; альма-матер?'
-author: madman
 layout: post
 permalink: /politeh-al-ma-mater/
 categories:

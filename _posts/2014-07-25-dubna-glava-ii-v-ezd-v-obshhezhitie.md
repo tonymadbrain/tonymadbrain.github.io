@@ -1,6 +1,5 @@
 ---
 title: 'Дубна &#8212; въезд в общежитие'
-author: madman
 layout: post
 permalink: /dubna-glava-ii-v-ezd-v-obshhezhitie/
 categories:

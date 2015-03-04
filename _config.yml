@@ -1,16 +1,59 @@
-# Site settings
-title: Diary of a madman
-#email: mb7222@yandex.ru
-description: > # this means to ignore newlines until "baseurl:"
-  Блог
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://tonymadbrain.github.io" # the base hostname & protocol for your site
-twitter_username: tonymadbrain
-github_username:  tonymadbrain
+# Site wide configuration
 
-# Build settings
-markdown: kramdown
+title:            Diary of madman
+locale:           en_US
+url:              
 
-#my settings
-permalink: :title
-paginate: 5
+
+# Jekyll configuration
+
+permalink:   /:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+
+# Site owner
+owner:
+  name: Антон Рябов
+  avatar: bio-photo.jpg
+  bio: "Describe your self."
+  email: 
+  disqus-shortname: 
+  twitter: tonymadbrain
+  facebook: #username
+  google:
+    plus: #username
+    analytics: 
+    verify: 
+    ad-client: 
+    ad-slot: 
+  bing-verify: 
+  github: tonymadbrain
+  stackoverflow: #http://stackoverflow.com/users/123456/username
+  linkedin: #username
+  instagram: tonymadbrain_
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube: 
+  soundcloud: #username
+  weibo: #username
+  flickr: tonymadbrain
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]

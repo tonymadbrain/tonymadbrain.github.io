@@ -1,6 +1,5 @@
 ---
 title: Быстрое создание макетов Bootstrap
-author: madman
 layout: post
 permalink: /by-stroe-sozdanie-maketov-bootstrap/
 categories:

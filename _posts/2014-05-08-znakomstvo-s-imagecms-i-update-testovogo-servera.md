@@ -1,6 +1,5 @@
 ---
 title: Знакомство с ImageCMS и update тестового сервера
-author: madman
 layout: post
 permalink: /znakomstvo-s-imagecms-i-update-testovogo-servera/
 categories:

@@ -1,6 +1,5 @@
 ---
 title: Ищем xorg.conf debian squeeze
-author: madman
 layout: post
 permalink: /ishhem-xorg-conf-debian-squeeze/
 slider_image:

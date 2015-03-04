@@ -1,6 +1,5 @@
 ---
 title: Дуров, первое публичное выступление
-author: madman
 layout: post
 permalink: /durov-pervoe-publichnoe-vy-stuplenie/
 slider_image:

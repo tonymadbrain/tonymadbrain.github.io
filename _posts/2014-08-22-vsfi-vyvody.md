@@ -1,6 +1,5 @@
 ---
 title: 'VSFI &#8212; выводы'
-author: madman
 layout: post
 permalink: /vsfi-vyvody/
 categories:
