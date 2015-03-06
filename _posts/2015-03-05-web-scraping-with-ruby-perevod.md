@@ -4,8 +4,6 @@ layout: post
 permalink: /2015-03-05-web-scraping-with-ruby-perevod/
 ---
 
-###В качестве вступления
-
 Это перевод статьи <a href="https://www.chrismytton.uk/2015/01/19/web-scraping-with-ruby/" target="_blank">Web Scraping with Ruby</a>, которую я нашел полезной при изучении языка программирования Ruby. Парсинг меня интересует в личных целях, но мне кажется это полезный навык и способ изучить язык.   
 
 ####*Начало перевода*
