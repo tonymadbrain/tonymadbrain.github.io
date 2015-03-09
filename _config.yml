@@ -2,7 +2,7 @@
 
 title:            Diary of madman
 locale:           en_US
-url:              
+url:              https://doam.ru
 
 
 # Jekyll configuration
@@ -29,17 +29,17 @@ owner:
   name: Антон Рябов
   avatar: bio-photo.jpg
   bio: "Не люблю бриться и у меня умный взгляд."
-  email: 
-  disqus-shortname: 
+  email:
+  disqus-shortname:
   twitter: tonymadbrain
   facebook: #username
   google:
     plus: #username
-    analytics: 
-    verify: 
-    ad-client: 
-    ad-slot: 
-  bing-verify: 
+    analytics:
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
   github: tonymadbrain
   stackoverflow: #http://stackoverflow.com/users/123456/username
   linkedin: #username
@@ -50,7 +50,7 @@ owner:
   foursquare: #username
   steam: #username
   dribbble: #username
-  youtube: 
+  youtube:
   soundcloud: #username
   weibo: #username
   flickr: tonymadbrain
