@@ -4,7 +4,7 @@ layout: post
 permalink: /advanced-web-scraping-with-mechanize-perevod/
 ---
 
-*В продолжение темы <a href="http://doam.ru/web-scraping-with-ruby-perevod/" target="_blank">парсинга сайтов на Ruby</a>, я решил перевести следующую статью этого же автора.*
+*В продолжение темы <a href="http://doam.ru/web-scraping-with-ruby-perevod/" target="_blank">парсинга сайтов на Ruby</a>, я решил перевести следующую статью этого же <a href="https://www.chrismytton.uk/2015/01/22/advanced-web-scraping-with-mechanize/" target="_blank">автора.</a>*
   
 В предыдыдущей записи я описал основы - <a href="https://www.chrismytton.uk/2015/01/19/web-scraping-with-ruby/" target="_blank">введение в веб парсинг на Ruby</a>. В конце поста, я упомянул инструмент Mechanize, который используется для продвинутого парсинга. 
 
