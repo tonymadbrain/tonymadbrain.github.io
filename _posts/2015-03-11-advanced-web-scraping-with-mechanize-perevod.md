@@ -1,7 +1,7 @@
 ---
 title: Продвинутый парсинг веб-сайтов с Mechanize - перевод
 layout: post
-permalink: /web-scraping-with-ruby-perevod/
+permalink: /advanced-web-scraping-with-mechanize-perevod/
 ---
 
 *В продолжение темы <a href="http://doam.ru/web-scraping-with-ruby-perevod/" target="_blank">парсинга сайтов на Ruby</a>, я решил перевести следующую статью этого же автора.*
