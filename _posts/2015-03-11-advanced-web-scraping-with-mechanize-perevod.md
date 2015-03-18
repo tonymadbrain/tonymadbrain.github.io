@@ -206,4 +206,6 @@ $ ruby scraper.rb > reviews.json
 
 Однако, учитывая способности Mechanize, я начинаю думать, что даже для простых задач парсинга, зачастую, будет лучше использовать именно его. 
 
+<a href="http://habrahabr.ru/post/253439/" target="_blank">Эта статья на хабре.</a> 
+
 [^1]: Вы всегда должны парсить аккуратно. Прочитайте статью <a href="https://blog.scraperwiki.com/2012/04/is-scraping-legal/" target="_blank">Is scraping legal?</a> из блога ScraperWiki для ознакомления с обсуждениями на эту тему. 
