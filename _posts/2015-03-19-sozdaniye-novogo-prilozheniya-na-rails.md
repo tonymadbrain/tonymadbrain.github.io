@@ -20,7 +20,7 @@ $ rvm gemset use my_app
 {% endhighlight %}
 Устанавливаем rails 
 {% highlight bash %}
-$ gem install rails
+$ gem install rails --no-ri --no-rdoc
 {% endhighlight %}
 Создаем новое приложение
 {% highlight bash %}
