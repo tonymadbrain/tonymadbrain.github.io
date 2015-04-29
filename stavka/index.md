@@ -3,9 +3,7 @@ layout: page
 title: Ставка на новую эру
 excerpt: "Ставка на новую эру"
 ---
-<figure style="text-align:center;">
-<img src="https://res.cloudinary.com/doam-ru/image/upload/h_300,w_300/v1409069957/circle_vz0le3.png"/>
-</figure>
+
 Алоха, это стартовая страница моего блога. \\
 На данный момент на дворе 19.09.2012 вторник. \\
 Текст этой страницы не будет меняться 4 года. \\
