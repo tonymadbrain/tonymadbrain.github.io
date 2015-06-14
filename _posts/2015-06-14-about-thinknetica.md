@@ -17,5 +17,5 @@ date: 2015-06-14T00:12:00+03:00
 
 P.S. Проект сделанный на курсе доступен по следующим ссылкам:
 
-* github - https://github.com/tonymadbrain/qna
-* production - http://qna.doam.ru
+* <a href="https://github.com/tonymadbrain/qna" target="_blank">github</a>
+* <a href="http://qna.doam.ru" target="_blank">production</a>
