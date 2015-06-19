@@ -42,6 +42,10 @@
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
       {{ content }}
+      {% for tag in page.tags %}
+        <a href="{{ BASE_PATH }}/tag/{{ tag | downcase }}">#{{ tag }}</a>
+      {% endfor %}
+        <!-- {{ page | tags }} -->
       <hr />
       <footer role="contentinfo">
         {% if page.share != false %}{% include _social-share.html %}{% endif %}

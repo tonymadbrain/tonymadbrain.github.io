@@ -15,6 +15,7 @@ sass:
   style: compressed
 gems:
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 kramdown:
   auto_ids: true
@@ -53,7 +54,12 @@ owner:
   youtube:
   soundcloud: #username
   weibo: #username
-  flickr: tonymadbrain
+  flickr: #tonymadbrain
+
+tag_page_layout: tag_page
+tag_page_dir: tag
+tag_permalink_style: pretty
+# ignored_tags: ["tags", "to", "ignore"]
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
