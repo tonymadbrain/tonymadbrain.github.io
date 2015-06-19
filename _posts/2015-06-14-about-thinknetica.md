@@ -3,6 +3,8 @@ layout: post
 title: "Онлайн-школа Thinknetica.com"
 permalink: /2015-06-14-about-thinknetica/
 date: 2015-06-14T00:12:00+03:00
+image:
+  feature: sample-image-7.jpg
 tags:
   - E-learning
   - Ruby
