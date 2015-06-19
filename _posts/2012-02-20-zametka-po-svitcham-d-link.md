@@ -2,6 +2,7 @@
 title: Заметка по свитчам D-link
 layout: post
 permalink: /zametka-po-svitcham-d-link/
+redirect_from: "/?p=354"
 categories:
   - root
 tags:
