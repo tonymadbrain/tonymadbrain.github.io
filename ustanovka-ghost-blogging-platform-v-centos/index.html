@@ -1,0 +1,380 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Установка Ghost blogging platform в CentOS &#8211; Diary of madman</title>
+<meta name="description" content="
+Что такое Ghost?
+О данном проекте писали на хабре, как минимум здесь. Так что, много рассказывать не собираюсь. Выделю самое главное:
+
+	Это платформа для блоггинга, как, например, Wordpress
+	Это очень быстрый движок, потому, что работает на node.js
+	Простой и удобный интерфейс
+	Собственный магазин с платными и бесплатными шаблонами
+
+
+">
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Установка Ghost blogging platform в CentOS">
+<meta name="twitter:description" content="
+Что такое Ghost?
+О данном проекте писали на хабре, как минимум здесь. Так что, много рассказывать не собираюсь. Выделю самое главное:
+
+	Это платформа для блоггинга, как, например, Wordpress
+	Это очень быстрый движок, потому, что работает на node.js
+	Простой и удобный интерфейс
+	Собственный магазин с платными и бесплатными шаблонами
+
+
+">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Установка Ghost blogging platform в CentOS">
+<meta property="og:description" content="
+Что такое Ghost?
+О данном проекте писали на хабре, как минимум здесь. Так что, много рассказывать не собираюсь. Выделю самое главное:
+
+	Это платформа для блоггинга, как, например, Wordpress
+	Это очень быстрый движок, потому, что работает на node.js
+	Простой и удобный интерфейс
+	Собственный магазин с платными и бесплатными шаблонами
+
+
+">
+<meta property="og:url" content="/ustanovka-ghost-blogging-platform-v-centos/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="/ustanovka-ghost-blogging-platform-v-centos/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				        
+				    
+				    <li><a href="/cv/" >Резюме</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="/posts/" >Записки</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="/stavka/" >Ставка на новую эру</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  <a href="http://instagram.com/tonymadbrain_" class="author-social" target="_blank"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="/ustanovka-ghost-blogging-platform-v-centos/" rel="bookmark" title="Установка Ghost blogging platform в CentOS">Установка Ghost blogging platform в CentOS</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p><img src="https://farm8.staticflickr.com/7425/16515667242_7bdebd89dc_o.jpg" alt="" /></p>
+<h3>Что такое Ghost?</h3>
+<p>О данном проекте писали на хабре, как минимум <a href="http://habrahabr.ru/post/197546/" target="_blank">здесь</a>. Так что, много рассказывать не собираюсь. Выделю самое главное:</p>
+<ul>
+	<li>Это платформа для блоггинга, как, например, <a href="http://wordpress.org" target="_blank">Wordpress</a></li>
+	<li>Это очень быстрый движок, потому, что работает на <a href="http://nodejs.org/" target="_blank">node.js</a></li>
+	<li>Простой и удобный интерфейс</li>
+	<li>Собственный магазин с платными и бесплатными шаблонами</li>
+</ul>
+
+<h3>Установка Ghost в CentOS</h3>
+
+<p>Системные требования:</p>
+<pre>
+yum groupinstall -y "Development Tools"
+yum install -y wget
+</pre>
+<h4>Устанавливаем Node.js</h4>
+<pre>wget http://nodejs.org/dist/node-latest.tar.gz
+tar -xzf node-latest.tar.gz
+cd node-v*
+./configure  
+make  
+make install
+ln -s /usr/local/bin/node /usr/bin/node
+ln -s /usr/local/bin/npm /usr/bin/npm</pre>
+<h4>Устанавливаем Ghost</h4>
+<pre>mkdir -p /var/www/ghost
+cd /var/www/ghost
+wget https://ghost.org/zip/ghost-latest.zip 
+unzip ghost-latest.zip  
+npm install --production</pre>
+<h4>Создание пользователя Ghost</h4>
+<pre>useradd ghost
+chown ghost:ghost /var/www/ghost/ -R</pre>
+<p>Запуск Ghost в режиме разработчика</p>
+<pre>npm start</pre>
+<p>Таким образом мы запустили движок в режиме разработчика/отладки (dev) на localhost’е на порту 2368 (127.0.0.1:2368)</p>
+
+<p>Можно посмотреть результат, открыв в браузере адрес <a href="http://127.0.0.1:2368">http://127.0.0.1:2368</a></p>
+<p></p>
+<h3>Дальнейшая настройка Ghost</h3>
+
+<p>Естественно нам необходимо две вещи, чтобы блог открывался по доменному имени и на 80 порту.</p>
+
+<p>В папке с ghost есть два файла config.example.js и config.js. (если второго нет, необходимо переименовать первый или скопировать). Считывается config.js.</p>
+<p></p>
+<blockquote>Заметка: в конфигурационном файле есть несколько блоков настроек, dev, production и testing. В зависимости от того в каком режиме вы будете запускать сервер такие настройки и будут применены.</blockquote>
+
+<p>Итак, чтобы решить задачу с доменным именем и портом, можно изменить настройки в конфиге самого ghost’а, а можно установить nginx и через него проксировать запросы в node.js.</p>
+
+<p>Тут, на мой взгляд, кому как удобнее.</p>
+
+<p>В конфиге ghost, нас интересует следующее:</p>
+<pre>var path = require('path'),
+config;
+
+config = {
+// ### Development **(default)**-  настройки для запуска в режиме DEV
+development: {
+// The url to use when providing links to the site, E.g. in RSS and email.
+url: 'http://ghost.mysite.com', <strong>//Адрес который будет слушать встроенный веб-сервер</strong>
+database: {
+client: 'sqlite3',
+connection: {
+filename: path.join(__dirname, '/content/data/ghost-dev.db')
+},
+debug: false
+},
+
+server: {
+// Host to be passed to node's `net.Server#listen()`
+host: '0.0.0.0', <strong>//По умолчанию здесь указан </strong><strong>localhost</strong><strong>, если поставить 0.0.0.0</strong>
+<strong>//будут слушаться все интерфейсы, либо можно выставить определенный.</strong>
+// Port to be passed to node's `net.Server#listen()`, for iisnode set this to `process.env.PORT`
+port: '2368' <strong>// Здесь задается порт, нас интересует 80.</strong>
+},
+paths: {
+contentPath: path.join(__dirname, '/content/')
+}
+},
+
+// ### Production – настройки для запуска в режиме Production
+<strong>//Для продакшн, настройки точно такие же, однако не забывайте их поменять</strong>
+production: {
+url: 'http://ghost.mysite.com',
+mail: {},
+database: {
+client: 'sqlite3',
+connection: {
+filename: path.join(__dirname, '/content/data/ghost.db')
+},
+debug: false
+},
+server: {
+// Host to be passed to node's `net.Server#listen()`
+host: '0.0.0.0',
+// Port to be passed to node's `net.Server#listen()`, for iisnode set this to `process.env.PORT`
+port: '80'
+}
+},</pre>
+<h3>Настройка Ghost с использованием Nginx</h3>
+
+<p>При этом мы сохраняем дефолтные настройки Ghost и запускаем сервер на localhost на порту 2368.</p>
+
+<h4>Установка Nginx</h4>
+
+<p>Добавляем репозиторий Nginx</p>
+<pre>vim /etc/yum.repos.d/nginx.repo</pre>
+<p>В файл добавляем текст:</p>
+<pre>[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=0
+enabled=1</pre>
+<p>Сохраняем файл, устанавливаем Nginx, запускаем его и добавляем в автозагрузку, следующими командами:</p>
+<pre>yum install nginx -y
+service nginx start
+chkconfig nginx on</pre>
+<p>Далее создаем конфиг виртуального хоста для нашего Ghost сервера:</p>
+<pre>vim /etc/nginx/conf.d/ghost.mysite.com.conf</pre>
+<p>Со следующим содержимым:</p>
+<pre>server {
+        listen 80;
+        server_name yourdomain.com www.yourdomain.com;
+        location / {
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   Host      $http_host;
+        proxy_pass         http://127.0.0.1:2368;
+        }
+}
+</pre>
+<p>Для применения настроек выполняем команду:</p>
+<pre>service nginx reload</pre>
+<p>Вот и все, теперь ваш блог на движке Ghost доступен по адресу yourdomain.com на 80 порту.</p>
+<h3>Материалы по теме:</h3>
+<ul>
+	<li><a href="https://ghost.org/" target="_blank">Официальный сайт Ghost </a></li>
+	<li><a href="http://marketplace.ghost.org/" target="_blank">Магазин шаблонов</a></li>
+	<li><a href="https://github.com/polygonix/GhostBacker" target="_blank">Создание шаблонов </a></li>
+</ul>
+
+      
+        <!--  -->
+      <hr />
+      <footer role="contentinfo">
+        <div class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Установка Ghost blogging platform в CentOS %23doamru http://doam.ru/ustanovka-ghost-blogging-platform-v-centos/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/ustanovka-ghost-blogging-platform-v-centos/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/ustanovka-ghost-blogging-platform-v-centos/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/ustanovka-ghost-blogging-platform-v-centos/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+        <p class="byline"><strong>Установка Ghost blogging platform в CentOS</strong> опубликовано <time datetime="2014-06-09T18:46:09+04:00">09 June, 2014</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="/posts/">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="/2015-06-14-about-thinknetica/" title="Онлайн-школа Thinknetica.com">Онлайн-школа Thinknetica.com</a></li>
+    
+      <li><a href="/2015-05-27-rassujdeniya-o-smi/" title="Рассуждения о СМИ">Рассуждения о СМИ</a></li>
+    
+      <li><a href="/2015-05-20-no-mariadb-just-mysql/" title="Mariadb не, использовать Mysql">Mariadb не, использовать Mysql</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    
+
+<span>&copy; 2011 - 2015 Diary of madman. Работает на <a href="http://jekyllrb.com" target="_blank" rel="nofollow">Jekyll</a> с использованием темы <a href="https://mmistakes.github.io/minimal-mistakes/" target="_blank" rel="nofollow">Minimal Mistakes</a></span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+	        
+
+</body>
+</html>
