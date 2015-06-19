@@ -4,6 +4,8 @@ layout: post
 permalink: /nemnogo-randomny-h-fotografij/
 categories:
   - Фото
+tags:
+  - Фото
 ---
 ### 
 

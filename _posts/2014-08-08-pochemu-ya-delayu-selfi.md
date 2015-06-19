@@ -6,10 +6,10 @@ categories:
   - Новости
   - Фото
 tags:
-  - исследования
-  - посткоротыш
-  - селфи
-  - фотографии
+  - Исследования
+  - Посткоротыш
+  - Селфи
+  - Фотографии
 ---
 <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409069600/pic_7be57f20a4ac92f54faf5d434737676a_kp0oyc.jpg" rel="lightbox[880]" title="pic_7be57f20a4ac92f54faf5d434737676a"><img class="aligncenter wp-image-881 size-full" src="http://res.cloudinary.com/doam-ru/image/upload/v1409069600/pic_7be57f20a4ac92f54faf5d434737676a_kp0oyc.jpg" alt="pic_7be57f20a4ac92f54faf5d434737676a" width="420" height="280" /></a>
 

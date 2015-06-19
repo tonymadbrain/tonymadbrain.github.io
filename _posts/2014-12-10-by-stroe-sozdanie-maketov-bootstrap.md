@@ -5,10 +5,10 @@ permalink: /by-stroe-sozdanie-maketov-bootstrap/
 categories:
   - Soft
 tags:
-  - bootstrap
-  - pingendo
-  - soft
-  - web
+  - Bootstrap
+  - Pingendo
+  - Soft
+  - Web
 ---
 <img class="alignleft wp-image-1018 size-thumbnail" src="https://doam.ru/wp-content/uploads/2014/12/editinn-icon_400x400-150x150.png" alt="editinn-icon_400x400" width="150" height="150" />
 

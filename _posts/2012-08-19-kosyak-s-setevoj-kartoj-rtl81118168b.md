@@ -6,9 +6,9 @@ categories:
   - Debian
   - root
 tags:
-  - debian
-  - eth0
-  - rtl8168
+  - Debian
+  - Eth0
+  - Rtl8168
 ---
 Взбрело мне в голову в очередной раз перезалить debian на стационаре (обычно я это делаю когда забиваю систему всякой фигней, после чего становиться невозможно в ней работать), и в очередной раз про косяк с сетевой картой, я вспомнил только после установки. <img title="Read More..." src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" data-wp-more="" data-mce-resize="false" data-mce-placeholder="1" />
 

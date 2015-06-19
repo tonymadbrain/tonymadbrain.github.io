@@ -5,10 +5,10 @@ permalink: /obnovlenie-prilozheniya-vkontakte-dlya-andr/
 categories:
   - Soft
 tags:
-  - android
-  - app
-  - new
-  - vk
+  - Android
+  - App
+  - New
+  - Vk
 ---
 Вчера свет увидело обновление приложения вконтакте для android, собственно с самого момента обновления я старался уделить ему побольше времени и теперь могу кое-что написать.
 

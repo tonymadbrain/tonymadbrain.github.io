@@ -7,14 +7,14 @@ categories:
   - root
 tags:
   - CentOS
-  - cms
+  - CMS
   - e-commerce
-  - imagecms
-  - nginx
-  - php
-  - php-fpm
-  - remi
-  - update
+  - Imagecms
+  - Nginx
+  - Php
+  - Php-fpm
+  - Remi
+  - Update
 ---
 &nbsp;
 

@@ -9,12 +9,12 @@ categories:
   - root
   - Soft
 tags:
-  - conky
-  - debian
-  - linux
-  - openbox
-  - tint2
-  - конфиги
+  - Сonky
+  - Debian
+  - Linux
+  - Openbox
+  - Tint2
+  - Конфиги
 ---
 <img class="alignright" title="debian-powered" src="http://doam.ru/wp-content/uploads/2012/03/debian-powered.png" alt="" width="180" height="180" />
 

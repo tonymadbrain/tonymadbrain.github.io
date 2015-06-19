@@ -4,6 +4,8 @@ layout: post
 permalink: /bortovoj-zhurnal-pereezd-na-gost/
 categories:
   - root
+tags:
+  - root
 ---
 <img class="aligncenter" src="http://cs319627.vk.me/v319627092/4765/MTWWXVs6Evg.jpg" alt="" width="600" height="470" />
 

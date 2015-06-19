@@ -6,10 +6,10 @@ categories:
   - CentOS
   - root
 tags:
-  - blog
+  - Blog
   - CentOS
-  - ghost
-  - nginx
+  - Ghost
+  - Nginx
 ---
 <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409069989/ghost-blogging-platform_abzrkg.jpg" rel="lightbox[789]" title="ghost-blogging-platform"><img class="aligncenter wp-image-802" src="http://res.cloudinary.com/doam-ru/image/upload/v1409069989/ghost-blogging-platform_abzrkg.jpg" alt="ghost-blogging-platform" width="694" height="366" /></a>
 

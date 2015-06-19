@@ -5,13 +5,13 @@ permalink: /problema-s-pgp-klyuchami-v-proxmox/
 categories:
   - Debian
 tags:
-  - debian
-  - fix
+  - Debian
+  - Fix
   - PGP
-  - pgp-key
-  - proxmox
-  - update
-  - upgrade
+  - Pgp-key
+  - Proxmox
+  - Update
+  - Upgrade
 ---
 <a href="http://doam.ru/wp-content/uploads/2014/10/proxmox.png" rel="lightbox[976]" title="proxmox"><img class="aligncenter wp-image-978 size-full" src="http://doam.ru/wp-content/uploads/2014/10/proxmox.png" alt="proxmox" width="800" height="532" /></a>Тем у кого нет платной подписки Proxmox, с недавнего времени приходится использовать другой репозиторий, правда, по-прежнему поддерживаемый. При попытке обновления я полез гуглить и наткнулся на эту информацию, в итоге, наворотил чего-то с репозиториями и PGP ключами, плюнул на все и бросил эту ноду. Когда появилась новость об уязвимости в Bash, вопрос обновления встал остро и нужно было что-то делать.<!--more-->
 

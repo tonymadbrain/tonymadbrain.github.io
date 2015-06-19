@@ -6,7 +6,7 @@ categories:
   - root
   - Новости
 tags:
-  - blog
+  - Blog
   - Dubna
   - Прокрастинация
 ---

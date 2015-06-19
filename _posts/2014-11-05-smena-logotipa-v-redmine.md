@@ -5,12 +5,12 @@ permalink: /smena-logotipa-v-redmine/
 categories:
   - CentOS
 tags:
-  - apache
-  - changelogo
-  - logo
-  - nginx
-  - redmine
-  - tips
+  - Apache
+  - Changelogo
+  - Logo
+  - Nginx
+  - Redmine
+  - Tips
 ---
 Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.  
 Редактируем файлик base.html.erb  

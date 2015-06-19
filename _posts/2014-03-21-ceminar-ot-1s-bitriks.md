@@ -9,7 +9,7 @@ tags:
   - 1с
   - 1с-битрикс
   - Москва
-  - семинар
+  - Семинар
 ---
 <img class="aligncenter" src="http://doam.ru/wp-content/uploads/2014/03/unnamed.png" alt="unnamed" width="594" height="321" />
 

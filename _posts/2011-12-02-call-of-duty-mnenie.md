@@ -5,7 +5,7 @@ permalink: /call-of-duty-mnenie/
 categories:
   - Про игры
 tags:
-  - Call of Duty
+  - CallOfDuty
   - CoD
   - InfinitiWard
   - Мнение

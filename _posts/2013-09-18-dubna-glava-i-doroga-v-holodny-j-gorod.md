@@ -6,7 +6,7 @@ categories:
   - Дубна
 tags:
   - Dubna
-  - featured
+  - Featured
   - Воронеж
   - Дорога
 ---

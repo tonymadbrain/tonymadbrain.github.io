@@ -7,10 +7,9 @@ categories:
   - Новости
 tags:
   - Воронеж
-  - дороги
-  - пешеходные переходы
-  - пешеходы
-  - шныряющие
+  - Дороги
+  - ПешеходныеПереходы
+  - Пешеходы
 ---
 <img title="32c8181d7da144f3421334afd9ff4114-d5g0xa6" src="http://doam.ru/wp-content/uploads/2012/11/32c8181d7da144f3421334afd9ff4114-d5g0xa6.png" alt="" width="540" height="360" />
 

@@ -4,6 +4,8 @@ layout: post
 permalink: /i-snova-pro-ghost/
 categories:
   - root
+tags:
+  - root
 ---
 <img class="aligncenter size-large wp-image-951" src="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-22-04-49-Skrinshot-e-krana-1024x506.png" alt="2014-08-26 22-04-49 Скриншот экрана" width="750" height="370" />
 

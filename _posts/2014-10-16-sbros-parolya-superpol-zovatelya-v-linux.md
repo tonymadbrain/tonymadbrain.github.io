@@ -5,12 +5,12 @@ permalink: /sbros-parolya-superpol-zovatelya-v-linux/
 categories:
   - Самостоятельная подготовка к RHCE
 tags:
-  - hack
-  - linux
-  - password
+  - Hack
+  - Linux
+  - Password
   - RHCE
   - root
-  - trick
+  - Trick
 ---
 <a href="http://doam.ru/wp-content/uploads/2014/10/root.png" rel="lightbox[981]" title="root"><img class="aligncenter size-full wp-image-983" src="http://doam.ru/wp-content/uploads/2014/10/root.png" alt="root" width="800" height="480" /></a>Сейчас для меня актуальна тема самостоятельной подготовки к сдаче RHCSA/RHCE, поэтому в моем браузере открыты несколько вкладок на эту тему. Дабы отсеять ненужное, решил написать заметку.
 

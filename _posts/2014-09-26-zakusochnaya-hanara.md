@@ -4,6 +4,8 @@ layout: post
 permalink: /zakusochnaya-hanara/
 categories:
   - root
+tags:
+  - root
 ---
 <img class="aligncenter wp-image-816 size-large" src="http://res.cloudinary.com/doam-ru/image/upload/h_503,w_750/v1409069970/foto_cheb__ru-27205_sbpylv.jpg" alt="foto.cheb.ru-27205" width="750" height="503" />
 
