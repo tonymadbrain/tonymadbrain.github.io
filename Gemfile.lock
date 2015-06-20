@@ -104,3 +104,6 @@ DEPENDENCIES
   jekyll-sitemap
   jekyll-tagging
   octopress (~> 3.0.0.rc.12)
+
+BUNDLED WITH
+   1.10.4
