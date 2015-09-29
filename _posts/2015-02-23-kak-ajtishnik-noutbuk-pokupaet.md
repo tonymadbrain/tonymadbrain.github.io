@@ -16,7 +16,15 @@ tags:
 
 Для программиста это несложная задачка, для меня же, определенный опыт и повышение мастерства. Еще подумываю над статистикой и базой данных и вообще кучей функций. Резонный вопрос &#8212; зачем? Надо же хоть на чем-то учиться, да и для меня это удобнее, чем открывать 10 страниц интернет магазинов и сравнивать вручную.
 
-Вот так выглядит сгенерированный html:<a href="https://doam.ru/wp-content/uploads/2015/02/2015-02-23-14-23-18-Skrinshot-e-krana.png" rel="lightbox[1056]" title="2015-02-23 14-23-18 Скриншот экрана"><img class="aligncenter size-large wp-image-1057" src="https://doam.ru/wp-content/uploads/2015/02/2015-02-23-14-23-18-Skrinshot-e-krana-1024x463.png" alt="2015-02-23 14-23-18 Скриншот экрана" width="750" height="339" /></a>
+Вот так выглядит сгенерированный html:
 
-В письме все гораздо лаконичнее:  
-<a href="https://doam.ru/wp-content/uploads/2015/02/2015-02-23-14-24-30-Skrinshot-e-krana.png" rel="lightbox[1056]" title="2015-02-23 14-24-30 Скриншот экрана"><img class="aligncenter size-large wp-image-1058" src="https://doam.ru/wp-content/uploads/2015/02/2015-02-23-14-24-30-Skrinshot-e-krana.png" alt="2015-02-23 14-24-30 Скриншот экрана" width="750" height="349" /></a>
+<br>
+<img src="https://farm1.staticflickr.com/764/21031406904_98a29e0698_o.png">
+<br>
+<br>
+
+В письме все гораздо лаконичнее:
+
+<br>
+<img src="https://farm1.staticflickr.com/612/21654066185_2cd37c7efe_o.png">
+<br>
