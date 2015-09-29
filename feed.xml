@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2015-09-28T21:15:04+03:00</updated>
+<updated>2015-09-29T15:05:41+03:00</updated>
 <id>/</id>
 <author>
   <name>Антон Рябов</name>
@@ -125,11 +125,13 @@
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
-    &lt;p&gt;Изначально планировалось поставить запятую после Mariadb. Собственно сабж в том, что я хотел перевести свой сервер с парой rails приложений c mysql 5.1 на mariadb 10, но не тут то было. Я столкнулся со странной магией и из-за отсутсвия времени отступил перед лицом проблемы. &lt;/p&gt;
+    &lt;p&gt;Изначально планировалось поставить запятую после Mariadb. Собственно сабж в том, что я хотел перевести свой сервер с парой rails приложений c mysql 5.1 на mariadb 10, но не тут то было. Я столкнулся со странной магией и из-за отсутсвия времени отступил перед лицом проблемы.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://flops.ru/?refid=13509&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;https://c4.staticflickr.com/8/7664/17279643363_bd8661609e_o.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;https://farm1.staticflickr.com/566/21467225109_17f981a0d5_o.png&quot; /&gt;
+&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;В начале на сервере с Centos 6.6 работали redmine, gitlab и несколько простых парсеров на ruby, которые с базой не общаются (пока). Стояла версия &lt;code&gt;mysql-server-5.1.73-3.el6_5.x86_64&lt;/code&gt;. Было произведено “легкое” обновление до &lt;code&gt;mysql-community-server-5.6.24-3.el6.x86_64&lt;/code&gt; по &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-install-mysql-5-6-from-official-yum-repositories&quot; target=&quot;_blank&quot;&gt;инструкции с DO.&lt;/a&gt;. Затем был произведен полный backup утилитой xtrabackup из &lt;a href=&quot;https://www.percona.com/doc/percona-server/5.5/installation/yum_repo.html&quot; target=&quot;_blank&quot;&gt;репозитория Percona&lt;/a&gt;. И наконец было выполнено обновление до версии MariaDB-server-10 (&lt;a href=&quot;https://mariadb.com/kb/en/mariadb/yum/&quot; target=&quot;_blank&quot;&gt;ман&lt;/a&gt;). 
+&lt;p&gt;В начале на сервере с Centos 6.6 работали redmine, gitlab и несколько простых парсеров на ruby, которые с базой не общаются (пока). Стояла версия &lt;code&gt;mysql-server-5.1.73-3.el6_5.x86_64&lt;/code&gt;. Было произведено “легкое” обновление до &lt;code&gt;mysql-community-server-5.6.24-3.el6.x86_64&lt;/code&gt; по &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-install-mysql-5-6-from-official-yum-repositories&quot; target=&quot;_blank&quot;&gt;инструкции с DO.&lt;/a&gt;. Затем был произведен полный backup утилитой xtrabackup из &lt;a href=&quot;https://www.percona.com/doc/percona-server/5.5/installation/yum_repo.html&quot; target=&quot;_blank&quot;&gt;репозитория Percona&lt;/a&gt;. И наконец было выполнено обновление до версии MariaDB-server-10 (&lt;a href=&quot;https://mariadb.com/kb/en/mariadb/yum/&quot; target=&quot;_blank&quot;&gt;ман&lt;/a&gt;).
 Естественно на время обновлений сервисы отключались. И вот, готовый к неожиданностям я начал их запускать и столкнулся с ошибкой:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Incorrect MySQL client library version! This gem was compiled &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; 5.1.73 but the client library is 5.3.12-MariaDB.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -142,7 +144,7 @@
 
 &lt;p&gt;Сперва я опробовал его на redmine, и оно сработало, redmine принял новую версию базы данных как родную. Однако с gitlab это не прокатило…&lt;/p&gt;
 
-&lt;p&gt;Я бился пару дней, но в результате решил не тратить больше времени и откатился до mysql 5.6, чтобы gitlab работал. Для меня осталось загадкой, почему переустановка гема с необходимым параметром для одного приложения сработала нормально, а для другого нет. Версия гема ведь одинаковая. В печали я открыл &lt;a href=&quot;https://github.com/gitlabhq/gitlabhq/issues/9313&quot; target=&quot;_blank&quot;&gt;issue&lt;/a&gt; в репозитории gitlabhq, но судя по отсутсвию активности, решение если и будет то не скоро. Эта статья задумывалась как мануал по переходу с mysql 5 на mariadb 10, но в итоге одно разочарование. &lt;/p&gt;
+&lt;p&gt;Я бился пару дней, но в результате решил не тратить больше времени и откатился до mysql 5.6, чтобы gitlab работал. Для меня осталось загадкой, почему переустановка гема с необходимым параметром для одного приложения сработала нормально, а для другого нет. Версия гема ведь одинаковая. В печали я открыл &lt;a href=&quot;https://github.com/gitlabhq/gitlabhq/issues/9313&quot; target=&quot;_blank&quot;&gt;issue&lt;/a&gt; в репозитории gitlabhq, но судя по отсутсвию активности, решение если и будет то не скоро. Эта статья задумывалась как мануал по переходу с mysql 5 на mariadb 10, но в итоге одно разочарование.&lt;/p&gt;
 
     &lt;p&gt;&lt;a href=&quot;/2015-05-20-no-mariadb-just-mysql/&quot;&gt;Mariadb не, использовать Mysql&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on May 20, 2015.&lt;/p&gt;
   </content>
@@ -163,14 +165,14 @@
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
-    &lt;p&gt;В начале стоит сказать, что некоторое время назад, где-то с пол года, я, наконец, отказался от физического сервера в своем доме и перенес свою “помойку” на физический сервер в датацентре. 
-Конечно это дополнительные траты, но зато убрал шумелку и упростил обслуживание. Однако, через некоторое время, мне стало жалко платить за сервер, который не утилизируется и блог переехал на бесплатный хостинг - &lt;a href=&quot;https://pages.github.com/&quot; target=&quot;_blank&quot;&gt;Github pages&lt;/a&gt;, а остальные контейнеры были распиханы по виртуальным серверам у провайдера &lt;a href=&quot;https://flops.ru/?refid=13509&quot; target=&quot;_blank&quot;&gt;Flops&lt;/a&gt;. &lt;/p&gt;
+    &lt;p&gt;В начале стоит сказать, что некоторое время назад, где-то с пол года, я, наконец, отказался от физического сервера в своем доме и перенес свою “помойку” на физический сервер в датацентре.
+Конечно это дополнительные траты, но зато убрал шумелку и упростил обслуживание. Однако, через некоторое время, мне стало жалко платить за сервер, который не утилизируется и блог переехал на бесплатный хостинг - &lt;a href=&quot;https://pages.github.com/&quot; target=&quot;_blank&quot;&gt;Github pages&lt;/a&gt;, а остальные контейнеры были распиханы по виртуальным серверам у провайдера &lt;a href=&quot;https://flops.ru/?refid=13509&quot; target=&quot;_blank&quot;&gt;Flops&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://flops.ru/?refid=13509&quot; target=&quot;_blank&quot;&gt;
-&lt;img src=&quot;https://farm8.staticflickr.com/7692/17201751328_b23749c697_o.png&quot; alt=&quot;flops.ru&quot; /&gt;
+&lt;p&gt;&lt;a href=&quot;https://goo.gl/eOu0fS&quot; target=&quot;_blank&quot;&gt;
+&lt;img src=&quot;https://farm1.staticflickr.com/747/21467213069_a54bf9d84e_o.png&quot; alt=&quot;flops.ru&quot; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Не помню как я выбирал к кому все переносить, но точно помню что Flops мне показался российским аналогом DigitalOcean, только за рубли, а не за скачущий доллар. 
+&lt;p&gt;Не помню как я выбирал к кому все переносить, но точно помню что Flops мне показался российским аналогом DigitalOcean, только за рубли, а не за скачущий доллар.
 Таким образом уже несколько месяцев я пользуюсь услугами Flops. Хотелось бы кратко отметить плюсы и минусы данного провайдера.
 Плюсы:&lt;/p&gt;
 
@@ -184,14 +186,14 @@
   &lt;li&gt;Снапшоты, бекапы (раз в 3 дня бесплатно)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Минусы:  &lt;/p&gt;
+&lt;p&gt;Минусы:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Меделенная тех. поддержка&lt;/li&gt;
   &lt;li&gt;Грубая тех. поддержка&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Стоит немного пояснить, меня всем устраивают эти ребята, но они абсолютно не умеют работать на поддержку пользователей. Какие бы акулы у них там не сидели, ответы они дают отрывистые и резкие, в результате создается впечатление, что над тобой насмехаются, а иногда в их сообщениях проскакивают искорки сарказма. Но этим можно пренебречь в пользу хорошо работающего сервиса. &lt;/p&gt;
+&lt;p&gt;Стоит немного пояснить, меня всем устраивают эти ребята, но они абсолютно не умеют работать на поддержку пользователей. Какие бы акулы у них там не сидели, ответы они дают отрывистые и резкие, в результате создается впечатление, что над тобой насмехаются, а иногда в их сообщениях проскакивают искорки сарказма. Но этим можно пренебречь в пользу хорошо работающего сервиса.&lt;/p&gt;
 
 
     &lt;p&gt;&lt;a href=&quot;/2015-05-06-flops-virtual-servers/&quot;&gt;Виртуальные серверы от Flops&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on May 06, 2015.&lt;/p&gt;
@@ -214,16 +216,23 @@
   </author>
   <content type="html">
     &lt;p&gt;Стандартные команды гита довольно просты, и, кажется, что использовать их не сложно, пока не попробуешь алиасы.
-Два символа &lt;code&gt;co&lt;/code&gt; явно быстрее вводить чем &lt;code&gt;checkout&lt;/code&gt; да и вероятность опечататься гораздо меньше.
-Лично я использую следующие алиасы:&lt;/p&gt;
+Два символа &lt;code&gt;co&lt;/code&gt; явно быстрее вводить чем &lt;code&gt;checkout&lt;/code&gt; да и вероятность опечататься гораздо меньше.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;https://farm1.staticflickr.com/715/21620792628_a49b7b3171_o.jpg&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Лично я использую следующие алиасы:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git config --global alias.co checkout
 git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.br branch
-git config --global alias.hist &lt;span class=&quot;s1&quot;&gt;&amp;#39;log --pretty=format:&amp;quot;%h %ad | %s%d [%an]&amp;quot; --graph --date=short&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+git config --global alias.hist &lt;span class=&quot;s1&quot;&gt;&amp;#39;log --pretty=format:&amp;quot;%h %ad | %s%d [%an]&amp;quot; --graph --date=short&amp;#39;&lt;/span&gt;
+git config --global alias.lg &lt;span class=&quot;s1&quot;&gt;&amp;#39;log --graph --pretty=format:&amp;quot;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&amp;quot; --abbrev-commit --date=relative&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Последний, кстати, делает вывод лога более читабельным и понятным (в общем крутым).&lt;/p&gt;
+&lt;p&gt;Последние два, кстати, делают вывод лога более читабельным и понятным (в общем крутым).&lt;/p&gt;
 
     &lt;p&gt;&lt;a href=&quot;/2015-04-29-aliases_for_git/&quot;&gt;Алиасы для Git&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on April 29, 2015.&lt;/p&gt;
   </content>
@@ -270,8 +279,14 @@ git config --global alias.hist &lt;span class=&quot;s1&quot;&gt;&amp;#39;log --p
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
-    &lt;p&gt;Понял, что часто приходится создавать новое приложение Rails, решил сделать заметку с командами. По хорошему, конечно, нужно бы написать скрипт, чтобы это дело автоматизировать.&lt;br /&gt;
-Выбираем версию ruby&lt;/p&gt;
+    &lt;p&gt;Понял, что часто приходится создавать новое приложение Rails, решил сделать заметку с командами. По хорошему, конечно, нужно бы написать скрипт, чтобы это дело автоматизировать.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;https://farm1.staticflickr.com/611/21186379074_a897e27375_o.jpg&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Выбираем версию ruby&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rvm use 2.2.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -283,7 +298,7 @@ git config --global alias.hist &lt;span class=&quot;s1&quot;&gt;&amp;#39;log --p
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rvm gemset use my_app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Устанавливаем rails &lt;/p&gt;
+&lt;p&gt;Устанавливаем rails&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem install rails --no-ri --no-rdoc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -313,6 +328,48 @@ git config --global alias.hist &lt;span class=&quot;s1&quot;&gt;&amp;#39;log --p
 &lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;config/database.yml &amp;gt;&amp;gt; .gitignore
 git add .
 git ci -am &lt;span class=&quot;s2&quot;&gt;&amp;quot;initial commit&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;UPD: Скрипт я все таки сделал, но он дико заточен под меня, без параметров. Всегда создается проект с базой данных postgres и иницируется git, а также все проекты у меня лежат в каталоге ~/projects.&lt;/p&gt;
+
+&lt;p&gt;Сам скрипт:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; -n &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; -p &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ты запустил скрипт с параметрами - x.x.x my_super_app (y/[a])?: &amp;quot;&lt;/span&gt; AMSURE
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$AMSURE&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;y&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt; 1&amp;gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;2
+
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/projects
+
+&lt;span class=&quot;nv&quot;&gt;rubyVersion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;appName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;\x1B[33m### Try ruby version: $rubyVersion ###\x1B[39m&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;\x1B[33m### Try application name: $appName ###\x1B[39m&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; which rvm 1&amp;gt;/dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;\x1B[32m### Using RVM ###\x1B[39m&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;\x1B[31m### RVM not instaled ###\x1B[39m&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+rvm use &lt;span class=&quot;nv&quot;&gt;$rubyVersion&lt;/span&gt;
+rvm gemset create &lt;span class=&quot;nv&quot;&gt;$appName&lt;/span&gt;
+rvm gemset use &lt;span class=&quot;nv&quot;&gt;$appName&lt;/span&gt;
+gem install rails --no-ri --no-rdoc
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;\x1B[32m### Rails done! ###\x1B[39m&amp;quot;&lt;/span&gt;
+rails new &lt;span class=&quot;nv&quot;&gt;$appName&lt;/span&gt; -d postgresql
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$appName&lt;/span&gt;
+rvm --ruby-version use rvm current@&lt;span class=&quot;nv&quot;&gt;$appName&lt;/span&gt;
+cp config/database.yml config/database.yml.sample
+
+&lt;span class=&quot;c&quot;&gt;#git&lt;/span&gt;
+git init
+&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;config/database.yml &amp;gt;&amp;gt; .gitignore
+git add .
+git ci -am &lt;span class=&quot;s2&quot;&gt;&amp;quot;Initial commit for $appName&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;\x1B[32m### All done! ###\x1B[39m&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;\x1B[33m### Do not forget edit database.yml and create DBs with &amp;#39;rake db:create:all&amp;#39; ###\x1B[39m&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
     &lt;p&gt;&lt;a href=&quot;/sozdaniye-novogo-prilozheniya-na-rails/&quot;&gt;Создание нового приложения на Rails&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on March 19, 2015.&lt;/p&gt;
@@ -361,27 +418,13 @@ git ci -am &lt;span class=&quot;s2&quot;&gt;&amp;quot;initial commit&amp;quot;&l
 &lt;p&gt;Существует расписание движения автобусов. Оно висит на каждой остановке (ну вроде, точно не проверял). Это как бы хорошо, ты всегда точно знаешь во сколько будет автобус. Если бы это расписание составлялось грамотно и было бы актуально. Нет, они конечно обновляют таблички и на сайте есть расписание, но:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Смотреть расписание на сайте жутко неудобно&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Смотреть расписание на сайте с телефона ужасно неудобно&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Отсутствует мобильное приложение, поддерживаемое самой ратой&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Отсутствует открытое API через которое можно было бы получать актуальную информацию о расписании&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Расписание составлено так, что дополнительный автобус и основной автобус одного и того же маршрута идут с интервалом 1 минута&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;В расписании не учитываются варианты пересадок людей, которые не могут воспользоваться прямым маршрутом&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Водители не придерживаются маршрута строго, при этом расхождения с расписанием могут достигать 5 минут.&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Смотреть расписание на сайте жутко неудобно&lt;/li&gt;
+  &lt;li&gt;Смотреть расписание на сайте с телефона ужасно неудобно&lt;/li&gt;
+  &lt;li&gt;Отсутствует мобильное приложение, поддерживаемое самой ратой&lt;/li&gt;
+  &lt;li&gt;Отсутствует открытое API через которое можно было бы получать актуальную информацию о расписании&lt;/li&gt;
+  &lt;li&gt;Расписание составлено так, что дополнительный автобус и основной автобус одного и того же маршрута идут с интервалом 1 минута&lt;/li&gt;
+  &lt;li&gt;В расписании не учитываются варианты пересадок людей, которые не могут воспользоваться прямым маршрутом&lt;/li&gt;
+  &lt;li&gt;Водители не придерживаются маршрута строго, при этом расхождения с расписанием могут достигать 5 минут.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Водители это отдельная тема. Я считаю, что последний пункт в предыдущем списке очень важен. Представьте ситуацию:&lt;/p&gt;
@@ -400,8 +443,9 @@ git ci -am &lt;span class=&quot;s2&quot;&gt;&amp;quot;initial commit&amp;quot;&l
 
 &lt;p&gt;Этот пост полон злобы, агрессии и сарказма. За два года, проведенных в этом городе, каждый будний день проезжая от университета до особой экономической зоны, с пересадкой два раза в день, я не заметил ни каких изменений в сторону улучшения качества обслуживания на транспортных линиях Дубны. И все это наводит на грустные мысли.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.flickr.com/photos/96292948@N08/16486136597&quot; title=&quot;да всем насрать by Antony Ryabov, on Flickr&quot;&gt;&lt;img src=&quot;https://farm9.staticflickr.com/8677/16486136597_f31375eb0b_o.png&quot; alt=&quot;да всем насрать&quot; width=&quot;1127&quot; height=&quot;716&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;https://farm6.staticflickr.com/5788/21033019483_05f51256c6_o.png&quot; alt=&quot;да всем насрать&quot; /&gt;
+&lt;br /&gt;&lt;/p&gt;
 
     &lt;p&gt;&lt;a href=&quot;/obshhestvenny-j-transport-v-dubne/&quot;&gt;Общественный транспорт в Дубне&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on March 02, 2015.&lt;/p&gt;
   </content>

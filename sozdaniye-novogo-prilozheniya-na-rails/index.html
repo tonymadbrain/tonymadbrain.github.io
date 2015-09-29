@@ -7,48 +7,6 @@
 <meta charset="utf-8">
 <title>Создание нового приложения на Rails &#8211; Diary of madman</title>
 <meta name="description" content="Понял, что часто приходится создавать новое приложение Rails, решил сделать заметку с командами. По хорошему, конечно, нужно бы написать скрипт, чтобы это дело автоматизировать.
-Выбираем версию ruby
-
-$ rvm use 2.2.0
-
-Создаем гемсет
-
-$ rvm gemset create my_app
-
-переключаемся на новый гемсет
-
-$ rvm gemset use my_app
-
-Устанавливаем rails 
-
-$ gem install rails --no-ri --no-rdoc
-
-Создаем новое приложение
-
-$ rails new my_app -d postgresql
-
-Переходим в каталог нового приложения
-
-$ cd my_app
-
-Закрепляем версию руби и гемсет за данным каталогом, т.е. проектом
-
-$ rvm --ruby-version use rvm current@my_app
-
-сохраняем исходный конфиг database.yml и редактируем database.yml
-
-$ cp config/database.yml config/database.yml.sample
-
-Создаем базы
-
-$ rake db:create:all
-
-Ну и git
-
-git init
-echo config/database.yml &gt;&gt; .gitignore
-git add .
-git ci -am &quot;initial commit&quot;
 
 ">
 <meta name="theme-color" content="#00d900">
@@ -59,48 +17,6 @@ git ci -am &quot;initial commit&quot;
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Создание нового приложения на Rails">
 <meta name="twitter:description" content="Понял, что часто приходится создавать новое приложение Rails, решил сделать заметку с командами. По хорошему, конечно, нужно бы написать скрипт, чтобы это дело автоматизировать.
-Выбираем версию ruby
-
-$ rvm use 2.2.0
-
-Создаем гемсет
-
-$ rvm gemset create my_app
-
-переключаемся на новый гемсет
-
-$ rvm gemset use my_app
-
-Устанавливаем rails 
-
-$ gem install rails --no-ri --no-rdoc
-
-Создаем новое приложение
-
-$ rails new my_app -d postgresql
-
-Переходим в каталог нового приложения
-
-$ cd my_app
-
-Закрепляем версию руби и гемсет за данным каталогом, т.е. проектом
-
-$ rvm --ruby-version use rvm current@my_app
-
-сохраняем исходный конфиг database.yml и редактируем database.yml
-
-$ cp config/database.yml config/database.yml.sample
-
-Создаем базы
-
-$ rake db:create:all
-
-Ну и git
-
-git init
-echo config/database.yml &gt;&gt; .gitignore
-git add .
-git ci -am &quot;initial commit&quot;
 
 ">
 <meta name="twitter:site" content="@tonymadbrain">
@@ -114,48 +30,6 @@ git ci -am &quot;initial commit&quot;
 <meta property="og:type" content="article">
 <meta property="og:title" content="Создание нового приложения на Rails">
 <meta property="og:description" content="Понял, что часто приходится создавать новое приложение Rails, решил сделать заметку с командами. По хорошему, конечно, нужно бы написать скрипт, чтобы это дело автоматизировать.
-Выбираем версию ruby
-
-$ rvm use 2.2.0
-
-Создаем гемсет
-
-$ rvm gemset create my_app
-
-переключаемся на новый гемсет
-
-$ rvm gemset use my_app
-
-Устанавливаем rails 
-
-$ gem install rails --no-ri --no-rdoc
-
-Создаем новое приложение
-
-$ rails new my_app -d postgresql
-
-Переходим в каталог нового приложения
-
-$ cd my_app
-
-Закрепляем версию руби и гемсет за данным каталогом, т.е. проектом
-
-$ rvm --ruby-version use rvm current@my_app
-
-сохраняем исходный конфиг database.yml и редактируем database.yml
-
-$ cp config/database.yml config/database.yml.sample
-
-Создаем базы
-
-$ rake db:create:all
-
-Ну и git
-
-git init
-echo config/database.yml &gt;&gt; .gitignore
-git add .
-git ci -am &quot;initial commit&quot;
 
 ">
 <meta property="og:url" content="/sozdaniye-novogo-prilozheniya-na-rails/">
@@ -286,8 +160,14 @@ git ci -am &quot;initial commit&quot;
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Понял, что часто приходится создавать новое приложение Rails, решил сделать заметку с командами. По хорошему, конечно, нужно бы написать скрипт, чтобы это дело автоматизировать.<br />
-Выбираем версию ruby</p>
+      <p>Понял, что часто приходится создавать новое приложение Rails, решил сделать заметку с командами. По хорошему, конечно, нужно бы написать скрипт, чтобы это дело автоматизировать.</p>
+
+<p><br />
+<img src="https://farm1.staticflickr.com/611/21186379074_a897e27375_o.jpg" />
+<br />
+<br /></p>
+
+<p>Выбираем версию ruby</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rvm use 2.2.0</code></pre></div>
 
@@ -299,7 +179,7 @@ git ci -am &quot;initial commit&quot;
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rvm gemset use my_app</code></pre></div>
 
-<p>Устанавливаем rails </p>
+<p>Устанавливаем rails</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gem install rails --no-ri --no-rdoc</code></pre></div>
 
@@ -329,6 +209,48 @@ git ci -am &quot;initial commit&quot;
 <span class="nb">echo </span>config/database.yml &gt;&gt; .gitignore
 git add .
 git ci -am <span class="s2">&quot;initial commit&quot;</span></code></pre></div>
+
+<p>UPD: Скрипт я все таки сделал, но он дико заточен под меня, без параметров. Всегда создается проект с базой данных postgres и иницируется git, а также все проекты у меня лежат в каталоге ~/projects.</p>
+
+<p>Сам скрипт:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+
+<span class="nb">read</span> -n <span class="m">1</span> -p <span class="s2">&quot;Ты запустил скрипт с параметрами - x.x.x my_super_app (y/[a])?: &quot;</span> AMSURE
+<span class="o">[</span> <span class="s2">&quot;$AMSURE&quot;</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span>
+<span class="nb">echo</span> <span class="s2">&quot;&quot;</span> 1&gt;<span class="p">&amp;</span>2
+
+<span class="nb">cd</span> ~/projects
+
+<span class="nv">rubyVersion</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">appName</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\x1B[33m### Try ruby version: $rubyVersion ###\x1B[39m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\x1B[33m### Try application name: $appName ###\x1B[39m&quot;</span>
+
+<span class="k">if</span> which rvm 1&gt;/dev/null<span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> -e <span class="s2">&quot;\x1B[32m### Using RVM ###\x1B[39m&quot;</span>
+<span class="k">else</span>
+  <span class="nb">echo</span> -e <span class="s2">&quot;\x1B[31m### RVM not instaled ###\x1B[39m&quot;</span>
+  <span class="nb">exit</span>
+<span class="k">fi</span>
+
+rvm use <span class="nv">$rubyVersion</span>
+rvm gemset create <span class="nv">$appName</span>
+rvm gemset use <span class="nv">$appName</span>
+gem install rails --no-ri --no-rdoc
+<span class="nb">echo</span> -e <span class="s2">&quot;\x1B[32m### Rails done! ###\x1B[39m&quot;</span>
+rails new <span class="nv">$appName</span> -d postgresql
+<span class="nb">cd</span> <span class="nv">$appName</span>
+rvm --ruby-version use rvm current@<span class="nv">$appName</span>
+cp config/database.yml config/database.yml.sample
+
+<span class="c">#git</span>
+git init
+<span class="nb">echo </span>config/database.yml &gt;&gt; .gitignore
+git add .
+git ci -am <span class="s2">&quot;Initial commit for $appName&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\x1B[32m### All done! ###\x1B[39m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\x1B[33m### Do not forget edit database.yml and create DBs with &#39;rake db:create:all&#39; ###\x1B[39m&quot;</span></code></pre></div>
 
 
       
@@ -377,7 +299,7 @@ git ci -am <span class="s2">&quot;initial commit&quot;</span></code></pre></div>
   <footer>
     
 
-<a class="footer_img" style="background-image: url(https://farm6.staticflickr.com/5639/21759521996_3b2a7fc7df_o.png);width: 100%;display: block;background-position: center top;background-size: contain;background-repeat: no-repeat;" href="https://flops.ru/?refid=13509" target="_blank"></a><br />
+<a class="footer_img" style="background-image: url(https://farm6.staticflickr.com/5639/21759521996_3b2a7fc7df_o.png);width: 100%;display: block;background-position: center top;background-size: contain;background-repeat: no-repeat;" href="https://goo.gl/eOu0fS" target="_blank"></a><br />
 <span>&copy; 2011 - 2015 Diary of madman. Работает на <a href="http://jekyllrb.com" target="_blank" rel="nofollow">Jekyll</a> с использованием темы <a href="https://mmistakes.github.io/minimal-mistakes/" target="_blank" rel="nofollow">Minimal Mistakes</a></span>
 
   </footer>
