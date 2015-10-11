@@ -4,8 +4,11 @@ title: "Создаем Rails 5 API бекенд и Ember.js фронтенд c �
 permalink: /2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/
 date: 2015-10-09T22:39:13+03:00
 tags:
-  - Motorola
-  - Perfomance
+  - Rails
+  - Ember
+  - Ruby
+  - Javascript
+  - API
 ---
 
 > От переводчика: Оригинал статьи <a href="http://aviav.github.io/blog/2015/09/21/how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" target="_blank">aviav</a>
