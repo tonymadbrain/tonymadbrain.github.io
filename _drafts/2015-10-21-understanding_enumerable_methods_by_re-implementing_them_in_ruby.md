@@ -34,3 +34,74 @@ class ArrayWrapper
 
 end
 {% endhighlight %}
+
+Здесь не так много кода, инклудим `CustomEnumerable` (нашу собственную реализацию `Enumerable`) и пишем враппер для Array. Также реализован метод `==`, который необязателен для функциональности `Enumerable`, но нужен нам чтобы легче использовать матчеры Rspec.
+
+###Map
+
+В документации про `map` написано:
+
+> Возвращает новый массив с результатами выполнения блока для каждого элемента в исходном массиве.
+
+Итак, наш код должен вызывать переданный блок кода на каждом элементе коллекции и затем генерировать новый массив с результатом выполнения каждого вызова. Давайте реализуем это:
+
+{% highlight ruby %}
+module CustomEnumerable
+
+  def map(&block)
+    result = []
+    each do |element|
+      result << block.call(element)
+    end
+    result
+  end
+
+end
+{% endhighlight %}
+
+Это будет шаблон почти для всех методов, которые мы создаем: создаем целевой массив, вызываем метод `each` и делаем нужную работу. Важно знать, что наша реализация ничего не знает о том где будет включена (included), ожидается только, что у объекта будет метод `each`.
+
+Чтобы увидеть `map` в действии давайте умножим каждый элемент массива на 2:
+
+{% highlight ruby %}
+it 'maps the numbers multiplying them by 2' do
+  items = ArrayWrapper.new(1, 2, 3, 4)
+  result = items.map do |n|
+    n * 2
+  end
+
+  expect(result).to eq([2, 4, 6, 8])
+end
+{% endhighlight %}
+
+###Find
+
+Вот что говорит документация о `find`:
+
+> Помещает каждую запись массива в блок. Возвращает первое вхождение для которого блок не false. Если ни один объект не подошел вызывается переменная ifnone, если она не задана возвращается nil.
+
+
+`find` используется чтобы искать объекты в `Enumerable` совпадающие с блоком, переданным в метод, давайте реализуем его:
+
+{% highlight ruby %}
+def find(ifnone = nil, &block)
+  result = nil
+  found = false
+  each do |element|
+    if block.call(element)
+      result = element
+      found = true
+      break
+    end
+  end
+  found ? result : ifnone && ifnone.call
+end
+{% endhighlight %}
+
+
+
+
+
+
+
+
