@@ -8,18 +8,18 @@ tags:
 date: 2015-10-21T17:26:45+03:00
 ---
 
-<a href="http://ruby-doc.org/core-2.2.3/Enumerable.html" target="_blank">Enumerable</a> в Руби является, безусловно, одним из самых лучших примеров как нужно делать модули. Он предоставляет большой набор методов, полезных для обработки структур данных и требуют от вас реализовать только один метод - `each`. Так, для любого класса, который будет вести себя как коллекция и реализовывать метод `each`, может быть использован `Enumerable`.
+<a href="http://ruby-doc.org/core-2.2.3/Enumerable.html" target="_blank">Enumerable</a> в Руби является, безусловно, одним из самых лучших примеров как нужно делать модули. Он предоставляет большой набор методов, полезных для обработки структур данных и требуют от вас реализовать только один метод - `each`. Так, для любого класса, который будет вести себя как коллекция и реализовывать метод `each`, может быть использован *Enumerable*.
 
 > От переводчика: <a href="http://mauricio.github.io/2015/01/12/implementing-enumerable-in-ruby.html" target="_blank">Оригинал статьи</a>
 
-Хороший способ понять как `Enumerable` работает - реализовать его основные методы. Реализовывая каждый метод самостоятельно, мы лучше понимаем, что каждый из них делает и как можно построить такую функциональность, которая требует реализации только одного метода.
+Хороший способ понять как *Enumerable* работает - реализовать его основные методы. Реализовывая каждый метод самостоятельно, мы лучше понимаем, что каждый из них делает и как можно построить такую функциональность, которая требует реализации только одного метода.
 
 Во-первых, нам нужен класс, который будет включать наш собственный модуль `CustomEnumerable`, давайте определим его:
 
 {% highlight ruby %}
 class ArrayWrapper
 
-  include CustomEnumerable
+  include Custom*Enum*erable
 
   def initialize(*items)
     @items = items.flatten
@@ -37,7 +37,7 @@ class ArrayWrapper
 end
 {% endhighlight %}
 
-Здесь не так много кода, инклудим `CustomEnumerable` (нашу собственную реализацию `Enumerable`) и пишем враппер для Array. Также реализован метод `==`, который необязателен для функциональности `Enumerable`, но нужен нам чтобы легче использовать матчеры Rspec.
+Здесь не так много кода, инклудим `CustomEnumerable` (нашу собственную реализацию *Enumerable*) и пишем враппер для Array. Также реализован метод `==`, который необязателен для функциональности *Enumerable*, но нужен нам чтобы легче использовать матчеры Rspec.
 
 ###map
 
@@ -83,7 +83,7 @@ end
 > Помещает каждую запись массива в блок. Возвращает первое вхождение для которого блок не false. Если ни один объект не подошел вызывается переменная ifnone, если она не задана возвращается nil.
 
 
-`find` используется чтобы искать объекты в `Enumerable` совпадающие с блоком, переданным в метод, давайте реализуем его:
+`find` используется чтобы искать объекты в *Enumerable* совпадающие с блоком, переданным в метод, давайте реализуем его:
 
 {% highlight ruby %}
 def find(ifnone = nil, &block)
@@ -145,7 +145,7 @@ it "returns nil if it can't find anything" do
 end
 {% endhighlight %}
 
-Все отлично, `find` возвращает первое совпадение в коллекции, но что если я хочу найти вернуть все значения внутри `Enumerable` удовлетворяющие критериям? Нам нужно использовать метод `find_all`!
+Все отлично, `find` возвращает первое совпадение в коллекции, но что если я хочу найти вернуть все значения внутри *Enumerable* удовлетворяющие критериям? Нам нужно использовать метод `find_all`!
 
 ###find_all
 
@@ -193,21 +193,76 @@ end
 
 ###reduce
 
-`reduce` или `inject` (также известный как `foldLeft` в других языках как OCaml или Scala) это метод который применяет функцию к аккумулятору и элементу внутри `Enumerable` и производит объект аккумулятор в конце выполнения. Данная формулировка звучит странно, но, тем не менее, это очень полезная вещь когда вам нужно выполнить функцию, которая *объединяет* данные внутри коллекции.
+`reduce` или `inject` (также известный как `foldLeft` в других языках как OCaml или Scala) это метод который обрабатывает элементы *enum* применяя к ним блок, принимающий два параметра - аккумулятор (memo) и обрабатываемый элемент. На каждом шаге аккумулятору *memo* присваивается значение, возвращенное блоком. Первая форма позволяет присвоить аккумулятору некоторое исходное значение. Вторая форма в качестве исходного значения аккумулятора использует первый элемент коллекции (пропуская этот элемент при проходе). Хоть и звучит странно, это очень полезная функция.
 
 Давайте посмотрим в документацию:
 
-> Комбинирует все элементы в `enum`, применяя бинарную операцию, переданную в виде блока или символа в метод.
+> Комбинирует все элементы в *enum*, применяя бинарную операцию, переданную в виде блока или символа в метод.
 
-> Если в метод передается блок кода, то для каждого элемента перечисления
+> If you specify a block, then for each element in enum the block is passed an accumulator value (memo) and the element. If you specify a symbol instead, then each element in the collection will be passed to the named method of memo. In either case, the result becomes the new value for memo. At the end of the iteration, the final value of memo is the return value for the method.
 
-If you specify a block, then for each element in enum the block is passed an accumulator value (memo) and the element. If you specify a symbol instead, then each element in the collection will be passed to the named method of memo. In either case, the result becomes the new value for memo.
-At the end of the iteration, the final value of memo is the return value for the method.
+> Если явно не указано начальное значение для *memo*, то первый элемент коллекции используется в качестве начального значения *memo*.
 
+Таким образом, мы должны получить блок или символ и мы можем получить начальное значение, если оно не передано, то в качестве начального значения будет использоваться первый элемент. Эта реализация на самом будет немного сложнее, давайте начнем с простого случая когда мы передаем в метод и блок и начальное значение:
 
+{% highlight ruby %}
+def reduce(accumulator, &block)
+  each do |element|
+    accumulator = block.call(accumulator, element)
+  end
+  accumulator
+end
+{% endhighlight %}
 
+Итак, это довольно просто, мы вызываем блок с аккумлятором и элементом и следующий аккумулятор это производная вызова блока. Довольно простая реализация, но эта абстракция невероятно мощная и доступна во всех функциональных языках программирования для аггрегации (reduce в данном случае, это часть парадигмы map-reduce).
 
+Давайте посмотрим на пример:
 
+{% highlight ruby %}
+it 'sums all numbers' do
+  items = ArrayWrapper.new(1, 2, 3, 4)
+  result = items.reduce(0) do |accumulator,element|
+    accumulator + element
+  end
+  expect(result).to eq(10)
+end
+{% endhighlight %}
+
+И в примере у нас простая reduce функция, которая производит сложение всех элементов. Также важно проверить случай, когда *enum* пустой, если это так, функция должна вернуть начальное значение:
+
+{% highlight ruby %}
+it 'returns the accumulator if no value was provided' do
+  items = ArrayWrapper.new
+  result = items.reduce(50) do |accumulator,element|
+   accumulator + element
+  end
+  expect(result).to eq(50)
+end
+{% endhighlight %}
+
+Теперь, давайте добавим первый опциональный параметр, символ операции который применяется вместо блока.
+
+{% highlight ruby %}
+def reduce(accumulator, operation = nil, &block)
+  if operation && block
+    raise ArgumentError, "you must provide either an operation symbol or a block, not both"
+  end
+
+  block = case operation
+    when Symbol
+      lambda { |acc,value| acc.send(operation, value) }
+    when nil
+      block
+    else
+      raise ArgumentError, "the operation provided must be a symbol"
+  end
+
+  each do |element|
+    accumulator = block.call(accumulator, element)
+  end
+  accumulator
+end
+{% endhighlight %}
 
 
 
