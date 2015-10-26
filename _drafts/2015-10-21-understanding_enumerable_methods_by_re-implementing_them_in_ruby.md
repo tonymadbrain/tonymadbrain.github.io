@@ -264,11 +264,47 @@ def reduce(accumulator, operation = nil, &block)
 end
 {% endhighlight %}
 
+Фактически реализация особо не поменялась, мы добавили проверку которая исключает случаи передачи в метод лишнего, так как должен быть передан либо символ операции либо блок. Далее мы определяем блок, если в `operation` передан символ то используем его, если там `nil` то присваим блок в `block` иначе вызываем ошибку. Основная петля (loop - т.е. проход по элементам перечисления) по факту не изменилась.
 
+Теперь посмотрим на использование:
 
+{% highlight ruby %}
+it 'executes the operation provided' do
+  items = ArrayWrapper.new(1, 2, 3, 4)
+  result = items.reduce(0, :+)
+  expect(result).to eq(10)
+end
+{% endhighlight %}
 
+Первое - базовое использование, вызов `reduce` с символом, который применяется к аккумулятору и каждому значению. Это тот же самый пример что и для нашей первой реализации `reduce`, но теперь используется меньше кода.
 
+Теперь давайте посмотри на ошибочные варианты, во-первых передадим в метод и оператор и блок:
 
+{% highlight ruby %}
+it "fails if both a symbol and a block are provided" do
+  items = ArrayWrapper.new(1, 2, 3, 4)
+  expect do
+    items.reduce(0, :+) do |accumulator,element|
+      accumulator + element
+    end
+  end.to raise_error(ArgumentError, "you must provide either an operation symbol or a block, not both")
+end
+{% endhighlight %}
+
+Когда переданы оба параметра, мы должны выдать ошибку, потому что непонятно что хочет пользователь. Тоже если то, что передано в `operation` не является символом.
+
+{% highlight ruby %}
+it 'fails if the operation provided is not a symbol' do
+  items = ArrayWrapper.new(1, 2, 3, 4)
+  expect do
+    items.reduce(0, '+')
+  end.to raise_error(ArgumentError, "the operation provided must be a symbol")
+end
+{% endhighlight %}
+
+Не `Symbol`? Извини, не могу это использовать.
+</br>
+Теперь, последний шаг нашей реализации - параметр аккумулятор теперь опциональный.
 
 
 
