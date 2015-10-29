@@ -39,7 +39,7 @@ end
 
 Здесь не так много кода, инклудим `CustomEnumerable` (нашу собственную реализацию *Enumerable*) и пишем враппер для Array. Также реализован метод `==`, который необязателен для функциональности *Enumerable*, но нужен нам чтобы легче использовать матчеры Rspec.
 
-###map
+###`map`
 
 В документации про `map` написано:
 
@@ -76,7 +76,7 @@ it 'maps the numbers multiplying them by 2' do
 end
 {% endhighlight %}
 
-###find
+###`find`
 
 Вот что говорит документация о `find`:
 
@@ -147,7 +147,7 @@ end
 
 Все отлично, `find` возвращает первое совпадение в коллекции, но что если я хочу найти вернуть все значения внутри *Enumerable* удовлетворяющие критериям? Нам нужно использовать метод `find_all`!
 
-###find_all
+###`find_all`
 
 Снова обратимся к документации:
 
@@ -191,7 +191,7 @@ end
 
 Даже если совпадений не будет, код вернет массив (хоть и пустой), так что при использовании `find_all` нужно не забывать проверять что массив имеет объекты или нет (вместо проверки на nil, как это было сделано в `find`).
 
-###reduce
+###`reduce`
 
 `reduce` или `inject` (также известный как `foldLeft` в других языках как OCaml или Scala) это метод который обрабатывает элементы *enum* применяя к ним блок, принимающий два параметра - аккумулятор (memo) и обрабатываемый элемент. На каждом шаге аккумулятору *memo* присваивается значение, возвращенное блоком. Первая форма позволяет присвоить аккумулятору некоторое исходное значение. Вторая форма в качестве исходного значения аккумулятора использует первый элемент коллекции (пропуская этот элемент при проходе). Хоть и звучит странно, это очень полезная функция.
 
@@ -304,17 +304,199 @@ end
 
 Не `Symbol`? Извини, не могу это использовать.
 </br>
-Теперь, последний шаг нашей реализации - параметр аккумулятор теперь опциональный.
+Теперь, последний шаг нашей реализации - параметр аккумулятор теперь опциональный. Если его нет, должен быть использован первый элемент коллекции. Теперь у нас есть 4 варианта использования `reduce`:
 
+* `accumulator` + блок кода
+* `accumulator` + `operation`
+* `operation`
+* без параметро + блок
 
+Давайте сделаем тесты для двух случаев, которые мы пропустили ранее, вызов только `operation`:
 
+{% highlight ruby %}
+it 'executes the operation provided without an initial value' do
+  items = ArrayWrapper.new(1, 2, 3, 4)
+  result = items.reduce(:+)
+  expect(result).to eq(10)
+end
+{% endhighlight %}
 
+И вызов только блока:
 
+{% highlight ruby %}
+it 'executes the block provided without an initial value' do
+  items = ArrayWrapper.new(1, 2, 3, 4)
+  result = items.reduce do |accumulator,element|
+    accumulator + element
+  end
+  expect(result).to eq(10)
+end
+{% endhighlight %}
 
+Почему эти два теста?
 
+Посмотрим на них, в общем-то они одинаковые, в обоих случаях нет аккумулятора, разница только в том, что в одном передается блок, но оба должны вытащить первый элемент коллекции и затем запустить `reduce`.
 
+Если мы попробуем запустить эти тесты:
 
+{% highlight ruby %}
+Failures:
 
+1) CustomEnumerable reduce executes the operation provided without an initial value
+  Failure/Error: @items.each(&block)
+  NoMethodError:
+  undefined method `call' for nil:NilClass
+  # ./lib/custom_enumerable.rb:47:in `block in reduce'
+  # ./spec/custom_enumerable_spec.rb:12:in `each'
+  # ./spec/custom_enumerable_spec.rb:12:in `each'
+  # ./lib/custom_enumerable.rb:46:in `reduce'
+  # ./spec/custom_enumerable_spec.rb:128:in `block (3 levels) in <top (required)>'
+
+2) CustomEnumerable reduce executes the block provided without an initial value
+  Failure/Error: result = items.reduce do |accumulator,element|
+  ArgumentError:
+  wrong number of arguments (0 for 1..2)
+  # ./lib/custom_enumerable.rb:32:in `reduce'
+  # ./spec/custom_enumerable_spec.rb:134:in `block (3 levels) in <top (required)>'
+{% endhighlight %}
+
+Как мы будем делать это? Большая часть кода будет заниматься жонглированием параметров. `reduce` был объявлен задолго до того как в `ruby` появились именованные параметры, нет магического способа определить аккумулятор это операция или нет, мы должны проверить это вручную.
+
+Также, нам нужен способ получить первый элемент коллекции, иначе нам придется это делать в самом методе `reduce`. Давайте начнем с реализации метода `first`:
+
+{% highlight ruby %}
+def first
+  found = nil
+  each do |element|
+    found = element
+    break
+  end
+  found
+end
+{% endhighlight %}
+
+Использовать его очень просто:
+
+{% highlight ruby %}
+it 'returns the first element inside a collection' do
+  items = ArrayWrapper.new(1, 2, 3, 4)
+  expect(items.first).to eq(1)
+end
+
+it 'returns nil if the collection is empty' do
+  items = ArrayWrapper.new
+  expect(items.first).to be_nil
+end
+{% endhighlight %}
+
+Если вы спрашиваете себя - почему он использует `break` а не просто возвращает элемент из `each`, попробуйте поменять код на:
+
+{% highlight ruby %}
+def first
+  each do |element|
+    return element
+  end
+end
+{% endhighlight %}
+<br>
+Что сейчас произошло?
+<br>
+Вторая спека которая ожидает что вернется `nil`, когда коллекция пустая, провалилась. Почему? Потому что `each` возвращает саму коллекцию когда запускается, так как код ни разу не был выполнен (коллекция пустая!) `each` просто возвращает себя а не `nil`, как мы ожидаем. Вот почему нам нужно использовать `return` и `break`.
+
+Теперь, когда метод `first` написан, давайте сделаем финальную реализацию `reduce`:
+
+{% highlight ruby %}
+def reduce(accumulator = nil, operation = nil, &block)
+  if accumulator.nil? && operation.nil? && block.nil?
+    raise ArgumentError, "you must provide an operation or a block"
+  end
+
+  if operation && block
+    raise ArgumentError, "you must provide either an operation symbol or a block, not both"
+  end
+
+  if operation.nil? && block.nil?
+    operation = accumulator
+    accumulator = nil
+  end
+
+  block = case operation
+    when Symbol
+      lambda { |acc, value| acc.send(operation, value) }
+    when nil
+      block
+    else
+    raise ArgumentError, "the operation provided must be a symbol"
+  end
+
+  if accumulator.nil?
+    ignore_first = true
+    accumulator = first
+  end
+
+  index = 0
+
+  each do |element|
+    unless ignore_first && index == 0
+      accumulator = block.call(accumulator, element)
+    end
+    index += 1
+  end
+  accumulator
+end
+{% endhighlight %}
+
+Учитывая, что мы не знаем как будут переданы параметры или структуру коллекции, мы не можем оптимизировать данный вызов (если только не задублируем код немного, например, добавив упорядочивание реализации если переда аккумулятор). Но, так как мы хотим, чтобы код работал во всех случаях, мы будем надеяться что классы, включающие данный модуль будут предоставлять реализацию с более ровными структурами.
+
+Код начинается с проверки всех параметров, если параметры не переданы, выходим, нечего делать. Далее начинается проверка какую ситуацию мы решаем, вначале проверяется - если `operation` и `block` - `nil`, значит поле `accumulator` должно быть операцией и значит у нас нет аккумулятора.
+
+Когда у нас есть параметр `operation` мы достигаем другого куска, проверка аккумулятора. Если аккумулятор `nil`, мы должны брать первый элемент коллекции, а также сказать методу игнорировать первую итерацию.
+
+Наша новая петля `each` теперь проверяет специальные переменные в случае пустого аккумулятора, так что мы можем безопасно обрабатывать коллекцию без дублирования значений. Это, кстати, неплохое место для оптимизации.
+
+И это завершает реализацию метода `reduce`, посмотрите можете ли вы найти более быстрое или качественное решение, безусловно есть варианты лучше моего.
+
+###`reduce` magic
+
+Теперь, когда у нас есть реализация `reduce`, есть много методов, которые мы можем построить на его базе, например `min` и `max`:
+
+{% highlight ruby %}
+def min
+  reduce do |accumulator,element|
+    accumulator > element ? element : accumulator
+  end
+end
+
+def max
+  reduce do |accumulator,element|
+    accumulator < element ? element : accumulator
+  end
+end
+{% endhighlight %}
+
+Наш `reduce` уже обрабатывает вариант с пустым значением:
+
+{% highlight ruby %}
+it 'produces nil if it is empty' do
+  items = ArrayWrapper.new
+  expect(items.max).to be_nil
+end
+{% endhighlight %}
+
+И случай одиночного варианта:
+
+{% highlight ruby %}
+it 'produces 1 as the max result' do
+  items = ArrayWrapper.new(1)
+  expect(items.max).to eq(1)
+end
+{% endhighlight %}
+
+Нашей реализация `min` и `max` не нужно заботиться об этом, все что нужно сделать это передать блок который делает сравнение и возвращает наибольший или наименьший элемент, всю остальную работу делает `reduce`. Мощно, не так ли?
+
+Есть еще много методов `Enumerable` помимо `reduce`, такие как `each_with_index`, `each_with_object`, `count`, `max_by, min_by` и другие, попробуйте также реализовать их на `ruby`.
+
+Ну и все что было сделано в этом примере доступно на <a href="https://github.com/mauricio/enumerable_example" target="_blank">github</a>.
 
 
 
