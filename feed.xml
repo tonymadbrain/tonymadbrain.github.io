@@ -15,7 +15,7 @@ sitemap: false
   <uri>{{ site.url }}/</uri>
   {% if site.owner.email %}<email>{{ site.owner.email }}</email>{% endif %}
 </author>
-{% for post in site.posts limit:20 %}
+{% for post in site.posts limit:10 %}
 {% if post.author %}
   {% assign author = site.data.authors[post.author] %}
 {% else %}
@@ -35,7 +35,7 @@ sitemap: false
     {% if author.email %}<email>{{ author.email }}</email>{% endif %}
   </author>
   <content type="html">
-    {{ post.content | xml_escape }}
+    {{ post.content | truncate: 300 | xml_escape }}
     {% include _feed-footer.html %}
   </content>
 </entry>

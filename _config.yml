@@ -55,6 +55,7 @@ owner:
   soundcloud: #username
   weibo: #username
   flickr: #tonymadbrain
+  rss: feed.xml
 
 tag_page_layout: tag_page
 tag_page_dir: tag
