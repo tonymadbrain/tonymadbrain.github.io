@@ -19,7 +19,7 @@ date: 2015-10-21T17:26:45+03:00
 {% highlight ruby %}
 class ArrayWrapper
 
-  include Custom*Enum*erable
+  include CustomEnumerable
 
   def initialize(*items)
     @items = items.flatten
@@ -492,7 +492,7 @@ it 'produces 1 as the max result' do
 end
 {% endhighlight %}
 
-Нашей реализация `min` и `max` не нужно заботиться об этом, все что нужно сделать это передать блок который делает сравнение и возвращает наибольший или наименьший элемент, всю остальную работу делает `reduce`. Мощно, не так ли?
+Нашим реализациям `min` и `max` не нужно заботиться об этом, все что нужно сделать это передать блок который делает сравнение и возвращает наибольший или наименьший элемент, всю остальную работу делает `reduce`. Мощно, не так ли?
 
 Есть еще много методов `Enumerable` помимо `reduce`, такие как `each_with_index`, `each_with_object`, `count`, `max_by, min_by` и другие, попробуйте также реализовать их на `ruby`.
 
