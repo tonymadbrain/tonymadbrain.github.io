@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2015-10-29T18:15:09+03:00</updated>
+<updated>2015-10-29T18:17:22+03:00</updated>
 <id>/</id>
 <author>
   <name>Антон Рябов</name>
@@ -39,7 +39,7 @@
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayWrapper&lt;/span&gt;
 
-  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Custom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;erable&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CustomEnumerable&lt;/span&gt;
 
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;vi&quot;&gt;@items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flatten&lt;/span&gt;
@@ -477,7 +477,7 @@
   &lt;span class=&quot;n&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Нашей реализация &lt;code&gt;min&lt;/code&gt; и &lt;code&gt;max&lt;/code&gt; не нужно заботиться об этом, все что нужно сделать это передать блок который делает сравнение и возвращает наибольший или наименьший элемент, всю остальную работу делает &lt;code&gt;reduce&lt;/code&gt;. Мощно, не так ли?&lt;/p&gt;
+&lt;p&gt;Нашим реализациям &lt;code&gt;min&lt;/code&gt; и &lt;code&gt;max&lt;/code&gt; не нужно заботиться об этом, все что нужно сделать это передать блок который делает сравнение и возвращает наибольший или наименьший элемент, всю остальную работу делает &lt;code&gt;reduce&lt;/code&gt;. Мощно, не так ли?&lt;/p&gt;
 
 &lt;p&gt;Есть еще много методов &lt;code&gt;Enumerable&lt;/code&gt; помимо &lt;code&gt;reduce&lt;/code&gt;, такие как &lt;code&gt;each_with_index&lt;/code&gt;, &lt;code&gt;each_with_object&lt;/code&gt;, &lt;code&gt;count&lt;/code&gt;, &lt;code&gt;max_by, min_by&lt;/code&gt; и другие, попробуйте также реализовать их на &lt;code&gt;ruby&lt;/code&gt;.&lt;/p&gt;
 

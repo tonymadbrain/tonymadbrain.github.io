@@ -172,7 +172,7 @@
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ArrayWrapper</span>
 
-  <span class="kp">include</span> <span class="no">Custom</span><span class="o">*</span><span class="no">Enum</span><span class="o">*</span><span class="n">erable</span>
+  <span class="kp">include</span> <span class="no">CustomEnumerable</span>
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="o">*</span><span class="n">items</span><span class="p">)</span>
     <span class="vi">@items</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">flatten</span>
@@ -610,7 +610,7 @@
   <span class="n">expect</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">max</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">end</span></code></pre></div>
 
-<p>Нашей реализация <code>min</code> и <code>max</code> не нужно заботиться об этом, все что нужно сделать это передать блок который делает сравнение и возвращает наибольший или наименьший элемент, всю остальную работу делает <code>reduce</code>. Мощно, не так ли?</p>
+<p>Нашим реализациям <code>min</code> и <code>max</code> не нужно заботиться об этом, все что нужно сделать это передать блок который делает сравнение и возвращает наибольший или наименьший элемент, всю остальную работу делает <code>reduce</code>. Мощно, не так ли?</p>
 
 <p>Есть еще много методов <code>Enumerable</code> помимо <code>reduce</code>, такие как <code>each_with_index</code>, <code>each_with_object</code>, <code>count</code>, <code>max_by, min_by</code> и другие, попробуйте также реализовать их на <code>ruby</code>.</p>
 
