@@ -2,3 +2,5 @@ _site/*
 #!_site/tag
 .sass-cache
 /wp-content/*
+#mac_os specific 
+*.DS_Store
