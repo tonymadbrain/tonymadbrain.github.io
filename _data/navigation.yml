@@ -1,10 +1,10 @@
 # Site navigation links
 
-- title: Резюме
-  url: /cv/
-
 - title: Записки
   url: /posts/
+
+- title: Резюме
+  url: /cv/
 
 - title: Ставка на новую эру
   url: /stavka/
