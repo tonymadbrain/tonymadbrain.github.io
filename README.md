@@ -1,4 +1,4 @@
-# Antony personal blog
+# Anthony personal blog
 
 ![License](http://doam.ru/license.png "License")
 This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License - http://creativecommons.org/licenses/by-nc-sa/3.0/
