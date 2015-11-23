@@ -4,13 +4,36 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2015-11-23T15:34:48+03:00</updated>
+<updated>2015-11-23T23:14:08+03:00</updated>
 <id>/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Инструменты devOps]]></title>
+  <link rel="alternate" type="text/html" href="/devops_tools/" />
+  <id>/devops_tools</id>
+  <published>2015-11-16T22:03:45+03:00</published>
+  <updated>2015-11-16T22:03:45+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;По большей части моя работа относится к системному администрированию, но зачастую мне приходится изменять программный код на разных языках. В этой записи я хочу зафиксировать подборку инструментов, которыми пользуюсь.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;https://farm1.staticflickr.com/581/22860156877_dacb...
+    &lt;p&gt;&lt;a href=&quot;/devops_tools/&quot;&gt;Инструменты devOps&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on November 16, 2015.&lt;/p&gt;
+  </content>
+</entry>
 
 
   
@@ -197,33 +220,6 @@
   <content type="html">
     &lt;p&gt;Да, заголовок описывает мое состояние, когда я увидел full-аккаунт на хабре. На самом деле я не ожидал, что инвайт дадут так быстро, поэтому и радость моя была огромная. Правда, через какое-то время, комментарии к моей статье, а точнее переводу, вернули меня в привычную колею. Да я перевел “тр...
     &lt;p&gt;&lt;a href=&quot;/2015-03-21-habrahabr/&quot;&gt;Habrahabr - Радости полные штаны&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on March 21, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-
-  
-
-<entry>
-  <title type="html"><![CDATA[Создание нового приложения на Rails]]></title>
-  <link rel="alternate" type="text/html" href="/sozdaniye-novogo-prilozheniya-na-rails/" />
-  <id>/sozdaniye-novogo-prilozheniya-na-rails</id>
-  <published>2015-03-19T09:21:21+03:00</published>
-  <updated>2015-03-19T09:21:21+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri></uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;Понял, что часто приходится создавать новое приложение Rails, решил сделать заметку с командами. По хорошему, конечно, нужно бы написать скрипт, чтобы это дело автоматизировать.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-&lt;img src=&quot;https://farm1.staticflickr.com/611/21186379074_a897e27375_o.jpg&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;В...
-    &lt;p&gt;&lt;a href=&quot;/sozdaniye-novogo-prilozheniya-na-rails/&quot;&gt;Создание нового приложения на Rails&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on March 19, 2015.&lt;/p&gt;
   </content>
 </entry>
 
