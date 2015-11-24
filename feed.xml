@@ -4,13 +4,33 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2015-11-23T23:24:12+03:00</updated>
+<updated>2015-11-24T19:15:05+03:00</updated>
 <id>/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Минималистичный стек Grape + Swagger для микросервисов на Ruby]]></title>
+  <link rel="alternate" type="text/html" href="/ruby-the-grape-swagger-stack/" />
+  <id>/ruby-the-grape-swagger-stack</id>
+  <published>2015-11-24T12:00:00+03:00</published>
+  <updated>2015-11-24T12:00:00+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Микросервисы сейчас очень популярны и используются в различных архитектурах и средах. Слова Ruby и микросервисы, принято связывать с великолепным минималистичным фреймворком &lt;em&gt;Sinatra&lt;/em&gt;. Есть много хороших ruby микро-фреймворков, но &lt;a href=&quot;http://www.ruby-grape.org/&quot; target=&quot;_blank&quot;&gt;Gra...
+    &lt;p&gt;&lt;a href=&quot;/ruby-the-grape-swagger-stack/&quot;&gt;Минималистичный стек Grape + Swagger для микросервисов на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on November 24, 2015.&lt;/p&gt;
+  </content>
+</entry>
 
 
   
@@ -200,26 +220,6 @@
 &lt;p&gt;&lt;br /&gt;
 &lt;img src=&quot;https://farm1.staticflickr.com/715/21...
     &lt;p&gt;&lt;a href=&quot;/2015-04-29-aliases_for_git/&quot;&gt;Алиасы для Git&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on April 29, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-
-  
-
-<entry>
-  <title type="html"><![CDATA[Habrahabr - Радости полные штаны]]></title>
-  <link rel="alternate" type="text/html" href="/2015-03-21-habrahabr/" />
-  <id>/habrahabr</id>
-  <published>2015-03-21T00:12:44+03:00</published>
-  <updated>2015-03-21T00:12:44+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri></uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;Да, заголовок описывает мое состояние, когда я увидел full-аккаунт на хабре. На самом деле я не ожидал, что инвайт дадут так быстро, поэтому и радость моя была огромная. Правда, через какое-то время, комментарии к моей статье, а точнее переводу, вернули меня в привычную колею. Да я перевел “тр...
-    &lt;p&gt;&lt;a href=&quot;/2015-03-21-habrahabr/&quot;&gt;Habrahabr - Радости полные штаны&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on March 21, 2015.&lt;/p&gt;
   </content>
 </entry>
 
