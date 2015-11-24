@@ -9,6 +9,7 @@ tags:
   - CRUD
   - Grape
   - Swagger
+  - Tutorial
 date: 2015-11-24T12:00:00+03:00
 ---
 

@@ -2,8 +2,6 @@
 title: 'Политех - альма-матер?'
 layout: post
 permalink: /politeh-al-ma-mater/
-categories:
-  - Высокое
 tags:
   - Бакалавриат
   - ВГТУ
