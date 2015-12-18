@@ -47,6 +47,7 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    rb-pygments (0.1.0)
     redcarpet (3.3.3)
     rouge (1.10.1)
     ruby-nuggets (1.0.0)
@@ -66,6 +67,7 @@ DEPENDENCIES
   jekyll-sitemap
   jekyll-tagging
   octopress
+  rb-pygments
 
 BUNDLED WITH
    1.11.2
