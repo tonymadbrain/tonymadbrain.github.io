@@ -1,0 +1,406 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля &#8211; Diary of madman</title>
+<meta name="description" content="Эта инструкция рассказывает как создать приложение на Rails API в качестве бекенда с Ember на фронтенде c нуля. Cтатья объединяет два поста на эту тему первый и второй.
+
+">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Rails, Ember, Ruby, Javascript, API, Tutorial">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля">
+<meta name="twitter:description" content="Эта инструкция рассказывает как создать приложение на Rails API в качестве бекенда с Ember на фронтенде c нуля. Cтатья объединяет два поста на эту тему первый и второй.
+
+">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля">
+<meta property="og:description" content="Эта инструкция рассказывает как создать приложение на Rails API в качестве бекенда с Ember на фронтенде c нуля. Cтатья объединяет два поста на эту тему первый и второй.
+
+">
+<meta property="og:url" content="/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="/posts/" >Записки</a></li>
+				
+				    
+				    <li><a href="/cv/" >Резюме</a></li>
+				
+				    
+				    <li><a href="/stavka/" >Ставка на новую эру</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" rel="bookmark" title="Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля">Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>Эта инструкция рассказывает как создать приложение на <a href="http://rubyonrails.org/" target="_blank">Rails</a> API в качестве бекенда с <a href="http://emberjs.com/" target="_blank">Ember</a> на фронтенде c нуля. Cтатья объединяет два поста на эту тему <a href="http://wyeworks.com/blog/2015/6/30/how-to-build-a-rails-5-api-only-and-ember-application" target="_blank">первый</a> и <a href="https://devmynd.com/blog/2014-7-rails-ember-js-with-the-ember-cli-redux-part-1-the-api-and-cms-with-ruby-on-rails" target="_blank">второй</a>.</p>
+
+<blockquote>
+  <p>От переводчика: Оригинал статьи <a href="http://aviav.github.io/blog/2015/09/21/how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" target="_blank">aviav</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="https://github.com/rails/rails/pull/19832" target="_blank">Rails API был влит в мастер ветку Rails</a></p>
+</blockquote>
+
+<h3 id="section">Создаем бекенд</h3>
+
+<p>На момент написания статьи Rails 5 требует Ruby версии 2.2.2 и выше, если вы используете <a href="https://rvm.io/" target="_blank">rvm</a>, выполните <code>rvm install 2.2.3</code>, чтобы установить требуемую версию. Чтобы использовать в качестве дефолтной версии <code>rvm use 2.2.3 --default</code>.</p>
+
+<blockquote>
+  <p>От переводчика: Для каждого проекта, я рекомендую создавать отдельный гемсет, дабы не испытывать проблем с зависимостями, это можно сделать по <a href="http://doam.ru/sozdaniye-novogo-prilozheniya-na-rails/" target="_blank">моей статье.</a></p>
+</blockquote>
+
+<p>Так как Rails 5 на данный момент не зарелизен, нам нужно клонировать репозиторий на Github и генерировать приложение из исходников. Для этого выполняем команды:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone git://github.com/rails/rails.git
+<span class="nb">cd </span>rails
+bundle
+bundle <span class="nb">exec </span>railties/exe/rails new ../my_api_app --api --edge</code></pre></figure>
+
+<blockquote>
+  <p>От переводчика: Лично у меня, на третьей команде возникли трудности с установкой гема nokogiri, помогла команда <code>gem install nokogiri -v 1.6.7rc3 --pre</code>.</p>
+</blockquote>
+
+<h4 id="section-1">Генерируем ресурс пользователи</h4>
+
+<p>Мы сгенерируем очень простое приложение с помощью генератора rails (<code>rails generate scaffold</code>) и выполним миграции:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ../my_api_app
+bin/rails g scaffold user name
+bin/rake db:migrate</code></pre></figure>
+
+<h4 id="json---">Установим JSON формат сериализации данных</h4>
+
+<p>REST адаптер Ember требует чтобы root объекты были представлены в JSON. Это можно достигнуть установкой json адаптера вместо flatten_json сериалайзера Active Model.
+Создаем новый файл инициализации <code>config/initializers/ams_json_adapter.rb</code> включающий следующий текст:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">adapter</span> <span class="o">=</span> <span class="ss">:json</span></code></pre></figure>
+
+<p>Чтобы протестировать что данные представляются в нужном формате, запустим сервер с помощью команды <code>bin/rails server</code> и создадим нового пользователя с помощью <code>curl</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl -H <span class="s2">&quot;Content-Type:application/json; charset=utf-8&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{&quot;user&quot;: {&quot;name&quot;:&quot;Hans&quot;}}&#39;</span> http://localhost:3000/users</code></pre></figure>
+
+<p>Открыв в браузере <code>localhost:3000/users</code>, мы можем увидеть только что созданного пользователя и то что данные отображаются в формате, который мы указали.</p>
+
+<h4 id="cors">Установка CORS</h4>
+
+<p>Так как наши бекенд и фронтенд будут запускаться отдельно, нам нужно сконфигурировать Cross Origin Resource Sharing (CORS). Мы будем пробовать бекенд на localhost:3000 и фронтенд на localhost:4200. В начале, нам нужно раскомментировать <code>rack-cors</code> в Gemfile, запустить <code>bundle</code> и добавить следующий код в config/initializers/cors.rb:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Avoid CORS issues when API is called from the frontend app</span>
+<span class="c1"># Handle Cross-Origin Resource Sharing (CORS) in order to accept cross-origin AJAX requests</span>
+
+<span class="c1"># Read more: https://github.com/cyu/rack-cors</span>
+
+ <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">insert_before</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Rack::Cors&quot;</span> <span class="k">do</span>
+   <span class="n">allow</span> <span class="k">do</span>
+     <span class="n">origins</span> <span class="s1">&#39;localhost:4200&#39;</span>
+
+     <span class="n">resource</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+       <span class="ss">headers</span><span class="p">:</span> <span class="ss">:any</span><span class="p">,</span>
+       <span class="nb">methods</span><span class="p">:</span> <span class="o">[</span><span class="ss">:get</span><span class="p">,</span> <span class="ss">:post</span><span class="p">,</span> <span class="ss">:put</span><span class="p">,</span> <span class="ss">:patch</span><span class="p">,</span> <span class="ss">:delete</span><span class="p">,</span> <span class="ss">:options</span><span class="p">,</span> <span class="ss">:head</span><span class="o">]</span>
+   <span class="k">end</span>
+ <span class="k">end</span></code></pre></figure>
+
+<blockquote>
+  <p>От переводчика: здесь и далее, я советую использовать адрес 0.0.0.0 для запуска серверов вместо localhost.</p>
+</blockquote>
+
+<h3 id="section-2">Создаем фронтенд</h3>
+
+<p>Данная инструкция включает Ember приложение, которое использует простой ресурс <code>Users</code> чтобы получать данные от Rails API и показывать их на главной странице.</p>
+
+<h4 id="ember-cli---">Установка Ember CLI и созадние фронтенд</h4>
+
+<p>Для установки Ember CLI, мы используем –no-optional, так как он менее подвержен ошибкам. Используя nvm, нам не нужно запускать npm от пользователя root, это исключает проблемы прав:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">npm install -g ember-cli --no-optional</code></pre></figure>
+
+<p>Create the Ember.js app:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ..
+ember new my_ember_frontend
+<span class="nb">cd </span>my_ember_frontend</code></pre></figure>
+
+<p>На момент написания статьи, даже с использованием текущей версии node.js, появляется предупреждение: <code>Future versions of Ember CLI will not support v4.1.0. Please update to Node 0.12 or io.js.</code>. Не волнуйтесь: фикс этого ошибочного сообщения анонсирован и будет добавлен в следущих версиях Ember CLI.</p>
+
+<h4 id="section-3">Генерируем адаптер приложения</h4>
+
+<p>Чтобы заставить наше приложение на Ember общаться с Rails приложением, мы сгенерируем адаптер:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ember generate adapter application</code></pre></figure>
+
+<p>Теперь отредактируем файл <code>app/adapters/application.js</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">DS</span> <span class="nx">from</span> <span class="s1">&#39;ember-data&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">DS</span><span class="p">.</span><span class="nx">ActiveModelAdapter</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;http://localhost:3000&#39;</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="users--routerjs">Добавляем ресурс Users в router.js</h4>
+
+<p>Редактируем <code>app/router.js</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">Ember</span> <span class="nx">from</span> <span class="s1">&#39;ember&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">config</span> <span class="nx">from</span> <span class="s1">&#39;./config/environment&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">Router</span> <span class="o">=</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">location</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">locationType</span>
+<span class="p">});</span>
+
+<span class="nx">Router</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">resource</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Router</span><span class="p">;</span></code></pre></figure>
+
+<h4 id="user">Генерируем модель User</h4>
+
+<p>Вначале,</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ember generate model user</code></pre></figure>
+
+<p>Затем редактируем <code>app/models/user.js</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">DS</span> <span class="nx">from</span> <span class="s1">&#39;ember-data&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">DS</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="nx">DS</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="usersindex">Генерируем маршрут Users/index</h4>
+
+<p>Теперь,</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ember generate route users/index</code></pre></figure>
+
+<p>Редактируем <code>app/routes/users/index.js</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">Ember</span> <span class="nx">from</span> <span class="s1">&#39;ember&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">Route</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">model</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">findAll</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="usersindex-1">Пишем шаблон для Users/index</h4>
+
+<p>Редактируем <code>app/templates/users/index.hbs</code>:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul&gt;</span>
+    { {#each model as |user|}}
+    <span class="nt">&lt;li&gt;</span> { {user.name}} <span class="nt">&lt;/li&gt;</span>
+    { {/each}}
+<span class="nt">&lt;/ul&gt;</span>
+{ {outlet}}</code></pre></figure>
+
+<h4 id="section-4">Тестируем приложение</h4>
+
+<p>Чтобы протестировать наше приложение, запустим в директроии Rails приложения:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">bin/rails s</code></pre></figure>
+
+<p>и в каталоге Ember приложения:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ember serve</code></pre></figure>
+
+<p>Теперь откроем в браузере страницу <code>localhost:4200/users</code> чтобы проверить работу приложения!
+<br />
+Большое спасибо уходит <a href="http://moritz-breit.de/" target="_blank">Moritz</a> за корректировку данного поста!</p>
+
+      
+        <a href="/tag/rails">#Rails</a>
+      
+        <a href="/tag/ember">#Ember</a>
+      
+        <a href="/tag/ruby">#Ruby</a>
+      
+        <a href="/tag/javascript">#Javascript</a>
+      
+        <a href="/tag/api">#API</a>
+      
+        <a href="/tag/tutorial">#Tutorial</a>
+      
+        <!-- <a href="/tag/rails/" rel="tag">Rails</a>, <a href="/tag/ember/" rel="tag">Ember</a>, <a href="/tag/ruby/" rel="tag">Ruby</a>, <a href="/tag/javascript/" rel="tag">Javascript</a>, <a href="/tag/api/" rel="tag">API</a>, <a href="/tag/tutorial/" rel="tag">Tutorial</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля %23doamru http://doam.ru/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+        <p class="byline"><strong>Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля</strong> опубликовано <time datetime="2015-10-09T22:39:13+03:00">09 October, 2015</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="/posts/">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="/no-fot-stavka/" title="Ставка не нужна">Ставка не нужна</a></li>
+    
+      <li><a href="/ruby-the-grape-swagger-stack/" title="Минималистичный стек Grape + Swagger для микросервисов на Ruby">Минималистичный стек Grape + Swagger для микросервисов на Ruby</a></li>
+    
+      <li><a href="/devops_tools/" title="Инструменты devOps">Инструменты devOps</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    
+
+<div style="text-align: center;"><span>&copy; 2011 - 2015 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+	        
+
+</body>
+</html>

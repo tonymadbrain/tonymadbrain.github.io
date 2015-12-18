@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">Diary of madman</title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2015-12-19T01:20:12+03:00</updated>
+<id>/</id>
+<author>
+  <name>Антон Рябов</name>
+  <uri>/</uri>
+  <email>mail@doam.ru</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Ставка не нужна]]></title>
+  <link rel="alternate" type="text/html" href="/no-fot-stavka/" />
+  <id>/no-fot-stavka</id>
+  <published>2015-12-19T00:49:17+03:00</published>
+  <updated>2015-12-19T00:49:17+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;В 2012 я попробовал зафиксировать некоторое свое состояние, чтобы сравнить с тем, каким оно будет через 4 года, описав это самое состояние на одной странице блога и сделав её главной. Сейчас я понимаю что это было полнейшим бредом, так как все меняется гораздо быстрее. Буквально каждую неделю ...
+    &lt;p&gt;&lt;a href=&quot;/no-fot-stavka/&quot;&gt;Ставка не нужна&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on December 19, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Минималистичный стек Grape + Swagger для микросервисов на Ruby]]></title>
+  <link rel="alternate" type="text/html" href="/ruby-the-grape-swagger-stack/" />
+  <id>/ruby-the-grape-swagger-stack</id>
+  <published>2015-11-24T12:00:00+03:00</published>
+  <updated>2015-11-24T12:00:00+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Микросервисы сейчас очень популярны и используются в различных архитектурах и средах. Слова Ruby и микросервисы, принято связывать с великолепным минималистичным фреймворком &lt;em&gt;Sinatra&lt;/em&gt;. Есть много хороших ruby микро-фреймворков, но &lt;a href=&quot;http://www.ruby-grape.org/&quot; target=&quot;_blank&quot;&gt;Gra...
+    &lt;p&gt;&lt;a href=&quot;/ruby-the-grape-swagger-stack/&quot;&gt;Минималистичный стек Grape + Swagger для микросервисов на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on November 24, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Инструменты devOps]]></title>
+  <link rel="alternate" type="text/html" href="/devops_tools/" />
+  <id>/devops_tools</id>
+  <published>2015-11-16T22:03:45+03:00</published>
+  <updated>2015-11-16T22:03:45+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;По большей части моя работа относится к системному администрированию, но зачастую мне приходится изменять программный код на разных языках. В этой записи я хочу зафиксировать подборку инструментов, которыми пользуюсь.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;https://farm1.staticflickr.com/581/22860156877_dacb...
+    &lt;p&gt;&lt;a href=&quot;/devops_tools/&quot;&gt;Инструменты devOps&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on November 16, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Понимание методов Enumerable методом реализации их на Ruby]]></title>
+  <link rel="alternate" type="text/html" href="/understanding_enumerable_methods_by_re-implementing_them_in_ruby/" />
+  <id>/understanding_enumerable_methods_by_re-implementing_them_in_ruby</id>
+  <published>2015-10-21T17:26:45+03:00</published>
+  <updated>2015-10-21T17:26:45+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.2.3/Enumerable.html&quot; target=&quot;_blank&quot;&gt;Enumerable&lt;/a&gt; в Руби является, безусловно, одним из самых лучших примеров как нужно делать модули. Он предоставляет большой набор методов, полезных для обработки структур данных и требуют от вас реализовать только один м...
+    &lt;p&gt;&lt;a href=&quot;/understanding_enumerable_methods_by_re-implementing_them_in_ruby/&quot;&gt;Понимание методов Enumerable методом реализации их на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on October 21, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля]]></title>
+  <link rel="alternate" type="text/html" href="/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" />
+  <id>/how_to_build_a_rails_5_api_only_and_ember_application_from_scratch</id>
+  <published>2015-10-09T22:39:13+03:00</published>
+  <updated>2015-10-09T22:39:13+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Эта инструкция рассказывает как создать приложение на &lt;a href=&quot;http://rubyonrails.org/&quot; target=&quot;_blank&quot;&gt;Rails&lt;/a&gt; API в качестве бекенда с &lt;a href=&quot;http://emberjs.com/&quot; target=&quot;_blank&quot;&gt;Ember&lt;/a&gt; на фронтенде c нуля. Cтатья объединяет два поста на эту тему &lt;a href=&quot;http://wyeworks.com/blog/2015...
+    &lt;p&gt;&lt;a href=&quot;/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/&quot;&gt;Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on October 09, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Оптимизируем работу Motorola Moto G (first gen.)]]></title>
+  <link rel="alternate" type="text/html" href="/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/" />
+  <id>/optimiziruem-rabotu-motorola-moto-g-first-gen</id>
+  <published>2015-06-30T00:12:00+03:00</published>
+  <updated>2015-06-30T00:12:00+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Никогда не задумывался о скорости работы моего смартфона. Да он дешевый и, по сегодняшним меркам, слабый, но всегда делает свою работу, самое главное что устраивает диагональю экрана, тяжело найти подобное решение на рынке. Тормоза наблюдаются только при запуске “тяжелых” приложений и браузера...
+    &lt;p&gt;&lt;a href=&quot;/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/&quot;&gt;Оптимизируем работу Motorola Moto G (first gen.)&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on June 30, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Онлайн-школа Thinknetica.com]]></title>
+  <link rel="alternate" type="text/html" href="/2015-06-14-about-thinknetica/" />
+  <id>/about-thinknetica</id>
+  <published>2015-06-14T00:12:00+03:00</published>
+  <updated>2015-06-14T00:12:00+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Первый практический опыт с Rails у меня был по книге Майкла Хартла, и выполнив все практические занятия, включая деплой на хероку, кажется что должен был что-то запомнить, чему-то научиться, но ты по-прежнему смотришь в код и думаешь - как это, блин, работает? Модели, контроллеры, миграции, aj...
+    &lt;p&gt;&lt;a href=&quot;/2015-06-14-about-thinknetica/&quot;&gt;Онлайн-школа Thinknetica.com&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on June 14, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Рассуждения о СМИ]]></title>
+  <link rel="alternate" type="text/html" href="/2015-05-27-rassujdeniya-o-smi/" />
+  <id>/rassujdeniya-o-smi</id>
+  <published>2015-05-27T00:12:00+03:00</published>
+  <updated>2015-05-27T00:12:00+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Давно хочется записать свои размышления на эту тему. Сейчас я живу в Москве и здесь с этим проблем нет. Очень много источников информации. Быстро узнать о ситуациях в городе не проблема, хочешь просто твиттер читай, по тегам или подписавшись на разные каналы, хочешь просто по сайтам шарься, да...
+    &lt;p&gt;&lt;a href=&quot;/2015-05-27-rassujdeniya-o-smi/&quot;&gt;Рассуждения о СМИ&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on May 27, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Mariadb не, использовать Mysql]]></title>
+  <link rel="alternate" type="text/html" href="/2015-05-20-no-mariadb-just-mysql/" />
+  <id>/no-mariadb-just-mysql</id>
+  <published>2015-05-20T00:12:00+03:00</published>
+  <updated>2015-05-20T00:12:00+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Изначально планировалось поставить запятую после Mariadb. Собственно сабж в том, что я хотел перевести свой сервер с парой rails приложений c mysql 5.1 на mariadb 10, но не тут то было. Я столкнулся со странной магией и из-за отсутсвия времени отступил перед лицом проблемы.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img...
+    &lt;p&gt;&lt;a href=&quot;/2015-05-20-no-mariadb-just-mysql/&quot;&gt;Mariadb не, использовать Mysql&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on May 20, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Виртуальные серверы от Flops]]></title>
+  <link rel="alternate" type="text/html" href="/2015-05-06-flops-virtual-servers/" />
+  <id>/flops-virtual-servers</id>
+  <published>2015-05-06T00:12:00+03:00</published>
+  <updated>2015-05-06T00:12:00+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri></uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;В начале стоит сказать, что некоторое время назад, где-то с пол года, я, наконец, отказался от физического сервера в своем доме и перенес свою “помойку” на физический сервер в датацентре.
+Конечно это дополнительные траты, но зато убрал шумелку и упростил обслуживание. Однако, через некоторое в...
+    &lt;p&gt;&lt;a href=&quot;/2015-05-06-flops-virtual-servers/&quot;&gt;Виртуальные серверы от Flops&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;&quot;&gt;Diary of madman&lt;/a&gt; on May 06, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+</feed>
