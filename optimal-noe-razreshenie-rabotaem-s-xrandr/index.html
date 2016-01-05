@@ -1,0 +1,245 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Оптимальное разрешение. Работаем с xrandr &#8211; Diary of madman</title>
+<meta name="description" content="Столкнулся с проблемой: монитор поддерживает разрешение 1920x1080 и с драйвером radeon работал нормально, но после того как я решил затестить драйвер radeonhd разрешение изменилось и выхлоп xrandr изменился на
+
+">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Debian, Xrandr">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Оптимальное разрешение. Работаем с xrandr">
+<meta name="twitter:description" content="Столкнулся с проблемой: монитор поддерживает разрешение 1920x1080 и с драйвером radeon работал нормально, но после того как я решил затестить драйвер radeonhd разрешение изменилось и выхлоп xrandr изменился на
+
+">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Оптимальное разрешение. Работаем с xrandr">
+<meta property="og:description" content="Столкнулся с проблемой: монитор поддерживает разрешение 1920x1080 и с драйвером radeon работал нормально, но после того как я решил затестить драйвер radeonhd разрешение изменилось и выхлоп xrandr изменился на
+
+">
+<meta property="og:url" content="/optimal-noe-razreshenie-rabotaem-s-xrandr/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="/optimal-noe-razreshenie-rabotaem-s-xrandr/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="/posts/" >Записки</a></li>
+				
+				    
+				    <li><a href="/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="/optimal-noe-razreshenie-rabotaem-s-xrandr/" rel="bookmark" title="Оптимальное разрешение. Работаем с xrandr">Оптимальное разрешение. Работаем с xrandr</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>Столкнулся с проблемой: монитор поддерживает разрешение 1920x1080 и с драйвером radeon работал нормально, но после того как я решил затестить драйвер radeonhd разрешение изменилось и выхлоп xrandr изменился на</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Screen 0: minimum <span class="m">320</span> x 200, current <span class="m">1920</span> x 1080, maximum <span class="m">1920</span> x 1920
+HDMI-0 disconnected <span class="o">(</span>normal left inverted right x axis y axis<span class="o">)</span>
+VGA-0 connected 1680x1050+0+0 <span class="o">(</span>normal left inverted right x axis y axis<span class="o">)</span> 478mm x 269mm
+1680x1050 60.0*+
+1280x1024 75.0
+1440x900 75.0 59.9
+1280x960 60.0
+1280x800 59.8
+1152x864 75.0
+1280x720 60.0
+1152x720 60.0
+1024x768 75.0 70.1 60.0
+832x624 74.6
+800x600 72.2 75.0 60.3 56.2
+640x480 75.0 72.8 66.7 59.9
+720x400 70.1
+DVI-0 disconnected <span class="o">(</span>normal left inverted right x axis y axis<span class="o">)</span></code></pre></figure>
+
+<p>Чтобы вручную установить правильно разрешение пришлось добавлять новый режим:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">xrandr -newmode <span class="s2">&quot;1920x1080&quot;</span> 173.00 <span class="m">1920</span> <span class="m">2048</span> <span class="m">2248</span> <span class="m">2576</span> <span class="m">1080</span> <span class="m">1083</span> <span class="m">1088</span> <span class="m">1120</span> -hsync +vsync
+xrandr -addmode VGA_1 <span class="s2">&quot;1920x1080&quot;</span>
+xrandr -output VGA_1 -mode 1920x1080</code></pre></figure>
+
+<p>Однако это решение одноразовое, лично я вернулся обратно на драйвер radeon и не парюсь, но если Вам все-таки придется использовать такую конструкцию, то эти 3 строчки лучше закинуть в автозапуск ну или в скрипт, а уже скрипт в автозапуск =)</p>
+
+      
+        <a href="/tag/debian">#Debian</a>
+      
+        <a href="/tag/xrandr">#Xrandr</a>
+      
+        <!-- <a href="/tag/debian/" rel="tag">Debian</a>, <a href="/tag/xrandr/" rel="tag">Xrandr</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Оптимальное разрешение. Работаем с xrandr %23doamru http://doam.ru/optimal-noe-razreshenie-rabotaem-s-xrandr/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/optimal-noe-razreshenie-rabotaem-s-xrandr/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/optimal-noe-razreshenie-rabotaem-s-xrandr/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/optimal-noe-razreshenie-rabotaem-s-xrandr/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+        <p class="byline"><strong>Оптимальное разрешение. Работаем с xrandr</strong> опубликовано <time datetime="2012-04-01T00:00:00+04:00">01 April, 2012</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="/posts/">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="/achievements/" title="Achievements">Achievements</a></li>
+    
+      <li><a href="/no-fot-stavka/" title="Ставка не нужна">Ставка не нужна</a></li>
+    
+      <li><a href="/ruby-the-grape-swagger-stack/" title="Минималистичный стек Grape + Swagger для микросервисов на Ruby">Минималистичный стек Grape + Swagger для микросервисов на Ruby</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    
+
+<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+	        
+
+</body>
+</html>
