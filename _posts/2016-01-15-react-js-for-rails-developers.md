@@ -38,3 +38,77 @@ rails new accounts
 
 > Я рекомендую использовать RVM для управления версиями Ruby и для каждого приложения отдельный gemset, подробнее можно посмотреть в <a href="http://doam.ru/sozdaniye-novogo-prilozheniya-na-rails/" target="_blank">этой статье</a>.
 
+Для UI нашего проекта будет использован Twitter Bootstrap. Процесс установки bootstrap немного выходит из рамок данного how-to, вы можете установить например официальный гем `bootstrap-sass` следуя <a href="https://github.com/twbs/bootstrap-sass" target="_blank">инструкции</a> или использовать <a href="https://rails-assets.org/" target="_blank">rails-assets</a>.
+
+Когда наш проект инициализирован, нужно добавить в него React. В данной записи мы будем устанавливать официальный гем <a href="https://github.com/reactjs/react-rails" target="_blank">react-rails</a> потому что будем использовать некоторые крутые фишки, реализованные в данном геме, но есть и другие способы выполнить эту задачу, например все теже <a href="https://rails-assets.org/" target="_blank">rails-assets</a> или можно скачать исходники с <a href="https://facebook.github.io/react/" target="_blank">официальной страницы</a> и разместить их в паке `javascrips`.
+
+Если вы до этого имели дело с Rails, то вы знаете как легко добавить гем в проект, добавим нужный нам гем `react-rails` в *Gemfile*:
+
+{% highlight ruby %}
+gem 'react-rails', '~> 1.0'
+{% endhighlight %}
+
+Затем, естественно, устанавливаем новые гемы:
+
+
+{% highlight bash %}
+bundle install
+{% endhighlight %}
+
+`react-rails` идет с установочным скриптом, который создаст файл `component.js` и каталог `components` в папке `app/assets/javascripts` где собственно и будут жить наши компоненты React.
+
+{% highlight bash %}
+rails g react:install
+{% endhighlight %}
+
+Если после процесса установки вы загляните в файл `application.js` то найдете там три новых линии:
+
+{% highlight javascript %}
+  //= require react
+  //= require react_ujs
+  //= require components
+{% endhighlight %}
+
+В основном, он включает актуальную react библиотеку, манифест `components` и `ujs`. Как вы могли догадаться для имен файлов react-rails включает ненавязчивый JavaScript драйвер, который поможет нам монтировать React компоненты и будет поддерживать события *Turbolinks*.
+
+###Создаем ресурс
+
+Мы создадим ресурс `Record`, который будет включать поля `date`, `title` и `amount`. Вместо использования генератора `scaffold`, мы будем использовать генератор `resource`, потому что нам не понадобятся все файлы и методы, которые создаются при исползовании `scaffold`.
+
+{% highlight bash %}
+rails g resource Record title date:date amount:float
+{% endhighlight %}
+
+Чуть чуть магии и у нас будет готовый ресурс `Record`, включающий модель, контроллер и машруты. Остается только создать базу данных и запустить миграции.
+
+{% highlight bash %}
+rake db:create db:migrate
+{% endhighlight %}
+
+Дополнительно вы можете создать несколько записей в базе данных используя `rails console`:
+
+{% highlight bash %}
+Record.create title: 'Record 1', date: Date.today, amount: 500
+Record.create title: 'Record 2', date: Date.today, amount: -100
+{% endhighlight %}
+
+Не забудьте запустить сервер с помощью команды `rails s`.
+<br>
+Ура! Теперь мы можем кодить.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
