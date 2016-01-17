@@ -98,18 +98,69 @@ Record.create title: 'Record 2', date: Date.today, amount: -100
 <br>
 Ура! Теперь мы можем кодить.
 
+###Вложенные компоненты: список записей
 
+Нашей первой задачей будет рендерить любые записи в таблице. Для начала, нужно создать экшен `index` в нашем контроллере `Records`:
 
+{% highlight ruby %}
+# app/controllers/records_controller.rb
 
+class RecordsController < ApplicationController
+  def index
+    @records = Record.all
+  end
+end
+{% endhighlight %}
 
+Далее, нам нужно создать новый файл `index.html.erb` в папке `app/views/records/`, этот файл будет мостом между нашим Rails приложением и React компонентами. Чтобы достигнуть этого мы будем использовать хелпер метод `react_component`, который получает имя компонента React, который мы хотим отрендерить вместе с данными которые мы хотим в него передать.
 
+{% highlight ruby %}
+<%# app/views/records/index.html.erb %>
 
+  <%= react_component 'Records', { data: @records } %>
+{% endhighlight %}
 
+Стоит отметить, что этот хелпер предоставляется гемом `react-rails` и если использовать другие способы интеграции React в Rails приложение, то он не будет работать.
 
+Теперь вы можете открыть http://localhost:3000/records в браузере. Очевидно, что сейчас ничего работать не будет, потому что у нас просто напросто нет React компонента Records, но если мы посмотрим в код сгенерированной страницы, то увидим примерно следующее:
 
+{% highlight html %}
+<div data-react-class="Records" data-react-props="{...}">
+  </div>
+{% endhighlight %}
 
+C такой разметкой, `react_ujs` видит что мы пытаемся рендерить React компонент и будет инициализировать его, включая свойства, которые мы передали через `react_component`, в нашем случае содержимое `@records`.
 
+Пришло время сделать наш первый React компонент. В каталоге `javascripts/components` создаем новый файл и называем его `records.js.coffee`, этот файл и будет содержать наш компонент Records.
 
+{% highlight coffeescript %}
+# app/assets/javascripts/components/records.js.coffee
+
+@Records = React.createClass
+  render: ->
+    React.DOM.div
+      className: 'records'
+      React.DOM.h2
+        className: 'title'
+        'Records'
+{% endhighlight %}
+
+Каждый компонент должен содержать метод `render`, который будет отвечать за рендеринг самого себя. Этот метод должен возвращать экземпляр класса ReactComponent, в этом случае, когда React выполнит ре-рендер, он (экземпляр) будет обработан оптимальным путем (React обнаруживает существование новых узлов путем создания виртуального DOM в памяти). В примере выше мы создали экзмепляр h2, встроенный ReactComponent.
+
+> Другой способ инициализировать ReactComponents внутри метода render через `JSX` синтаксис. Пример кода выше эквивалентент следующему:
+
+{% highlight coffeescript %}
+render: ->
+    `<div className="records">
+      <h2 className="title"> Records </h2>
+    </div>`
+{% endhighlight %}
+
+Я рекомендую, если вы работаете с soffescript, использовать синтаксис `React.DOM` вместо `JSX`, потому что код будет выстраиваться иерархично, как, например, в haml. Однако, если вы интегрируете React в существующее приложение с erb, вы можете реюзать уже существующий код конвертируя его в *JSX*.
+
+Теперь обновим страницу в браузере.
+
+Отлично! Мы отрендерили наш первый компонент React. Теперь настало время для отображения наших записей (records).
 
 
 
