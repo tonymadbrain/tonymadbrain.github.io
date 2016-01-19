@@ -11,9 +11,11 @@ date: 2016-01-15T08:53:14+03:00
 
 React.js это новый популярный игрок из команды "Фреймворки JavaScript", и он отличается своей простотой. Там где другие фреймворки реализуют полноценный MVC, можно сказать что React реализует только V (причем многие заменяют V в своих фреймворках на React). Приложения на React строятся на двух основных принципах: *Компоненты* (Components) и *Состояния* (States). Компоненты могут быть сделаны из других компонентов поменьше, встроенных или кастомных; Состояния это, как называют его ребята из Facebook - *one-way reactive data flow*, означает что наш UI будет реагировать на каждое изменение состояния.
 
-Одна из хороших вещей в React это то, что он не требует дополнительных зависимостей, что делает его подключаемым с практически любой JS библиотекой. Воспользовавшись этой функцией, мы собираемся включить его в наш Rails стек и построить *frontend-powered* приложение, или, если пожелаете, Rails вьюхи на стероидах.
+<br>
+<img src="https://farm2.staticflickr.com/1480/23858108174_a563951ceb_o.jpg">
+<br>
 
-здесь будет картинка поста
+Одна из хороших вещей в React это то, что он не требует дополнительных зависимостей, что делает его подключаемым с практически любой JS библиотекой. Воспользовавшись этой функцией, мы собираемся включить его в наш Rails стек и построить *frontend-powered* приложение, или, если пожелаете, Rails вьюхи на стероидах.
 
 ###Макет приложения
 
@@ -161,6 +163,89 @@ render: ->
 Теперь обновим страницу в браузере.
 
 Отлично! Мы отрендерили наш первый компонент React. Теперь настало время для отображения наших записей (records).
+
+Кроме метода рендеринга, React компоненты имеют способность общаться между собой и сообщать свое состояние, чтобы определить необходим ре-рендеринг или нет. Нам нужно инициализировать состояния наших комопнентов и свойства с требуемыми значениями:
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/records.js.coffee
+
+@Records = React.createClass
+  getInitialState: ->
+    records: @props.data
+  getDefaultProps: ->
+    records: []
+  render: ->
+    ...
+{% endhighlight %}
+
+Метод `getDefaultProps` будет выставлять свойства нашего компонента в случае, если мы забыли отправить какие-либо данные при его инициализации, и метод `getInitialState` будет генерировать начальное состояние наних компонентов. Теперь нам нужно отобразить записи предоставленные нам вьюхой Rails.
+
+Похоже нам нужен хелпер чтобы форматировать строку с суммой (amount), мы можем написать простой форматтер строк и сделать его доступным для всех наших coffe файлов. Создадим новый файл `utils.js.coffee` в каталоге `javascripts/` со следующим содержимым:
+
+{% highlight coffeescript %}
+# app/assets/javascripts/utils.js.coffee
+
+  @amountFormat = (amount) ->
+    '$ ' + Number(amount).toLocaleString()
+{% endhighlight %}
+
+Нам нужно создать новый компонент Record чтобы отображать каждую отдельную запись, создадим новый файл `record.js.coffee` в папке `javascripts/components` и запишем в него следующий контент:
+
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/record.js.coffee
+
+@Record = React.createClass
+  render: ->
+    React.DOM.tr null,
+      React.DOM.td null, @props.record.date
+      React.DOM.td null, @props.record.title
+      React.DOM.td null, amountFormat(@props.record.amount)
+{% endhighlight %}
+
+Компонент Record будет отображать строку таблицы содержащую ячейки для каждого аттрибута записи. Не волнуйтесь об этих *null* в вызовах React.DOM.*, это означает что мы не отправляем атрибуты в компоненты. Теперь обновим метод рендер в компоненте Records следующим кодом:
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/records.js.coffee
+
+@Records = React.createClass
+  ...
+  render: ->
+    React.DOM.div
+      className: 'records'
+      React.DOM.h2
+        className: 'title'
+        'Records'
+      React.DOM.table
+        className: 'table table-bordered'
+        React.DOM.thead null,
+          React.DOM.tr null,
+            React.DOM.th null, 'Date'
+            React.DOM.th null, 'Title'
+            React.DOM.th null, 'Amount'
+        React.DOM.tbody null,
+          for record in @state.records
+            React.createElement Record, key: record.id, record: record
+{% endhighlight %}
+
+Мы создали таблицу со строкой заголовком и внутри тела таблицы мы создали элемент Record для каждой существующей записи. Другими словами, мы угнездили встроенный и кастомный React компоненеты. Круто да?
+
+Чтобы React не тратил много времени на обновление нашего UI, при создании элемента Record, вместе с ним мы посылаем ключ: `record.id`. Если мы так не сделаем, то увидим предупреждение в консоли браузера (и скорее всего получим головную боль в дальнейшем).
+
+<br>
+<img src="https://farm2.staticflickr.com/1628/24485535665_278d25ff67_o.png">
+<br>
+
+Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a>.
+
+###Parent-Child communication: Creating Records
+
+
+
+
+
+
+
 
 
 
