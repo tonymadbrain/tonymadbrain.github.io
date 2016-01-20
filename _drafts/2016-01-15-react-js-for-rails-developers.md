@@ -238,15 +238,95 @@ render: ->
 
 Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a>.
 
-###Parent-Child communication: Creating Records
+###Родитель-Потомок коммуникация: Создание записей
+
+Теперь когда мы отображаем все имеющиеся записи, будет неплохо добавить форму для создания новых записей, давайте добавим эту фичу в наше React/Rails приложение. В начале, нам нужно добавить метод в наш Rails контроллер (не забываем использовать `strongparams`):
+
+{% highlight ruby %}
+# app/controllers/records_controller.rb
+
+class RecordsController < ApplicationController
+  ...
+
+  def create
+    @record = Record.new(record_params)
+
+    if @record.save
+      render json: @record
+    else
+      render json: @record.errors, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+    def record_params
+      params.require(:record).permit(:title, :amount, :date)
+    end
+end
+{% endhighlight %}
+
+Теперь, нам нужно создать React компонент чтобы обрабатывать создание новых записей. Компонент будет иметь собственное состояние чтобы хранить дату, заголовок и стоимость. Создадим новый файл `record_form.js.coffee` в каталоге `javascript/components` со следующим кодом:
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/record_form.js.coffee
+
+@RecordForm = React.createClass
+  getInitialState: ->
+    title: ''
+    date: ''
+    amount: ''
+  render: ->
+    React.DOM.form
+      className: 'form-inline'
+      React.DOM.div
+        className: 'form-group'
+        React.DOM.input
+          type: 'text'
+          className: 'form-control'
+          placeholder: 'Date'
+          name: 'date'
+          value: @state.date
+          onChange: @handleChange
+      React.DOM.div
+        className: 'form-group'
+        React.DOM.input
+          type: 'text'
+          className: 'form-control'
+          placeholder: 'Title'
+          name: 'title'
+          value: @state.title
+          onChange: @handleChange
+      React.DOM.div
+        className: 'form-group'
+        React.DOM.input
+          type: 'number'
+          className: 'form-control'
+          placeholder: 'Amount'
+          name: 'amount'
+          value: @state.amount
+          onChange: @handleChange
+      React.DOM.button
+        type: 'submit'
+        className: 'btn btn-primary'
+        disabled: !@valid()
+        'Create record'
+{% endhighlight %}
+
+Ничего фантастического, просто Bootstrap инлайн форма. Обратите внимание как мы объявляем атрибут `value` для установки значения инпута и атрибут `onChange` чтобы привязать метод обработчика, который будет вызываться на каждое нажатие клавиши. Метод обработчика `handleChange` будет использовать имя атрибута чтобы определить какой инпут запустил событие и обновлять соответсвтующее значение состояния:
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/record_form.js.coffee
+
+@RecordForm = React.createClass
+  ...
+  handleChange: (e) ->
+    name = e.target.name
+    @setState "#{ name }": e.target.value
+  ...
+{% endhighlight %}
 
 
-
-
-
-
-
-
-
+We are just using string interpolation to dynamically define object keys, equivalent to @setState title: e.target.value when name equals title. But why do we have to use @setState? Why can't we just set the desired value of @state as we usually do in regular JS Objects? Because @setState will perform 2 actions, it:
 
 
