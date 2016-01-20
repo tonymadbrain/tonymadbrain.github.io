@@ -350,7 +350,89 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
 
 <p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a>.</p>
 
-<h3 id="parent-child-communication-creating-records">Parent-Child communication: Creating Records</h3>
+<h3 id="section-4">Родитель-Потомок коммуникация: Создание записей</h3>
+
+<p>Теперь когда мы отображаем все имеющиеся записи, будет неплохо добавить форму для создания новых записей, давайте добавим эту фичу в наше React/Rails приложение. В начале, нам нужно добавить метод в наш Rails контроллер (не забываем использовать <code>strongparams</code>):</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># app/controllers/records_controller.rb</span>
+
+<span class="k">class</span> <span class="nc">RecordsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="vi">@record</span> <span class="o">=</span> <span class="no">Record</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">record_params</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="vi">@record</span><span class="o">.</span><span class="n">save</span>
+      <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@record</span>
+    <span class="k">else</span>
+      <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@record</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span> <span class="ss">status</span><span class="p">:</span> <span class="ss">:unprocessable_entity</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+    <span class="k">def</span> <span class="nf">record_params</span>
+      <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:record</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:amount</span><span class="p">,</span> <span class="ss">:date</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Теперь, нам нужно создать React компонент чтобы обрабатывать создание новых записей. Компонент будет иметь собственное состояние чтобы хранить дату, заголовок и стоимость. Создадим новый файл <code>record_form.js.coffee</code> в каталоге <code>javascript/components</code> со следующим кодом:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record_form.js.coffee</span>
+
+<span class="vi">@RecordForm = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="nv">getInitialState: </span><span class="nf">-&gt;</span>
+    <span class="nv">title: </span><span class="s">&#39;&#39;</span>
+    <span class="nv">date: </span><span class="s">&#39;&#39;</span>
+    <span class="nv">amount: </span><span class="s">&#39;&#39;</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">form</span>
+      <span class="nv">className: </span><span class="s">&#39;form-inline&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&#39;form-group&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">input</span>
+          <span class="nv">type: </span><span class="s">&#39;text&#39;</span>
+          <span class="nv">className: </span><span class="s">&#39;form-control&#39;</span>
+          <span class="nv">placeholder: </span><span class="s">&#39;Date&#39;</span>
+          <span class="nv">name: </span><span class="s">&#39;date&#39;</span>
+          <span class="nv">value: </span><span class="nx">@state</span><span class="p">.</span><span class="nx">date</span>
+          <span class="nv">onChange: </span><span class="nx">@handleChange</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&#39;form-group&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">input</span>
+          <span class="nv">type: </span><span class="s">&#39;text&#39;</span>
+          <span class="nv">className: </span><span class="s">&#39;form-control&#39;</span>
+          <span class="nv">placeholder: </span><span class="s">&#39;Title&#39;</span>
+          <span class="nv">name: </span><span class="s">&#39;title&#39;</span>
+          <span class="nv">value: </span><span class="nx">@state</span><span class="p">.</span><span class="nx">title</span>
+          <span class="nv">onChange: </span><span class="nx">@handleChange</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&#39;form-group&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">input</span>
+          <span class="nv">type: </span><span class="s">&#39;number&#39;</span>
+          <span class="nv">className: </span><span class="s">&#39;form-control&#39;</span>
+          <span class="nv">placeholder: </span><span class="s">&#39;Amount&#39;</span>
+          <span class="nv">name: </span><span class="s">&#39;amount&#39;</span>
+          <span class="nv">value: </span><span class="nx">@state</span><span class="p">.</span><span class="nx">amount</span>
+          <span class="nv">onChange: </span><span class="nx">@handleChange</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">button</span>
+        <span class="nv">type: </span><span class="s">&#39;submit&#39;</span>
+        <span class="nv">className: </span><span class="s">&#39;btn btn-primary&#39;</span>
+        <span class="nv">disabled: </span><span class="o">!</span><span class="nx">@valid</span><span class="p">()</span>
+        <span class="s">&#39;Create record&#39;</span></code></pre></figure>
+
+<p>Ничего фантастического, просто Bootstrap инлайн форма. Обратите внимание как мы объявляем атрибут <code>value</code> для установки значения инпута и атрибут <code>onChange</code> чтобы привязать метод обработчика, который будет вызываться на каждое нажатие клавиши. Метод обработчика <code>handleChange</code> будет использовать имя атрибута чтобы определить какой инпут запустил событие и обновлять соответсвтующее значение состояния:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record_form.js.coffee</span>
+
+<span class="vi">@RecordForm = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">handleChange: </span><span class="nf">(e) -&gt;</span>
+    <span class="nv">name = </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">name</span>
+    <span class="nx">@setState</span> <span class="s">&quot;</span><span class="si">#{</span> <span class="nx">name</span> <span class="si">}</span><span class="s">&quot;</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span>
+  <span class="p">...</span></code></pre></figure>
+
+<p>We are just using string interpolation to dynamically define object keys, equivalent to @setState title: e.target.value when name equals title. But why do we have to use @setState? Why can’t we just set the desired value of @state as we usually do in regular JS Objects? Because @setState will perform 2 actions, it:</p>
 
 
       
