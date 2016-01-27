@@ -432,7 +432,40 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
     <span class="nx">@setState</span> <span class="s">&quot;</span><span class="si">#{</span> <span class="nx">name</span> <span class="si">}</span><span class="s">&quot;</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span>
   <span class="p">...</span></code></pre></figure>
 
-<p>We are just using string interpolation to dynamically define object keys, equivalent to @setState title: e.target.value when name equals title. But why do we have to use @setState? Why can’t we just set the desired value of @state as we usually do in regular JS Objects? Because @setState will perform 2 actions, it:</p>
+<p>Мы используем интерполяцию строк чтобы динамически определять ключи объектов, эквивалент <code>@setState title: e.target.value</code> когда <code>name</code> равно <code>title</code>. Но зачем нам использовать <code>@setState</code>? Почему мы не можем просто засетить желаемое значение для @state как мы обычно это делаем в регулярных JS объектах? Потому что <code>@setState</code> будет выполнять 2 действия:</p>
+
+<ol>
+  <li>Обновлять состояния компонента</li>
+  <li>Запускать проверку/обновление UI на основе нового состояния</li>
+</ol>
+
+<p>Очень важно держать это в голове каждый раз когда мы используем <code>state</code> внутри наших компонентов.</p>
+
+<p>Давайте посмотрим на кнопку <code>submit</code>, в самом конце нашего метода <code>render</code>:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record_form.js.coffee</span>
+
+<span class="vi">@RecordForm = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="p">...</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">form</span>
+      <span class="p">...</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">button</span>
+        <span class="nv">type: </span><span class="s">&#39;submit&#39;</span>
+        <span class="nv">className: </span><span class="s">&#39;btn btn-primary&#39;</span>
+        <span class="nv">disabled: </span><span class="o">!</span><span class="nx">@valid</span><span class="p">()</span>
+        <span class="s">&#39;Create record&#39;</span></code></pre></figure>
+
+<p>Мы определили атрибут <code>disabled</code> со значением <code>!@valid()</code>, что означает что мы напишем метод <code>valid</code>, который будет проверять что данные, переданные пользователем, корректные.</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record_form.js.coffee</span>
+
+<span class="vi">@RecordForm = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">valid: </span><span class="nf">-&gt;</span>
+    <span class="nx">@state</span><span class="p">.</span><span class="nx">title</span> <span class="o">&amp;&amp;</span> <span class="nx">@state</span><span class="p">.</span><span class="nx">date</span> <span class="o">&amp;&amp;</span> <span class="nx">@state</span><span class="p">.</span><span class="nx">amount</span>
+  <span class="p">...</span></code></pre></figure>
 
 
       
