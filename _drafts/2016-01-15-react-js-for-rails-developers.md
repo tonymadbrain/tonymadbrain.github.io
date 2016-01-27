@@ -326,7 +326,48 @@ end
   ...
 {% endhighlight %}
 
+Мы используем интерполяцию строк чтобы динамически определять ключи объектов, эквивалент `@setState title: e.target.value` когда `name` равно `title`. Но зачем нам использовать `@setState`? Почему мы не можем просто засетить желаемое значение для @state как мы обычно это делаем в регулярных JS объектах? Потому что `@setState` будет выполнять 2 действия:
 
-We are just using string interpolation to dynamically define object keys, equivalent to @setState title: e.target.value when name equals title. But why do we have to use @setState? Why can't we just set the desired value of @state as we usually do in regular JS Objects? Because @setState will perform 2 actions, it:
+1. Обновлять состояния компонента
+2. Запускать проверку/обновление UI на основе нового состояния
+
+Очень важно держать это в голове каждый раз когда мы используем `state` внутри наших компонентов.
+
+Давайте посмотрим на кнопку `submit`, в самом конце нашего метода `render`:
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/record_form.js.coffee
+
+@RecordForm = React.createClass
+  ...
+  render: ->
+    ...
+    React.DOM.form
+      ...
+      React.DOM.button
+        type: 'submit'
+        className: 'btn btn-primary'
+        disabled: !@valid()
+        'Create record'
+{% endhighlight %}
+
+Мы определили атрибут `disabled` со значением `!@valid()`, что означает что мы напишем метод `valid`, который будет проверять что данные, переданные пользователем, корректные.
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/record_form.js.coffee
+
+@RecordForm = React.createClass
+  ...
+  valid: ->
+    @state.title && @state.date && @state.amount
+  ...
+{% endhighlight %}
+
+
+
+
+
+
+
 
 
