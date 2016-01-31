@@ -1,0 +1,259 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Косяк с сетевой картой rtl8111/8168B &#8211; Diary of madman</title>
+<meta name="description" content="Взбрело мне в голову в очередной раз перезалить debian на стационаре (обычно я это делаю когда забиваю систему всякой фигней, после чего становиться невозможно в ней работать), и в очередной раз про косяк с сетевой картой, я вспомнил только после установки. 
+
+">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Debian, Eth0, Rtl8168">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Косяк с сетевой картой rtl8111/8168B">
+<meta name="twitter:description" content="Взбрело мне в голову в очередной раз перезалить debian на стационаре (обычно я это делаю когда забиваю систему всякой фигней, после чего становиться невозможно в ней работать), и в очередной раз про косяк с сетевой картой, я вспомнил только после установки. 
+
+">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Косяк с сетевой картой rtl8111/8168B">
+<meta property="og:description" content="Взбрело мне в голову в очередной раз перезалить debian на стационаре (обычно я это делаю когда забиваю систему всякой фигней, после чего становиться невозможно в ней работать), и в очередной раз про косяк с сетевой картой, я вспомнил только после установки. 
+
+">
+<meta property="og:url" content="/kosyak-s-setevoj-kartoj-rtl81118168b/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="/kosyak-s-setevoj-kartoj-rtl81118168b/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="/posts/" >Записки</a></li>
+				
+				    
+				    <li><a href="/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="/kosyak-s-setevoj-kartoj-rtl81118168b/" rel="bookmark" title="Косяк с сетевой картой rtl8111/8168B">Косяк с сетевой картой rtl8111/8168B</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>Взбрело мне в голову в очередной раз перезалить debian на стационаре (обычно я это делаю когда забиваю систему всякой фигней, после чего становиться невозможно в ней работать), и в очередной раз про косяк с сетевой картой, я вспомнил только после установки. <img title="Read More..." src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" data-wp-more="" data-mce-resize="false" data-mce-placeholder="1" /></p>
+
+<!--more-->
+
+<p>Проблема заключается в том, что с дровами, идущими в debian-squeeze по умолчанию сетевушку жутко плющит, она отправляет максимум 100 пакетов и дохнет, оживить её удается только ребутом. Когда первый раз столкнулся с таким раскладом, я нашел решение, однако все время забываю положить инструкцию и необходимые файлы куда-нибудь в доступное место. И вот сегодня пока стационар меееедленно качает необходимые пакеты, решил записать костыль в блог, чтобы потом не рыскать снова по интернетам и своему винту, чтобы найти все необходимое.<br />
+Итак, собственно исправление проблемы:<br />
+Загрузить пакеты:</p>
+
+<p><a class="spoiler-tgl" href="https://doam.ru/kosyak-s-setevoj-kartoj-rtl81118168b/#SID545_1_tgl" id="SID545_1_tgl" rev="blind||Показать »||Скрыть «||300">Показать »</a></p>
+
+<div id="SID545_1" class="spoiler-body">
+  <p>
+    apt-get install build-essential module-assistant kernel-package libncurses5 fakeroot make<br /> apt-get install linux-headers-$(uname -r) modconf debhelper
+  </p>
+</div>
+
+<p>Загрузить дрова от realtek:<br />
+<a href="http://www.realtek.com.tw/downloads/downloadsView.aspx?Langid=1&amp;PNid=13&amp;PFid=5&amp;Level=5&amp;Conn=4&amp;DownTypeID=3&amp;GetDown=false" target="_blank">www.realtek.com.tw</a><br />
+Распаковать дрова в любую удобную папку, сделать файл autorun.sh исполняемым —</p>
+
+<p><a class="spoiler-tgl" href="https://doam.ru/kosyak-s-setevoj-kartoj-rtl81118168b/#SID545_2_tgl" id="SID545_2_tgl" rev="blind||Показать »||Скрыть «||300">Показать »</a></p>
+
+<div id="SID545_2" class="spoiler-body">
+  <p>
+    chmod +x autorun.sh
+  </p>
+</div>
+
+<p>Запустить его —</p>
+
+<p><a class="spoiler-tgl" href="https://doam.ru/kosyak-s-setevoj-kartoj-rtl81118168b/#SID545_3_tgl" id="SID545_3_tgl" rev="blind||Показать »||Скрыть «||300">Показать »</a></p>
+
+<div id="SID545_3" class="spoiler-body">
+  <p>
+    ./autorun.sh
+  </p>
+</div>
+
+<p>Всего-то, скажете Вы, но незнание этих мелочей выливается в большой геморрой.</p>
+
+      
+        <a href="/tag/debian">#Debian</a>
+      
+        <a href="/tag/eth0">#Eth0</a>
+      
+        <a href="/tag/rtl8168">#Rtl8168</a>
+      
+        <!-- <a href="/tag/debian/" rel="tag">Debian</a>, <a href="/tag/eth0/" rel="tag">Eth0</a>, <a href="/tag/rtl8168/" rel="tag">Rtl8168</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Косяк с сетевой картой rtl8111/8168B %23doamru http://doam.ru/kosyak-s-setevoj-kartoj-rtl81118168b/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/kosyak-s-setevoj-kartoj-rtl81118168b/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/kosyak-s-setevoj-kartoj-rtl81118168b/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/kosyak-s-setevoj-kartoj-rtl81118168b/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+        <p class="byline"><strong>Косяк с сетевой картой rtl8111/8168B</strong> опубликовано <time datetime="2012-08-19T00:00:00+04:00">19 August, 2012</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="/posts/">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="/achievements/" title="Achievements">Achievements</a></li>
+    
+      <li><a href="/no-for-stavka/" title="Ставка не нужна">Ставка не нужна</a></li>
+    
+      <li><a href="/ruby-the-grape-swagger-stack/" title="Минималистичный стек Grape + Swagger для микросервисов на Ruby">Минималистичный стек Grape + Swagger для микросервисов на Ruby</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    
+
+<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+	        
+
+</body>
+</html>
