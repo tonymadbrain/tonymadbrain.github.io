@@ -363,8 +363,79 @@ end
   ...
 {% endhighlight %}
 
+Для простоты мы проверяем @state на пустые строки. Таким образом, кнопка `Create` будет включаться и выключаться в зависимости от того есть ли данные в полях.
 
+<br>
+<img src="https://farm2.staticflickr.com/1550/24704314451_7131347d71_o.png">
+<br>
+<img src="https://farm2.staticflickr.com/1646/24502273410_dc01ef41aa_o.png">
+<br>
 
+Теперь когда у нас есть контроллер и готова форма, время отправлять наши новые записи на сервер. Нам нужно событие для обработки формы, добавим атрибут `onSubmit` в нашу форму и `handleSubmit` метод (таким же образом мы обрабатывали событие `onChange` ранее):
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/record_form.js.coffee
+
+@RecordForm = React.createClass
+  ...
+  handleSubmit: (e) ->
+    e.preventDefault()
+    $.post '', { record: @state }, (data) =>
+      @props.handleNewRecord data
+      @setState @getInitialState()
+    , 'JSON'
+
+  render: ->
+    React.DOM.form
+      className: 'form-inline'
+      onSubmit: @handleSubmit
+    ...
+{% endhighlight %}
+
+Давайте разберем новый метод построчно:
+
+1. предотвращаем отправку html формы
+2. постим (POST) данные новой записи на текущий URL
+3. колбек в случае успеха (success callback)
+
+Success callback это главная часть процесса, после успешного создания новой записи мы будем уведомлены об этом событии и `state` восстановится в свое дефолтное значение. Помните я упоминал что компоненты общаются между собой через @props? Вот, это оно. Наш текущий компонент отправляет данные обратно в родительский компонент через `@props.handleNewRecord` чтобы уведомить его о существовании новой записи.
+
+Как вы уже догадались, везде где мы создаем элемент `RecordForm` нам нужно передавать свойство `handleNewRecord` c возвращающим методом, что-то вроде `React.createElement RecordForm, handleNewRecord: @addRecord`. У нашего родительского компонента `Records` есть состояние со всеми существующими записями, нам нужно обновить его согласно добавленной записи.
+
+Добавим новый метод `addRecord` в файле `records.js.coffee` и создадим новый элемент `RecordForm`, сразу после заголовка h2 (внутри метода `render`)
+
+{% highlight coffeescript %}
+ # app/assets/javascripts/components/records.js.coffee
+
+@Records = React.createClass
+  ...
+  addRecord: (record) ->
+    records = @state.records.slice()
+    records.push record
+    @setState records: records
+  render: ->
+    React.DOM.div
+      className: 'records'
+      React.DOM.h2
+        className: 'title'
+        'Records'
+      React.createElement RecordForm, handleNewRecord: @addRecord
+      React.DOM.hr null
+    ...
+{% endhighlight %}
+
+Обновите вкладку, заполните форму новой записью и нажмите `Create` ... Никаких задержек, запись добавилась незамедлительно и форма очистилась после сабмита, оновите страницу снова, чтобы убедиться что бекенд сохранил новые данные.
+
+<br>
+<img src="https://farm2.staticflickr.com/1656/24798391695_99584043f6_o.png">
+<br>
+<br>
+
+Если вы использовали другие JS фреймворки с Rails (например AngularJS) чтобы реализовать похожие функции, вы могли столкнуться с проблемой отлупа вашего POST запроса потому что он не содержит CSRF токен, который требует Rails, почему мы не столкнулись с этим сейчас? Все просто, мы используем `jQuery` чтобы общаться с бекендом, и `jquery_ujs` драйвер будет добавлять CSRF токен в каждый AJAX запрос за нас. Круто!
+
+Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a>.
+
+Reusable Components: Amount Indicators
 
 
 
