@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>/hubot-script-for-developerslife-ru/</loc>
+    <lastmod>2016-02-04T21:42:55+03:00</lastmod>
+  </url>
+  <url>
     <loc>/achievements/</loc>
     <lastmod>2015-12-27T21:58:43+03:00</lastmod>
   </url>
@@ -723,6 +727,12 @@
   <url>
     <loc>/tag/achievements/</loc>
   </url>
+  <url>
+    <loc>/tag/hubot/</loc>
+  </url>
+  <url>
+    <loc>/tag/imhonet/</loc>
+  </url>
     <url>
       <loc>/tron-1982-i-tron-nasledie-togda-i-sejchas/</loc>
     </url>
@@ -929,6 +939,9 @@
     </url>
     <url>
       <loc>/achievements/</loc>
+    </url>
+    <url>
+      <loc>/hubot-script-for-developerslife-ru/</loc>
     </url>
   <url>
     <loc>/yandex_424342c6a390a9bc.html</loc>
