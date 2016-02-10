@@ -2,44 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Diary of madman</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://doam.ru//feed.xml" />
-<link rel="alternate" type="text/html" href="http://doam.ru/" />
-<updated>2016-02-10T11:19:12+03:00</updated>
-<id>http://doam.ru//</id>
+<link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
+<link rel="alternate" type="text/html" href="http://doam.ru" />
+<updated>2016-02-10T11:24:23+03:00</updated>
+<id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
-  <uri>http://doam.ru//</uri>
+  <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Hubot скрипт для developerslife.ru]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//hubot-script-for-developerslife-ru/" />
-  <id>http://doam.ru//hubot-script-for-developerslife-ru</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/hubot-script-for-developerslife-ru/" />
+  <id>http://doam.ru/hubot-script-for-developerslife-ru</id>
   <published>2016-02-04T21:42:55+03:00</published>
   <updated>2016-02-04T21:42:55+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
     &lt;p&gt;В качестве вступления: сейчас я работаю в проекте &lt;a href=&quot;http://imhonet.ru/&quot; target=&quot;_blank&quot;&gt;imhonet&lt;/a&gt; - это технически сложная система, у которой под капотом математический рекомендательный движок, а прикрыто все веб-мордой на PHP. К слову, сейчас команда активно переписывает фронтенд на ...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//hubot-script-for-developerslife-ru/&quot;&gt;Hubot скрипт для developerslife.ru&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on February 04, 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/hubot-script-for-developerslife-ru/&quot;&gt;Hubot скрипт для developerslife.ru&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on February 04, 2016.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[React.js - tutorial для Rails разработчиков (часть 1)]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//react-js-for-rails-developers-part-1/" />
-  <id>http://doam.ru//react-js-for-rails-developers</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/react-js-for-rails-developers-part-1/" />
+  <id>http://doam.ru/react-js-for-rails-developers</id>
   <published>2016-01-15T08:53:14+03:00</published>
   <updated>2016-01-15T08:53:14+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
@@ -51,38 +51,38 @@
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;Макет приложения&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;Создаем пр...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//react-js-for-rails-developers-part-1/&quot;&gt;React.js - tutorial для Rails разработчиков (часть 1)&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on January 15, 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/react-js-for-rails-developers-part-1/&quot;&gt;React.js - tutorial для Rails разработчиков (часть 1)&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on January 15, 2016.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Ставка не нужна]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//no-for-stavka/" />
-  <id>http://doam.ru//no-for-stavka</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/no-for-stavka/" />
+  <id>http://doam.ru/no-for-stavka</id>
   <published>2015-12-19T00:49:17+03:00</published>
   <updated>2015-12-19T00:49:17+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
     &lt;p&gt;В 2012 я попробовал зафиксировать некоторое свое состояние, чтобы сравнить с тем, каким оно будет через 4 года, описав это самое состояние на одной странице блога и сделав её главной. Сейчас я понимаю что это было полнейшим бредом, так как все меняется гораздо быстрее. Буквально каждую неделю ...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//no-for-stavka/&quot;&gt;Ставка не нужна&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on December 19, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/no-for-stavka/&quot;&gt;Ставка не нужна&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on December 19, 2015.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Минималистичный стек Grape + Swagger для микросервисов на Ruby]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//ruby-the-grape-swagger-stack/" />
-  <id>http://doam.ru//ruby-the-grape-swagger-stack</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/ruby-the-grape-swagger-stack/" />
+  <id>http://doam.ru/ruby-the-grape-swagger-stack</id>
   <published>2015-11-24T12:00:00+03:00</published>
   <updated>2015-11-24T12:00:00+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
@@ -94,20 +94,20 @@
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#grape--swagger&quot; id=&quot;markdown-toc-grape--swagger&quot;&gt;Пример микросервиса с Grape и Swagger&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;m...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//ruby-the-grape-swagger-stack/&quot;&gt;Минималистичный стек Grape + Swagger для микросервисов на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on November 24, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/ruby-the-grape-swagger-stack/&quot;&gt;Минималистичный стек Grape + Swagger для микросервисов на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 24, 2015.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Инструменты devOps]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//devops_tools/" />
-  <id>http://doam.ru//devops_tools</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/devops_tools/" />
+  <id>http://doam.ru/devops_tools</id>
   <published>2015-11-16T22:03:45+03:00</published>
   <updated>2015-11-16T22:03:45+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
@@ -115,20 +115,20 @@
 
 &lt;p&gt;&lt;br /&gt;
 &lt;img src=&quot;https://farm1.staticflickr.com/581/22860156877_dacb...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//devops_tools/&quot;&gt;Инструменты devOps&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on November 16, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/devops_tools/&quot;&gt;Инструменты devOps&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 16, 2015.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Понимание методов Enumerable методом реализации их на Ruby]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//understanding_enumerable_methods_by_re-implementing_them_in_ruby/" />
-  <id>http://doam.ru//understanding_enumerable_methods_by_re-implementing_them_in_ruby</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/understanding_enumerable_methods_by_re-implementing_them_in_ruby/" />
+  <id>http://doam.ru/understanding_enumerable_methods_by_re-implementing_them_in_ruby</id>
   <published>2015-10-21T17:26:45+03:00</published>
   <updated>2015-10-21T17:26:45+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
@@ -141,20 +141,20 @@
   &lt;li&gt;&lt;a href=&quot;#map&quot; id=&quot;markdown-toc-map&quot;&gt;map&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#find&quot; id=&quot;markdown-toc-find&quot;&gt;find&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#findall&quot; id...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//understanding_enumerable_methods_by_re-implementing_them_in_ruby/&quot;&gt;Понимание методов Enumerable методом реализации их на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on October 21, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/understanding_enumerable_methods_by_re-implementing_them_in_ruby/&quot;&gt;Понимание методов Enumerable методом реализации их на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 21, 2015.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" />
-  <id>http://doam.ru//how_to_build_a_rails_5_api_only_and_ember_application_from_scratch</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/" />
+  <id>http://doam.ru/how_to_build_a_rails_5_api_only_and_ember_application_from_scratch</id>
   <published>2015-10-09T22:39:13+03:00</published>
   <updated>2015-10-09T22:39:13+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
@@ -166,61 +166,61 @@
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;Создаем бекенд&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;Генер...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/&quot;&gt;Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on October 09, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/&quot;&gt;Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 09, 2015.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Оптимизируем работу Motorola Moto G (first gen.)]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/" />
-  <id>http://doam.ru//optimiziruem-rabotu-motorola-moto-g-first-gen</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/" />
+  <id>http://doam.ru/optimiziruem-rabotu-motorola-moto-g-first-gen</id>
   <published>2015-06-30T00:12:00+03:00</published>
   <updated>2015-06-30T00:12:00+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
     &lt;p&gt;Никогда не задумывался о скорости работы моего смартфона. Да он дешевый и, по сегодняшним меркам, слабый, но всегда делает свою работу, самое главное что устраивает диагональю экрана, тяжело найти подобное решение на рынке. Тормоза наблюдаются только при запуске “тяжелых” приложений и браузера...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/&quot;&gt;Оптимизируем работу Motorola Moto G (first gen.)&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on June 30, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/&quot;&gt;Оптимизируем работу Motorola Moto G (first gen.)&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on June 30, 2015.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Онлайн-школа Thinknetica.com]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//2015-06-14-about-thinknetica/" />
-  <id>http://doam.ru//about-thinknetica</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/2015-06-14-about-thinknetica/" />
+  <id>http://doam.ru/about-thinknetica</id>
   <published>2015-06-14T00:12:00+03:00</published>
   <updated>2015-06-14T00:12:00+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
     &lt;p&gt;Первый практический опыт с Rails у меня был по книге Майкла Хартла, и выполнив все практические занятия, включая деплой на хероку, кажется что должен был что-то запомнить, чему-то научиться, но ты по-прежнему смотришь в код и думаешь - как это, блин, работает? Модели, контроллеры, миграции, aj...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//2015-06-14-about-thinknetica/&quot;&gt;Онлайн-школа Thinknetica.com&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on June 14, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/2015-06-14-about-thinknetica/&quot;&gt;Онлайн-школа Thinknetica.com&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on June 14, 2015.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Рассуждения о СМИ]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru//2015-05-27-rassujdeniya-o-smi/" />
-  <id>http://doam.ru//rassujdeniya-o-smi</id>
+  <link rel="alternate" type="text/html" href="http://doam.ru/2015-05-27-rassujdeniya-o-smi/" />
+  <id>http://doam.ru/rassujdeniya-o-smi</id>
   <published>2015-05-27T00:12:00+03:00</published>
   <updated>2015-05-27T00:12:00+03:00</updated>
   <author>
     <name>Антон Рябов</name>
-    <uri>http://doam.ru/</uri>
+    <uri>http://doam.ru</uri>
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
     &lt;p&gt;Давно хочется записать свои размышления на эту тему. Сейчас я живу в Москве и здесь с этим проблем нет. Очень много источников информации. Быстро узнать о ситуациях в городе не проблема, хочешь просто твиттер читай, по тегам или подписавшись на разные каналы, хочешь просто по сайтам шарься, да...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru//2015-05-27-rassujdeniya-o-smi/&quot;&gt;Рассуждения о СМИ&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru/&quot;&gt;Diary of madman&lt;/a&gt; on May 27, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/2015-05-27-rassujdeniya-o-smi/&quot;&gt;Рассуждения о СМИ&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on May 27, 2015.&lt;/p&gt;
   </content>
 </entry>
 
