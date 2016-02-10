@@ -435,7 +435,107 @@ Success callback это главная часть процесса, после �
 
 Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a>.
 
-Reusable Components: Amount Indicators
+###Реюзабельные компоненты: Индикаторы остатка
+
+Какое может быть приложение без некоторых (милых) индикаторов? Давайте добавим блоки в верхней части с полезной информацией. Наша цель - показывать 3 значения: количество кредитных средств (total credit), количество дебетовых средств (total debit) и баланс (balance). Кажется что это работа для 3 компонентов или, может быть, для одного но со свойствами?
+
+Мы можем создать новый компонент `AmountBox`, который будет получать три свойства: amount, text и type. Создадим новый файл `amount_box.js.coffee` в каталоге `javascripts/components/` со следующим содержимым:
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/amount_box.js.coffee
+
+@AmountBox = React.createClass
+  render: ->
+    React.DOM.div
+      className: 'col-md-4'
+      React.DOM.div
+        className: "panel panel-#{ @props.type }"
+        React.DOM.div
+          className: 'panel-heading'
+          @props.text
+        React.DOM.div
+          className: 'panel-body'
+          amountFormat(@props.amount)
+{% endhighlight %}
+
+Мы используем элемент Bootstrap - панель, чтобы отображать инфорамцию блоками и установливать цвет через свойство `type`. Мы также добавили простой форматтер - amountFormat, который читает свойство `amount` и отображает его в формате валюты.
+
+
+По хорошему, чтобы иметь законченное решение, нам нужно создать такой элемент (3 раза) внутри нашего основного компонента и отправлять в него требуемые свойства в зависимости от того что мы хотим отобразить. Давайте сначала сделаем метод калькулятор, откроем компонент `Records` и добавим следующие методы:
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/records.js.coffee
+
+@Records = React.createClass
+  ...
+  credits: ->
+    credits = @state.records.filter (val) -> val.amount >= 0
+    credits.reduce ((prev, curr) ->
+      prev + parseFloat(curr.amount)
+    ), 0
+  debits: ->
+    debits = @state.records.filter (val) -> val.amount < 0
+    debits.reduce ((prev, curr) ->
+      prev + parseFloat(curr.amount)
+    ), 0
+  balance: ->
+    @debits() + @credits()
+  ...
+{% endhighlight %}
+
+`credits` суммирует все записи со значением больше 0, `debits` - суммирует все записи со значением меньше нуля и `balance` говорит сам за себя. Теперь, когда методы вычислители на месте, нам просто нужно создать элементы `AmountBox` внутри метода `render` (сразу над компонентом `RecordForm`)
+
+{% highlight coffeescript %}
+# app/assets/javascripts/components/records.js.coffee
+
+@Records = React.createClass
+  ...
+  render: ->
+    React.DOM.div
+      className: 'records'
+      React.DOM.h2
+        className: 'title'
+        'Records'
+      React.DOM.div
+        className: 'row'
+        React.createElement AmountBox, type: 'success', amount: @credits(), text: 'Credit'
+        React.createElement AmountBox, type: 'danger', amount: @debits(), text: 'Debit'
+        React.createElement AmountBox, type: 'info', amount: @balance(), text: 'Balance'
+      React.createElement RecordForm, handleNewRecord: @addRecord
+  ...
+{% endhighlight %}
+
+Мы закончили с этой фишкой! Обновите страницу в браузере, вы дожны увидеть три блока, отображющие суммы, которые мы вычислили ранее. Но погодите! Есть еще кое-что! Добавьте новую запись и посмотрите что произойдет...
+
+<br>
+<img src="https://farm2.staticflickr.com/1636/24300077614_84ea4aec71_o.png">
+<br>
+<br>
+
+Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a>.
+
+###`setState/replaceState`: Удаляем записи
+
+
+The next feature in our list is the ability to delete records, we need a new Actions column in our records table, this column will have a Delete button for each record, pretty standard UI. As in our previous example, we need to create the destroy method in our Rails controller:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
