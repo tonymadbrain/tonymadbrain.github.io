@@ -172,8 +172,8 @@
 
   <span class="c1"># метод для проверки новых постов</span>
   <span class="nv">getDevGifsDigest = </span><span class="nf">-&gt;</span>
-    <span class="c1"># получаем id комнаты, в которую будем слать новые гифки (можно захардкодить)</span>
-    <span class="nv">room = </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ROOM_FOR_DEV_GIFS</span>
+    <span class="c1"># получаем id комнаты, в которую будем слать новые гифки</span>
+    <span class="nv">room = </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">HUBOT_ROOM_FOR_DEV_GIFS</span>
 
     <span class="nx">robot</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;Start method sendDevGifDigest&quot;</span>
     <span class="c1"># дергаем из персистент (по дефолту redis) id последнего поста</span>
