@@ -6,18 +6,14 @@
 <head>
 <meta charset="utf-8">
 <title>Понимание методов Enumerable методом реализации их на Ruby &#8211; Diary of madman</title>
-<meta name="description" content="Enumerable в Руби является, безусловно, одним из самых лучших примеров как нужно делать модули. Он предоставляет большой набор методов, полезных для обработки структур данных и требуют от вас реализовать только один метод - each. Так, для любого класса, который будет вести себя как коллекция и реализовывать метод each, может быть использован Enumerable.
-
-">
+<meta name="description" content="Разбираемся что к чему">
 <meta name="theme-color" content="#00d900">
 <meta name="keywords" content="Ruby, Enumerable, Tutorial">
 
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Понимание методов Enumerable методом реализации их на Ruby">
-<meta name="twitter:description" content="Enumerable в Руби является, безусловно, одним из самых лучших примеров как нужно делать модули. Он предоставляет большой набор методов, полезных для обработки структур данных и требуют от вас реализовать только один метод - each. Так, для любого класса, который будет вести себя как коллекция и реализовывать метод each, может быть использован Enumerable.
-
-">
+<meta name="twitter:description" content="Разбираемся что к чему">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
 
@@ -28,9 +24,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Понимание методов Enumerable методом реализации их на Ruby">
-<meta property="og:description" content="Enumerable в Руби является, безусловно, одним из самых лучших примеров как нужно делать модули. Он предоставляет большой набор методов, полезных для обработки структур данных и требуют от вас реализовать только один метод - each. Так, для любого класса, который будет вести себя как коллекция и реализовывать метод each, может быть использован Enumerable.
-
-">
+<meta property="og:description" content="Разбираемся что к чему">
 <meta property="og:url" content="/understanding_enumerable_methods_by_re-implementing_them_in_ruby/">
 <meta property="og:site_name" content="Diary of madman">
 
@@ -98,7 +92,7 @@
 		    <ul>
 		        
 				    
-				    <li><a href="/posts/" >Записки</a></li>
+				    <li><a href="/posts/" >Все записи</a></li>
 				
 				    
 				    <li><a href="/cv/" >Резюме</a></li>
@@ -140,7 +134,7 @@
   
   
   
-  <a href="feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
 </div>
 
   </div>
@@ -151,7 +145,24 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p><a href="http://ruby-doc.org/core-2.2.3/Enumerable.html" target="_blank">Enumerable</a> в Руби является, безусловно, одним из самых лучших примеров как нужно делать модули. Он предоставляет большой набор методов, полезных для обработки структур данных и требуют от вас реализовать только один метод - <code>each</code>. Так, для любого класса, который будет вести себя как коллекция и реализовывать метод <code>each</code>, может быть использован <em>Enumerable</em>.</p>
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#map" id="markdown-toc-map">map</a></li>
+  <li><a href="#find" id="markdown-toc-find">find</a></li>
+  <li><a href="#findall" id="markdown-toc-findall">find_all</a></li>
+  <li><a href="#reduce" id="markdown-toc-reduce">reduce</a></li>
+  <li><a href="#reduce-magic" id="markdown-toc-reduce-magic">reduce magic</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p><a href="http://ruby-doc.org/core-2.2.3/Enumerable.html" target="_blank">Enumerable</a> в Руби является, безусловно, одним из самых лучших примеров как нужно делать модули. Он предоставляет большой набор методов, полезных для обработки структур данных и требуют от вас реализовать только один метод - <code>each</code>. Так, для любого класса, который будет вести себя как коллекция и реализовывать метод <code>each</code>, может быть использован <em>Enumerable</em>.</p>
 
 <blockquote>
   <p>От переводчика: <a href="http://mauricio.github.io/2015/01/12/implementing-enumerable-in-ruby.html" target="_blank">Оригинал статьи</a></p>
@@ -182,7 +193,7 @@
 
 <p>Здесь не так много кода, инклудим <code>CustomEnumerable</code> (нашу собственную реализацию <em>Enumerable</em>) и пишем враппер для Array. Также реализован метод <code>==</code>, который необязателен для функциональности <em>Enumerable</em>, но нужен нам чтобы легче использовать матчеры Rspec.</p>
 
-<h3 id="map"><code>map</code></h3>
+<h3 id="map">map</h3>
 
 <p>В документации про <code>map</code> написано:</p>
 
@@ -217,7 +228,7 @@
   <span class="n">expect</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">eq</span><span class="p">(</span><span class="o">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="o">]</span><span class="p">)</span>
 <span class="k">end</span></code></pre></figure>
 
-<h3 id="find"><code>find</code></h3>
+<h3 id="find">find</h3>
 
 <p>Вот что говорит документация о <code>find</code>:</p>
 
@@ -283,7 +294,7 @@
 
 <p>Все отлично, <code>find</code> возвращает первое совпадение в коллекции, но что если я хочу найти вернуть все значения внутри <em>Enumerable</em> удовлетворяющие критериям? Нам нужно использовать метод <code>find_all</code>!</p>
 
-<h3 id="findall"><code>find_all</code></h3>
+<h3 id="findall">find_all</h3>
 
 <p>Снова обратимся к документации:</p>
 
@@ -325,7 +336,7 @@
 
 <p>Даже если совпадений не будет, код вернет массив (хоть и пустой), так что при использовании <code>find_all</code> нужно не забывать проверять что массив имеет объекты или нет (вместо проверки на nil, как это было сделано в <code>find</code>).</p>
 
-<h3 id="reduce"><code>reduce</code></h3>
+<h3 id="reduce">reduce</h3>
 
 <p><code>reduce</code> или <code>inject</code> (также известный как <code>foldLeft</code> в других языках как OCaml или Scala) это метод который обрабатывает элементы <em>enum</em> применяя к ним блок, принимающий два параметра - аккумулятор (memo) и обрабатываемый элемент. На каждом шаге аккумулятору <em>memo</em> присваивается значение, возвращенное блоком. Первая форма позволяет присвоить аккумулятору некоторое исходное значение. Вторая форма в качестве исходного значения аккумулятора использует первый элемент коллекции (пропуская этот элемент при проходе). Хоть и звучит странно, это очень полезная функция.</p>
 
@@ -571,7 +582,7 @@
 
 <p>И это завершает реализацию метода <code>reduce</code>, посмотрите можете ли вы найти более быстрое или качественное решение, безусловно есть варианты лучше моего.</p>
 
-<h3 id="reduce-magic"><code>reduce</code> magic</h3>
+<h3 id="reduce-magic">reduce magic</h3>
 
 <p>Теперь, когда у нас есть реализация <code>reduce</code>, есть много методов, которые мы можем построить на его базе, например <code>min</code> и <code>max</code>:</p>
 
@@ -650,7 +661,7 @@
     
       <li><a href="/hubot-script-for-developerslife-ru/" title="Hubot скрипт для developerslife.ru">Hubot скрипт для developerslife.ru</a></li>
     
-      <li><a href="/achievements/" title="Achievements">Achievements</a></li>
+      <li><a href="/react-js-for-rails-developers-part-1/" title="React.js - tutorial для Rails разработчиков (часть 1)">React.js - tutorial для Rails разработчиков (часть 1)</a></li>
     
       <li><a href="/no-for-stavka/" title="Ставка не нужна">Ставка не нужна</a></li>
     

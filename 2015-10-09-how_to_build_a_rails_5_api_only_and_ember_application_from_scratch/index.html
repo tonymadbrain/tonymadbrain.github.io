@@ -6,18 +6,14 @@
 <head>
 <meta charset="utf-8">
 <title>Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля &#8211; Diary of madman</title>
-<meta name="description" content="Эта инструкция рассказывает как создать приложение на Rails API в качестве бекенда с Ember на фронтенде c нуля. Cтатья объединяет два поста на эту тему первый и второй.
-
-">
+<meta name="description" content="">
 <meta name="theme-color" content="#00d900">
 <meta name="keywords" content="Rails, Ember, Ruby, Javascript, API, Tutorial">
 
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля">
-<meta name="twitter:description" content="Эта инструкция рассказывает как создать приложение на Rails API в качестве бекенда с Ember на фронтенде c нуля. Cтатья объединяет два поста на эту тему первый и второй.
-
-">
+<meta name="twitter:description" content="">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
 
@@ -28,9 +24,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля">
-<meta property="og:description" content="Эта инструкция рассказывает как создать приложение на Rails API в качестве бекенда с Ember на фронтенде c нуля. Cтатья объединяет два поста на эту тему первый и второй.
-
-">
+<meta property="og:description" content="">
 <meta property="og:url" content="/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/">
 <meta property="og:site_name" content="Diary of madman">
 
@@ -98,7 +92,7 @@
 		    <ul>
 		        
 				    
-				    <li><a href="/posts/" >Записки</a></li>
+				    <li><a href="/posts/" >Все записи</a></li>
 				
 				    
 				    <li><a href="/cv/" >Резюме</a></li>
@@ -140,7 +134,7 @@
   
   
   
-  <a href="feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
 </div>
 
   </div>
@@ -151,7 +145,35 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Эта инструкция рассказывает как создать приложение на <a href="http://rubyonrails.org/" target="_blank">Rails</a> API в качестве бекенда с <a href="http://emberjs.com/" target="_blank">Ember</a> на фронтенде c нуля. Cтатья объединяет два поста на эту тему <a href="http://wyeworks.com/blog/2015/6/30/how-to-build-a-rails-5-api-only-and-ember-application" target="_blank">первый</a> и <a href="https://devmynd.com/blog/2014-7-rails-ember-js-with-the-ember-cli-redux-part-1-the-api-and-cms-with-ruby-on-rails" target="_blank">второй</a>.</p>
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">Создаем бекенд</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">Генерируем ресурс пользователи</a></li>
+      <li><a href="#json---" id="markdown-toc-json---">Установим JSON формат сериализации данных</a></li>
+      <li><a href="#cors" id="markdown-toc-cors">Установка CORS</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-2" id="markdown-toc-section-2">Создаем фронтенд</a>    <ul>
+      <li><a href="#ember-cli---" id="markdown-toc-ember-cli---">Установка Ember CLI и созадние фронтенд</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">Генерируем адаптер приложения</a></li>
+      <li><a href="#users--routerjs" id="markdown-toc-users--routerjs">Добавляем ресурс Users в router.js</a></li>
+      <li><a href="#user" id="markdown-toc-user">Генерируем модель User</a></li>
+      <li><a href="#usersindex" id="markdown-toc-usersindex">Генерируем маршрут Users/index</a></li>
+      <li><a href="#usersindex-1" id="markdown-toc-usersindex-1">Пишем шаблон для Users/index</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-4" id="markdown-toc-section-4">Тестируем приложение</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p>Эта инструкция рассказывает как создать приложение на <a href="http://rubyonrails.org/" target="_blank">Rails</a> API в качестве бекенда с <a href="http://emberjs.com/" target="_blank">Ember</a> на фронтенде c нуля. Cтатья объединяет два поста на эту тему <a href="http://wyeworks.com/blog/2015/6/30/how-to-build-a-rails-5-api-only-and-ember-application" target="_blank">первый</a> и <a href="https://devmynd.com/blog/2014-7-rails-ember-js-with-the-ember-cli-redux-part-1-the-api-and-cms-with-ruby-on-rails" target="_blank">второй</a>.</p>
 
 <p><br />
 <img src="https://farm2.staticflickr.com/1573/24190597350_e88e12cfd5_o.jpg" />
@@ -319,7 +341,7 @@ ember new my_ember_frontend
 <span class="nt">&lt;/ul&gt;</span>
 { {outlet}}</code></pre></figure>
 
-<h4 id="section-4">Тестируем приложение</h4>
+<h3 id="section-4">Тестируем приложение</h3>
 
 <p>Чтобы протестировать наше приложение, запустим в директроии Rails приложения:</p>
 
@@ -381,7 +403,7 @@ ember new my_ember_frontend
     
       <li><a href="/hubot-script-for-developerslife-ru/" title="Hubot скрипт для developerslife.ru">Hubot скрипт для developerslife.ru</a></li>
     
-      <li><a href="/achievements/" title="Achievements">Achievements</a></li>
+      <li><a href="/react-js-for-rails-developers-part-1/" title="React.js - tutorial для Rails разработчиков (часть 1)">React.js - tutorial для Rails разработчиков (часть 1)</a></li>
     
       <li><a href="/no-for-stavka/" title="Ставка не нужна">Ставка не нужна</a></li>
     

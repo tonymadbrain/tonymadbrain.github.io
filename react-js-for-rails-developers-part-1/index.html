@@ -6,34 +6,14 @@
 <head>
 <meta charset="utf-8">
 <title>React.js - tutorial для Rails разработчиков (часть 1) &#8211; Diary of madman</title>
-<meta name="description" content="
-  
-     Обзор
-  
-
-
-  
-
-
-
-">
+<meta name="description" content="Учимся работать с React в Rails">
 <meta name="theme-color" content="#00d900">
 <meta name="keywords" content="Ruby, Ruby on Rails, React, Tutorial">
 
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="React.js - tutorial для Rails разработчиков (часть 1)">
-<meta name="twitter:description" content="
-  
-     Обзор
-  
-
-
-  
-
-
-
-">
+<meta name="twitter:description" content="Учимся работать с React в Rails">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
 
@@ -44,25 +24,15 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React.js - tutorial для Rails разработчиков (часть 1)">
-<meta property="og:description" content="
-  
-     Обзор
-  
-
-
-  
-
-
-
-">
-<meta property="og:url" content="/react-js-for-rails-developers/">
+<meta property="og:description" content="Учимся работать с React в Rails">
+<meta property="og:url" content="/react-js-for-rails-developers-part-1/">
 <meta property="og:site_name" content="Diary of madman">
 
 
 
 
 
-<link rel="canonical" href="/react-js-for-rails-developers/">
+<link rel="canonical" href="/react-js-for-rails-developers-part-1/">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -122,7 +92,7 @@
 		    <ul>
 		        
 				    
-				    <li><a href="/posts/" >Записки</a></li>
+				    <li><a href="/posts/" >Все записи</a></li>
 				
 				    
 				    <li><a href="/cv/" >Резюме</a></li>
@@ -164,14 +134,14 @@
   
   
   
-  <a href="feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
 </div>
 
   </div>
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="/react-js-for-rails-developers/" rel="bookmark" title="React.js - tutorial для Rails разработчиков (часть 1)">React.js - tutorial для Rails разработчиков (часть 1)</a></h1>
+        <h1><a href="/react-js-for-rails-developers-part-1/" rel="bookmark" title="React.js - tutorial для Rails разработчиков (часть 1)">React.js - tutorial для Rails разработчиков (часть 1)</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
@@ -187,7 +157,7 @@
   <li><a href="#section-3" id="markdown-toc-section-3">Вложенные компоненты: список записей</a></li>
   <li><a href="#section-4" id="markdown-toc-section-4">Родитель-Потомок коммуникация: Создание записей</a></li>
   <li><a href="#section-5" id="markdown-toc-section-5">Реюзабельные компоненты: Индикаторы остатка</a></li>
-  <li><a href="#setstatereplacestate--" id="markdown-toc-setstatereplacestate--"><code>setState/replaceState</code>: Удаляем записи</a></li>
+  <li><a href="#section-6" id="markdown-toc-section-6">Вместо заключения</a></li>
 </ul>
 
   </div>
@@ -391,8 +361,6 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
 <img src="https://farm2.staticflickr.com/1628/24485535665_278d25ff67_o.png" />
 <br /></p>
 
-<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a>.</p>
-
 <h2 id="section-4">Родитель-Потомок коммуникация: Создание записей</h2>
 
 <p>Теперь когда мы отображаем все имеющиеся записи, будет неплохо добавить форму для создания новых записей, давайте добавим эту фичу в наше React/Rails приложение. В начале, нам нужно добавить метод в наш Rails контроллер (не забываем использовать <code>strongparams</code>):</p>
@@ -578,8 +546,6 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
 
 <p>Если вы использовали другие JS фреймворки с Rails (например AngularJS) чтобы реализовать похожие функции, вы могли столкнуться с проблемой отлупа вашего POST запроса потому что он не содержит CSRF токен, который требует Rails, почему мы не столкнулись с этим сейчас? Все просто, мы используем <code>jQuery</code> чтобы общаться с бекендом, и <code>jquery_ujs</code> драйвер будет добавлять CSRF токен в каждый AJAX запрос за нас. Круто!</p>
 
-<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a>.</p>
-
 <h2 id="section-5">Реюзабельные компоненты: Индикаторы остатка</h2>
 
 <p>Какое может быть приложение без некоторых (милых) индикаторов? Давайте добавим блоки в верхней части с полезной информацией. Наша цель - показывать 3 значения: количество кредитных средств (total credit), количество дебетовых средств (total debit) и баланс (balance). Кажется что это работа для 3 компонентов или, может быть, для одного но со свойствами?</p>
@@ -650,12 +616,16 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
 <br />
 <br /></p>
 
-<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a>.</p>
+<h2 id="section-6">Вместо заключения</h2>
 
-<h2 id="setstatereplacestate--"><code>setState/replaceState</code>: Удаляем записи</h2>
+<p>Так как материал получается довольно объемным, я решил разделить его на две части и это первая:</p>
 
-<p>The next feature in our list is the ability to delete records, we need a new Actions column in our records table, this column will have a Delete button for each record, pretty standard UI. As in our previous example, we need to create the destroy method in our Rails controller:</p>
+<ol>
+  <li><a href="http://doam.ru/react-js-for-rails-developers-part-1/" target="_blank">React.js - tutorial для Rails разработчиков (часть 1)</a></li>
+  <li>React.js - tutorial для Rails разработчиков (часть 2)</li>
+</ol>
 
+<p>Во второй части я напишу про <code>setState/replaceState</code>, удаление и редактирование записей, рефакторинг и <code>Reactive Data Flow</code>.</p>
 
       
         <a href="/tag/ruby">#Ruby</a>
@@ -673,16 +643,16 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=React.js - tutorial для Rails разработчиков (часть 1) %23doamru http://doam.ru/react-js-for-rails-developers/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=React.js - tutorial для Rails разработчиков (часть 1) %23doamru http://doam.ru/react-js-for-rails-developers-part-1/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="http://vk.com/share.php?url=http://doam.ru/react-js-for-rails-developers/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+      <a href="http://vk.com/share.php?url=http://doam.ru/react-js-for-rails-developers-part-1/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/react-js-for-rails-developers/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/react-js-for-rails-developers-part-1/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/react-js-for-rails-developers/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/react-js-for-rails-developers-part-1/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
@@ -701,9 +671,9 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
     
       <li><a href="/hubot-script-for-developerslife-ru/" title="Hubot скрипт для developerslife.ru">Hubot скрипт для developerslife.ru</a></li>
     
-      <li><a href="/achievements/" title="Achievements">Achievements</a></li>
-    
       <li><a href="/no-for-stavka/" title="Ставка не нужна">Ставка не нужна</a></li>
+    
+      <li><a href="/ruby-the-grape-swagger-stack/" title="Минималистичный стек Grape + Swagger для микросервисов на Ruby">Минималистичный стек Grape + Swagger для микросервисов на Ruby</a></li>
     
     </ul>
     <hr />
