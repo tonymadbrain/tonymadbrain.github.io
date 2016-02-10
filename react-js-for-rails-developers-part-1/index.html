@@ -145,7 +145,9 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <section id="table-of-contents" class="toc">
+      <p>React.js это новый популярный игрок из команды “Фреймворки JavaScript”, и он отличается своей простотой. Там где другие фреймворки реализуют полноценный MVC, можно сказать что React реализует только V (причем многие заменяют V в своих фреймворках на React). Приложения на React строятся на двух основных принципах: <em>Компоненты</em> (Components) и <em>Состояния</em> (States). Компоненты могут быть сделаны из других компонентов поменьше, встроенных или кастомных; Состояния это, как называют его ребята из Facebook - <em>one-way reactive data flow</em>, означает что наш UI будет реагировать на каждое изменение состояния.</p>
+
+<section id="table-of-contents" class="toc">
   <header>
     <h3><i class="fa fa-book"></i> Обзор</h3>
   </header>
@@ -164,11 +166,13 @@
 </section>
 <!-- /#table-of-contents -->
 
-<p>React.js это новый популярный игрок из команды “Фреймворки JavaScript”, и он отличается своей простотой. Там где другие фреймворки реализуют полноценный MVC, можно сказать что React реализует только V (причем многие заменяют V в своих фреймворках на React). Приложения на React строятся на двух основных принципах: <em>Компоненты</em> (Components) и <em>Состояния</em> (States). Компоненты могут быть сделаны из других компонентов поменьше, встроенных или кастомных; Состояния это, как называют его ребята из Facebook - <em>one-way reactive data flow</em>, означает что наш UI будет реагировать на каждое изменение состояния.</p>
-
 <p><br />
 <img src="https://farm2.staticflickr.com/1480/23858108174_a563951ceb_o.jpg" />
 <br /></p>
+
+<blockquote>
+  <p>От переводчика: <a href="https://www.airpair.com/reactjs/posts/reactjs-a-guide-for-rails-developers" target="_blank">Оригинал статьи</a></p>
+</blockquote>
 
 <p>Одна из хороших вещей в React это то, что он не требует дополнительных зависимостей, что делает его подключаемым с практически любой JS библиотекой. Воспользовавшись этой функцией, мы собираемся включить его в наш Rails стек и построить <em>frontend-powered</em> приложение, или, если пожелаете, Rails вьюхи на стероидах.</p>
 
@@ -361,6 +365,8 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
 <img src="https://farm2.staticflickr.com/1628/24485535665_278d25ff67_o.png" />
 <br /></p>
 
+<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a>.</p>
+
 <h2 id="section-4">Родитель-Потомок коммуникация: Создание записей</h2>
 
 <p>Теперь когда мы отображаем все имеющиеся записи, будет неплохо добавить форму для создания новых записей, давайте добавим эту фичу в наше React/Rails приложение. В начале, нам нужно добавить метод в наш Rails контроллер (не забываем использовать <code>strongparams</code>):</p>
@@ -546,6 +552,8 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
 
 <p>Если вы использовали другие JS фреймворки с Rails (например AngularJS) чтобы реализовать похожие функции, вы могли столкнуться с проблемой отлупа вашего POST запроса потому что он не содержит CSRF токен, который требует Rails. Почему мы не столкнулись с этим сейчас? Все просто, мы используем <code>jQuery</code> чтобы общаться с бекендом, и <code>jquery_ujs</code> драйвер будет добавлять CSRF токен в каждый AJAX запрос за нас. Круто!</p>
 
+<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a>.</p>
+
 <h2 id="section-5">Реюзабельные компоненты: Индикаторы остатка</h2>
 
 <p>Какое приложение может быть без (милых) индикаторов? Давайте добавим блоки в верхней части с полезной информацией. Наша цель - показывать 3 значения: количество кредитных средств (total credit), количество дебетовых средств (total debit) и баланс (balance). Кажется что это работа для 3 компонентов или, может быть, для одного но со свойствами?</p>
@@ -616,6 +624,8 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
 <br />
 <br /></p>
 
+<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a>.</p>
+
 <h2 id="section-6">Вместо заключения</h2>
 
 <p>Так как материал получается довольно объемным, я решил разделить его на две части и это первая:</p>
@@ -625,7 +635,7 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
   <li>React.js - tutorial для Rails разработчиков (часть 2)</li>
 </ol>
 
-<p>Во второй части я напишу про <code>setState/replaceState</code>, удаление и редактирование записей, рефакторинг и <code>Reactive Data Flow</code>.</p>
+<p>Вторая часть будет про <code>setState/replaceState</code>, удаление и редактирование записей, рефакторинг и <code>Reactive Data Flow</code>.</p>
 
       
         <a href="/tag/ruby">#Ruby</a>

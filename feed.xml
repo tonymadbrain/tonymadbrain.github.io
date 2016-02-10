@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2016-02-10T13:39:04+03:00</updated>
+<updated>2016-02-10T21:00:51+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
@@ -43,14 +43,7 @@
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
-    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
-  &lt;header&gt;
-    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
-  &lt;/header&gt;
-&lt;div id=&quot;drawer&quot;&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;Макет приложения&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;Создаем пр...
+    &lt;p&gt;React.js это новый популярный игрок из команды “Фреймворки JavaScript”, и он отличается своей простотой. Там где другие фреймворки реализуют полноценный MVC, можно сказать что React реализует только V (причем многие заменяют V в своих фреймворках на React). Приложения на React строятся на двух...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/react-js-for-rails-developers-part-1/&quot;&gt;React.js - tutorial для Rails разработчиков (часть 1)&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on January 15, 2016.&lt;/p&gt;
   </content>
 </entry>
@@ -86,14 +79,7 @@
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
-    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
-  &lt;header&gt;
-    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
-  &lt;/header&gt;
-&lt;div id=&quot;drawer&quot;&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#grape--swagger&quot; id=&quot;markdown-toc-grape--swagger&quot;&gt;Пример микросервиса с Grape и Swagger&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;m...
+    &lt;p&gt;Микросервисы сейчас очень популярны и используются в различных архитектурах и средах. Слова Ruby и микросервисы, принято связывать с великолепным минималистичным фреймворком &lt;em&gt;Sinatra&lt;/em&gt;. Есть много хороших ruby микро-фреймворков, но &lt;a href=&quot;http://www.ruby-grape.org/&quot; target=&quot;_blank&quot;&gt;Gra...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/ruby-the-grape-swagger-stack/&quot;&gt;Минималистичный стек Grape + Swagger для микросервисов на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 24, 2015.&lt;/p&gt;
   </content>
 </entry>
@@ -132,15 +118,7 @@
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
-    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
-  &lt;header&gt;
-    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
-  &lt;/header&gt;
-&lt;div id=&quot;drawer&quot;&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#map&quot; id=&quot;markdown-toc-map&quot;&gt;map&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#find&quot; id=&quot;markdown-toc-find&quot;&gt;find&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#findall&quot; id...
+    &lt;p&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.2.3/Enumerable.html&quot; target=&quot;_blank&quot;&gt;Enumerable&lt;/a&gt; в Руби является, безусловно, одним из самых лучших примеров как нужно делать модули. Он предоставляет большой набор методов, полезных для обработки структур данных и требуют от вас реализовать только один м...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/understanding_enumerable_methods_by_re-implementing_them_in_ruby/&quot;&gt;Понимание методов Enumerable методом реализации их на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 21, 2015.&lt;/p&gt;
   </content>
 </entry>
@@ -158,14 +136,7 @@
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
-    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
-  &lt;header&gt;
-    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
-  &lt;/header&gt;
-&lt;div id=&quot;drawer&quot;&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;Создаем бекенд&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;Генер...
+    &lt;p&gt;Эта инструкция рассказывает как создать приложение на &lt;a href=&quot;http://rubyonrails.org/&quot; target=&quot;_blank&quot;&gt;Rails&lt;/a&gt; API в качестве бекенда с &lt;a href=&quot;http://emberjs.com/&quot; target=&quot;_blank&quot;&gt;Ember&lt;/a&gt; на фронтенде c нуля. Cтатья объединяет два поста на эту тему &lt;a href=&quot;http://wyeworks.com/blog/2015...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/&quot;&gt;Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 09, 2015.&lt;/p&gt;
   </content>
 </entry>
