@@ -5,7 +5,7 @@ permalink: /react-js-for-rails-developers-part-1/
 excerpt: Учимся работать с React в Rails
 tags:
   - Ruby
-  - Ruby on Rails
+  - RubyOnRails
   - React
   - Tutorial
 date: 2016-01-15T08:53:14+03:00
