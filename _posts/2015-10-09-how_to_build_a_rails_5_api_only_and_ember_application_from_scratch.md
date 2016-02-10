@@ -12,10 +12,9 @@ tags:
   - API
   - Tutorial
 ---
+Эта инструкция рассказывает как создать приложение на <a href="http://rubyonrails.org/" target="_blank">Rails</a> API в качестве бекенда с <a href="http://emberjs.com/" target="_blank">Ember</a> на фронтенде c нуля. Cтатья объединяет два поста на эту тему <a href="http://wyeworks.com/blog/2015/6/30/how-to-build-a-rails-5-api-only-and-ember-application" target="_blank">первый</a> и <a href="https://devmynd.com/blog/2014-7-rails-ember-js-with-the-ember-cli-redux-part-1-the-api-and-cms-with-ruby-on-rails" target="_blank">второй</a>.
 
 {% include _toc.html %}
-
-Эта инструкция рассказывает как создать приложение на <a href="http://rubyonrails.org/" target="_blank">Rails</a> API в качестве бекенда с <a href="http://emberjs.com/" target="_blank">Ember</a> на фронтенде c нуля. Cтатья объединяет два поста на эту тему <a href="http://wyeworks.com/blog/2015/6/30/how-to-build-a-rails-5-api-only-and-ember-application" target="_blank">первый</a> и <a href="https://devmynd.com/blog/2014-7-rails-ember-js-with-the-ember-cli-redux-part-1-the-api-and-cms-with-ruby-on-rails" target="_blank">второй</a>.
 
 <br>
 <img src="https://farm2.staticflickr.com/1573/24190597350_e88e12cfd5_o.jpg">

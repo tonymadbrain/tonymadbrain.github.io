@@ -13,10 +13,9 @@ tags:
   - Tutorial
 date: 2015-11-24T12:00:00+03:00
 ---
+Микросервисы сейчас очень популярны и используются в различных архитектурах и средах. Слова Ruby и микросервисы, принято связывать с великолепным минималистичным фреймворком *Sinatra*. Есть много хороших ruby микро-фреймворков, но <a href="http://www.ruby-grape.org/" target="_blank">Grape</a> вместе с <a href="http://swagger.io/swagger-ui/" target="_blank">Swagger UI</a> через гем <a href="https://github.com/ruby-grape/grape-swagger" target="_blank">swagger</a> действительно крут как быстрое, чистое и законченное решение. С <a href="https://github.com/ruby-grape/grape" target="_blank">Grape</a> + <a href="https://github.com/swagger-api/swagger-ui" target="_blank">Swagger UI</a> мы можем создавать Restful API сервис при этом имея автоматически сгенерированный GUI для тестов и отладки API.
 
 {% include _toc.html %}
-
-Микросервисы сейчас очень популярны и используются в различных архитектурах и средах. Слова Ruby и микросервисы, принято связывать с великолепным минималистичным фреймворком *Sinatra*. Есть много хороших ruby микро-фреймворков, но <a href="http://www.ruby-grape.org/" target="_blank">Grape</a> вместе с <a href="http://swagger.io/swagger-ui/" target="_blank">Swagger UI</a> через гем <a href="https://github.com/ruby-grape/grape-swagger" target="_blank">swagger</a> действительно крут как быстрое, чистое и законченное решение. С <a href="https://github.com/ruby-grape/grape" target="_blank">Grape</a> + <a href="https://github.com/swagger-api/swagger-ui" target="_blank">Swagger UI</a> мы можем создавать Restful API сервис при этом имея автоматически сгенерированный GUI для тестов и отладки API.
 
 <br>
 <img src="https://farm1.staticflickr.com/668/23256264136_af84046e42_o.jpg">
