@@ -27,8 +27,8 @@ module.exports = (robot)->
 
   # метод для проверки новых постов
   getDevGifsDigest = ->
-    # получаем id комнаты, в которую будем слать новые гифки (можно захардкодить)
-    room = process.env.ROOM_FOR_DEV_GIFS
+    # получаем id комнаты, в которую будем слать новые гифки
+    room = process.env.HUBOT_ROOM_FOR_DEV_GIFS
 
     robot.logger.info "Start method sendDevGifDigest"
     # дергаем из персистент (по дефолту redis) id последнего поста
