@@ -2,47 +2,46 @@
 title: Рецепт приготовления debian на нетбуке
 layout: post
 permalink: /retsept-prigotovleniya-debian-na-netbuke/
-slider_image:
-  - 
-categories:
-  - Debian
-  - root
-  - Soft
 tags:
   - Сonky
   - Debian
   - Linux
   - Openbox
   - Tint2
-  - Конфиги
 ---
 
-На новой работе, я понял, что операционная система windows абсолютно неудобная и не функциональная в контексте задач моего рабочего поста. И перешел к более полному познанию linux. Наиболее привлекательной для меня является ос debian, её и решено было использовать на моем нетбуке samsung n150. За пару месяцев затачивания ос &#171;под себя", я умудрился несколько раз переустановить основную систему, зато это помогло довести процесс установки практически до автоматизма. Ниже будет представлен мой рецепт приготовления debian, с индивидуальным набором приправ =)
+На новой работе, я понял, что операционная система windows абсолютно неудобная и не функциональная в контексте задач моего рабочего поста. И перешел к более полному познанию linux. Наиболее привлекательной для меня является ос debian, её и решено было использовать на моем нетбуке samsung n150. За пару месяцев затачивания ос "под себя", я умудрился несколько раз переустановить основную систему, зато это помогло довести процесс установки практически до автоматизма. Ниже будет представлен мой рецепт приготовлния debian, с индивидуальным набором приправ :)
 
-<figure>
-  <a href="https://c1.staticflickr.com/1/548/18987331111_84c4d84b84_h.jpg"><img src="https://c1.staticflickr.com/1/548/18987331111_84c4d84b84_h.jpg"></a>
-</figure>
+<br>
+<img  src="https://farm2.staticflickr.com/1643/24812267002_6b2148e948_o.jpg">
+<br>
+<br>
 
-Итак, приступим. Debian полностью поддерживает все железо моего бука &#171;из коробки", поэтому париться с драйверами особо не придется. Загрузочную флешку я всегда создаю с помощью ultraiso, google поможет в случае возникновения вопросов.  
-Установку основной системы я описывать не буду, скажу только, что лучше делать это с втыкнутым ethernet кабелем и сервером dhcp, так же советую использовать зеркало Яндекса. Так как windows мне все-таки нужен, для редких задач, под linux я выделил 120 гигабайт пространства на винчестере моего малыша samsung&#8217;a, 4 из них ушли под своп раздел (нет не много, я считаю, что swap раздел должен в два раза превышать объем оперативной памяти, и хоть пока в буке установлен 1 гигабайт, в дальнейшем я планирую заменить планку на 2 гиговую), 20 ушли под / &#8212; корень системы, а все оставшееся отдал на съедение разделу home.
+Итак, приступим. Debian полностью поддерживает все железо моего бука "из коробки", поэтому париться с драйверами особо не придется. Загрузочную флешку я всегда создаю с помощью ultraiso, google поможет в случае возникновения вопросов.
+Установку основной системы я описывать не буду, скажу только, что лучше делать это с втыкнутым ethernet кабелем и сервером dhcp, так же советую использовать зеркало Яндекса. Так как windows мне все-таки нужен, для редких задач, под linux я выделил 120 гигабайт пространства на винчестере моего малыша samsung'a, 4 из них ушли под своп раздел (нет не много, я считаю, что swap раздел должен в два раза превышать объем оперативной памяти, и хоть пока в буке установлен 1 гигабайт, в дальнейшем я планирую заменить планку на 2 гиговую), 20 ушли под / - корень системы, а все оставшееся отдал на съедение разделу home.
 
 Первым делом после запуска системы логинимся под рутом (надеюсь единственный раз) и редактируем файлик /etc/sudoers это можно сделать так же командой visudo. После строк
 
 {% highlight bash %}
-# User privilege specification  
+# User privilege specification
 root ALL=(ALL) ALL
 {% endhighlight %}
 
-добавляем запись типа: 
+добавляем запись типа:
 {% highlight bash %}
 user ALL=(ALL) NOPASSWD:ALL
 {% endhighlight %}
 
-Где user ваше имя пользователя. После чего для получения прав суперпользователя нам не потребуется логиниться, а нужно будет всего лишь перед необходимой командой добавить &#8212; sudo, что означает выполнять от суперпользователя. Продолжаем, теперь отредактируем файл /etc/apt/sources.list в нем необходимо за комментировать строчку с cdrom (обычно первая), и добавить ftp репозиторий  
-deb http://ftp.debian.org/debian/ squeeze main non-free contrib  
-deb-src http://ftp.debian.org/debian/ squeeze main non-free contrib  
+Где `user` ваше имя пользователя. После чего для получения прав суперпользователя нам не потребуется логиниться, а нужно будет всего лишь перед необходимой командой добавить - sudo, что означает выполнять от суперпользователя. Продолжаем, теперь отредактируем файл /etc/apt/sources.list в нем необходимо за комментировать строчку с cdrom (обычно первая), и добавить ftp репозиторий
+
+{% highlight bash %}
+deb http://ftp.debian.org/debian/ squeeze main non-free contrib
+deb-src http://ftp.debian.org/debian/ squeeze main non-free contrib
+{% endhighlight %}
+
 После этого выполнить
-{% highlight bash %}  
+
+{% highlight bash %}
 sudo apt-get update
 {% endhighlight %}
 
@@ -52,8 +51,8 @@ sudo apt-get update
 sudo apt-get install x-window-system openbox slim libreoffice guake wicd psi qbittorent thunar xarchiver gedit iceweasel flashplugin-nonfree grandr tint2 conky feh menu
 {% endhighlight %}
 
-После установки всех пакетов уходим в ребут, логинимся, и видим серый экран и курсор мыши оО. Не удивляйтесь, так и должно быть) По нажатии правой кнопки мыши мы можем лицезреть меню openbox в котором уже должен быть пункт debian, где можно найти все установленные программы.  
-Дальше все очень просто в каталоге /$HOME/.conig/ находим папки с конфигами openbox, tint2 и conky, редактируем конфигурационные файлы и наслаждаемся приятной работой отличной операционной системы ^^). Для примера ниже приведу свои конфиги, скажу только, что они не сильно изменены, ибо мне много не нужно =).  
+После установки всех пакетов уходим в ребут, логинимся, и видим серый экран и курсор мыши оО. Не удивляйтесь, так и должно быть) По нажатии правой кнопки мыши мы можем лицезреть меню openbox в котором уже должен быть пункт debian, где можно найти все установленные программы.
+Дальше все очень просто в каталоге /$HOME/.conig/ находим папки с конфигами openbox, tint2 и conky, редактируем конфигурационные файлы и наслаждаемся приятной работой отличной операционной системы ^^). Для примера ниже приведу свои конфиги, скажу только, что они не сильно изменены, ибо мне много не нужно =).
 
 *autostart.sh*
 
@@ -69,37 +68,37 @@ psi &
 *rc.xml*(только мною добавленные секции, для регулировки звука и подсветки)
 
 {% highlight bash %}
-<!-- zvuk + --> 
-  <keybind key="XF86AudioRaiseVolume"> 
+<!-- zvuk + -->
+  <keybind key="XF86AudioRaiseVolume">
     <action name="Execute">
-      <command>amixer set Master 2+</command> 
-    </action> 
-  </keybind> 
-  <keybind key="XF86AudioLowerVolume"> 
+      <command>amixer set Master 2+</command>
+    </action>
+  </keybind>
+  <keybind key="XF86AudioLowerVolume">
     <action name="Execute">
-      <command>amixer set Master 2-</command> 
-    </action> 
-  </keybind> 
+      <command>amixer set Master 2-</command>
+    </action>
+  </keybind>
   <keybind key="XF86AudioMute">
     <action name="Execute">
-      <command>amixer set Master toggle</command> 
-    </action> 
-  </keybind> 
-<!--PODSVETKA--> 
-  <keybind key="XF86MonBrightnessUp"> 
-    <action name="Execute">
-      <command>sudo setpci -s 00:02.0 f4.b=99</command> 
-    </action> 
+      <command>amixer set Master toggle</command>
+    </action>
   </keybind>
-  <keybind key="XF86MonBrightnessDown"> 
+<!--PODSVETKA-->
+  <keybind key="XF86MonBrightnessUp">
     <action name="Execute">
-      <command>sudo setpci -s 00:02.0 f4.b=30</command> 
-    </action> 
-  </keybind> 
-  <keybind key="XF86Launch1"> 
+      <command>sudo setpci -s 00:02.0 f4.b=99</command>
+    </action>
+  </keybind>
+  <keybind key="XF86MonBrightnessDown">
     <action name="Execute">
-      <command>sudo setpci -s 00:02.0 f4.b=00</command> 
-    </action> 
+      <command>sudo setpci -s 00:02.0 f4.b=30</command>
+    </action>
+  </keybind>
+  <keybind key="XF86Launch1">
+    <action name="Execute">
+      <command>sudo setpci -s 00:02.0 f4.b=00</command>
+    </action>
   </keybind>
 {% endhighlight %}
 
@@ -286,7 +285,7 @@ mouse_scroll_down = none
 # Battery
 battery = 1
 battery_low_status = 20
-battery_low_cmd = notify-send &#171;battery low"
+battery_low_cmd = notify-send "battery low"
 battery_hide = 0
 bat1_font = FreeSans 11
 bat2_font = FreeSans 11
