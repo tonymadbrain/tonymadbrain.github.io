@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Инструменты devOps"
+excerpt: То что может быть полезно как админстратору так и разработчику
 tags:
   - DevOps
   - Tools

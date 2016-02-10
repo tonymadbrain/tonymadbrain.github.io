@@ -2,6 +2,7 @@
 layout: post
 title: "Онлайн-школа Thinknetica.com"
 permalink: /2015-06-14-about-thinknetica/
+excerpt: Обзор школы после прохождения курса профессиональной разработки на Rails
 date: 2015-06-14T00:12:00+03:00
 tags:
   - E-learning

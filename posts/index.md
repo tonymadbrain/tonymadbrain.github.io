@@ -1,5 +1,5 @@
 ---
 layout: post-index
-title: Записки
+title: Все записи
 excerpt: "Список всех записей блога"
 ---

@@ -2,6 +2,7 @@
 layout: post
 title: "Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля"
 permalink: /2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/
+excerpt: ""
 date: 2015-10-09T22:39:13+03:00
 tags:
   - Rails
@@ -11,6 +12,8 @@ tags:
   - API
   - Tutorial
 ---
+
+{% include _toc.html %}
 
 Эта инструкция рассказывает как создать приложение на <a href="http://rubyonrails.org/" target="_blank">Rails</a> API в качестве бекенда с <a href="http://emberjs.com/" target="_blank">Ember</a> на фронтенде c нуля. Cтатья объединяет два поста на эту тему <a href="http://wyeworks.com/blog/2015/6/30/how-to-build-a-rails-5-api-only-and-ember-application" target="_blank">первый</a> и <a href="https://devmynd.com/blog/2014-7-rails-ember-js-with-the-ember-cli-redux-part-1-the-api-and-cms-with-ruby-on-rails" target="_blank">второй</a>.
 
@@ -201,7 +204,7 @@ export default Ember.Route.extend({
 { {outlet}}
 {% endhighlight %}
 
-####Тестируем приложение
+###Тестируем приложение
 
 Чтобы протестировать наше приложение, запустим в директроии Rails приложения:
 

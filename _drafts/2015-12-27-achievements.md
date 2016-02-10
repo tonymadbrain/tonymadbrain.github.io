@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Achievements
+excerpt: просто некоторые достижения
 tags:
   - root
   - achievements
