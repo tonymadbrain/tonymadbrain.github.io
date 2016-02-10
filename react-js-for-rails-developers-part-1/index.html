@@ -229,7 +229,7 @@
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">rails g resource Record title date:date amount:float</code></pre></figure>
 
-<p>Чуть чуть магии и у нас будет готовый ресурс <code>Record</code>, включающий модель, контроллер и машруты. Остается только создать базу данных и запустить миграции.</p>
+<p>Чуть чуть магии и у нас будет готовый ресурс <code>Record</code>, включающий модель, контроллер и маршруты. Остается только создать базу данных и запустить миграции.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">rake db:create db:migrate</code></pre></figure>
 
@@ -310,9 +310,9 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
   <span class="nv">render: </span><span class="nf">-&gt;</span>
     <span class="p">...</span></code></pre></figure>
 
-<p>Метод <code>getDefaultProps</code> будет выставлять свойства нашего компонента в случае, если мы забыли отправить какие-либо данные при его инициализации, и метод <code>getInitialState</code> будет генерировать начальное состояние наних компонентов. Теперь нам нужно отобразить записи предоставленные нам вьюхой Rails.</p>
+<p>Метод <code>getDefaultProps</code> будет выставлять свойства нашего компонента в случае, если мы забыли отправить какие-либо данные при его инициализации, и метод <code>getInitialState</code> будет генерировать начальное состояние наших компонентов. Теперь нам нужно отобразить записи предоставленные нам вьюхой Rails.</p>
 
-<p>Похоже нам нужен хелпер чтобы форматировать строку с суммой (amount), мы можем написать простой форматтер строк и сделать его доступным для всех наших coffe файлов. Создадим новый файл <code>utils.js.coffee</code> в каталоге <code>javascripts/</code> со следующим содержимым:</p>
+<p>Похоже нам нужен хелпер чтобы форматировать строку с суммой (amount), мы можем написать простой форматтер строк и сделать его доступным для всех наших coffee файлов. Создадим новый файл <code>utils.js.coffee</code> в каталоге <code>javascripts/</code> со следующим содержимым:</p>
 
 <figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/utils.js.coffee</span>
 
@@ -353,7 +353,7 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
           <span class="k">for</span> <span class="nx">record</span> <span class="k">in</span> <span class="nx">@state</span><span class="p">.</span><span class="nx">records</span>
             <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">Record</span><span class="p">,</span> <span class="nv">key: </span><span class="nx">record</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nv">record: </span><span class="nx">record</span></code></pre></figure>
 
-<p>Мы создали таблицу со строкой заголовком и внутри тела таблицы мы создали элемент Record для каждой существующей записи. Другими словами, мы угнездили встроенный и кастомный React компоненеты. Круто да?</p>
+<p>Мы создали таблицу со строкой заголовком и внутри тела таблицы мы создали элемент Record для каждой существующей записи. Другими словами, мы угнездили встроенный и кастомный React компоненеты. Круто, да?</p>
 
 <p>Чтобы React не тратил много времени на обновление нашего UI, при создании элемента Record, вместе с ним мы посылаем ключ: <code>record.id</code>. Если мы так не сделаем, то увидим предупреждение в консоли браузера (и скорее всего получим головную боль в дальнейшем).</p>
 
@@ -443,7 +443,7 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
     <span class="nx">@setState</span> <span class="s">&quot;</span><span class="si">#{</span> <span class="nx">name</span> <span class="si">}</span><span class="s">&quot;</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span>
   <span class="p">...</span></code></pre></figure>
 
-<p>Мы используем интерполяцию строк чтобы динамически определять ключи объектов, эквивалент <code>@setState title: e.target.value</code> когда <code>name</code> равно <code>title</code>. Но зачем нам использовать <code>@setState</code>? Почему мы не можем просто засетить желаемое значение для @state как мы обычно это делаем в регулярных JS объектах? Потому что <code>@setState</code> будет выполнять 2 действия:</p>
+<p>Мы используем интерполяцию строк чтобы динамически определять ключи объектов, эквивалент <code>@setState title: e.target.value</code> когда <code>name</code> равно <code>title</code>. Но зачем нам использовать <code>@setState</code>? Почему мы не можем просто засетить желаемое значение для <code>@state</code> как мы обычно это делаем в регулярных JS объектах? Потому что <code>@setState</code> будет выполнять 2 действия:</p>
 
 <ol>
   <li>Обновлять состояния компонента</li>
@@ -478,7 +478,7 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
     <span class="nx">@state</span><span class="p">.</span><span class="nx">title</span> <span class="o">&amp;&amp;</span> <span class="nx">@state</span><span class="p">.</span><span class="nx">date</span> <span class="o">&amp;&amp;</span> <span class="nx">@state</span><span class="p">.</span><span class="nx">amount</span>
   <span class="p">...</span></code></pre></figure>
 
-<p>Для простоты мы проверяем @state на пустые строки. Таким образом, кнопка <code>Create</code> будет включаться и выключаться в зависимости от того есть ли данные в полях.</p>
+<p>Для простоты мы проверяем <code>@state</code> на пустые строки. Таким образом, кнопка <code>Create</code> будет включаться и выключаться в зависимости от того есть ли данные в полях.</p>
 
 <p><br />
 <img src="https://farm2.staticflickr.com/1550/24704314451_7131347d71_o.png" />
@@ -537,18 +537,18 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
       <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">hr</span> <span class="kc">null</span>
     <span class="p">...</span></code></pre></figure>
 
-<p>Обновите вкладку, заполните форму новой записью и нажмите <code>Create</code> … Никаких задержек, запись добавилась незамедлительно и форма очистилась после сабмита, оновите страницу снова, чтобы убедиться что бекенд сохранил новые данные.</p>
+<p>Обновите вкладку, заполните форму новой записью и нажмите <code>Create</code> … Никаких задержек, запись добавилась незамедлительно и форма очистилась после сабмита, обновите страницу снова, чтобы убедиться что бекенд сохранил новые данные.</p>
 
 <p><br />
 <img src="https://farm2.staticflickr.com/1656/24798391695_99584043f6_o.png" />
 <br />
 <br /></p>
 
-<p>Если вы использовали другие JS фреймворки с Rails (например AngularJS) чтобы реализовать похожие функции, вы могли столкнуться с проблемой отлупа вашего POST запроса потому что он не содержит CSRF токен, который требует Rails, почему мы не столкнулись с этим сейчас? Все просто, мы используем <code>jQuery</code> чтобы общаться с бекендом, и <code>jquery_ujs</code> драйвер будет добавлять CSRF токен в каждый AJAX запрос за нас. Круто!</p>
+<p>Если вы использовали другие JS фреймворки с Rails (например AngularJS) чтобы реализовать похожие функции, вы могли столкнуться с проблемой отлупа вашего POST запроса потому что он не содержит CSRF токен, который требует Rails. Почему мы не столкнулись с этим сейчас? Все просто, мы используем <code>jQuery</code> чтобы общаться с бекендом, и <code>jquery_ujs</code> драйвер будет добавлять CSRF токен в каждый AJAX запрос за нас. Круто!</p>
 
 <h2 id="section-5">Реюзабельные компоненты: Индикаторы остатка</h2>
 
-<p>Какое может быть приложение без некоторых (милых) индикаторов? Давайте добавим блоки в верхней части с полезной информацией. Наша цель - показывать 3 значения: количество кредитных средств (total credit), количество дебетовых средств (total debit) и баланс (balance). Кажется что это работа для 3 компонентов или, может быть, для одного но со свойствами?</p>
+<p>Какое приложение может быть без (милых) индикаторов? Давайте добавим блоки в верхней части с полезной информацией. Наша цель - показывать 3 значения: количество кредитных средств (total credit), количество дебетовых средств (total debit) и баланс (balance). Кажется что это работа для 3 компонентов или, может быть, для одного но со свойствами?</p>
 
 <p>Мы можем создать новый компонент <code>AmountBox</code>, который будет получать три свойства: amount, text и type. Создадим новый файл <code>amount_box.js.coffee</code> в каталоге <code>javascripts/components/</code> со следующим содержимым:</p>
 
