@@ -537,7 +537,81 @@ Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.toda
 
 <p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a>.</p>
 
-<p>Reusable Components: Amount Indicators</p>
+<h3 id="section-5">Реюзабельные компоненты: Индикаторы остатка</h3>
+
+<p>Какое может быть приложение без некоторых (милых) индикаторов? Давайте добавим блоки в верхней части с полезной информацией. Наша цель - показывать 3 значения: количество кредитных средств (total credit), количество дебетовых средств (total debit) и баланс (balance). Кажется что это работа для 3 компонентов или, может быть, для одного но со свойствами?</p>
+
+<p>Мы можем создать новый компонент <code>AmountBox</code>, который будет получать три свойства: amount, text и type. Создадим новый файл <code>amount_box.js.coffee</code> в каталоге <code>javascripts/components/</code> со следующим содержимым:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/amount_box.js.coffee</span>
+
+<span class="vi">@AmountBox = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+      <span class="nv">className: </span><span class="s">&#39;col-md-4&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&quot;panel panel-</span><span class="si">#{</span> <span class="nx">@props</span><span class="p">.</span><span class="nx">type</span> <span class="si">}</span><span class="s">&quot;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+          <span class="nv">className: </span><span class="s">&#39;panel-heading&#39;</span>
+          <span class="nx">@props</span><span class="p">.</span><span class="nx">text</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+          <span class="nv">className: </span><span class="s">&#39;panel-body&#39;</span>
+          <span class="nx">amountFormat</span><span class="p">(</span><span class="nx">@props</span><span class="p">.</span><span class="nx">amount</span><span class="p">)</span></code></pre></figure>
+
+<p>Мы используем элемент Bootstrap - панель, чтобы отображать инфорамцию блоками и установливать цвет через свойство <code>type</code>. Мы также добавили простой форматтер - amountFormat, который читает свойство <code>amount</code> и отображает его в формате валюты.</p>
+
+<p>По хорошему, чтобы иметь законченное решение, нам нужно создать такой элемент (3 раза) внутри нашего основного компонента и отправлять в него требуемые свойства в зависимости от того что мы хотим отобразить. Давайте сначала сделаем метод калькулятор, откроем компонент <code>Records</code> и добавим следующие методы:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+
+<span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">credits: </span><span class="nf">-&gt;</span>
+    <span class="nv">credits = </span><span class="nx">@state</span><span class="p">.</span><span class="nx">records</span><span class="p">.</span><span class="nx">filter</span> <span class="nf">(val) -&gt;</span> <span class="nx">val</span><span class="p">.</span><span class="nx">amount</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+    <span class="nx">credits</span><span class="p">.</span><span class="nx">reduce</span> <span class="p">(</span><span class="nf">(prev, curr) -&gt;</span>
+      <span class="nx">prev</span> <span class="o">+</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">curr</span><span class="p">.</span><span class="nx">amount</span><span class="p">)</span>
+    <span class="p">),</span> <span class="mi">0</span>
+  <span class="nv">debits: </span><span class="nf">-&gt;</span>
+    <span class="nv">debits = </span><span class="nx">@state</span><span class="p">.</span><span class="nx">records</span><span class="p">.</span><span class="nx">filter</span> <span class="nf">(val) -&gt;</span> <span class="nx">val</span><span class="p">.</span><span class="nx">amount</span> <span class="o">&lt;</span> <span class="mi">0</span>
+    <span class="nx">debits</span><span class="p">.</span><span class="nx">reduce</span> <span class="p">(</span><span class="nf">(prev, curr) -&gt;</span>
+      <span class="nx">prev</span> <span class="o">+</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">curr</span><span class="p">.</span><span class="nx">amount</span><span class="p">)</span>
+    <span class="p">),</span> <span class="mi">0</span>
+  <span class="nv">balance: </span><span class="nf">-&gt;</span>
+    <span class="nx">@debits</span><span class="p">()</span> <span class="o">+</span> <span class="nx">@credits</span><span class="p">()</span>
+  <span class="p">...</span></code></pre></figure>
+
+<p><code>credits</code> суммирует все записи со значением больше 0, <code>debits</code> - суммирует все записи со значением меньше нуля и <code>balance</code> говорит сам за себя. Теперь, когда методы вычислители на месте, нам просто нужно создать элементы <code>AmountBox</code> внутри метода <code>render</code> (сразу над компонентом <code>RecordForm</code>)</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+
+<span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+      <span class="nv">className: </span><span class="s">&#39;records&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">h2</span>
+        <span class="nv">className: </span><span class="s">&#39;title&#39;</span>
+        <span class="s">&#39;Records&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&#39;row&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">AmountBox</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;success&#39;</span><span class="p">,</span> <span class="nv">amount: </span><span class="nx">@credits</span><span class="p">(),</span> <span class="nv">text: </span><span class="s">&#39;Credit&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">AmountBox</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;danger&#39;</span><span class="p">,</span> <span class="nv">amount: </span><span class="nx">@debits</span><span class="p">(),</span> <span class="nv">text: </span><span class="s">&#39;Debit&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">AmountBox</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;info&#39;</span><span class="p">,</span> <span class="nv">amount: </span><span class="nx">@balance</span><span class="p">(),</span> <span class="nv">text: </span><span class="s">&#39;Balance&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">RecordForm</span><span class="p">,</span> <span class="nv">handleNewRecord: </span><span class="nx">@addRecord</span>
+  <span class="p">...</span></code></pre></figure>
+
+<p>Мы закончили с этой фишкой! Обновите страницу в браузере, вы дожны увидеть три блока, отображющие суммы, которые мы вычислили ранее. Но погодите! Есть еще кое-что! Добавьте новую запись и посмотрите что произойдет…</p>
+
+<p><br />
+<img src="https://farm2.staticflickr.com/1636/24300077614_84ea4aec71_o.png" />
+<br />
+<br /></p>
+
+<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a>.</p>
+
+<h3 id="setstatereplacestate--"><code>setState/replaceState</code>: Удаляем записи</h3>
+
+<p>The next feature in our list is the ability to delete records, we need a new Actions column in our records table, this column will have a Delete button for each record, pretty standard UI. As in our previous example, we need to create the destroy method in our Rails controller:</p>
 
 
       
