@@ -1,0 +1,79 @@
+# Site wide configuration
+
+title:            Diary of madman
+locale:           en_US
+url:              http://localhost:4000
+
+
+# Jekyll configuration
+
+permalink:   /:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  # use_coderay: false
+  enable_coderay: false
+
+
+# Site owner
+owner:
+  name: Антон Рябов
+  avatar: bio-photo.jpg
+  bio: "Не люблю бриться и у меня умный взгляд."
+  email: mail@doam.ru
+  disqus-shortname:
+  twitter: tonymadbrain
+  facebook: #username
+  google:
+    plus: #username
+    analytics:
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
+  github: tonymadbrain
+  stackoverflow: #http://stackoverflow.com/users/123456/username
+  linkedin: #username
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube:
+  soundcloud: #username
+  weibo: #username
+  flickr: #tonymadbrain
+  rss: feed.xml
+
+tag_page_layout: tag_page
+tag_page_dir: tag
+tag_permalink_style: pretty
+# ignored_tags: ["tags", "to", "ignore"]
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
+
+# Octopress configuration
+# Default extensions
+post_ext: md
+page_ext: md
+
+# Found in _templates/
+post_layout: post
+page_layout: page
+
+# Format titles with titlecase?
+titlecase: true
