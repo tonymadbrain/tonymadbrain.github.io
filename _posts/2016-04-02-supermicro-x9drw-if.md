@@ -7,6 +7,7 @@ tags:
   - Proxmox
   - Supermicro
   - Bios
+  - SA
 date: 2016-04-02T01:56:10+03:00
 ---
 
