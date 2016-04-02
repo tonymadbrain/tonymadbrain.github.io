@@ -4,13 +4,33 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2016-03-20T13:04:48+03:00</updated>
+<updated>2016-04-02T09:57:29+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Обновление прошивки Supermicro X9DRW-iF]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/supermicro-x9drw-if/" />
+  <id>http://doam.ru/supermicro-x9drw-if</id>
+  <published>2016-04-02T01:56:10+03:00</published>
+  <updated>2016-04-02T01:56:10+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;h2 id=&quot;section&quot;&gt;Вместо вступления&lt;/h2&gt;
+
+&lt;p&gt;Начал я обновлять Proxmox на одном из серверов с версии 3 на 4, по ряду причин, нужно делать именно полную переустановку а не апгрейд текущей. Установка прошла штатно и сервер ушел в перезагрузку, после чего, как хороший мальчик, показал grub, но завис ...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/supermicro-x9drw-if/&quot;&gt;Обновление прошивки Supermicro X9DRW-iF&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on April 02, 2016.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -179,24 +199,6 @@
   <content type="html">
     &lt;p&gt;Никогда не задумывался о скорости работы моего смартфона. Да он дешевый и, по сегодняшним меркам, слабый, но всегда делает свою работу, самое главное что устраивает диагональю экрана, тяжело найти подобное решение на рынке. Тормоза наблюдаются только при запуске “тяжелых” приложений и браузера...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/&quot;&gt;Оптимизируем работу Motorola Moto G (first gen.)&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on June 30, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Онлайн-школа Thinknetica.com]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru/2015-06-14-about-thinknetica/" />
-  <id>http://doam.ru/about-thinknetica</id>
-  <published>2015-06-14T00:12:00+03:00</published>
-  <updated>2015-06-14T00:12:00+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri>http://doam.ru</uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;Первый практический опыт с Rails у меня был по книге Майкла Хартла, и выполнив все практические занятия, включая деплой на хероку, кажется что должен был что-то запомнить, чему-то научиться, но ты по-прежнему смотришь в код и думаешь - как это, блин, работает? Модели, контроллеры, миграции, aj...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru/2015-06-14-about-thinknetica/&quot;&gt;Онлайн-школа Thinknetica.com&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on June 14, 2015.&lt;/p&gt;
   </content>
 </entry>
 
