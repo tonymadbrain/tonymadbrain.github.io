@@ -2,16 +2,12 @@
 title: Бортовой журнал
 layout: post
 permalink: /bortovoj-zhurnal-2/
-categories:
-  - Device
-  - root
-  - Новости
 tags:
   - Canon
   - IPad
   - Nikon
   - StarTrek
-  - Приобретения
+  - Goods
 ---
 Появилась свободная минутка, решил настрочить небольшой пост с отчетом. <!--more-->
 

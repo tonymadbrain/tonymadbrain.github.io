@@ -2,14 +2,10 @@
 title: Пешеход стой! Водитель проезжай!
 layout: post
 permalink: /peshehod-stoj-voditel-proezzhaj/
-categories:
-  - root
-  - Новости
 tags:
-  - Воронеж
-  - Дороги
-  - ПешеходныеПереходы
-  - Пешеходы
+  - Voronezh
+  - Roads
+  - Crosswalk
 ---
 <img title="32c8181d7da144f3421334afd9ff4114-d5g0xa6" src="http://doam.ru/wp-content/uploads/2012/11/32c8181d7da144f3421334afd9ff4114-d5g0xa6.png" alt="" width="540" height="360" />
 
@@ -17,7 +13,7 @@ tags:
 
 Ответ на статью &#171;Какими должны быть пешеходные переходы&#187; в блоге Ильи Варламова (zyalt) <a title="Какими должны быть пешеходные переходы" href="http://zyalt.livejournal.com/642449.html" target="&quot;_blank»"> zyalt.livejournal.com/</a>
 
-<img title="Read More..." src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" data-wp-more="" data-mce-resize="false" data-mce-placeholder="1" />  
+<img title="Read More..." src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" data-wp-more="" data-mce-resize="false" data-mce-placeholder="1" />
 <!--more-->
 
 Не могу судить о ситуации в Москве, ибо там не проживаю, однако о городе Воронеже, в котором на данный момент нахожусь, смею чего-нибудь на калякать. Такие пешеходные переходы как предлагаются в выше указанной статье действительно очень эффективны, однако я считаю, что их применение на данный момент не возможно, за всю Россию говорить не стану, а вот в Врн точно. Во-первых, это ударит по карману налогоплательщиков, ибо наше правительство находить деньги кроме как вытягиванием из людей не умеет. Во-вторых, если все-таки их и сделать, движение не то что замедлится, а встанет. Уже сейчас город задыхается от пробок и проезд из северного в центр на машине/маршрутке в будни становится невыносимым адом.

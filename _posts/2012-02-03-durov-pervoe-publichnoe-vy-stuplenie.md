@@ -5,9 +5,8 @@ permalink: /durov-pervoe-publichnoe-vy-stuplenie/
 slider_image:
   -
 tags:
-  - vk.com
-  - vkontakte
-  - ПавелДуров
+  - Vk.com
+  - Vkontakte
 ---
 
 <figure>

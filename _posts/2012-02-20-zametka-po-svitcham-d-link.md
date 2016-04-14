@@ -5,9 +5,9 @@ permalink: /zametka-po-svitcham-d-link/
 redirect_from: "/?p=354"
 tags:
   - D-link
-  - Заметка
-  - Команды
-  - Свитчи
+  - Note
+  - Commands
+  - Switches
 ---
 Команды для свитчей д-линк:
 

@@ -7,17 +7,17 @@ categories:
 tags:
   - Dubna
   - Featured
-  - Воронеж
-  - Дорога
+  - Voronezh
+  - Roads
 ---
-Воронеж находиться гораздо южнее Москвы и имеет довольно теплый климат, правда из-за близости водохранилища &#8212; соответственно повышенной влажности, зимы иногда бывают холодные, но Дубна же находится гораздо севернее, воды здесь вокруг полно, в смысле реки, водохранилища и заливы всякие, так еще и стоит вроде на болотах. В общем холодно тут <del>пиздец </del> очень. Это собственно я к названию главы xD,  
+Воронеж находиться гораздо южнее Москвы и имеет довольно теплый климат, правда из-за близости водохранилища &#8212; соответственно повышенной влажности, зимы иногда бывают холодные, но Дубна же находится гораздо севернее, воды здесь вокруг полно, в смысле реки, водохранилища и заливы всякие, так еще и стоит вроде на болотах. В общем холодно тут <del>пиздец </del> очень. Это собственно я к названию главы xD,
 <!--more-->
 
 Свой переезд я начал считать с момента, когда мои друзья собрались в Воронежском баре чтобы отметить мой отъезд. По ходу дороги я вел фото сет в instagram&#8217;е, так что оттуда пикчи и возьму.
 
 <div id="attachment_637" style="width: 310px" class="wp-caption aligncenter">
   <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409070246/956b6f4411a511e3a03a22000a1fbd56_7_nzfkvd.jpg" rel="lightbox[634]" title="956b6f4411a511e3a03a22000a1fbd56_7"><img class="size-medium wp-image-637" src="http://res.cloudinary.com/doam-ru/image/upload/h_300,w_300/v1409070246/956b6f4411a511e3a03a22000a1fbd56_7_nzfkvd.jpg" alt="956b6f4411a511e3a03a22000a1fbd56_7" width="300" height="300" /></a>
-  
+
   <p class="wp-caption-text">
     В тот вечер когда мы отмечали мой отъезд в баре транслировали футбол.
   </p>
@@ -27,7 +27,7 @@ tags:
 
 <div id="attachment_638" style="width: 310px" class="wp-caption aligncenter">
   <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409070244/3888ffbc121811e3951b22000ae9142b_7_qyybxo.jpg" rel="lightbox[634]" title="3888ffbc121811e3951b22000ae9142b_7"><img class="size-medium wp-image-638" src="http://res.cloudinary.com/doam-ru/image/upload/h_300,w_300/v1409070244/3888ffbc121811e3951b22000ae9142b_7_qyybxo.jpg" alt="3888ffbc121811e3951b22000ae9142b_7" width="300" height="300" /></a>
-  
+
   <p class="wp-caption-text">
     Уж не помню где именно мы проезжали. В общем какая-то церквушка.
   </p>
@@ -37,7 +37,7 @@ tags:
 
 <div id="attachment_641" style="width: 310px" class="wp-caption aligncenter">
   <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409070239/dfc23416121711e3831222000a9e08e7_7_t01f3a.jpg" rel="lightbox[634]" title="dfc23416121711e3831222000a9e08e7_7"><img class="size-medium wp-image-641" src="http://res.cloudinary.com/doam-ru/image/upload/h_300,w_300/v1409070239/dfc23416121711e3831222000a9e08e7_7_t01f3a.jpg" alt="dfc23416121711e3831222000a9e08e7_7" width="300" height="300" /></a>
-  
+
   <p class="wp-caption-text">
     Собственно Георгий, автомобиль который вез наши задницы и замечательный друг.
   </p>
@@ -47,7 +47,7 @@ tags:
 
 <div id="attachment_636" style="width: 310px" class="wp-caption aligncenter">
   <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409070248/92b58a7e121711e3a8c722000a9f392c_7_jgi91d.jpg" rel="lightbox[634]" title="92b58a7e121711e3a8c722000a9f392c_7"><img class="size-medium wp-image-636" src="http://res.cloudinary.com/doam-ru/image/upload/h_300,w_300/v1409070248/92b58a7e121711e3a8c722000a9f392c_7_jgi91d.jpg" alt="92b58a7e121711e3a8c722000a9f392c_7" width="300" height="300" /></a>
-  
+
   <p class="wp-caption-text">
     Придорожные лавочки
   </p>
@@ -75,7 +75,7 @@ tags:
 
 <div id="attachment_640" style="width: 310px" class="wp-caption aligncenter">
   <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409070242/c2dfd854124311e3818222000ae81e1a_7_wl7wbj.jpg" rel="lightbox[634]" title="c2dfd854124311e3818222000ae81e1a_7"><img class="size-medium wp-image-640" src="http://res.cloudinary.com/doam-ru/image/upload/h_300,w_300/v1409070242/c2dfd854124311e3818222000ae81e1a_7_wl7wbj.jpg" alt="c2dfd854124311e3818222000ae81e1a_7" width="300" height="300" /></a>
-  
+
   <p class="wp-caption-text">
     Большая табуретка, что-то вроде памятника, а скорее просто показуха местного мебельного завода.
   </p>

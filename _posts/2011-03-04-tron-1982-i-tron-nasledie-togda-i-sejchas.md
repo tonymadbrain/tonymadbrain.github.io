@@ -3,7 +3,7 @@ title: '«Трон 1982» и «Трон: наследие», тогда и се�
 layout: post
 permalink: /tron-1982-i-tron-nasledie-togda-i-sejchas/
 tags:
-  - Кино
+  - Movies
 ---
 
 <!-- <figure>
