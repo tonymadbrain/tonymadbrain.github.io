@@ -4,8 +4,8 @@ layout: post
 permalink: /dubna-glava-iii-universitet-pervoe-vpechatlenie/
 tags:
   - Dubna
-  - ИСАУ
-  - МУПОЧ
+  - ISAU
+  - MUPOCH
 ---
 <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409069602/uniLogo_mwulm2.gif" rel="lightbox[675]" title="uniLogo"><img class="aligncenter wp-image-874 size-full" src="http://res.cloudinary.com/doam-ru/image/upload/v1409069602/uniLogo_mwulm2.gif" alt="uniLogo" width="377" height="140" /></a>
 

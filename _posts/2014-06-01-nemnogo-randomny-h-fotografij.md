@@ -2,12 +2,10 @@
 title: Немного рандомных фотографий
 layout: post
 permalink: /nemnogo-randomny-h-fotografij/
-categories:
-  - Фото
 tags:
-  - Фото
+  - Photo
 ---
-### 
+###
 
 <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409069981/IMG_6383_nuztmf.jpg" rel="lightbox[806]" title="IMG_6383"><img class="aligncenter wp-image-808 size-full" src="http://res.cloudinary.com/doam-ru/image/upload/v1409069981/IMG_6383_nuztmf.jpg" alt="IMG_6383" width="1068" height="712" /></a><!--more-->
 

@@ -2,13 +2,10 @@
 title: На что уходит мое время, и что я решил
 layout: post
 permalink: /na-chto-uhodit-moe-vremya-i-chto-ya-reshil/
-categories:
-  - root
-  - Новости
 tags:
-  - Blog
+  - Root
   - Dubna
-  - Прокрастинация
+  - Procrastination
 ---
 <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409069968/back-55553_zlpgnh.jpg" rel="lightbox[818]" title="back-55553"><img class="aligncenter wp-image-819" src="http://res.cloudinary.com/doam-ru/image/upload/v1409069968/back-55553_zlpgnh.jpg" alt="back-55553" width="999" height="305" /></a>
 
