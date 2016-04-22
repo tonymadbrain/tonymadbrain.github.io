@@ -2,13 +2,10 @@
 title: Знакомство с ImageCMS и update тестового сервера
 layout: post
 permalink: /znakomstvo-s-imagecms-i-update-testovogo-servera/
-categories:
-  - CentOS
-  - root
 tags:
   - CentOS
   - CMS
-  - e-commerce
+  - E-commerce
   - Imagecms
   - Nginx
   - Php
@@ -44,22 +41,22 @@ tags:
 > <div id="pc12204" class="title-h4">
 >   Ne@Flax:
 > </div>
-> 
+>
 > <div class="title-h4">
 >   Тема: Установка на NGINX без Апача
 > </div>
-> 
+>
 > <div class="entry-content">
->   Подскажите конфиг для NGINX без использования Апача.<br /> В частности, секции реврайтов.<br /> Сейчас установка ссылается на папку install, которой есстно и нет.</p> 
->   
+>   Подскажите конфиг для NGINX без использования Апача.<br /> В частности, секции реврайтов.<br /> Сейчас установка ссылается на папку install, которой есстно и нет.</p>
+>
 >   <div id="pc12216" class="title-h4">
 >     supleader:
 >   </div>
->   
+>
 >   <div class="title-h4">
 >     Re: Установка на NGINX без Апача
 >   </div>
->   
+>
 >   <div class="entry-content">
 >     У вас nginx+php-fpm? Вряд ли движок заведется&#8230;
 >   </div>

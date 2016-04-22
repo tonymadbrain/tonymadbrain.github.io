@@ -2,11 +2,6 @@
 title: Борьба с памятью (Сетевая модель OSI)
 layout: post
 permalink: /bor-ba-s-pamyat-yu-setevaya-model-osi/
-slider_image:
-  -
-categories:
-  - root
-  - Новости
 tags:
   - IT
   - Brain

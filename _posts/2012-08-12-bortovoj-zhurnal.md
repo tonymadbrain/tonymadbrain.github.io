@@ -2,9 +2,9 @@
 title: Бортовой журнал
 layout: post
 permalink: /bortovoj-zhurnal/
-categories:
-  - root
-  - Новости
+tags:
+  - Root
+  - News
 ---
 Давно ничего в него не записывал, времени нет, да и этот пост будет довольно коротким.
 

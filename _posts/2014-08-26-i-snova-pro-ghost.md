@@ -2,28 +2,26 @@
 title: И снова про Ghost
 layout: post
 permalink: /i-snova-pro-ghost/
-categories:
-  - root
 tags:
-  - root
+  - Root
 ---
 <img class="aligncenter size-large wp-image-951" src="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-22-04-49-Skrinshot-e-krana-1024x506.png" alt="2014-08-26 22-04-49 Скриншот экрана" width="750" height="370" />
 
 ## Синапсис
 
-Я уже писал, о том,<a href="http://doam.ru/ustanovka-ghost-blogging-platform-v-centos/" target="_blank"> как установить ghost</a> на собственный сервер. Кстати, блог, который в данный момент работает на данной <a href="https://ghost.org/" target="_blank">cms</a>, успешно переехал на последнюю стабильную версию по <a href="http://support.ghost.org/how-to-upgrade/" target="_blank">официальному мануалу</a>.  Собственно, как только я узнал про данную систему, сразу подумал о том, чтобы перевести свой ламповый doam.ru на нее. Однако сразу же возникла куча вопросов, и ответы на них не были получены. После обновления призрака, я вновь задумался о переезде. И сегодня приступил к первому этапу.  
+Я уже писал, о том,<a href="http://doam.ru/ustanovka-ghost-blogging-platform-v-centos/" target="_blank"> как установить ghost</a> на собственный сервер. Кстати, блог, который в данный момент работает на данной <a href="https://ghost.org/" target="_blank">cms</a>, успешно переехал на последнюю стабильную версию по <a href="http://support.ghost.org/how-to-upgrade/" target="_blank">официальному мануалу</a>.  Собственно, как только я узнал про данную систему, сразу подумал о том, чтобы перевести свой ламповый doam.ru на нее. Однако сразу же возникла куча вопросов, и ответы на них не были получены. После обновления призрака, я вновь задумался о переезде. И сегодня приступил к первому этапу.
 <!--more-->
 
 ### Подготовка
 
-На самом деле, этот этап можно назвать «подготовка подготовки». Для тестирования я взял контейнер работающего <a href="http://nginxtips.ru/" target="_blank">nginxtips.ru</a> и сделал его дубликат, а также удалил все статьи и сменил тему на дефолтную (всегда предпочитаю отталкиваться от дефолтной темы любой cms).  
-Далее был инициирован процесс гугления темы «как переехать с wordpress на ghost». Естественно, процесс этот шел на английском языке, так как материала на тему призрака в принципе мало в рунете, тем более нет и того что мне нужно.  
+На самом деле, этот этап можно назвать «подготовка подготовки». Для тестирования я взял контейнер работающего <a href="http://nginxtips.ru/" target="_blank">nginxtips.ru</a> и сделал его дубликат, а также удалил все статьи и сменил тему на дефолтную (всегда предпочитаю отталкиваться от дефолтной темы любой cms).
+Далее был инициирован процесс гугления темы «как переехать с wordpress на ghost». Естественно, процесс этот шел на английском языке, так как материала на тему призрака в принципе мало в рунете, тем более нет и того что мне нужно.
 Первым делом была закреплена данная <a href="http://ghostforbeginners.com/how-to-transfer-blog-posts-from-wordpress-to-ghost/" target="_blank">статья</a>.
 
 ### Ограничение на импорт
 
-У ghost&#8217;a есть замечательный экспорт/импорт статей, который располагается по адресу youghost.net/ghost/debug/ и выглядит следующим образом:  
-<a href="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-21-43-54-Skrinshot-e-krana.png" rel="lightbox[948]" title="2014-08-26 21-43-54 Скриншот экрана"><img class="aligncenter size-large wp-image-949" src="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-21-43-54-Skrinshot-e-krana-1024x461.png" alt="2014-08-26 21-43-54 Скриншот экрана" width="750" height="337" /></a>  
+У ghost&#8217;a есть замечательный экспорт/импорт статей, который располагается по адресу youghost.net/ghost/debug/ и выглядит следующим образом:
+<a href="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-21-43-54-Skrinshot-e-krana.png" rel="lightbox[948]" title="2014-08-26 21-43-54 Скриншот экрана"><img class="aligncenter size-large wp-image-949" src="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-21-43-54-Skrinshot-e-krana-1024x461.png" alt="2014-08-26 21-43-54 Скриншот экрана" width="750" height="337" /></a>
 Однако на импорт существует странное ограничение в 150 символов. Символов чего я так и не понял. Но суть в том, что если двигаться по мануалу который я закрепил ранее, то мы упираемся в ошибку, мол «слишком много, не могу переварить». Продолжение гугления привело меня к <a href="https://ghost.org/forum/installation/9579-help-import-ghost-file-from-wordpress-error-value-in-posts-slug-exceeds-maximum-length-of-150-characters/" target="_blank">статье</a>.  И тут возник некоторый ступор, потому что, как запустить данный скрипт я и не понял.
 
 <a class='spoiler-tgl' href='https://doam.ru/i-snova-pro-ghost/#SID948_1_tgl' id='SID948_1_tgl' rev='blind||Показать »||Скрыть «||300'>Показать »</a>
@@ -32,27 +30,27 @@ tags:
   <p>
     var fs = require(&#8216;fs&#8217;);<br /> var filePath = process.argv[2];
   </p>
-  
+
   <p>
     var content = null;
   </p>
-  
+
   <p>
     fs.readFile(filePath, &#8216;utf8&#8242;, function (err, data) {<br /> if (err) {<br /> console.log(&#8216;Error: &#8216; + err);<br /> return;<br /> }
   </p>
-  
+
   <p>
     //Sometimes the shortning causes duplicte sluglines, which are forbidden. So the map is here to handle it.<br /> var slugsMap = {};
   </p>
-  
+
   <p>
     content = JSON.parse(data);<br /> var posts = content.data.posts;<br /> posts.forEach(function (post) {<br /> if (post.slug.length > 150) {<br /> post.slug = post.slug.substring(0, 149);
   </p>
-  
+
   <p>
     if (slugsMap[post.slug]) {<br /> console.log(&#171;Found duplicate: &#187; + post.slug);<br /> slugsMap[post.slug]++<br /> post.slug = (slugsMap[post.slug] + post.slug).substring(0, 149);<br /> console.log(&#171;Changed to: &#187; + post.slug);<br /> } else {<br /> slugsMap[post.slug] = 1;<br /> }<br /> }<br /> });
   </p>
-  
+
   <p>
     var outputFile = &#171;./parsed_slugline.json&#187;;<br /> fs.writeFile(outputFile, JSON.stringify(content), function (err) {<br /> if (err) {<br /> console.log(err);<br /> } else {<br /> console.log(&#171;File was saved to &#187; + __dirname + &#171;/&#187; + outputFile);<br /> }<br /> })<br /> });
   </p>
@@ -66,7 +64,7 @@ tags:
 
   1. Залить скрипт на сервер, на котором у нас запущен блог, или на котором установлен node.js.
   2. Туда же залить файл экспорта с постами из wp.
-  3. Выполнить данный скрипт командой:  
+  3. Выполнить данный скрипт командой:
     node slugline\_shortner.js export\_posts\_from\_wp.json
   4. Полученный файл импортировать в наш ghost через уже известное меню дебага.
 
@@ -84,15 +82,15 @@ tags:
   * Картинки отображаются
   * Комментарии … стоп, комментариев как раз нет.
 
-О боже, потеряю все комментарии к своим статьям (10 шт или вроде того) – так **не** подумал я.  
+О боже, потеряю все комментарии к своим статьям (10 шт или вроде того) – так **не** подумал я.
 Можно с легкостью перенести комментарии вконтакте на новый движок, но тут есть минус. Дело в том, что использование комментариев вконтакте, меня не совсем устраивает. Невозможно переопределить css, спам и другие мелочи. Это как раз один из барьеров в вопросе переезда doam.ru на ghost. Тут работает дело принципа, потому что, систему комментариев придется менять на disqus, к которому я, пока, не привык.
 
 ### Тема
 
-В обновленном ghost, нас ждет, и новая дефолтная тема casper. Теперь она имеет фулскриновую шапку и маленькие приятные мелочи. Однако ей стоит дать название very simple. Так как функциональность, которую она дает, очень мала. Посмотрев на marketplace призрака, я понял, что тему (опять) придется допиливать самому.  
+В обновленном ghost, нас ждет, и новая дефолтная тема casper. Теперь она имеет фулскриновую шапку и маленькие приятные мелочи. Однако ей стоит дать название very simple. Так как функциональность, которую она дает, очень мала. Посмотрев на marketplace призрака, я понял, что тему (опять) придется допиливать самому.
 На данный момент, тестовый doam.ru на ghost выглядит как в заголовке, а посты так:
 
-<a href="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-22-05-24-Skrinshot-e-krana.png" rel="lightbox[948]" title="2014-08-26 22-05-24 Скриншот экрана"><img class="aligncenter size-large wp-image-952" src="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-22-05-24-Skrinshot-e-krana-1024x510.png" alt="2014-08-26 22-05-24 Скриншот экрана" width="750" height="373" /></a>  
+<a href="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-22-05-24-Skrinshot-e-krana.png" rel="lightbox[948]" title="2014-08-26 22-05-24 Скриншот экрана"><img class="aligncenter size-large wp-image-952" src="http://doam.ru/wp-content/uploads/2014/08/2014-08-26-22-05-24-Skrinshot-e-krana-1024x510.png" alt="2014-08-26 22-05-24 Скриншот экрана" width="750" height="373" /></a>
 Круто, но недостаточно.
 
 ### Итог

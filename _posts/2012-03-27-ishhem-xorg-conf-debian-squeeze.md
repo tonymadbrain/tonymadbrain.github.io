@@ -2,14 +2,10 @@
 title: Ищем xorg.conf debian squeeze
 layout: post
 permalink: /ishhem-xorg-conf-debian-squeeze/
-slider_image:
-  -
-categories:
-  - Debian
-  - root
 tags:
   - Debian
   - Xorg.conf
+  - Root
 ---
 
 При переходе на squeeze, либо при первой установке и попытке настроить свой debian, скорее всего вы "нагуглили" много информации по замечательному файлу конфигурации - xorg.conf, однако найти его в каталоге `/etc/X11` не смогли. Можете и не искать, начиная со squeeze его там не будет пока сами не запихнем. Делается все легким движением руки:

@@ -3,7 +3,7 @@ layout: post
 title: "Ставка не нужна"
 excerpt: ""
 tags:
-  - root
+  - Root
 date: 2015-12-19T00:49:17+03:00
 ---
 

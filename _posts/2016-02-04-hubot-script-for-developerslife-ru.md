@@ -3,8 +3,8 @@ layout: post
 title: Hubot скрипт для developerslife.ru
 excerpt: Учим бота получать свежие gif
 tags:
-  - hubot
-  - imhonet
+  - Hubot
+  - Imhonet
 date: 2016-02-04T21:42:55+03:00
 ---
 
