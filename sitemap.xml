@@ -277,14 +277,6 @@
     <lastmod>2011-10-29T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/damage/</loc>
-    <lastmod>2011-10-02T00:00:00+04:00</lastmod>
-  </url>
-  <url>
-    <loc>http://doam.ru/fedya-snova-zhzhet-obzor-novogo-metal-kav/</loc>
-    <lastmod>2011-03-07T00:00:00+03:00</lastmod>
-  </url>
-  <url>
     <loc>http://doam.ru/tron-1982-i-tron-nasledie-togda-i-sejchas/</loc>
     <lastmod>2011-03-04T00:00:00+03:00</lastmod>
   </url>
@@ -302,12 +294,6 @@
   </url>
   <url>
     <loc>http://doam.ru/tag/movies/</loc>
-  </url>
-  <url>
-    <loc>http://doam.ru/tag/root/</loc>
-  </url>
-  <url>
-    <loc>http://doam.ru/tag/news/</loc>
   </url>
   <url>
     <loc>http://doam.ru/tag/photo/</loc>
@@ -367,6 +353,9 @@
     <loc>http://doam.ru/tag/xorg.conf/</loc>
   </url>
   <url>
+    <loc>http://doam.ru/tag/root/</loc>
+  </url>
+  <url>
     <loc>http://doam.ru/tag/xrandr/</loc>
   </url>
   <url>
@@ -383,6 +372,9 @@
   </url>
   <url>
     <loc>http://doam.ru/tag/pranayam/</loc>
+  </url>
+  <url>
+    <loc>http://doam.ru/tag/news/</loc>
   </url>
   <url>
     <loc>http://doam.ru/tag/eth0/</loc>
@@ -716,12 +708,6 @@
   </url>
     <url>
       <loc>http://doam.ru/tron-1982-i-tron-nasledie-togda-i-sejchas/</loc>
-    </url>
-    <url>
-      <loc>http://doam.ru/fedya-snova-zhzhet-obzor-novogo-metal-kav/</loc>
-    </url>
-    <url>
-      <loc>http://doam.ru/damage/</loc>
     </url>
     <url>
       <loc>http://doam.ru/fotograf-dmitrij-vazenmiller/</loc>
