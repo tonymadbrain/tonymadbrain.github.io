@@ -3,6 +3,7 @@ title: Заметка по свитчам D-link
 layout: post
 permalink: /zametka-po-svitcham-d-link/
 redirect_from: "/?p=354"
+excerpt: Список полезных команд
 tags:
   - D-link
   - Note
