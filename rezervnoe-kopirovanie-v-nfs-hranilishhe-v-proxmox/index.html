@@ -154,7 +154,7 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>На работе решили использовать NFS сервер для резервных копий в Рroxmox. Думаю, стоит накидать заметку, чтобы не искать в следующий раз.<br />
+      <p>На работе решили использовать NFS сервер для резервных копий в Рroxmox. Думаю, стоит накидать заметку, чтобы не искать в следующий раз.
 Чтобы nfs заработал в контейнере openvz, нужно чтобы в гипервизоре была поддержка nfs, т.е. установлен nfs-utils. В образе с Proxmox этот пакет установлен, если вы устанавливали гипервизор самостоятельно, то его, скорее всего, не будет.</p>
 
 <!--more-->
@@ -201,7 +201,7 @@ STATD_OUTGOING_PORT=2020
 <pre># chkconfig nfs on &amp;&amp; service nfs start
 </pre>
 
-<p>Iptables<br />
+<p>Iptables
 Генерируем файл правил</p>
 
 <pre># iptables-save
@@ -214,7 +214,7 @@ STATD_OUTGOING_PORT=2020
 :INPUT DROP [6251:6489925]
 -A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport 111 -j ACCEPT
 -A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 111 -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 2049 -j ACCEPT 
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 2049 -j ACCEPT
 -A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 32803 -j ACCEPT
 -A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport 32769 -j ACCEPT
 -A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 892 -j ACCEPT
@@ -254,9 +254,9 @@ COMMIT
 <pre># service iptables restart
 </pre>
 
-<p>Ссылки:<br />
-Подробности читаем <a href="http://openvz.org/NFS_server_inside_container" target="_blank">здесь</a><br />
-Сам nfs я устанавливал по <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6" target="_blank">этой инструкции</a><br />
+<p>Ссылки:
+Подробности читаем <a href="http://openvz.org/NFS_server_inside_container" target="_blank">здесь</a>
+Сам nfs я устанавливал по <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6" target="_blank">этой инструкции</a>
 Не нашел изначальную статью по iptables по которой делал, но <a href="http://mcdee.com.au/tutorial-configure-iptables-for-nfs-server-on-centos-6/" target="_blank">эта тоже ничего </a></p>
 
       

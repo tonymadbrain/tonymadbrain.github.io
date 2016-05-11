@@ -6,18 +6,14 @@
 <head>
 <meta charset="utf-8">
 <title>Косяк с сетевой картой rtl8111/8168B &#8211; Diary of madman</title>
-<meta name="description" content="Взбрело мне в голову в очередной раз перезалить debian на стационаре (обычно я это делаю когда забиваю систему всякой фигней, после чего становиться невозможно в ней работать), и в очередной раз про косяк с сетевой картой, я вспомнил только после установки. 
-
-">
+<meta name="description" content="Обходим проблему с драйвером Realtek">
 <meta name="theme-color" content="#00d900">
 <meta name="keywords" content="Debian, Eth0, Rtl8168, Root">
 
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Косяк с сетевой картой rtl8111/8168B">
-<meta name="twitter:description" content="Взбрело мне в голову в очередной раз перезалить debian на стационаре (обычно я это делаю когда забиваю систему всякой фигней, после чего становиться невозможно в ней работать), и в очередной раз про косяк с сетевой картой, я вспомнил только после установки. 
-
-">
+<meta name="twitter:description" content="Обходим проблему с драйвером Realtek">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
 
@@ -28,9 +24,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Косяк с сетевой картой rtl8111/8168B">
-<meta property="og:description" content="Взбрело мне в голову в очередной раз перезалить debian на стационаре (обычно я это делаю когда забиваю систему всякой фигней, после чего становиться невозможно в ней работать), и в очередной раз про косяк с сетевой картой, я вспомнил только после установки. 
-
-">
+<meta property="og:description" content="Обходим проблему с драйвером Realtek">
 <meta property="og:url" content="http://doam.ru/kosyak-s-setevoj-kartoj-rtl81118168b/">
 <meta property="og:site_name" content="Diary of madman">
 
@@ -152,8 +146,6 @@
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
       <p>Взбрело мне в голову в очередной раз перезалить debian на стационаре (обычно я это делаю когда забиваю систему всякой фигней, после чего становиться невозможно в ней работать), и в очередной раз про косяк с сетевой картой, я вспомнил только после установки. <img title="Read More..." src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" data-wp-more="" data-mce-resize="false" data-mce-placeholder="1" /></p>
-
-<!--more-->
 
 <p>Проблема заключается в том, что с дровами, идущими в debian-squeeze по умолчанию сетевушку жутко плющит, она отправляет максимум 100 пакетов и дохнет, оживить её удается только ребутом. Когда первый раз столкнулся с таким раскладом, я нашел решение, однако все время забываю положить инструкцию и необходимые файлы куда-нибудь в доступное место. И вот сегодня пока стационар меееедленно качает необходимые пакеты, решил записать костыль в блог, чтобы потом не рыскать снова по интернетам и своему винту, чтобы найти все необходимое.
 Итак, собственно исправление проблемы:

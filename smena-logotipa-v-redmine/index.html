@@ -157,8 +157,8 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.<br />
-Редактируем файлик base.html.erb<br />
+      <p>Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.
+Редактируем файлик base.html.erb
 Например</p>
 
 <pre># vim /opt/redmine/app/views/layouts/base.html.erb</pre>
@@ -177,7 +177,7 @@
 
 <pre>&lt;img src="&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png" style="top-margin: 15px; left-margin: 15px;"/&gt;</pre>
 
-<p>&lt;%= Redmine::Utils.relative_url_root %&gt; — переменная, которая указывает на каталог установки redmine.<br />
+<p>&lt;%= Redmine::Utils.relative_url_root %&gt; — переменная, которая указывает на каталог установки redmine.
 В итоге, правки должны выглядеть вот так</p>
 
 <pre>&lt;/div&gt;
