@@ -2,6 +2,7 @@
 title: Знакомство с ImageCMS и update тестового сервера
 layout: post
 permalink: /znakomstvo-s-imagecms-i-update-testovogo-servera/
+excerpt:
 tags:
   - CentOS
   - CMS

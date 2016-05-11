@@ -2,6 +2,7 @@
 title: Сброс пароля суперпользователя в linux
 layout: post
 permalink: /sbros-parolya-superpol-zovatelya-v-linux/
+excerpt:
 tags:
   - Hack
   - Linux

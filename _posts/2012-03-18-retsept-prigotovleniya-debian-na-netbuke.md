@@ -2,6 +2,7 @@
 title: Рецепт приготовления debian на нетбуке
 layout: post
 permalink: /retsept-prigotovleniya-debian-na-netbuke/
+excerpt: Мое первое использование linux в качестве рабочей системы
 tags:
   - Сonky
   - Debian

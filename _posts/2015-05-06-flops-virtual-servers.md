@@ -3,6 +3,7 @@ layout: post
 title: "Виртуальные серверы от Flops"
 permalink: /2015-05-06-flops-virtual-servers/
 date: 2015-05-06T00:12:00+03:00
+excerpt:
 tags:
   - SA
   - Flopsru

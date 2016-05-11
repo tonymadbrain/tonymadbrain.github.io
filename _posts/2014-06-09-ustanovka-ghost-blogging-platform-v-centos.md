@@ -2,6 +2,7 @@
 layout: post
 title: Установка Ghost blogging platform в CentOS
 date: '2014-06-09 18:46:09'
+excerpt:
 ---
 
 
@@ -26,8 +27,8 @@ yum install -y wget
 <pre>wget http://nodejs.org/dist/node-latest.tar.gz
 tar -xzf node-latest.tar.gz
 cd node-v*
-./configure  
-make  
+./configure 
+make 
 make install
 ln -s /usr/local/bin/node /usr/bin/node
 ln -s /usr/local/bin/npm /usr/bin/npm</pre>

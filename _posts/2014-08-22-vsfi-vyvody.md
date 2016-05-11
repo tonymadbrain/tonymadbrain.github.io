@@ -2,6 +2,7 @@
 title: 'VSFI &#8212; выводы'
 layout: post
 permalink: /vsfi-vyvody/
+excerpt:
 tags:
   - CTF
   - Dubna

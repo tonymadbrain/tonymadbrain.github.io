@@ -2,8 +2,7 @@
 title: 'Дубна - въезд в общежитие'
 layout: post
 permalink: /dubna-glava-ii-v-ezd-v-obshhezhitie/
-categories:
-  - Дубна
+excerpt:
 tags:
   - Dubna
   - MUPOCH

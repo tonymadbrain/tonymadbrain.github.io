@@ -2,10 +2,7 @@
 title: Правим цвет приглашения в squeeze
 layout: post
 permalink: /pravim-tsvet-priglasheniya-v-squeeze/
-slider_image:
-  -
-categories:
-  - Debian
+excerpt:
 tags:
   - Bash
   - Bashrc

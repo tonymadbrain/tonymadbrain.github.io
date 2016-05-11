@@ -2,8 +2,7 @@
 title: Проблема с PGP ключами в Proxmox
 layout: post
 permalink: /problema-s-pgp-klyuchami-v-proxmox/
-categories:
-  - Debian
+excerpt:
 tags:
   - Debian
   - Fix
@@ -62,7 +61,7 @@ W: Failed to fetch http://download.proxmox.com/debian/dists/wheezy/Release Unabl
 E: Some index files failed to download. They have been ignored, or old ones used instead.
 </pre>
 
-Исправляется следующим образом:  
+Исправляется следующим образом:
 дергаем нужные ключи
 
 <pre># gpg --keyserver subkeys.pgp.net --recv-keys 8B48AD6246925553

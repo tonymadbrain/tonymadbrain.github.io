@@ -3,6 +3,7 @@ title: "Создание нового приложения на Rails"
 permalink: /sozdaniye-novogo-prilozheniya-na-rails/
 layout: post
 date: 2015-03-19T09:21:21+03:00
+excerpt:
 tags:
   - Rails
   - Rvm

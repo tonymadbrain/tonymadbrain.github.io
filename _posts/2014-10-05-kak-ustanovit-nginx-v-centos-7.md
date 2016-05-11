@@ -2,9 +2,10 @@
 layout: post
 title: Как установить Nginx в CentOS 7
 date: '2014-10-05 16:04:55'
+excerpt:
 ---
 
-Недавно, свет увидела новая версия популярного серверного дистрибутива CentOS, который базируется на RHEL, последняя релизная версия 7. Она включает много изменений, по сравнению с предыдущей версией 6.5.х. В этом мануале я расскажу, как установить веб-сервер Nginx в новой версии CentOS.   
+Недавно, свет увидела новая версия популярного серверного дистрибутива CentOS, который базируется на RHEL, последняя релизная версия 7. Она включает много изменений, по сравнению с предыдущей версией 6.5.х. В этом мануале я расскажу, как установить веб-сервер Nginx в новой версии CentOS.
 
 <img style="max-width: 400px; height:400px;"src="https://farm8.staticflickr.com/7449/16329243640_57a587ded1_o.png"/>
 >>Все действия выполняются на чистой системе и от суперпользователя (root).
@@ -15,7 +16,7 @@ cd /tmp
 wget http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm
 </pre>
-Установим Nginx 
+Установим Nginx
 <pre>
 yum install nginx
 </pre>
@@ -89,7 +90,7 @@ include "/etc/nginx/conf.d/*.conf";
 <pre>
 nano -w /etc/nginx/conf.d/yoursite.ru.conf
 </pre>
-Но лично я предпочитаю текстовый редактор [Vim](http://www.vim.org/). 
+Но лично я предпочитаю текстовый редактор [Vim](http://www.vim.org/).
 Базовый конфиг виртуального хоста выглядит примерно так:
 <pre>
 ##
@@ -98,7 +99,7 @@ nano -w /etc/nginx/conf.d/yoursite.ru.conf
 server {
 access_log off; #многие отключают логи доступа, говорят это снижает нагрузку
 log_not_found off; #я не из таких, но кому-то может пригодится
-error_log  logs/error_log warn; 
+error_log  logs/error_log warn;
         listen 80;
         server_name  firstsite.net;
 location / {
@@ -111,7 +112,7 @@ location / {
                 add_header Pragma public;
                 add_header Cache-Control "public, must-revalidate, proxy-revalidate";
         }
-	# PHP-FPM: раскомментировать, если используется php-fpm 
+	# PHP-FPM: раскомментировать, если используется php-fpm
         #location ~ .php$ {
         #    root           /var/www/firstsite.net;
         #    try_files $uri =404;
@@ -132,7 +133,7 @@ location / {
 service nginx reload
 </pre>
 При этом появится сообщение: <code>Redirecting to /bin/systemctl reload  nginx.service</code>
-Это потому, что в новой версии решили использовать systemctl и приучать к этому пользователей. 
+Это потому, что в новой версии решили использовать systemctl и приучать к этому пользователей.
 Поэтому, добавление в автозагрузку теперь выглядит вот так:
 <pre>
 # systemctl enable nginx.service

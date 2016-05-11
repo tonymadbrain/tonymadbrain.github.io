@@ -2,6 +2,7 @@
 layout: post
 title: Конфиг Nginx для Magento
 date: '2014-06-10 12:29:03'
+excerpt:
 ---
 
 <img src="https://farm8.staticflickr.com/7408/16514983881_79a4865f03_o.jpg" alt="Magento-Logo"/>
@@ -17,9 +18,9 @@ Magento считается самой эффективной и стабильн
     root   /var/www/domain.com;
 
     location / {
-        index index.html index.php; 
+        index index.html index.php;
 
-	try_files $uri $uri/ @handler; 
+	try_files $uri $uri/ @handler;
         expires max; ## Максимальное время длительности кеша для файлов
 	}
 
@@ -36,32 +37,32 @@ Magento считается самой эффективной и стабильн
 	## Set up the password for any username using this command:
 	## htpasswd -c /etc/nginx/htpasswd magentoadmin
 
-	    location /var/export/ { 
+	    location /var/export/ {
 	        auth_basic           "Restricted";
 	        auth_basic_user_file htpasswd; ## Defined at /etc/nginx/htpassword
 	        autoindex            on;
 	    }
 
 	## Disable .htaccess and other hidden files
-	    location  /. { 
+	    location  /. {
 	        return 404;
 	    }
 
-	## Magento uses a common front handler 
-	    location @handler { 
+	## Magento uses a common front handler
+	    location @handler {
 	        rewrite / /index.php;
 	    }
 
 	## Forward paths like /js/index.php/x.js to relevant handler
-	    location ~ .php/ { 
+	    location ~ .php/ {
 	        rewrite ^(.*.php)/ $1 last;
 	    }
 
 	## php-fpm parsing
-	location ~ .php$ { 
+	location ~ .php$ {
 
 	## Catch 404s that try_files miss
-        if (!-e $request_filename) { rewrite / /index.php last; } 
+        if (!-e $request_filename) { rewrite / /index.php last; }
 
 	## Disable cache for php files
         expires        off;
@@ -73,7 +74,7 @@ Magento считается самой эффективной и стабильн
         include        fastcgi_params;
 
 	## Store code is located at Administration &gt; Configuration &gt; Manage Stores in your Magento Installation.
-        fastcgi_param  MAGE_RUN_CODE default; 
+        fastcgi_param  MAGE_RUN_CODE default;
         fastcgi_param  MAGE_RUN_TYPE store;
 
 	## Tweak fastcgi buffers, just in case.

@@ -3,6 +3,7 @@ layout: post
 title: "Habrahabr - Радости полные штаны"
 permalink: /2015-03-21-habrahabr/
 date: 2015-03-21T00:12:44+03:00
+excerpt:
 tags:
   - Habrahabr
 ---

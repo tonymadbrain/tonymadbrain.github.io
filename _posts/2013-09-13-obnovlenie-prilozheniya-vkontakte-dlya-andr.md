@@ -2,8 +2,7 @@
 title: Обновление приложения вконтакте для android
 layout: post
 permalink: /obnovlenie-prilozheniya-vkontakte-dlya-andr/
-categories:
-  - Soft
+excerpt:
 tags:
   - Android
   - App

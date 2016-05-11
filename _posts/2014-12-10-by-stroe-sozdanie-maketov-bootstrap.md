@@ -2,8 +2,7 @@
 title: Быстрое создание макетов Bootstrap
 layout: post
 permalink: /by-stroe-sozdanie-maketov-bootstrap/
-categories:
-  - Soft
+excerpt:
 tags:
   - Bootstrap
   - Pingendo

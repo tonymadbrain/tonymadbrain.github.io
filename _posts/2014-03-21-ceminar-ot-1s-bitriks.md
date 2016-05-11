@@ -2,9 +2,7 @@
 title: Cеминар от 1С-битрикс
 layout: post
 permalink: /ceminar-ot-1s-bitriks/
-categories:
-  - Soft
-  - Мероприятия
+excerpt:
 tags:
   - 1c
   - 1c-bitrix

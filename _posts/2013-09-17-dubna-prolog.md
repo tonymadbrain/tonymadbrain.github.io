@@ -2,8 +2,7 @@
 title: Дубна пролог
 layout: post
 permalink: /dubna-prolog/
-categories:
-  - Дубна
+excerpt:
 tags:
   - Dubna
   - Featured

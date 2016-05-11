@@ -3,6 +3,7 @@ layout: post
 title: "Алиасы для Git"
 permalink: /2015-04-29-aliases_for_git/
 date: 2015-04-29T00:12:44+03:00
+excerpt:
 tags:
   - Git
 ---

@@ -1,7 +1,8 @@
 ---
 title: Памятка по выполнению дыхательных пранаям
 layout: post
-permalink: /pamyatka-po-vy-polneniyu-dy-hatel-ny-h-pr/ы
+permalink: /pamyatka-pranayam/
+excerpt:
 tags:
   - Yoga
   - Pranayam

@@ -2,8 +2,7 @@
 title: Смена логотипа в Redmine
 layout: post
 permalink: /smena-logotipa-v-redmine/
-categories:
-  - CentOS
+excerpt:
 tags:
   - Apache
   - Changelogo
@@ -12,8 +11,8 @@ tags:
   - Redmine
   - Tips
 ---
-Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.  
-Редактируем файлик base.html.erb  
+Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.
+Редактируем файлик base.html.erb
 Например
 
 <pre># vim /opt/redmine/app/views/layouts/base.html.erb</pre>
@@ -31,7 +30,7 @@ tags:
 
 <pre>&lt;img src="&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png" style="top-margin: 15px; left-margin: 15px;"/&gt;</pre>
 
-<%= Redmine::Utils.relative\_url\_root %> &#8212; переменная, которая указывает на каталог установки redmine.  
+<%= Redmine::Utils.relative\_url\_root %> &#8212; переменная, которая указывает на каталог установки redmine.
 В итоге, правки должны выглядеть вот так
 
 <pre>&lt;/div&gt;

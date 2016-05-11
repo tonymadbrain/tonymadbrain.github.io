@@ -2,9 +2,7 @@
 title: 'Дубна - "Спонтанный пост про университет"'
 layout: post
 permalink: /dubna-spontanny-j-post-pro-universitet/
-categories:
-  - Дубна
-  - Новости
+excerpt:
 tags:
   - Dubna
   - GUD
