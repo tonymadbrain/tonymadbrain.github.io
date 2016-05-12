@@ -2,7 +2,7 @@
 title: Немного умений Ruby благодаря codeacademy
 layout: post
 permalink: /nemnogo-umenij-ruby-blagodarya-codeacademy/
-excerpt:
+excerpt: ""
 tags:
   - Codeacademy
   - Courses

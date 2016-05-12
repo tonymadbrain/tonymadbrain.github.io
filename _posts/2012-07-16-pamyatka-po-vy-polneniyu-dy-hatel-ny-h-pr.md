@@ -2,7 +2,7 @@
 title: Памятка по выполнению дыхательных пранаям
 layout: post
 permalink: /pamyatka-pranayam/
-excerpt:
+excerpt: ""
 tags:
   - Yoga
   - Pranayam

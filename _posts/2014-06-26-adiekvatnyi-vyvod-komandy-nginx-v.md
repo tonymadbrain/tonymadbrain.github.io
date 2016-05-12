@@ -2,7 +2,7 @@
 layout: post
 title: Адекватный вывод команды nginx -V
 date: '2014-06-26 07:59:55'
-excerpt:
+excerpt: ""
 ---
 
 В nginx есть несколько функций, например:

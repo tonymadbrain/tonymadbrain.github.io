@@ -2,7 +2,7 @@
 title: Общественный транспорт в Дубне
 layout: post
 permalink: /obshhestvenny-j-transport-v-dubne/
-excerpt:
+excerpt: ""
 tags:
   - Root
 ---

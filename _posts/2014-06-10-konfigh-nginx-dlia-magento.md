@@ -2,7 +2,7 @@
 layout: post
 title: Конфиг Nginx для Magento
 date: '2014-06-10 12:29:03'
-excerpt:
+excerpt: ""
 ---
 
 <img src="https://farm8.staticflickr.com/7408/16514983881_79a4865f03_o.jpg" alt="Magento-Logo"/>

@@ -2,7 +2,7 @@
 title: Правим цвет приглашения в squeeze
 layout: post
 permalink: /pravim-tsvet-priglasheniya-v-squeeze/
-excerpt:
+excerpt: ""
 tags:
   - Bash
   - Bashrc

@@ -2,7 +2,7 @@
 title: 'Дубна &#8212; дорога в холодный город'
 layout: post
 permalink: /dubna-glava-i-doroga-v-holodny-j-gorod/
-excerpt:
+excerpt: ""
 tags:
   - Dubna
   - Featured

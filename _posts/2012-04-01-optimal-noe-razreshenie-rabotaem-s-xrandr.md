@@ -2,7 +2,7 @@
 title: Оптимальное разрешение. Работаем с xrandr
 layout: post
 permalink: /optimal-noe-razreshenie-rabotaem-s-xrandr/
-excerpt:
+excerpt: ""
 tags:
   - Debian
   - Xrandr

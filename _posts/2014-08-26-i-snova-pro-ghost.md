@@ -2,7 +2,7 @@
 title: И снова про Ghost
 layout: post
 permalink: /i-snova-pro-ghost/
-excerpt:
+excerpt: ""
 tags:
   - Root
 ---

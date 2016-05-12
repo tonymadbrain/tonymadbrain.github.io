@@ -2,7 +2,7 @@
 layout: post
 title: Установка LiveStreet CMS
 date: '2014-08-12 05:30:40'
-excerpt:
+excerpt: ""
 ---
 
 ![alt](https://farm8.staticflickr.com/7422/16514984271_39ac810ec9_o.png)

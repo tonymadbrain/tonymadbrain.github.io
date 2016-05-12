@@ -2,7 +2,7 @@
 title: На что уходит мое время, и что я решил
 layout: post
 permalink: /na-chto-uhodit-moe-vremya-i-chto-ya-reshil/
-excerpt:
+excerpt: ""
 tags:
   - Root
   - Dubna

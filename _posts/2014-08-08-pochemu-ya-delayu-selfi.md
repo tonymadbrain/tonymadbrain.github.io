@@ -2,7 +2,7 @@
 title: Почему я делаю селфи?
 layout: post
 permalink: /pochemu-ya-delayu-selfi/
-excerpt:
+excerpt: ""
 tags:
   - Research
   - LittlePost

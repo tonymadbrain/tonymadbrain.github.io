@@ -2,7 +2,7 @@
 layout: post
 title: Блокируем/разрешаем доступ к сайту по IP
 date: '2014-08-25 11:12:32'
-excerpt:
+excerpt: ""
 ---
 
 ![alt](https://farm8.staticflickr.com/7452/15896532173_77eba8f85e_o.jpg)

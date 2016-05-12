@@ -2,7 +2,7 @@
 title: Смена логотипа в Redmine
 layout: post
 permalink: /smena-logotipa-v-redmine/
-excerpt:
+excerpt: ""
 tags:
   - Apache
   - Changelogo

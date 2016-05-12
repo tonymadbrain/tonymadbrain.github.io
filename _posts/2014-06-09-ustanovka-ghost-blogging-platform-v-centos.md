@@ -2,7 +2,7 @@
 layout: post
 title: Установка Ghost blogging platform в CentOS
 date: '2014-06-09 18:46:09'
-excerpt:
+excerpt: ""
 ---
 
 

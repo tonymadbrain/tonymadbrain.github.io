@@ -2,7 +2,7 @@
 title: Резервное копирование в NFS хранилище в Proxmox
 layout: post
 permalink: /rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/
-excerpt:
+excerpt: ""
 tags:
   - CentOS
   - Iptables

@@ -2,7 +2,7 @@
 title: Немного рандомных фотографий
 layout: post
 permalink: /nemnogo-randomny-h-fotografij/
-excerpt:
+excerpt: ""
 tags:
   - Photo
 ---

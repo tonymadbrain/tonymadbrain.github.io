@@ -1,8 +1,8 @@
 ---
-title: 'VSFI &#8212; выводы'
+title: 'VSFI - выводы'
 layout: post
 permalink: /vsfi-vyvody/
-excerpt:
+excerpt: ""
 tags:
   - CTF
   - Dubna

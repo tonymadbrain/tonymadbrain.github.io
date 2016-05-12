@@ -2,7 +2,7 @@
 layout: post
 title: Применение новых конфигов Nginx
 date: '2014-11-26 12:15:30'
-excerpt:
+excerpt: ""
 ---
 
 <img style="max-width: 400px;" src="https://farm8.staticflickr.com/7446/15896531813_78663a1bd0_o.jpg" />

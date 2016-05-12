@@ -2,7 +2,7 @@
 layout: post
 title: Конфиг Nginx для Prestashop
 date: '2014-06-10 12:18:40'
-excerpt:
+excerpt: ""
 ---
 
 <img src="https://farm9.staticflickr.com/8595/16515667202_4ac4d6b26f_o.png" width="700"/>

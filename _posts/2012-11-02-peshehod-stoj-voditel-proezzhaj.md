@@ -2,7 +2,7 @@
 title: Пешеход стой! Водитель проезжай!
 layout: post
 permalink: /peshehod-stoj-voditel-proezzhaj/
-excerpt:
+excerpt: ""
 tags:
   - Voronezh
   - Roads

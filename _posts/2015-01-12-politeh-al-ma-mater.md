@@ -2,7 +2,7 @@
 title: 'Политех - альма-матер?'
 layout: post
 permalink: /politeh-al-ma-mater/
-excerpt:
+excerpt: ""
 tags:
   - Bachelor
   - VORSTU

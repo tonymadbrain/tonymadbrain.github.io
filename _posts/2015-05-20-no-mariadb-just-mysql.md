@@ -3,7 +3,7 @@ layout: post
 title: "Mariadb не, использовать Mysql"
 permalink: /2015-05-20-no-mariadb-just-mysql/
 date: 2015-05-20T00:12:00+03:00
-excerpt:
+excerpt: ""
 tags:
   - Mariadb
   - Mysql

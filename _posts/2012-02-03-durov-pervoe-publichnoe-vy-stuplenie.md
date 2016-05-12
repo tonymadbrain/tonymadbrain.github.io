@@ -2,7 +2,7 @@
 title: Дуров, первое публичное выступление
 layout: post
 permalink: /durov-pervoe-publichnoe-vy-stuplenie/
-excerpt:
+excerpt: ""
 tags:
   - Vkontakte
 ---

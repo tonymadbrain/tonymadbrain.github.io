@@ -2,7 +2,7 @@
 layout: post
 title: Домены и хостинг
 date: '2014-10-02 12:57:30'
-excerpt:
+excerpt: ""
 ---
 
 Первая статья для раздела трюков. Домены для своих проектов я покупаю на [webnames.ru](http://www.webnames.ru/scripts/check.pl?ref_id=189029).

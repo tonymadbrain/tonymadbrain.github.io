@@ -2,6 +2,7 @@
 title: Бортовой журнал
 layout: post
 permalink: /bortovoj-zhurnal/
+excerpt: ""
 tags:
   - Root
   - News

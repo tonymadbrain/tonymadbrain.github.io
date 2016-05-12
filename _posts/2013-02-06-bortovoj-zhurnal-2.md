@@ -2,7 +2,7 @@
 title: Бортовой журнал
 layout: post
 permalink: /bortovoj-zhurnal-2/
-excerpt:
+excerpt: ""
 tags:
   - Canon
   - IPad

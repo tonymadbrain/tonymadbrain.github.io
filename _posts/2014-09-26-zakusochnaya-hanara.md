@@ -2,7 +2,7 @@
 title: 'Закусочная «Ханара»'
 layout: post
 permalink: /zakusochnaya-hanara/
-excerpt:
+excerpt: ""
 tags:
   - Root
 ---

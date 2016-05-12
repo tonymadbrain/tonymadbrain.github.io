@@ -2,7 +2,7 @@
 title: Как айтишник ноутбук покупает
 layout: post
 permalink: /kak-ajtishnik-noutbuk-pokupaet/
-excerpt:
+excerpt: ""
 tags:
   - Apple
   - Macbook

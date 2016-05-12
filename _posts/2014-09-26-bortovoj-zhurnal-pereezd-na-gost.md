@@ -2,7 +2,7 @@
 title: 'Бортовой журнал: переезд на гост'
 layout: post
 permalink: /bortovoj-zhurnal-pereezd-na-gost/
-excerpt:
+excerpt: ""
 tags:
   - Root
 ---

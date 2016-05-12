@@ -2,7 +2,7 @@
 title: Ищем xorg.conf debian squeeze
 layout: post
 permalink: /ishhem-xorg-conf-debian-squeeze/
-excerpt:
+excerpt: ""
 tags:
   - Debian
   - Xorg.conf
