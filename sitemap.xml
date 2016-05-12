@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://doam.ru/flickr-api-wrapper/</loc>
+    <lastmod>2016-05-12T22:41:16+03:00</lastmod>
+  </url>
+  <url>
     <loc>http://doam.ru/supermicro-x9drw-if/</loc>
     <lastmod>2016-04-02T01:56:10+03:00</lastmod>
   </url>
@@ -709,6 +713,18 @@
   <url>
     <loc>http://doam.ru/tag/bios/</loc>
   </url>
+  <url>
+    <loc>http://doam.ru/tag/ruby/</loc>
+  </url>
+  <url>
+    <loc>http://doam.ru/tag/development/</loc>
+  </url>
+  <url>
+    <loc>http://doam.ru/tag/flickr/</loc>
+  </url>
+  <url>
+    <loc>http://doam.ru/tag/api/</loc>
+  </url>
     <url>
       <loc>http://doam.ru/tron-1982-i-tron-nasledie-togda-i-sejchas/</loc>
     </url>
@@ -918,6 +934,9 @@
     </url>
     <url>
       <loc>http://doam.ru/supermicro-x9drw-if/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/flickr-api-wrapper/</loc>
     </url>
   <url>
     <loc>http://doam.ru/yandex_424342c6a390a9bc.html</loc>
