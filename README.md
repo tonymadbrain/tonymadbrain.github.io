@@ -6,4 +6,3 @@ This work is licensed under a Creative Commons Attribution-Noncommercial-Share A
 
 1. обязательной ссылки на автора (http://doam.ru/, http://twitter.com/tonymadbrain)
 2. распространении любых производных работ на условиях этой же лицензии (ссылка на лицензию обязательна).
-
