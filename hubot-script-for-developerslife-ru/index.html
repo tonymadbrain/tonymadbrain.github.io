@@ -1,0 +1,287 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Hubot скрипт для developerslife.ru &#8211; Diary of madman</title>
+<meta name="description" content="Учим бота получать свежие gif">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Hubot, Imhonet">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Hubot скрипт для developerslife.ru">
+<meta name="twitter:description" content="Учим бота получать свежие gif">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://doam.ru/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hubot скрипт для developerslife.ru">
+<meta property="og:description" content="Учим бота получать свежие gif">
+<meta property="og:url" content="http://doam.ru/hubot-script-for-developerslife-ru/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="http://doam.ru/hubot-script-for-developerslife-ru/">
+<link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://doam.ru/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://doam.ru/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://doam.ru/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://doam.ru/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://doam.ru/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://doam.ru/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://doam.ru/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://doam.ru/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://doam.ru/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://doam.ru/tags/" >Теги</a></li>
+				
+				    
+				    <li><a href="http://doam.ru/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://doam.ru/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://doam.ru/hubot-script-for-developerslife-ru/" rel="bookmark" title="Hubot скрипт для developerslife.ru">Hubot скрипт для developerslife.ru</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>В качестве вступления: сейчас я работаю в проекте <a href="http://imhonet.ru/" target="_blank">imhonet</a> - это технически сложная система, у которой под капотом математический рекомендательный движок, а прикрыто все веб-мордой на PHP. К слову, сейчас команда активно переписывает фронтенд на стек Node.js/React/Webpack, а PHP будет только плеваться JSON-ом на запросы первого.</p>
+
+<p><br />
+<img src="https://farm2.staticflickr.com/1624/24190718014_35b17690c8_o.jpg" />
+<br />
+<br /></p>
+
+<p>Но данный пост не об этом. Я работаю системным администратором и являюсь евангелистом <a href="https://speakerdeck.com/jnewland/chatops-at-github" target="_blank">chatOps</a>. Если коротко, суть в том, чтобы различные админские (и не только) задачи запускать простыми текстовыми командами из чата и туда же получать результаты. Не всем подходит эта мета, не буду сейчас расписывать плюсы и минусы. Я уделяю chatOps время, которое остается от выполнения основных задач, поэтому развиваю нашего бота не так быстро как хотелось бы, но так или иначе, он у нас есть.</p>
+
+<p>Также, в данной записи я не буду подробно расписывать что умеет наш бот, потому что это либо интеграции с внутренними сервисами, либо что-то костыльное, либо то, про что я не могу здесь писать. Но я с легкостью могу написать про простой скрипт для работы с API сайта <a href="http://developerslife.ru/" target="_blank">developerslife.ru</a>. И разработчики и админы любят смотреть на смешные гифки, особенно в тематике своей работы. Поэтому я реализовал следующие функции:</p>
+
+<ol>
+  <li>dev me - присылает одну рандомную гифку</li>
+  <li>dev me last - присылает последние 5 гифок</li>
+  <li>live update - раз в 10 минут скрипт проверяет наличие новых записей и если такие есть, присылает в заданную комнату</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="nv">module.exports = </span><span class="nf">(robot)-&gt;</span>
+
+  <span class="c1"># метод для проверки новых постов</span>
+  <span class="nv">getDevGifsDigest = </span><span class="nf">-&gt;</span>
+    <span class="c1"># получаем id комнаты, в которую будем слать новые гифки</span>
+    <span class="nv">room = </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">HUBOT_ROOM_FOR_DEV_GIFS</span>
+
+    <span class="nx">robot</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;Start method sendDevGifDigest&quot;</span>
+    <span class="c1"># дергаем из персистент (по дефолту redis) id последнего поста</span>
+    <span class="nv">last_gif_id = </span><span class="nx">robot</span><span class="p">.</span><span class="nx">brain</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;developerslife_last&quot;</span>
+    <span class="c1"># если таковой нет, например первый раз запускается метод</span>
+    <span class="k">if</span> <span class="nx">last_gif_id</span> <span class="o">==</span> <span class="kc">null</span>
+      <span class="nv">url = </span><span class="s">&quot;http://developerslife.ru/latest/0?json=true&quot;</span>
+      <span class="c1"># дергаем последние 5 постов</span>
+      <span class="nx">robot</span><span class="p">.</span><span class="nx">http</span><span class="p">(</span> <span class="nx">url</span> <span class="p">).</span><span class="nx">get</span><span class="p">()</span> <span class="nf">(err, res, body)-&gt;</span>
+        <span class="c1"># парсим JSON</span>
+        <span class="nv">life = </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span> <span class="nx">body</span>
+        <span class="c1"># сохраняем id последнего поста, здесь можно впихнуть его отправку в комнату также</span>
+        <span class="nx">robot</span><span class="p">.</span><span class="nx">brain</span><span class="p">.</span><span class="nx">set</span> <span class="s">&quot;developerslife_last&quot;</span><span class="p">,</span> <span class="nx">life</span><span class="p">.</span><span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span>
+        <span class="nx">robot</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;Last gif is </span><span class="si">#{</span><span class="nx">life</span><span class="p">.</span><span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="si">}</span><span class="s">&quot;</span>
+    <span class="k">else</span>
+      <span class="c1"># иначе, если id поста есть, дергаем последние 50 (на этом сайте за 10 минут больше 50ти не появляется...пока)</span>
+      <span class="nv">url = </span><span class="s">&quot;http://developerslife.ru/latest/0?json=true&amp;pageSize=50&quot;</span>
+      <span class="nx">robot</span><span class="p">.</span><span class="nx">http</span><span class="p">(</span> <span class="nx">url</span> <span class="p">).</span><span class="nx">get</span><span class="p">()</span> <span class="nf">(err, res, body)-&gt;</span>
+        <span class="nv">life = </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span> <span class="nx">body</span>
+        <span class="c1"># обходим ответ и если id больше (на сайте id инкрементальный) чем тот, который записан у нас, то шлем эту гифку в заданную комнату</span>
+        <span class="k">for</span> <span class="nx">k</span><span class="p">,</span><span class="nx">v</span> <span class="k">of</span> <span class="nx">life</span><span class="p">.</span><span class="nx">result</span>
+          <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">id</span> <span class="o">&gt;</span> <span class="nx">last_gif_id</span>
+            <span class="nx">robot</span><span class="p">.</span><span class="nx">messageRoom</span> <span class="nx">room</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">v</span><span class="p">.</span><span class="nx">description</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">v</span><span class="p">.</span><span class="nx">gifURL</span><span class="si">}</span><span class="s">&quot;</span> <span class="k">unless</span> <span class="nx">err</span>
+        <span class="c1"># сбрасываем последний id и сетем новый последний id</span>
+        <span class="nx">robot</span><span class="p">.</span><span class="nx">brain</span><span class="p">.</span><span class="nx">set</span> <span class="s">&quot;developerslife_last&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span>
+        <span class="nx">robot</span><span class="p">.</span><span class="nx">brain</span><span class="p">.</span><span class="nx">set</span> <span class="s">&quot;developerslife_last&quot;</span><span class="p">,</span> <span class="nx">life</span><span class="p">.</span><span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span>
+        <span class="nx">robot</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;Last gif is </span><span class="si">#{</span><span class="nx">life</span><span class="p">.</span><span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="si">}</span><span class="s">&quot;</span>
+
+  <span class="c1"># запускаем наш метод для получения новых постов раз в 10 минут (время в ms)</span>
+  <span class="nx">setInterval</span><span class="p">((</span><span class="nf">-&gt;</span> <span class="nx">getDevGifsDigest</span><span class="p">()),</span> <span class="mi">600000</span><span class="p">)</span>
+
+  <span class="c1"># простой метод для получения рандомной гифки по запросу</span>
+  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/dev\s+me$/i</span><span class="p">,</span> <span class="nf">(msg)-&gt;</span>
+    <span class="nv">url = </span><span class="s">&quot;http://developerslife.ru/random?json=true&quot;</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="nx">http</span><span class="p">(</span> <span class="nx">url</span> <span class="p">).</span><span class="nx">get</span><span class="p">()</span> <span class="nf">(err, res, body)-&gt;</span>
+      <span class="nv">life = </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span> <span class="nx">body</span>
+      <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">life</span><span class="p">.</span><span class="nx">description</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">life</span><span class="p">.</span><span class="nx">gifURL</span><span class="si">}</span><span class="s">&quot;</span> <span class="k">unless</span> <span class="nx">err</span>
+
+  <span class="c1"># простой метод для получения последних 5 постов по запросу</span>
+  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/dev\s+me\s+last$/i</span><span class="p">,</span> <span class="nf">(msg)-&gt;</span>
+    <span class="nv">url = </span><span class="s">&quot;http://developerslife.ru/latest/0?json=true&quot;</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="nx">http</span><span class="p">(</span> <span class="nx">url</span> <span class="p">).</span><span class="nx">get</span><span class="p">()</span> <span class="nf">(err, res, body)-&gt;</span>
+      <span class="nv">life = </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span> <span class="nx">body</span>
+      <span class="k">for</span> <span class="nx">k</span><span class="p">,</span><span class="nx">v</span> <span class="k">of</span> <span class="nx">life</span><span class="p">.</span><span class="nx">result</span>
+        <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">v</span><span class="p">.</span><span class="nx">description</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">v</span><span class="p">.</span><span class="nx">gifURL</span><span class="si">}</span><span class="s">&quot;</span> <span class="k">unless</span> <span class="nx">err</span></code></pre></figure>
+
+<p>Код простой, но я его прокомментировал, в любом случае вы можете задавать вопросы мне в твиттере <a href="https://twitter.com/tonymadbrain" target="_blank">@tonymadbrain</a>.</p>
+
+<p><br />
+<img src="https://farm2.staticflickr.com/1561/24523370100_50e5128c91_o.jpg" />
+<br /></p>
+
+
+      
+        <a href="/tag/hubot">#Hubot</a>
+      
+        <a href="/tag/imhonet">#Imhonet</a>
+      
+        <!-- <a href="/tag/hubot/" rel="tag">Hubot</a>, <a href="/tag/imhonet/" rel="tag">Imhonet</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Hubot скрипт для developerslife.ru %23doamru http://doam.ru/hubot-script-for-developerslife-ru/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/hubot-script-for-developerslife-ru/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/hubot-script-for-developerslife-ru/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/hubot-script-for-developerslife-ru/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+        <p class="byline"><strong>Hubot скрипт для developerslife.ru</strong> опубликовано <time datetime="2016-02-04T21:42:55+03:00">04 February, 2016</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru/posts/">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://doam.ru/first-bicycle-report/" title="Первый вело-отчет">Первый вело-отчет</a></li>
+    
+      <li><a href="http://doam.ru/flickr-api-wrapper/" title="Flickr API Wrapper">Flickr API Wrapper</a></li>
+    
+      <li><a href="http://doam.ru/supermicro-x9drw-if/" title="Обновление прошивки Supermicro X9DRW-iF">Обновление прошивки Supermicro X9DRW-iF</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    
+
+<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://doam.ru/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://doam.ru/assets/js/scripts.min.js"></script>
+
+	        
+
+</body>
+</html>
