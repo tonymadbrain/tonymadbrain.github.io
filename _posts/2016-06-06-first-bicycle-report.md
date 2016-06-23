@@ -9,7 +9,7 @@ date: 2016-06-06T17:48:56+03:00
 ---
 
 <br>
-<img src="https://farm8.staticflickr.com/7351/27585487780_1033e2ee5c_o.png">
+<img src="https://farm8.staticflickr.com/7393/27829038636_7e098c26df_o.png">
 <br>
 <br>
 
