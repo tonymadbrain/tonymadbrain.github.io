@@ -727,6 +727,9 @@
   <url>
     <loc>http://doam.ru/tag/https/</loc>
   </url>
+  <url>
+    <loc>http://doam.ru/tag/letsencrypt/</loc>
+  </url>
     <url>
       <loc>http://doam.ru/tron-1982-i-tron-nasledie-togda-i-sejchas/</loc>
     </url>
@@ -948,6 +951,6 @@
     </url>
   <url>
     <loc>http://doam.ru/yandex_424342c6a390a9bc.html</loc>
-    <lastmod>2016-06-23T19:00:47+03:00</lastmod>
+    <lastmod>2016-01-31T22:44:07+03:00</lastmod>
   </url>
 </urlset>
