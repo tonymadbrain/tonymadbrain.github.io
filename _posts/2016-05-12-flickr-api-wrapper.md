@@ -3,10 +3,10 @@ layout: post
 title: "Flickr API Wrapper"
 excerpt: "Приложение для использования flickr.com в качестве хранилища изображений (например для блога)"
 tags:
-  - ruby
-  - development
-  - flickr
-  - api
+  - Ruby
+  - Development
+  - Flickr
+  - API
 date: 2016-05-12T22:41:16+03:00
 ---
 

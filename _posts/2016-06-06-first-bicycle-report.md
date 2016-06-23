@@ -4,7 +4,7 @@ title: "Первый вело-отчет"
 permalink: /first-bicycle-report/
 excerpt: "Первые 3 недели на GT Timberline COMP (2015)."
 tags:
-  - bicycle
+  - Bicycle
 date: 2016-06-06T17:48:56+03:00
 ---
 
