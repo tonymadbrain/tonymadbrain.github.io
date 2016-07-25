@@ -2,6 +2,7 @@
 layout: post
 title: HTTPS в Nginx с сертификатом от Let's Encrypt
 excerpt: "Прикручиваем https и перевыпуск сертифката"
+permalink: /https-in-nginx-using-lets-encrypt/
 tags:
   - Nginx
   - HTTPS
