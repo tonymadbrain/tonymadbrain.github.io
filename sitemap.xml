@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://doam.ru/linux-tools-with-ruby/</loc>
+    <lastmod>2016-07-26T00:09:58+03:00</lastmod>
+  </url>
+  <url>
     <loc>http://doam.ru/https-in-nginx-using-lets-encrypt/</loc>
     <lastmod>2016-06-23T18:38:40+03:00</lastmod>
   </url>
@@ -948,6 +952,9 @@
     </url>
     <url>
       <loc>http://doam.ru/https-in-nginx-using-lets-encrypt/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/linux-tools-with-ruby/</loc>
     </url>
   <url>
     <loc>http://doam.ru/yandex_424342c6a390a9bc.html</loc>

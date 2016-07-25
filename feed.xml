@@ -4,13 +4,45 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2016-07-08T14:24:46+03:00</updated>
+<updated>2016-07-26T00:17:28+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Создание инструментов Linux с помощью Ruby]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/linux-tools-with-ruby/" />
+  <id>http://doam.ru/linux-tools-with-ruby</id>
+  <published>2016-07-26T00:09:58+03:00</published>
+  <updated>2016-07-26T00:09:58+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
+  &lt;header&gt;
+    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;!-- /#table-of-contents --&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;https://farm2.staticflickr.com/1480/23858108174_a5639151ceb_o.jpg&quot; /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/linux-tools-with-ruby/&quot;&gt;Создание инструментов Linux с помощью Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on July 26, 2016.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -192,27 +224,6 @@
   <content type="html">
     &lt;p&gt;Микросервисы сейчас очень популярны и используются в различных архитектурах и средах. Слова Ruby и микросервисы, принято связывать с великолепным минималистичным фреймворком &lt;em&gt;Sinatra&lt;/em&gt;. Есть много хороших ruby микро-фреймворков, но &lt;a href=&quot;http://www.ruby-grape.org/&quot; target=&quot;_blank&quot;&gt;Gra...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/ruby-the-grape-swagger-stack/&quot;&gt;Минималистичный стек Grape + Swagger для микросервисов на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 24, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Инструменты devOps]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru/devops_tools/" />
-  <id>http://doam.ru/devops_tools</id>
-  <published>2015-11-16T22:03:45+03:00</published>
-  <updated>2015-11-16T22:03:45+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri>http://doam.ru</uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;По большей части моя работа относится к системному администрированию, но зачастую мне приходится изменять программный код на разных языках. В этой записи я хочу зафиксировать подборку инструментов, которыми пользуюсь.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-&lt;img src=&quot;https://farm1.staticflickr.com/581/22860156877_dacb...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru/devops_tools/&quot;&gt;Инструменты devOps&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 16, 2015.&lt;/p&gt;
   </content>
 </entry>
 

@@ -5,15 +5,15 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Оптимизируем работу Motorola Moto G (first gen.) &#8211; Diary of madman</title>
-<meta name="description" content="">
+<title>Создание инструментов Linux с помощью Ruby &#8211; Diary of madman</title>
+<meta name="description" content="Практическое руководство">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Motorola, Perfomance">
+<meta name="keywords" content="Linux, Ruby">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Оптимизируем работу Motorola Moto G (first gen.)">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Создание инструментов Linux с помощью Ruby">
+<meta name="twitter:description" content="Практическое руководство">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
 
@@ -23,16 +23,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Оптимизируем работу Motorola Moto G (first gen.)">
-<meta property="og:description" content="">
-<meta property="og:url" content="http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/">
+<meta property="og:title" content="Создание инструментов Linux с помощью Ruby">
+<meta property="og:description" content="Практическое руководство">
+<meta property="og:url" content="http://doam.ru/linux-tools-with-ruby/">
 <meta property="og:site_name" content="Diary of madman">
 
 
 
 
 
-<link rel="canonical" href="http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/">
+<link rel="canonical" href="http://doam.ru/linux-tools-with-ruby/">
 <link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -150,53 +150,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/" rel="bookmark" title="Оптимизируем работу Motorola Moto G (first gen.)">Оптимизируем работу Motorola Moto G (first gen.)</a></h1>
+        <h1><a href="http://doam.ru/linux-tools-with-ruby/" rel="bookmark" title="Создание инструментов Linux с помощью Ruby">Создание инструментов Linux с помощью Ruby</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Никогда не задумывался о скорости работы моего смартфона. Да он дешевый и, по сегодняшним меркам, слабый, но всегда делает свою работу, самое главное что устраивает диагональю экрана, тяжело найти подобное решение на рынке. Тормоза наблюдаются только при запуске “тяжелых” приложений и браузера chrome.</p>
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
 
 <p><br />
-<img src="https://farm6.staticflickr.com/5765/21466131880_c8105ca169_o.jpg" />
+<img src="https://farm2.staticflickr.com/1480/23858108174_a5639151ceb_o.jpg" />
 <br /></p>
 
 <blockquote>
-  <p>Хром “ликает”, это норма ©</p>
+  <p>От переводчика: <a href="http://www.blackbytes.info/2016/06/linux-tools-with-ruby/" target="_blank">Оригинал статьи</a></p>
 </blockquote>
 
-<p>Но недавно, после одной статьи на хабре, я задумался о том, что было-бы, если мой телефон работал быстрее. В результате я полез ковыряться в настройках. Тут стоит сказать, что установлена у меня на аппарате Lollipop GPE, хотя покупался не у гугла, просто хотелось побыстрее пятерку поставить. В итоге моих недолгих ковыряний и двух дневной обкатки, телефон стал действительно летать, хотя и заметно это только по тому, что до этого он работал медленней.</p>
-
-<p>Оптимизация получилось очень простой, просматривая <code>Настройки -&gt; Приложения -&gt; Показать кешированные процессы</code> понял, что многие процессы кешируются и хранятся в памяти, но при этом не используются, либо кешируются на flash память и медленно из нее выгружаются (точно не разбирался в этом вопросе) и попробовал отключить кеширование процессов в настройках для разработчиков. Это было сделано вечером при 100% батареи, проснувшись же утром, я обнаружил 20% заряда аккумулятора, при условии, что раньше за ночь съедалось максимум 20%, в результате батареи хватило ровно чтобы доехать до работы. После того как энергоресурсы смартфона были пополнены, я стал разбираться в причинах, и оказалось, что все “топливо” сожрал гугл календарь. Учитывая что отключить его толком нельзя без прав рута, я догадался просто отключить синхронизацию календаря в <code>Настройки -&gt; Аккаунты</code>, так как не использую эту функцию в принципе. После этого телефон буд-то искупался в яме лазаря, т.е. стал быстро работать и долго жить.</p>
-
-<p>P.S. В этом году Motorola должны выпустить модель G уже 3-го поколения и в сеть утекли фотографии, возможно я его приобрету, но с другой стороны, зачем менять смартфон, который работает отлично?</p>
 
       
-        <a href="/tag/motorola">#Motorola</a>
+        <a href="/tag/linux">#Linux</a>
       
-        <a href="/tag/perfomance">#Perfomance</a>
+        <a href="/tag/ruby">#Ruby</a>
       
-        <!-- <a href="/tag/motorola/" rel="tag">Motorola</a>, <a href="/tag/perfomance/" rel="tag">Perfomance</a> -->
+        <!-- <a href="/tag/linux/" rel="tag">Linux</a>, <a href="/tag/ruby/" rel="tag">Ruby</a> -->
       <hr />
       <footer role="contentinfo">
         <div style="text-align: center;" class="social-share">
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Оптимизируем работу Motorola Moto G (first gen.) %23doamru http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Создание инструментов Linux с помощью Ruby %23doamru http://doam.ru/linux-tools-with-ruby/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="http://vk.com/share.php?url=http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+      <a href="http://vk.com/share.php?url=http://doam.ru/linux-tools-with-ruby/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/linux-tools-with-ruby/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/linux-tools-with-ruby/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
 
-        <p class="byline"><strong>Оптимизируем работу Motorola Moto G (first gen.)</strong> опубликовано <time datetime="2015-06-30T00:12:00+03:00">30 June, 2015</time>.</p>
+        <p class="byline"><strong>Создание инструментов Linux с помощью Ruby</strong> опубликовано <time datetime="2016-07-26T00:09:58+03:00">26 July, 2016</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   
@@ -208,11 +211,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru/posts/">Смотреть все записи</a>)</small></h4>
     <ul>
     
-      <li><a href="http://doam.ru/linux-tools-with-ruby/" title="Создание инструментов Linux с помощью Ruby">Создание инструментов Linux с помощью Ruby</a></li>
-    
       <li><a href="http://doam.ru/https-in-nginx-using-lets-encrypt/" title="HTTPS в Nginx с сертификатом от Let's Encrypt">HTTPS в Nginx с сертификатом от Let's Encrypt</a></li>
     
       <li><a href="http://doam.ru/first-bicycle-report/" title="Первый вело-отчет">Первый вело-отчет</a></li>
+    
+      <li><a href="http://doam.ru/flickr-api-wrapper/" title="Flickr API Wrapper">Flickr API Wrapper</a></li>
     
     </ul>
     <hr />
