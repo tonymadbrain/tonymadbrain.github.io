@@ -16,6 +16,7 @@ sass:
 gems:
   - jekyll-sitemap
   - jekyll-redirect-from
+  - jemoji
 
 kramdown:
   auto_ids: true
