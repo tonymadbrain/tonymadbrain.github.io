@@ -18,6 +18,8 @@ gems:
   - jekyll-redirect-from
   - jemoji
 
+# http://www.webpagefx.com/tools/emoji-cheat-sheet/
+
 kramdown:
   auto_ids: true
   footnote_nr: 1
