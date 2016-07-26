@@ -1,11 +1,10 @@
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]--><!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Создание инструментов Linux с помощью Ruby &#8211; Diary of madman</title>
+<title>Создание инструментов Linux с помощью Ruby – Diary of madman</title>
 <meta name="description" content="Практическое руководство">
 <meta name="theme-color" content="#00d900">
 <meta name="keywords" content="Linux, Ruby">
@@ -60,7 +59,7 @@
 <!-- Modernizr -->
 <script src="http://doam.ru/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
 
-<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic" rel="stylesheet" type="text/css">
 
 <!-- Icons -->
 <!-- 16x16 -->
@@ -76,15 +75,15 @@
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://doam.ru/images/apple-touch-icon-144x144-precomposed.png">
 <!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MXNSQJ');</script>
 <!-- End Google Tag Manager -->
-<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 </head>
 
@@ -95,21 +94,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="navigation-wrapper">
 	<div class="site-name">
 		<a href="http://doam.ru/">Diary of madman</a>
-	</div><!-- /.site-name -->
+	</div>
+<!-- /.site-name -->
 	<div class="top-navigation">
 		<nav role="navigation" id="site-nav" class="nav">
 		    <ul>
 		        
 				    
-				    <li><a href="http://doam.ru/tags/" >Теги</a></li>
+				    <li><a href="http://doam.ru/tags/">Теги</a></li>
 				
 				    
-				    <li><a href="http://doam.ru/cv/" >Резюме</a></li>
+				    <li><a href="http://doam.ru/cv/">Резюме</a></li>
 				
 		    </ul>
 		</nav>
-	</div><!-- /.top-navigation -->
-</div><!-- /.navigation-wrapper -->
+	</div>
+<!-- /.top-navigation -->
+</div>
+<!-- /.navigation-wrapper -->
 
 
 
@@ -152,11 +154,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
         <h1><a href="http://doam.ru/linux-tools-with-ruby/" rel="bookmark" title="Создание инструментов Linux с помощью Ruby">Создание инструментов Linux с помощью Ruby</a></h1>
       
-    </div><!--/ .headline-wrap -->
+    </div>
+<!--/ .headline-wrap -->
     <div class="article-wrap">
       <section id="table-of-contents" class="toc">
   <header>
-    <h3><i class="fa fa-book"></i> Обзор</h3>
+    <h3>
+<i class="fa fa-book"></i> Обзор</h3>
   </header>
 <div id="drawer">
 <ul id="markdown-toc">
@@ -167,7 +171,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 <!-- /#table-of-contents -->
 
-<p>Инструменты <code>ps</code>, <code>top</code> и <code>netstat</code> крутые, они дают много полезной информации о том, что происходит в системе. Но как они работают? Где берут и как получают всю эту информацию? В этой записи мы будем воссоздавать три популярных Linux инструмента вместе, вы убиваете сразу двух зайцев, изучаете и Ruby и Linux в одно время. :simple_smile:</p>
+<p>Инструменты <code>ps</code>, <code>top</code> и <code>netstat</code> крутые, они дают много полезной информации о том, что происходит в системе. Но как они работают? Где берут и как получают всю эту информацию? В этой записи мы будем воссоздавать три популярных Linux инструмента вместе, вы убиваете сразу двух зайцев, изучаете и Ruby и Linux в одно время. <img class="emoji" title=":wink:" alt=":wink:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f609.png" height="20" width="20" align="absmiddle"></p>
 
 <blockquote>
   <p>От переводчика: <a href="http://www.blackbytes.info/2016/06/linux-tools-with-ruby/" target="_blank">Оригинал статьи</a></p>
@@ -196,13 +200,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a href="/tag/ruby">#Ruby</a>
       
         <!-- <a href="/tag/linux/" rel="tag">Linux</a>, <a href="/tag/ruby/" rel="tag">Ruby</a> -->
-      <hr />
+      <hr>
       <footer role="contentinfo">
         <div style="text-align: center;" class="social-share">
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Создание инструментов Linux с помощью Ruby %23doamru http://doam.ru/linux-tools-with-ruby/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20Linux%20%D1%81%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E%20Ruby%20%23doamru%20http://doam.ru/linux-tools-with-ruby/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
       <a href="http://vk.com/share.php?url=http://doam.ru/linux-tools-with-ruby/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
@@ -211,21 +215,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/linux-tools-with-ruby/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/linux-tools-with-ruby/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/linux-tools-with-ruby/" target="_blank" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
-</div><!-- /.social-share -->
+</div>
+<!-- /.social-share -->
 
         <p class="byline"><strong>Создание инструментов Linux с помощью Ruby</strong> опубликовано <time datetime="2016-07-26T00:09:58+03:00">26 July, 2016</time>.</p>
       </footer>
-    </div><!-- /.article-wrap -->
+    </div>
+<!-- /.article-wrap -->
   
   </article>
-</div><!-- /#main -->
+</div>
+<!-- /#main -->
 
 <div class="footer-wrap">
   <div class="related-articles">
-  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru/posts/">Смотреть все записи</a>)</small></h4>
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru/posts/">Смотреть все записи</a>)</small>
+</h4>
     <ul>
     
       <li><a href="http://doam.ru/https-in-nginx-using-lets-encrypt/" title="HTTPS в Nginx с сертификатом от Let's Encrypt">HTTPS в Nginx с сертификатом от Let's Encrypt</a></li>
@@ -235,16 +243,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <li><a href="http://doam.ru/flickr-api-wrapper/" title="Flickr API Wrapper">Flickr API Wrapper</a></li>
     
     </ul>
-    <hr />
-  </div><!-- /.related-articles -->
+    <hr>
+  </div>
+<!-- /.related-articles -->
   <footer>
     
 
-<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span>© 2011 - 2016 Diary of madman.</span></div>
+<br>
 <div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
 
   </footer>
-</div><!-- /.footer-wrap -->
+</div>
+<!-- /.footer-wrap -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="http://doam.ru/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
