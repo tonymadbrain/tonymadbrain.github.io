@@ -165,6 +165,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="drawer">
 <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">Находим информацию о статусе</a></li>
+  <li><a href="#process-listing" id="markdown-toc-process-listing">Process Listing</a></li>
 </ul>
 
   </div>
@@ -193,6 +194,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 11552
 11655</code></pre></figure>
 
+<p>Это лишь часть списка для примера, чтобы вы могли понять шаблон. Что означают все эти цифры? Чтож, это так называемые PIDы (Process IDs). Каждая запись содержит информацию об определенном процессее. Если вы запустите <code>ps</code> то увидлите что каждый процесс имееет ассоциированный идентификатор - PID:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">PID   TTY      TIME     CMD
+<span class="m">15952</span> pts/5    00:00:00 ps
+<span class="m">22698</span> pts/5    00:00:01 bash</code></pre></figure>
+
+<p>Отсюда мы видим, что ps просто обходит все элементы <code>/proc</code> и выводит информацию, которую найдет. Давайте посмотрим что находится внутри одного из пронумерованных каталогов:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">attr
+autogroup
+auxv
+cgroup
+clear_refs
+cmdline
+comm
+cpuset
+cwd
+environ
+exe
+fd</code></pre></figure>
+
+<p>Это сокращенный вывод чтобы сэкономить место, однако я настоятельно рекомендую вам посмотреть полный список. Приведем некоторые важные/интересные записи:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Запись</th>
+      <th style="text-align: left">Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">comm</td>
+      <td style="text-align: left">имя программы</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">cmdline</td>
+      <td style="text-align: left">команда, использованная для запуска этого процесса</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">environ</td>
+      <td style="text-align: left">Environment переменные с которыми был запущен процесс</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">status</td>
+      <td style="text-align: left">Статус процесса (running, sleeping…) и использование памяти</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">fd</td>
+      <td style="text-align: left">Каталог содержащий дескрипторы файлов (open files, sockets…)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Теперь, когда мы узнали это, можем начинать писать некоторые инструменты!</p>
+
+<h3 id="process-listing">Process Listing</h3>
 
       
         <a href="/tag/linux">#Linux</a>
