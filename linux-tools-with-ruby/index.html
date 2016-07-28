@@ -165,7 +165,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="drawer">
 <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">Находим информацию о статусе</a></li>
-  <li><a href="#process-listing" id="markdown-toc-process-listing">Process Listing</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">Список процессов</a></li>
 </ul>
 
   </div>
@@ -250,7 +250,49 @@ fd</code></pre></figure>
 
 <p>Теперь, когда мы узнали это, можем начинать писать некоторые инструменты!</p>
 
-<h3 id="process-listing">Process Listing</h3>
+<h3 id="section-1">Список процессов</h3>
+
+<p>Давайте начнем с получения списка всех директорий в каталоге <code>/proc</code>. Мы можем сделать это используя Ruby класс <code>Dir</code>.</p>
+
+<p>Пример:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"/proc/[0-9]*"</span><span class="p">)</span></code></pre></figure>
+
+<blockquote>
+  <p>Обратите внимание как я использовал диапазон цифр, это нужно так как в каталоге <code>/proc</code> находится много других папок, которые сейчас нас не интересуют.</p>
+</blockquote>
+
+<p>Теперь можем пройтись (проитерировать) по этому списку и вывести две колонки, в первой PID, во второй имя программы.</p>
+
+<p>Пример:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">pids</span> <span class="o">=</span> <span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"/proc/[0-9]*"</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s2">"PID</span><span class="se">\t</span><span class="s2">CMD"</span>
+<span class="nb">puts</span> <span class="s2">"-"</span> <span class="o">*</span> <span class="mi">15</span>
+
+<span class="n">pids</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">pid</span><span class="o">|</span>
+  <span class="n">cmd</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">pid</span> <span class="o">+</span> <span class="s2">"/comm"</span><span class="p">)</span>
+  <span class="n">pid</span> <span class="o">=</span> <span class="n">pid</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/\d+/</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+
+  <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">pid</span><span class="si">}</span><span class="se">\t</span><span class="si">#{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>И примерно вот таким должен быть вывод:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">PID    CMD
+---------------
+<span class="m">1</span>     systemd
+<span class="m">2</span>     kthreadd
+<span class="m">3</span>     ksoftirqd/0
+<span class="m">5</span>     kworker/0
+<span class="m">7</span>     migration/0
+<span class="m">8</span>     rcu_preempt
+<span class="m">9</span>     rcu_bh
+<span class="m">10</span>    rcu_sched</code></pre></figure>
+
+<p>Хей, выглядит так, буд-то мы только что сделали <code>ps</code>! Да, наша программа не поддерживает все фишки оригинала, но мы сделали кое-что работающее.</p>
+
 
       
         <a href="/tag/linux">#Linux</a>
