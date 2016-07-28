@@ -253,9 +253,10 @@ fd</code></pre></figure>
 
 <h3 id="section-1">Список процессов</h3>
 
-<p>Давайте начнем с получения списка всех директорий в каталоге <code>/proc</code>. Мы можем сделать это используя Ruby класс <code>Dir</code>.</p>
-
-<p>Пример:</p>
+<p>Давайте начнем с получения списка всех директорий в каталоге <code>/proc</code>. Мы можем сделать это используя Ruby класс <code>Dir</code>.
+<br>
+<br>
+Пример:</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"/proc/[0-9]*"</span><span class="p">)</span></code></pre></figure>
 
@@ -263,9 +264,10 @@ fd</code></pre></figure>
   <p>Обратите внимание как я использовал диапазон цифр, это нужно так как в каталоге <code>/proc</code> находится много других папок, которые сейчас нас не интересуют.</p>
 </blockquote>
 
-<p>Теперь можем пройтись (проитерировать) по этому списку и вывести две колонки, в первой PID, во второй имя программы.</p>
-
-<p>Пример:</p>
+<p>Теперь можем пройтись (проитерировать) по этому списку и вывести две колонки, в первой PID, во второй имя программы.
+<br>
+<br>
+Пример:</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">pids</span> <span class="o">=</span> <span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"/proc/[0-9]*"</span><span class="p">)</span>
 
