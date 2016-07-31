@@ -7,7 +7,7 @@
 <title>Создание инструментов Linux с помощью Ruby – Diary of madman</title>
 <meta name="description" content="Практическое руководство">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Linux, Ruby">
+<meta name="keywords" content="Linux, Ruby, Tutorial">
 
 
 <!-- Twitter Cards -->
@@ -166,7 +166,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">Находим информацию о статусе</a></li>
   <li><a href="#section-1" id="markdown-toc-section-1">Список процессов</a></li>
-  <li><a href="#who-is-listening" id="markdown-toc-who-is-listening">Who Is Listening?</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">Кто слушает?</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">Хватит использовать мой порт!</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">Заключение</a></li>
 </ul>
 
   </div>
@@ -195,7 +197,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 11552
 11655</code></pre></figure>
 
-<p>Это лишь часть списка для примера, чтобы вы могли понять шаблон. Что означают все эти цифры? Чтож, это так называемые PIDы (Process IDs). Каждая запись содержит информацию об определенном процессее. Если вы запустите <code>ps</code> то увидлите что каждый процесс имееет ассоциированный идентификатор - PID:</p>
+<p>Это лишь часть списка для примера, чтобы вы могли понять шаблон. Что означают все эти цифры? Чтож, это так называемые PIDы (Process IDs). Каждая запись содержит информацию об определенном процессе. Если вы запустите <code>ps</code> то увидите что каждый процесс имеет ассоциированный идентификатор - PID:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">PID   TTY      TIME     CMD
 <span class="m">15952</span> pts/5    00:00:00 ps
@@ -294,16 +296,153 @@ fd</code></pre></figure>
 <span class="m">9</span>     rcu_bh
 <span class="m">10</span>    rcu_sched</code></pre></figure>
 
-<p>Хей, выглядит так, буд-то мы только что сделали <code>ps</code>! Да, наша программа не поддерживает все фишки оригинала, но мы сделали кое-что работающее.</p>
+<p>Хей, выглядит так, будто мы только что сделали <code>ps</code>! Да, наша программа не поддерживает все фишки оригинала, но мы сделали кое-что работающее.</p>
 
-<h3 id="who-is-listening">Who Is Listening?</h3>
+<h3 id="section-2">Кто слушает?</h3>
+
+<p>Давайте теперь попробуем воспроизвести <code>netstat</code>, вот так выглядит вывод этой утилиты (с флагами -ant).</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Active Internet connections <span class="o">(</span>servers and established<span class="o">)</span>
+
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        <span class="m">0</span>      <span class="m">0</span> 127.0.0.1:5432          0.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> 192.168.1.82:39530      182.14.172.159:22       ESTABLISHED</code></pre></figure>
+
+<p>Где же мы можем найти эту информацию? Если вы сказали “внутри <code>/proc</code>” вы правы! Точнее она лежит в каталоге <code>/proc/net/tcp</code>. Но есть маленькая проблемка, данные лежащие там не совсем похожи на вывод <code>netstat</code>!</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">0: 0100007F:1538 00000000:0000 0A 00000000:00000000 00:00000000 <span class="m">00000000</span>  <span class="m">1001</span> <span class="m">0</span> 9216
+1: 2E58A8C0:9A6A 9FBB0EB9:0016 <span class="m">01</span> 00000000:00000000 00:00000000 <span class="m">00000000</span>  <span class="m">1000</span> <span class="m">0</span> 258603</code></pre></figure>
+
+<p>Это значит что нам придется их распарсить с помощью регулярных выражений. На данный момент давайте займемся только локальным адресом и статусом.
+<br>
+<br>
+Вот регулярное выражение, которое я подобрал для этой задачи:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\s</span>+<span class="se">\d</span>+: <span class="o">(</span>?&lt;local_addr&gt;<span class="se">\w</span>+<span class="o">)</span>:<span class="o">(</span>?&lt;local_port&gt;<span class="se">\w</span>+<span class="o">)</span> <span class="se">\w</span>+:<span class="se">\w</span>+ <span class="o">(</span>?&lt;status&gt;<span class="se">\w</span>+<span class="o">)</span></code></pre></figure>
+
+<p>Оно позволит нам получить шестнадцатеричные значения, которые еще нужно конвертировать в десятичные. Давайте создадим класс, который будет этим заниматься.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TCPInfo</span>
+  <span class="no">LINE_REGEX</span> <span class="o">=</span> <span class="sr">/\s+\d+: (?&lt;local_addr&gt;\w+):(?&lt;local_port&gt;\w+) \w+:\w+ (?&lt;status&gt;\w+)/</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="vi">@data</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="no">LINE_REGEX</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">local_port</span>
+    <span class="vi">@data</span><span class="o">[</span><span class="s2">"local_port"</span><span class="o">].</span><span class="n">to_i</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="c1"># Convert hex to regular IP notation</span>
+  <span class="k">def</span> <span class="nf">local_addr</span>
+    <span class="n">decimal_to_ip</span><span class="p">(</span><span class="vi">@data</span><span class="o">[</span><span class="s2">"local_addr"</span><span class="o">].</span><span class="n">to_i</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+  <span class="k">end</span>
+
+  <span class="no">STATUSES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"0A"</span> <span class="o">=&gt;</span> <span class="s2">"LISTENING"</span><span class="p">,</span>
+    <span class="s2">"01"</span> <span class="o">=&gt;</span> <span class="s2">"ESTABLISHED"</span><span class="p">,</span>
+    <span class="s2">"06"</span> <span class="o">=&gt;</span> <span class="s2">"TIME_WAIT"</span><span class="p">,</span>
+    <span class="s2">"08"</span> <span class="o">=&gt;</span> <span class="s2">"CLOSE_WAIT"</span>
+  <span class="p">}</span>
+
+  <span class="k">def</span> <span class="nf">status</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="vi">@data</span><span class="o">[</span><span class="s2">"status"</span><span class="o">]</span>
+
+    <span class="no">STATUSES</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="s2">"UNKNOWN"</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="c1"># Don't worry too much about this :)</span>
+  <span class="k">def</span> <span class="nf">decimal_to_ip</span><span class="p">(</span><span class="n">decimal</span><span class="p">)</span>
+    <span class="n">ip</span> <span class="o">=</span> <span class="o">[]</span>
+
+    <span class="n">ip</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">decimal</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>
+    <span class="n">ip</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">decimal</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>
+    <span class="n">ip</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">decimal</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>
+    <span class="n">ip</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">decimal</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>
+
+    <span class="n">ip</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Единственная вещь, которую осталось сделать это вывести результаты в виде таблицы.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'table_print'</span>
+
+<span class="n">tp</span> <span class="n">connections</span></code></pre></figure>
+
+<p>Пример вывода:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">STATUS      <span class="p">|</span> LOCAL_PORT <span class="p">|</span> LOCAL_ADDR
+------------<span class="p">|</span>------------<span class="p">|</span>--------------
+LISTENING   <span class="p">|</span> <span class="m">5432</span>       <span class="p">|</span> 127.0.0.1
+ESTABLISHED <span class="p">|</span> <span class="m">39530</span>      <span class="p">|</span> 192.168.88.46</code></pre></figure>
+
+<p>Да, этот gem крутой!
+<br>
+<br>
+Я только недавно нашел его и выглядит так будто теперь не придется играться с <code>ljust</code> / <code>rjust</code> :)</p>
+
+<h3 id="section-3">Хватит использовать мой порт!</h3>
+
+<p>Вы когда-нибудь видели подобное сообщение?</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Address already in use - <span class="nb">bind</span><span class="o">(</span>2<span class="o">)</span> <span class="k">for</span> <span class="s2">"localhost"</span> port 5000</code></pre></figure>
+
+<p>Хммм… интересно, что же использует этот порт …</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">fuser -n tcp -v 5000
+
+PORT       USER        PID   ACCESS CMD
+5000/tcp:  blackbytes  <span class="m">30893</span> F....  nc</code></pre></figure>
+
+<p>Ага, вот наш виновник! Теперь мы можем остановить эту программу если не хотим чтобы она была запущена и это освободит наш порт. Как программа <code>fuser</code> нашла кто использует запрашиваемый порт? Именно! Это снова файловая система <code>/proc</code>. По сути, она объединяет две вещи, которые мы уже изучили ранее: обход списка процессов и чтение активных подключений из <code>/proc/net/tcp</code>. Нам нужен только один дополнительный шаг: найти способ ассоциировать информацию по открытым портам с PID. Если посмотреть данные о TCP, которые мы можем получить из <code>/proc/net/tcp</code>, то PID там нет. Но мы можем использовать номер inode (иноды).</p>
+
+<blockquote>
+  <p>“Индексный дескриптор — это структура данных в традиционных для ОС UNIX файловых системах (ФС). В этой структуре хранится метаинформация о стандартных файлах, каталогах или других объектах файловой системы, кроме непосредственно данных и имени.” – Википедия</p>
+</blockquote>
+
+<p>Как мы можем использовать иноду для поиска совпадающего процесса? Если мы посмотрим в каталог <code>fd</code> процесса, который, как мы знаем имеет открытый порт, то найдем строку, наподобие этой:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/proc/3295/fd/5 -&gt; socket:<span class="o">[</span>12345<span class="o">]</span></code></pre></figure>
+
+<p>Число между квадратными скобками это номер иноды. Теперь, все что нам нужно, это проитерировать все файлы и мы найдем совпадающий процесс.
+<br>
+<br>
+Вот один из способов сделать это:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span>
+<span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"/proc/[0-9]*/fd/*"</span><span class="p">)</span><span class="o">.</span><span class="n">find</span> <span class="k">do</span> <span class="o">|</span><span class="n">fd</span><span class="o">|</span>
+  <span class="no">File</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="s2">"socket:[</span><span class="si">#{</span><span class="n">socket_inode</span><span class="si">}</span><span class="s2">]"</span> <span class="k">rescue</span> <span class="kp">nil</span>
+<span class="k">end</span>
+
+<span class="n">pid</span>  <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/\d+/</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+<span class="nb">name</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span><span class="s2">"/proc/</span><span class="si">#{</span><span class="n">pid</span><span class="si">}</span><span class="s2">/exe"</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s2">"Port </span><span class="si">#{</span><span class="n">hex_port</span><span class="o">.</span><span class="n">to_i</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="si">}</span><span class="s2"> in use by </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">#{</span><span class="n">pid</span><span class="si">}</span><span class="s2">)"</span></code></pre></figure>
+
+<p>Пример вывода:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Port <span class="m">5432</span> in use by /usr/bin/postgres <span class="o">(</span>474<span class="o">)</span></code></pre></figure>
+
+<p>Помните, что запускать код, приведенный выше нужно от суперпользователя (root) или от пользователя - владельца процесса. В обратном случае вы не сможете читать информацию о процессе из <code>/proc</code>.</p>
+
+<h3 id="section-4">Заключение</h3>
+
+<p>В этой заметке вы узнали, что Linux предоставляет много данных с помощью виртуальной файловой системы <code>/proc</code>. Также вы научились воссоздавать популярные Linux утилиты такие как <code>ps</code>, <code>netstat</code> и <code>fuser</code> с использованием данных, полученных из <code>/proc</code>.</p>
+
 
       
         <a href="/tag/linux">#Linux</a>
       
         <a href="/tag/ruby">#Ruby</a>
       
-        <!-- <a href="/tag/linux/" rel="tag">Linux</a>, <a href="/tag/ruby/" rel="tag">Ruby</a> -->
+        <a href="/tag/tutorial">#Tutorial</a>
+      
+        <!-- <a href="/tag/linux/" rel="tag">Linux</a>, <a href="/tag/ruby/" rel="tag">Ruby</a>, <a href="/tag/tutorial/" rel="tag">Tutorial</a> -->
       <hr>
       <footer role="contentinfo">
         <div style="text-align: center;" class="social-share">
