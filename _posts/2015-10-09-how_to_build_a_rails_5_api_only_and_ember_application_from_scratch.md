@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля"
-permalink: /2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/
+permalink: "/how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/"
+redirect_from: "/2015-10-09-how_to_build_a_rails_5_api_only_and_ember_application_from_scratch/"
 excerpt: ""
 date: 2015-10-09T22:39:13+03:00
 tags:
