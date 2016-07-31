@@ -220,4 +220,5 @@ ember serve
 
 Теперь откроем в браузере страницу `localhost:4200/users` чтобы проверить работу приложения!
 <br>
+<br>
 Большое спасибо уходит <a href="http://moritz-breit.de/" target="_blank">Moritz</a> за корректировку данного поста!
