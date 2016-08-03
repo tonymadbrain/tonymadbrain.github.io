@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Рассуждения о СМИ"
-permalink: /2015-05-27-rassujdeniya-o-smi/
+permalink: /rassujdeniya-o-smi/
+redirect_from: /2015-05-27-rassujdeniya-o-smi/
 excerpt: ""
 date: 2015-05-27T00:12:00+03:00
 tags:
