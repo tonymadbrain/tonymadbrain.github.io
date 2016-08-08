@@ -2,29 +2,47 @@
 layout: post
 title: Адекватный вывод команды nginx -V
 date: '2014-06-26 07:59:55'
+permalink: /best-way-for-search-included-modules-in-nginx/
+redirect_from: /adiekvatnyi-vyvod-komandy-nginx-v/
 excerpt: ""
+tags:
+  - Nginx
+  - Linux
 ---
 
 В nginx есть несколько функций, например:
-<pre>
+
+{% highlight bash %}
 nginx -t
-</pre>
-Проверит конфиги на правильность и скажет где ошибка, что очень удобно, ведь не приходится релоадить или перезапускать сервер, да и команда короткая.
-Так же можно посмотреть версию устанновленного nginx:
-<pre>
+{% endhighlight %}
+
+Проверит конфиги на правильность и скажет где ошибка, что очень удобно, ведь не приходится релоадить или перезапускать сервер, да и команда короткая. Так же можно посмотреть версию устанновленного nginx:
+
+{% highlight bash %}
 nginx -v
-</pre>
+{% endhighlight %}
+
 Еще есть ключ (-V), с которым команда nginx выводит список всех модулей, которые включены в состав пакета. И вот, при установке из разных репозиториев список этих модулей может варьироваться. Но когда вы захотите найти что-то в этом списке, то обнаружите, что вывод данной команды нельзя отфильтровать командой grep. Многие просто внимательно читают вывод и находят глазами, но это не мой путь.
 В один прекрасный день, когда в очередной раз потребовалось проверить в каких же репозиториях Nginx поставляется с модулем geoip, я докопался до следующего:
-<pre>
-root@proxmox:# 2>&1 nginx -V | tr -- - '\n' | grep --color geoip
+
+{% highlight bash %}
+# 2>&1 nginx -V | tr -- - '\n' | grep --color geoip
+{% endhighlight %}
+
+Вывод команды:
+
+{% highlight bash %}
 http_geoip_module
-root@proxmox:#
-</pre>
-Такая команда подходит если вам нужно что-то отфильтровать, полный вывод же, будет не очень удобочитаемым.
-Дальнейшие исследования привели к следующему:
-<pre>
-root@proxmox:# A=`nginx -V 2>&1`;B=`echo $A|sed 's/ --/# --/g'|tr '#' '\n'|sed -n '/^ --/p'|sort`;printf "$A"|head -2;printf "configure arguments:\n$B\n"
+{% endhighlight %}
+
+Такая команда подходит если вам нужно что-то отфильтровать, полный вывод же, будет не очень удобочитаемым. Дальнейшие исследования привели к следующему:
+
+{% highlight bash %}
+# A=`nginx -V 2>&1`;B=`echo $A|sed 's/ --/# --/g'|tr '#' '\n'|sed -n '/^ --/p'|sort`;printf "$A"|head -2;printf "configure arguments:\n$B\n"
+{% endhighlight %}
+
+В данном случае вывод будет такой:
+{% highlight bash %}
 nginx version: nginx/1.2.1
 TLS SNI support enabled
 configure arguments:
@@ -60,12 +78,16 @@ configure arguments:
  --with-md5=/usr/include/openssl
  --with-pcre-jit
  --with-sha1=/usr/include/openssl
-root@proxmox:#
-</pre>
-Вывод классный! Но вот каждый раз, когда нужно проверить список модулей, такую команду не введешь.
-Так что я продолжил поиски и пришел к такому варианту:
-<pre>
-root@proxmox:# 2>&1 nginx -V | xargs -n1
+{% endhighlight %}
+
+Вывод классный! Но вот каждый раз, когда нужно проверить список модулей, такую команду не введешь. Так что я продолжил поиски и пришел к такому варианту:
+{% highlight bash %}
+# 2>&1 nginx -V | xargs -n1
+{% endhighlight %}
+
+Который дает вывод:
+
+{% highlight bash %}
 nginx
 version:
 nginx/1.2.1
@@ -107,6 +129,6 @@ arguments:
 --add-module=/tmp/buildd/nginx-1.2.1/debian/modules/nginx-echo
 --add-module=/tmp/buildd/nginx-1.2.1/debian/modules/nginx-upstream-fair
 --add-module=/tmp/buildd/nginx-1.2.1/debian/modules/nginx-dav-ext-module
-root@proxmox:#
-</pre>
+{% endhighlight %}
+
 Он короткий, его можно легко запомнить, и он фильтруется при помощи grep.
