@@ -26,7 +26,7 @@ nginx -v
 В один прекрасный день, когда в очередной раз потребовалось проверить в каких же репозиториях Nginx поставляется с модулем geoip, я докопался до следующего:
 
 {% highlight bash %}
-# 2>&1 nginx -V | tr -- - '\n' | grep --color geoip
+$ 2>&1 nginx -V | tr -- - '\n' | grep --color geoip
 {% endhighlight %}
 
 Вывод команды:
@@ -38,7 +38,7 @@ http_geoip_module
 Такая команда подходит если вам нужно что-то отфильтровать, полный вывод же, будет не очень удобочитаемым. Дальнейшие исследования привели к следующему:
 
 {% highlight bash %}
-# A=`nginx -V 2>&1`;B=`echo $A|sed 's/ --/# --/g'|tr '#' '\n'|sed -n '/^ --/p'|sort`;printf "$A"|head -2;printf "configure arguments:\n$B\n"
+$ A=`nginx -V 2>&1`;B=`echo $A|sed 's/ --/# --/g'|tr '#' '\n'|sed -n '/^ --/p'|sort`;printf "$A"|head -2;printf "configure arguments:\n$B\n"
 {% endhighlight %}
 
 В данном случае вывод будет такой:
@@ -82,7 +82,7 @@ configure arguments:
 
 Вывод классный! Но вот каждый раз, когда нужно проверить список модулей, такую команду не введешь. Так что я продолжил поиски и пришел к такому варианту:
 {% highlight bash %}
-# 2>&1 nginx -V | xargs -n1
+$ 2>&1 nginx -V | xargs -n1
 {% endhighlight %}
 
 Который дает вывод:
