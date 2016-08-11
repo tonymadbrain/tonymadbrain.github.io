@@ -5,14 +5,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Mariadb не, использовать Mysql &#8211; Diary of madman</title>
+<title>Попытка заменить MySQL на MariaDB &#8211; Diary of madman</title>
 <meta name="description" content="">
 <meta name="theme-color" content="#00d900">
 <meta name="keywords" content="Mariadb, Mysql, SA">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Mariadb не, использовать Mysql">
+<meta name="twitter:title" content="Попытка заменить MySQL на MariaDB">
 <meta name="twitter:description" content="">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
@@ -23,7 +23,7 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mariadb не, использовать Mysql">
+<meta property="og:title" content="Попытка заменить MySQL на MariaDB">
 <meta property="og:description" content="">
 <meta property="og:url" content="http://doam.ru/no-mariadb-just-mysql/">
 <meta property="og:site_name" content="Diary of madman">
@@ -150,7 +150,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://doam.ru/no-mariadb-just-mysql/" rel="bookmark" title="Mariadb не, использовать Mysql">Mariadb не, использовать Mysql</a></h1>
+        <h1><a href="http://doam.ru/no-mariadb-just-mysql/" rel="bookmark" title="Попытка заменить MySQL на MariaDB">Попытка заменить MySQL на MariaDB</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
@@ -160,7 +160,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <img src="https://farm1.staticflickr.com/566/21467225109_17f981a0d5_o.png" />
 <br /></p>
 
-<p>В начале на сервере с Centos 6.6 работали redmine, gitlab и несколько простых парсеров на ruby, которые с базой не общаются (пока). Стояла версия <code>mysql-server-5.1.73-3.el6_5.x86_64</code>. Было произведено “легкое” обновление до <code>mysql-community-server-5.6.24-3.el6.x86_64</code> по <a href="https://www.digitalocean.com/community/tutorials/how-to-install-mysql-5-6-from-official-yum-repositories" target="_blank">инструкции с DO.</a>. Затем был произведен полный backup утилитой xtrabackup из <a href="https://www.percona.com/doc/percona-server/5.5/installation/yum_repo.html" target="_blank">репозитория Percona</a>. И наконец было выполнено обновление до версии MariaDB-server-10 (<a href="https://mariadb.com/kb/en/mariadb/yum/" target="_blank">ман</a>).
+<p>В начале на сервере с Centos 6.6 работали redmine, gitlab и несколько простых парсеров на ruby, которые с базой не общаются (пока). Стояла версия <code>mysql-server-5.1.73-3.el6_5.x86_64</code>. Было произведено “легкое” обновление до <code>mysql-community-server-5.6.24-3.el6.x86_64</code> по <a href="https://www.digitalocean.com/community/tutorials/how-to-install-mysql-5-6-from-official-yum-repositories" target="_blank">инструкции с DO</a>. Затем был произведен полный backup утилитой xtrabackup из <a href="https://www.percona.com/doc/percona-server/5.5/installation/yum_repo.html" target="_blank">репозитория Percona</a>. И наконец было выполнено обновление до версии MariaDB-server-10 (<a href="https://mariadb.com/kb/en/mariadb/yum/" target="_blank">ман</a>).
 Естественно на время обновлений сервисы отключались. И вот, готовый к неожиданностям я начал их запускать и столкнулся с ошибкой:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Incorrect MySQL client library version! This gem was compiled <span class="k">for</span> 5.1.73 but the client library is 5.3.12-MariaDB.</code></pre></figure>
@@ -189,7 +189,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Mariadb не, использовать Mysql %23doamru http://doam.ru/no-mariadb-just-mysql/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Попытка заменить MySQL на MariaDB %23doamru http://doam.ru/no-mariadb-just-mysql/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
       <a href="http://vk.com/share.php?url=http://doam.ru/no-mariadb-just-mysql/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
@@ -203,7 +203,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </ul>
 </div><!-- /.social-share -->
 
-        <p class="byline"><strong>Mariadb не, использовать Mysql</strong> опубликовано <time datetime="2015-05-20T00:12:00+03:00">20 May, 2015</time>.</p>
+        <p class="byline"><strong>Попытка заменить MySQL на MariaDB</strong> опубликовано <time datetime="2015-05-20T00:12:00+03:00">20 May, 2015</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   
