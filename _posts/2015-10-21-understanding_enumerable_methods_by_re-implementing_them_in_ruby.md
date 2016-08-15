@@ -2,6 +2,7 @@
 layout: post
 title: "Понимание методов Enumerable методом реализации их на Ruby"
 excerpt: Разбираемся что к чему
+permalink: /understanding_enumerable_methods_by_re-implementing_them_in_ruby/
 tags:
   - Ruby
   - Enumerable

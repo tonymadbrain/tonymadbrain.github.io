@@ -2,6 +2,7 @@
 layout: post
 title: "Ставка не нужна"
 excerpt: ""
+permalink: /no-for-stavka/
 tags:
   - Root
 date: 2015-12-19T00:49:17+03:00

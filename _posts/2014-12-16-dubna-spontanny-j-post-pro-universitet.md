@@ -1,7 +1,8 @@
 ---
 title: 'Дубна - "Спонтанный пост про университет"'
 layout: post
-permalink: /dubna-spontanny-j-post-pro-universitet/
+permalink: /dubna-unprompted-post-about-university/
+redirect_from: /dubna-spontanny-j-post-pro-universitet/
 excerpt: ""
 tags:
   - Dubna

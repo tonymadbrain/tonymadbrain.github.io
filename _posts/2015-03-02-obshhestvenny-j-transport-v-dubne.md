@@ -1,7 +1,8 @@
 ---
 title: Общественный транспорт в Дубне
 layout: post
-permalink: /obshhestvenny-j-transport-v-dubne/
+permalink: /public-transport-in-dubna/
+redirect_from: /obshhestvenny-j-transport-v-dubne/
 excerpt: ""
 tags:
   - Root

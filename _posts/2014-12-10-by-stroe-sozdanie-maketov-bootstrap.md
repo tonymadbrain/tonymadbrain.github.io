@@ -1,7 +1,8 @@
 ---
 title: Быстрое создание макетов Bootstrap
 layout: post
-permalink: /by-stroe-sozdanie-maketov-bootstrap/
+permalink: /rapid-prototyping-with-bootstrap/
+redirect_from: /by-stroe-sozdanie-maketov-bootstrap/
 excerpt: ""
 tags:
   - Bootstrap

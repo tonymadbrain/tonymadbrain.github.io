@@ -2,6 +2,8 @@
 layout: post
 title: Применение новых конфигов Nginx
 date: '2014-11-26 12:15:30'
+permalink: /reload-configs-in-nginx/
+redirect_from: /primienieniie-novykh-konfighov-nginx/
 excerpt: ""
 ---
 
