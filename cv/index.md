@@ -6,8 +6,6 @@ tags: [diary, madman, responsive, blog, jekyll]
 
 # Резюме
 
-> Скачать полное резюме - **<a href="http://doam.ru/cv/aryabov-devops.pdf" target="_blank">системный администратор/devOps</a>**.
-
 ### Образование
 
 2013-2015
