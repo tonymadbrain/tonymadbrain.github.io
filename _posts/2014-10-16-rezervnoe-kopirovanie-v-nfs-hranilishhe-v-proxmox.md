@@ -70,7 +70,6 @@ STATD_OUTGOING_PORT=2020
 $ chkconfig nfs on
 $ service nfs start
 {% endhighlight %}
-</pre>
 
 ### Iptables
 
