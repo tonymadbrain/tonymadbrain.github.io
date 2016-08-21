@@ -13,3 +13,5 @@ tags:
 
 * <a href="http://habrahabr.ru/post/252379/" target="_blank">Первый перевод - выстрел из песочницы</a>
 * <a href="http://habrahabr.ru/post/253439/" target="_blank">Второй перевод</a>
+
+UPD: Допереводил цикл статей про парсинг и забил писать свою. Вот <a href="https://habrahabr.ru/post/262991/" target="_blank">последняя (третья) статья</a>.
