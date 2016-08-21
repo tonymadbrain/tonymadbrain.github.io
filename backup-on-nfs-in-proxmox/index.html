@@ -154,7 +154,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>На работе решили использовать NFS сервер для резервных копий в Рroxmox. Думаю, стоит накидать заметку, чтобы не искать в следующий раз.</p>
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#nfs" id="markdown-toc-nfs">Установка nfs</a></li>
+  <li><a href="#iptables" id="markdown-toc-iptables">Iptables</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p>На работе решили использовать NFS сервер для резервных копий в Рroxmox. Думаю, стоит накидать заметку, чтобы не искать в следующий раз.</p>
 
 <p>Чтобы nfs заработал в контейнере openvz, нужно чтобы в гипервизоре была поддержка nfs, т.е. установлен nfs-utils. В образе с Proxmox этот пакет установлен, если вы устанавливали гипервизор самостоятельно, то его, скорее всего, не будет.</p>
 
