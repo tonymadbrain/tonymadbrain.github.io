@@ -117,11 +117,11 @@
     <lastmod>2014-11-05T00:00:00+03:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/sbros-parolya-superpol-zovatelya-v-linux/</loc>
+    <loc>http://doam.ru/reset-root-password-in-linux/</loc>
     <lastmod>2014-10-16T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/</loc>
+    <loc>http://doam.ru/backup-on-nfs-in-proxmox/</loc>
     <lastmod>2014-10-16T00:00:00+04:00</lastmod>
   </url>
   <url>
@@ -855,10 +855,10 @@
       <loc>http://doam.ru/problema-s-pgp-klyuchami-v-proxmox/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/</loc>
+      <loc>http://doam.ru/backup-on-nfs-in-proxmox/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/sbros-parolya-superpol-zovatelya-v-linux/</loc>
+      <loc>http://doam.ru/reset-root-password-in-linux/</loc>
     </url>
     <url>
       <loc>http://doam.ru/smena-logotipa-v-redmine/</loc>

@@ -5,14 +5,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Смена логотипа в Redmine &#8211; Diary of madman</title>
+<title>Резервное копирование в NFS хранилище в Proxmox &#8211; Diary of madman</title>
 <meta name="description" content="">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Apache, Changelogo, Logo, Nginx, Redmine, Tips">
+<meta name="keywords" content="CentOS, Iptables, NFS, Proxmox">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Смена логотипа в Redmine">
+<meta name="twitter:title" content="Резервное копирование в NFS хранилище в Proxmox">
 <meta name="twitter:description" content="">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
@@ -23,16 +23,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Смена логотипа в Redmine">
+<meta property="og:title" content="Резервное копирование в NFS хранилище в Proxmox">
 <meta property="og:description" content="">
-<meta property="og:url" content="http://doam.ru/smena-logotipa-v-redmine/">
+<meta property="og:url" content="http://doam.ru/backup-on-nfs-in-proxmox/">
 <meta property="og:site_name" content="Diary of madman">
 
 
 
 
 
-<link rel="canonical" href="http://doam.ru/smena-logotipa-v-redmine/">
+<link rel="canonical" href="http://doam.ru/backup-on-nfs-in-proxmox/">
 <link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -150,91 +150,144 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://doam.ru/smena-logotipa-v-redmine/" rel="bookmark" title="Смена логотипа в Redmine">Смена логотипа в Redmine</a></h1>
+        <h1><a href="http://doam.ru/backup-on-nfs-in-proxmox/" rel="bookmark" title="Резервное копирование в NFS хранилище в Proxmox">Резервное копирование в NFS хранилище в Proxmox</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.
-<br />
-<br />
-Редактируем файлик base.html.erb</p>
+      <p>На работе решили использовать NFS сервер для резервных копий в Рroxmox. Думаю, стоит накидать заметку, чтобы не искать в следующий раз.
+Чтобы nfs заработал в контейнере openvz, нужно чтобы в гипервизоре была поддержка nfs, т.е. установлен nfs-utils. В образе с Proxmox этот пакет установлен, если вы устанавливали гипервизор самостоятельно, то его, скорее всего, не будет.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /opt/redmine/app/views/layouts/base.html.erb</code></pre></figure>
+<p><a class="spoiler-tgl" href="https://doam.ru/rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/#SID975_1_tgl" id="SID975_1_tgl" rev="blind||Показать »||Скрыть «||300">Показать »</a></p>
 
-<p>Находим строку:</p>
+<div id="SID975_1" class="spoiler-body">
+  <p>
+    Kernel NFS server<br /> Kernel-space NFS server is supported by latest RHEL5 and RHEL6 based kernels and since vzctl-3.0.24.<br /> NB! Currently only NFSv3 is supported &#8212; no NFSv4 support yet.<br /> Prerequisites<br /> In order to run an NFS server inside a container, make sure:<br /> nfsd kernel module is loaded on host system before starting a container<br /> nfsd feature for a container is turned on (vzctl set $CTID &#8212;feature nfsd:on &#8212;save)
+  </p>
+</div>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span><span class="err">&lt;</span>%= page_header_title %&gt;<span class="nt">&lt;/h1&gt;</span></code></pre></figure>
+<p>Установим nfs</p>
 
-<p>И комментируем</p>
+<pre># yum install nfs-utils nfs-utils-lib</pre>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span></code></pre></figure>
+<p>Запускаем демон rpcbind</p>
 
-<p>В следующую строчку вставляем</p>
+<pre># chkconfig rpcbind on &amp;&amp; service rpcbind start</pre>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;img <span class="nv">src</span><span class="o">=</span><span class="s2">&quot;&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png&quot;</span> <span class="nv">style</span><span class="o">=</span><span class="s2">&quot;top-margin: 15px; left-margin: 15px;&quot;</span>/&gt;</code></pre></figure>
+<p>Настраиваем nfs</p>
 
-<p><code>Redmine::Utils.relative_url_root</code> - переменная, которая указывает на каталог установки redmine.
-<br />
-<br />
-В итоге, правки должны выглядеть вот так:</p>
+<pre># vim /etc/sysconfig/nfs</pre>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;/div&gt;</span>
-<span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png&quot;</span> <span class="na">style=</span><span class="s">&quot;top-margin: 15px; left-margin: 15px;&quot;</span><span class="nt">/&gt;</span>
+<p>Раскомментируем следующие строки</p>
 
-<span class="err">&lt;</span>% if display_main_menu?(@project) %&gt;</code></pre></figure>
+<pre>MOUNTD_NFS_V3="yes"
+RPCNFSDARGS="-N 4"
+NFSD_MODULE="noload"
+</pre>
 
-<p>Теперь нужно загрузить изображение</p>
+<p>Добавим следующие строки</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>scp logo.png root@example.com:/opt/redmine/public/images</code></pre></figure>
+<pre>LOCKD_TCPPORT=32803
+LOCKD_UDPPORT=32769
+MOUNTD_PORT=892
+RQUOTAD_PORT=875
+STATD_PORT=662
+STATD_OUTGOING_PORT=2020
+</pre>
 
-<p>Не забываем выставить права на файл</p>
+<p>Стартуем сервис nfs</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chown redmine:redmine /opt/redmine/public/images/logo.png</code></pre></figure>
+<pre># chkconfig nfs on &amp;&amp; service nfs start
+</pre>
 
-<p>Ну и теперь осталось перезагрузить redmine, для этого перезагружаем веб-сервер:</p>
+<p>Iptables
+Генерируем файл правил</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service apache2 restart
-<span class="nv">$ </span>service httpd restart
-<span class="nv">$ </span>service nginx restart</code></pre></figure>
+<pre># iptables-save
+</pre>
 
-<p>Только в статье не указано, что изображение ни как не будет деформировано, т.е. если загрузить 100х100 будет отображаться 100х100, если 1024х1024 будет такое и сдвинет все остальные элементы. Еще, при редактировании фирменного логотипа, я сделал прозрачный фон, чтобы не пытаться попасть в цвет шапки redmine.</p>
+<p>Правим файл в соответствии с</p>
+
+<pre># Generated by iptables-save v1.4.7 on Mon Oct  6 02:58:25 2014
+*filter
+:INPUT DROP [6251:6489925]
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport 111 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 111 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 2049 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 32803 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport 32769 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 892 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport 892 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 875 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport 875 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport 662 -j ACCEPT
+-A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport 662 -j ACCEPT
+-A INPUT -m state --state NEW -p tcp --dport 22 -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [3092:284379]
+COMMIT
+# Completed on Mon Oct  6 02:58:25 2014
+# Generated by iptables-save v1.4.7 on Mon Oct  6 02:58:25 2014
+*mangle
+:PREROUTING ACCEPT [6251:6489925]
+:INPUT ACCEPT [6251:6489925]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [3092:284379]
+:POSTROUTING ACCEPT [3092:284379]
+COMMIT
+# Completed on Mon Oct  6 02:58:25 2014
+# Generated by iptables-save v1.4.7 on Mon Oct  6 02:58:25 2014
+*nat
+:PREROUTING ACCEPT [10:449]
+:POSTROUTING ACCEPT [217:15513]
+:OUTPUT ACCEPT [217:15513]
+COMMIT
+# Completed on Mon Oct  6 02:58:25 2014
+</pre>
+
+<p>Применяем новые правила</p>
+
+<pre># service iptables restart
+</pre>
+
+<p>Ссылки:
+Подробности читаем <a href="http://openvz.org/NFS_server_inside_container" target="_blank">здесь</a>
+Сам nfs я устанавливал по <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6" target="_blank">этой инструкции</a>
+Не нашел изначальную статью по iptables по которой делал, но <a href="http://mcdee.com.au/tutorial-configure-iptables-for-nfs-server-on-centos-6/" target="_blank">эта тоже ничего </a></p>
 
       
-        <a href="/tag/apache">#Apache</a>
+        <a href="/tag/centos">#CentOS</a>
       
-        <a href="/tag/changelogo">#Changelogo</a>
+        <a href="/tag/iptables">#Iptables</a>
       
-        <a href="/tag/logo">#Logo</a>
+        <a href="/tag/nfs">#NFS</a>
       
-        <a href="/tag/nginx">#Nginx</a>
+        <a href="/tag/proxmox">#Proxmox</a>
       
-        <a href="/tag/redmine">#Redmine</a>
-      
-        <a href="/tag/tips">#Tips</a>
-      
-        <!-- <a href="/tag/apache/" rel="tag">Apache</a>, <a href="/tag/changelogo/" rel="tag">Changelogo</a>, <a href="/tag/logo/" rel="tag">Logo</a>, <a href="/tag/nginx/" rel="tag">Nginx</a>, <a href="/tag/redmine/" rel="tag">Redmine</a>, <a href="/tag/tips/" rel="tag">Tips</a> -->
+        <!-- <a href="/tag/centos/" rel="tag">CentOS</a>, <a href="/tag/iptables/" rel="tag">Iptables</a>, <a href="/tag/nfs/" rel="tag">NFS</a>, <a href="/tag/proxmox/" rel="tag">Proxmox</a> -->
       <hr />
       <footer role="contentinfo">
         <div style="text-align: center;" class="social-share">
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Смена логотипа в Redmine %23doamru http://doam.ru/smena-logotipa-v-redmine/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Резервное копирование в NFS хранилище в Proxmox %23doamru http://doam.ru/backup-on-nfs-in-proxmox/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="http://vk.com/share.php?url=http://doam.ru/smena-logotipa-v-redmine/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+      <a href="http://vk.com/share.php?url=http://doam.ru/backup-on-nfs-in-proxmox/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/smena-logotipa-v-redmine/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/backup-on-nfs-in-proxmox/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/smena-logotipa-v-redmine/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/backup-on-nfs-in-proxmox/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
 
-        <p class="byline"><strong>Смена логотипа в Redmine</strong> опубликовано <time datetime="2014-11-05T00:00:00+03:00">05 November, 2014</time>.</p>
+        <p class="byline"><strong>Резервное копирование в NFS хранилище в Proxmox</strong> опубликовано <time datetime="2014-10-16T00:00:00+04:00">16 October, 2014</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   

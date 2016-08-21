@@ -5,14 +5,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Смена логотипа в Redmine &#8211; Diary of madman</title>
+<title>Сброс пароля суперпользователя в linux &#8211; Diary of madman</title>
 <meta name="description" content="">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Apache, Changelogo, Logo, Nginx, Redmine, Tips">
+<meta name="keywords" content="Hack, Linux, Password, RHCE, Root, Trick">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Смена логотипа в Redmine">
+<meta name="twitter:title" content="Сброс пароля суперпользователя в linux">
 <meta name="twitter:description" content="">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
@@ -23,16 +23,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Смена логотипа в Redmine">
+<meta property="og:title" content="Сброс пароля суперпользователя в linux">
 <meta property="og:description" content="">
-<meta property="og:url" content="http://doam.ru/smena-logotipa-v-redmine/">
+<meta property="og:url" content="http://doam.ru/reset-root-password-in-linux/">
 <meta property="og:site_name" content="Diary of madman">
 
 
 
 
 
-<link rel="canonical" href="http://doam.ru/smena-logotipa-v-redmine/">
+<link rel="canonical" href="http://doam.ru/reset-root-password-in-linux/">
 <link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -150,91 +150,79 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://doam.ru/smena-logotipa-v-redmine/" rel="bookmark" title="Смена логотипа в Redmine">Смена логотипа в Redmine</a></h1>
+        <h1><a href="http://doam.ru/reset-root-password-in-linux/" rel="bookmark" title="Сброс пароля суперпользователя в linux">Сброс пароля суперпользователя в linux</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.
+      <p><br />
+<img src="https://farm1.staticflickr.com/717/21466116930_e2f3a06c15_o.png" />
 <br />
-<br />
-Редактируем файлик base.html.erb</p>
+<br /></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /opt/redmine/app/views/layouts/base.html.erb</code></pre></figure>
+<p>Сейчас для меня актуальна тема самостоятельной подготовки к сдаче RHCSA/RHCE, поэтому в моем браузере открыты несколько вкладок на эту тему. Дабы отсеять ненужное, решил написать заметку.</p>
 
-<p>Находим строку:</p>
+<p>Есть вот такая <a href="http://open-os.ru/zabyl-parol-ot-root/" target="_blank">ссылка </a>, и решение, которое приводится там, мне не знакомо. Я попробовал его на Fedora 20 и не получилось. Поэтому в рамках новой рубрики «Самостоятельная подготовка к RHCE», первая статья.</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span><span class="err">&lt;</span>%= page_header_title %&gt;<span class="nt">&lt;/h1&gt;</span></code></pre></figure>
+<p>Для сброса рутового пароля, необходимо:</p>
 
-<p>И комментируем</p>
+<ol>
+  <li>
+    <p>в grub выбрать нашу загрузочную запись, нажать «e» (открыть на редактирование)</p>
+  </li>
+  <li>
+    <p>в конце строки с загрузкой ядра добавить <code>init=/bin/sh</code></p>
+  </li>
+  <li>
+    <p>запустить загрузку, клавишами Ctrl+x или F10 (или другими если они описаны в меню).</p>
+  </li>
+  <li>
+    <p>дальше можно пробовать выполнить <code>passwd root</code></p>
+  </li>
+  <li>
+    <p>если встречаете ошибку: <code>passwd: Authentication token manipulation error</code>, стоит попробовать: <code>mount -rw -o remount /</code></p>
+  </li>
+  <li>
+    <p>снова пробуем выполнить <code>passwd root</code></p>
+  </li>
+</ol>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span></code></pre></figure>
-
-<p>В следующую строчку вставляем</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;img <span class="nv">src</span><span class="o">=</span><span class="s2">&quot;&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png&quot;</span> <span class="nv">style</span><span class="o">=</span><span class="s2">&quot;top-margin: 15px; left-margin: 15px;&quot;</span>/&gt;</code></pre></figure>
-
-<p><code>Redmine::Utils.relative_url_root</code> - переменная, которая указывает на каталог установки redmine.
-<br />
-<br />
-В итоге, правки должны выглядеть вот так:</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;/div&gt;</span>
-<span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png&quot;</span> <span class="na">style=</span><span class="s">&quot;top-margin: 15px; left-margin: 15px;&quot;</span><span class="nt">/&gt;</span>
-
-<span class="err">&lt;</span>% if display_main_menu?(@project) %&gt;</code></pre></figure>
-
-<p>Теперь нужно загрузить изображение</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>scp logo.png root@example.com:/opt/redmine/public/images</code></pre></figure>
-
-<p>Не забываем выставить права на файл</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chown redmine:redmine /opt/redmine/public/images/logo.png</code></pre></figure>
-
-<p>Ну и теперь осталось перезагрузить redmine, для этого перезагружаем веб-сервер:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service apache2 restart
-<span class="nv">$ </span>service httpd restart
-<span class="nv">$ </span>service nginx restart</code></pre></figure>
-
-<p>Только в статье не указано, что изображение ни как не будет деформировано, т.е. если загрузить 100х100 будет отображаться 100х100, если 1024х1024 будет такое и сдвинет все остальные элементы. Еще, при редактировании фирменного логотипа, я сделал прозрачный фон, чтобы не пытаться попасть в цвет шапки redmine.</p>
+<p>Я еще не сталкивался с тем, чтобы эта схема не сработала.</p>
 
       
-        <a href="/tag/apache">#Apache</a>
+        <a href="/tag/hack">#Hack</a>
       
-        <a href="/tag/changelogo">#Changelogo</a>
+        <a href="/tag/linux">#Linux</a>
       
-        <a href="/tag/logo">#Logo</a>
+        <a href="/tag/password">#Password</a>
       
-        <a href="/tag/nginx">#Nginx</a>
+        <a href="/tag/rhce">#RHCE</a>
       
-        <a href="/tag/redmine">#Redmine</a>
+        <a href="/tag/root">#Root</a>
       
-        <a href="/tag/tips">#Tips</a>
+        <a href="/tag/trick">#Trick</a>
       
-        <!-- <a href="/tag/apache/" rel="tag">Apache</a>, <a href="/tag/changelogo/" rel="tag">Changelogo</a>, <a href="/tag/logo/" rel="tag">Logo</a>, <a href="/tag/nginx/" rel="tag">Nginx</a>, <a href="/tag/redmine/" rel="tag">Redmine</a>, <a href="/tag/tips/" rel="tag">Tips</a> -->
+        <!-- <a href="/tag/hack/" rel="tag">Hack</a>, <a href="/tag/linux/" rel="tag">Linux</a>, <a href="/tag/password/" rel="tag">Password</a>, <a href="/tag/rhce/" rel="tag">RHCE</a>, <a href="/tag/root/" rel="tag">Root</a>, <a href="/tag/trick/" rel="tag">Trick</a> -->
       <hr />
       <footer role="contentinfo">
         <div style="text-align: center;" class="social-share">
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Смена логотипа в Redmine %23doamru http://doam.ru/smena-logotipa-v-redmine/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Сброс пароля суперпользователя в linux %23doamru http://doam.ru/reset-root-password-in-linux/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="http://vk.com/share.php?url=http://doam.ru/smena-logotipa-v-redmine/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+      <a href="http://vk.com/share.php?url=http://doam.ru/reset-root-password-in-linux/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/smena-logotipa-v-redmine/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/reset-root-password-in-linux/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/smena-logotipa-v-redmine/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/reset-root-password-in-linux/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
 
-        <p class="byline"><strong>Смена логотипа в Redmine</strong> опубликовано <time datetime="2014-11-05T00:00:00+03:00">05 November, 2014</time>.</p>
+        <p class="byline"><strong>Сброс пароля суперпользователя в linux</strong> опубликовано <time datetime="2014-10-16T00:00:00+04:00">16 October, 2014</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   
