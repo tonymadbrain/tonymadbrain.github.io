@@ -13,8 +13,9 @@ tags:
 ---
 
 Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.
-
-**Редактируем файлик base.html.erb**
+<br>
+<br>
+Редактируем файлик base.html.erb
 
 {% highlight bash %}
 $ vim /opt/redmine/app/views/layouts/base.html.erb
