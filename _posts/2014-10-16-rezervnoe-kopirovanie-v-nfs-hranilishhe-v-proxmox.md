@@ -1,7 +1,8 @@
 ---
 title: Резервное копирование в NFS хранилище в Proxmox
 layout: post
-permalink: /rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/
+permalink: /backup-on-nfs-in-proxmox/
+redirect_from: /rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/
 excerpt: ""
 tags:
   - CentOS
@@ -11,8 +12,6 @@ tags:
 ---
 На работе решили использовать NFS сервер для резервных копий в Рroxmox. Думаю, стоит накидать заметку, чтобы не искать в следующий раз.
 Чтобы nfs заработал в контейнере openvz, нужно чтобы в гипервизоре была поддержка nfs, т.е. установлен nfs-utils. В образе с Proxmox этот пакет установлен, если вы устанавливали гипервизор самостоятельно, то его, скорее всего, не будет.
-
-<!--more-->
 
 <a class='spoiler-tgl' href='https://doam.ru/rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/#SID975_1_tgl' id='SID975_1_tgl' rev='blind||Показать »||Скрыть «||300'>Показать »</a>
 

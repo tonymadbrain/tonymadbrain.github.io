@@ -55,13 +55,13 @@ $ vim /opt/redmine/app/views/layouts/base.html.erb
 Теперь нужно загрузить изображение
 
 {% highlight bash %}
-scp logo.png root@example.com:/opt/redmine/public/images
+$ scp logo.png root@example.com:/opt/redmine/public/images
 {% endhighlight %}
 
 Не забываем выставить права на файл
 
 {% highlight bash %}
-chown redmine:redmine /opt/redmine/public/images/logo.png
+$ chown redmine:redmine /opt/redmine/public/images/logo.png
 {% endhighlight %}
 
 Ну и теперь осталось перезагрузить redmine, для этого перезагружаем веб-сервер:

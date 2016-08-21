@@ -1,7 +1,8 @@
 ---
 title: Сброс пароля суперпользователя в linux
 layout: post
-permalink: /sbros-parolya-superpol-zovatelya-v-linux/
+permalink: /reset-root-password-in-linux/
+redirect_from: /sbros-parolya-superpol-zovatelya-v-linux/
 excerpt: ""
 tags:
   - Hack
@@ -11,36 +12,28 @@ tags:
   - Root
   - Trick
 ---
-<a href="http://doam.ru/wp-content/uploads/2014/10/root.png" rel="lightbox[981]" title="root"><img class="aligncenter size-full wp-image-983" src="http://doam.ru/wp-content/uploads/2014/10/root.png" alt="root" width="800" height="480" /></a>Сейчас для меня актуальна тема самостоятельной подготовки к сдаче RHCSA/RHCE, поэтому в моем браузере открыты несколько вкладок на эту тему. Дабы отсеять ненужное, решил написать заметку.
+
+<br>
+<img src="https://farm1.staticflickr.com/717/21466116930_e2f3a06c15_o.png">
+<br>
+<br>
+
+Сейчас для меня актуальна тема самостоятельной подготовки к сдаче RHCSA/RHCE, поэтому в моем браузере открыты несколько вкладок на эту тему. Дабы отсеять ненужное, решил написать заметку.
 
 Есть вот такая <a href="http://open-os.ru/zabyl-parol-ot-root/" target="_blank">ссылка </a>, и решение, которое приводится там, мне не знакомо. Я попробовал его на Fedora 20 и не получилось. Поэтому в рамках новой рубрики &#171;Самостоятельная подготовка к RHCE&#187;, первая статья.
 
 Для сброса рутового пароля, необходимо:
 
-<!--more-->
-
 1. в grub выбрать нашу загрузочную запись, нажать &#171;e&#187; (открыть на редактирование)
 
-2. в конце строки с загрузкой ядра добавить
-
-<pre>init=/bin/sh</pre>
+2. в конце строки с загрузкой ядра добавить `init=/bin/sh`
 
 3. запустить загрузку, клавишами Ctrl+x или F10 (или другими если они описаны в меню).
 
-4. дальше можно пробовать выполнить
+4. дальше можно пробовать выполнить `passwd root`
 
-<pre># passwd root</pre>
+5. если встречаете ошибку: `passwd: Authentication token manipulation error`, стоит попробовать: `mount -rw -o remount /`
 
-5. если встречаете ошибку
-
-<pre>passwd: Authentication token manipulation error</pre>
-
-стоит попробовать:
-
-<pre>mount -rw -o remount /</pre>
-
-6. снова пробуем выполнить
-
-<pre># passwd root</pre>
+6. снова пробуем выполнить `passwd root`
 
 Я еще не сталкивался с тем, чтобы эта схема не сработала.
