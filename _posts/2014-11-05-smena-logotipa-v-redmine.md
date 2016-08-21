@@ -11,47 +11,64 @@ tags:
   - Redmine
   - Tips
 ---
+
 Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.
-Редактируем файлик base.html.erb
-Например
 
-<pre># vim /opt/redmine/app/views/layouts/base.html.erb</pre>
+**Редактируем файлик base.html.erb**
 
-Находим строку
+{% highlight bash %}
+$ vim /opt/redmine/app/views/layouts/base.html.erb
+{% endhighlight %}
 
-<pre>&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;</pre>
+Находим строку:
 
-<!--more-->И комментируем
+{% highlight html %}
+<h1><%= page_header_title %></h1>
+{% endhighlight %}
 
-<pre>&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;
-</pre>
+И комментируем
+
+{% highlight html %}
+<!--<h1><%= page_header_title %></h1>-->
+{% endhighlight %}
 
 В следующую строчку вставляем
 
-<pre>&lt;img src="&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png" style="top-margin: 15px; left-margin: 15px;"/&gt;</pre>
+{% highlight bash %}
+<img src="<%= Redmine::Utils.relative_url_root %>/images/logo.png" style="top-margin: 15px; left-margin: 15px;"/>
+{% endhighlight %}
 
-<%= Redmine::Utils.relative\_url\_root %> &#8212; переменная, которая указывает на каталог установки redmine.
-В итоге, правки должны выглядеть вот так
+`Redmine::Utils.relative_url_root` - переменная, которая указывает на каталог установки redmine.
+<br>
+<br>
+В итоге, правки должны выглядеть вот так:
 
-<pre>&lt;/div&gt;
-&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;
-&lt;img src="&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png" style="top-margin: 15px; left-margin: 15px;"/&gt;
+{% highlight html %}
+</div>
+<!--<h1><%= page_header_title %></h1>-->
+<img src="<%= Redmine::Utils.relative_url_root %>/images/logo.png" style="top-margin: 15px; left-margin: 15px;"/>
 
-&lt;% if display_main_menu?(@project) %&gt;</pre>
+<% if display_main_menu?(@project) %>
+{% endhighlight %}
 
 Теперь нужно загрузить изображение
 
-<pre>scp logo.png root@example.com:/opt/redmine/public/images</pre>
+{% highlight bash %}
+scp logo.png root@example.com:/opt/redmine/public/images
+{% endhighlight %}
 
 Не забываем выставить права на файл
 
-<pre>chown redmine:redmine /opt/redmine/public/images/logo.png</pre>
+{% highlight bash %}
+chown redmine:redmine /opt/redmine/public/images/logo.png
+{% endhighlight %}
 
 Ну и теперь осталось перезагрузить redmine, для этого перезагружаем веб-сервер:
 
-<pre># service apache2 restart
-# service httpd restart
-# service nginx restart
-</pre>
+{% highlight bash %}
+$ service apache2 restart
+$ service httpd restart
+$ service nginx restart
+{% endhighlight %}
 
 Только в статье не указано, что изображение ни как не будет деформировано, т.е. если загрузить 100х100 будет отображаться 100х100, если 1024х1024 будет такое и сдвинет все остальные элементы. Еще, при редактировании фирменного логотипа, я сделал прозрачный фон, чтобы не пытаться попасть в цвет шапки redmine.
