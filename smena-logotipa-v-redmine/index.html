@@ -154,49 +154,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.
-Редактируем файлик base.html.erb
-Например</p>
+      <p>Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.</p>
 
-<pre># vim /opt/redmine/app/views/layouts/base.html.erb</pre>
+<p><strong>Редактируем файлик base.html.erb</strong></p>
 
-<p>Находим строку</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /opt/redmine/app/views/layouts/base.html.erb</code></pre></figure>
 
-<pre>&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;</pre>
+<p>Находим строку:</p>
 
-<!--more-->
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span><span class="err">&lt;</span>%= page_header_title %&gt;<span class="nt">&lt;/h1&gt;</span></code></pre></figure>
+
 <p>И комментируем</p>
 
-<pre>&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;
-</pre>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span></code></pre></figure>
 
 <p>В следующую строчку вставляем</p>
 
-<pre>&lt;img src="&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png" style="top-margin: 15px; left-margin: 15px;"/&gt;</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;img <span class="nv">src</span><span class="o">=</span><span class="s2">&quot;&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png&quot;</span> <span class="nv">style</span><span class="o">=</span><span class="s2">&quot;top-margin: 15px; left-margin: 15px;&quot;</span>/&gt;</code></pre></figure>
 
-<p>&lt;%= Redmine::Utils.relative_url_root %&gt; — переменная, которая указывает на каталог установки redmine.
-В итоге, правки должны выглядеть вот так</p>
+<p><code>Redmine::Utils.relative_url_root</code> - переменная, которая указывает на каталог установки redmine.
+<br />
+<br />
+В итоге, правки должны выглядеть вот так:</p>
 
-<pre>&lt;/div&gt;
-&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;
-&lt;img src="&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png" style="top-margin: 15px; left-margin: 15px;"/&gt;
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png&quot;</span> <span class="na">style=</span><span class="s">&quot;top-margin: 15px; left-margin: 15px;&quot;</span><span class="nt">/&gt;</span>
 
-&lt;% if display_main_menu?(@project) %&gt;</pre>
+<span class="err">&lt;</span>% if display_main_menu?(@project) %&gt;</code></pre></figure>
 
 <p>Теперь нужно загрузить изображение</p>
 
-<pre>scp logo.png root@example.com:/opt/redmine/public/images</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">scp logo.png root@example.com:/opt/redmine/public/images</code></pre></figure>
 
 <p>Не забываем выставить права на файл</p>
 
-<pre>chown redmine:redmine /opt/redmine/public/images/logo.png</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">chown redmine:redmine /opt/redmine/public/images/logo.png</code></pre></figure>
 
 <p>Ну и теперь осталось перезагрузить redmine, для этого перезагружаем веб-сервер:</p>
 
-<pre># service apache2 restart
-# service httpd restart
-# service nginx restart
-</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service apache2 restart
+<span class="nv">$ </span>service httpd restart
+<span class="nv">$ </span>service nginx restart</code></pre></figure>
 
 <p>Только в статье не указано, что изображение ни как не будет деформировано, т.е. если загрузить 100х100 будет отображаться 100х100, если 1024х1024 будет такое и сдвинет все остальные элементы. Еще, при редактировании фирменного логотипа, я сделал прозрачный фон, чтобы не пытаться попасть в цвет шапки redmine.</p>
 
