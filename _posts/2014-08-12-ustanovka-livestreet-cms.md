@@ -5,86 +5,130 @@ date: '2014-08-12 05:30:40'
 excerpt: ""
 ---
 
-![alt](https://farm8.staticflickr.com/7422/16514984271_39ac810ec9_o.png)
+<br>
+<img src="https://farm6.staticflickr.com/5718/21663191041_037d991e0a_o.png">
+<br>
+<br>
+
 Заинтересовался данной <a href="http://livestreetcms.ru/" target="_blank">CMS</a>, при запросе в гугле "livestreet cms + nginx" попал  вот на <a href="http://livestreet.ru/blog/dev_documentation/10626.html" target="_blank">такую статью</a>. Она мне не совсем подошла, так как, как минимум я использую CentOS/RHEL. Так что внесу свою лепту.
-<h3>Тестовая среда</h3>
-Тестирую я обычно на отдельном сервере, на котором уже готова среда nginx+php-fpm+mysql. По мимо стандартных репозиториев, используются epel, nginx и remi. Установленные пакеты версий:
-<pre>
-# nginx -v
+
+### Тестовая среда
+Тестирую я обычно на отдельном сервере, на котором уже готова среда `nginx+php-fpm+mysql`. По мимо стандартных репозиториев, используются epel, nginx и remi. Установлены пакеты версий:
+
+{% highlight bash %}
+$ nginx -v
 nginx version: nginx/1.6.1
-# mysql -V
+$ mysql -V
 mysql  Ver 14.14 Distrib 5.5.37, for Linux (x86_64) using readline 5.1
-# php -v
+$ php -v
 PHP 5.4.28 (cli) (built: May  2 2014 19:09:57)
 Copyright (c) 1997-2014 The PHP Group
 Zend Engine v2.4.0, Copyright (c) 1998-2014 Zend Technologies
-</pre>
-Php-fpm работает через сокет.
-Далее пойдем по шагам из указанного выше мануала.
+{% endhighlight %}
 
-<h3>Конфигурируем nginx</h3>
+Php-fpm работает через сокет. Далее пойдем по шагам из указанного выше мануала.
+
+### Конфигурируем nginx
 Я никогда не удаляю дефолтный конфиг, только меняю имя с default.conf на default. В RHEL более удобная структура конфигов чем в Debian like, поэтому я делаю просто:
-<pre># vim /etc/nginx/conf.d/live.domain.org.conf</pre>
-В названиях конфигов я использую доменное имя и .conf чтобы он применился при релоаде веб-сервера.
-Содержимое конфига в моем случае не претерпело сильных изменений:
-<pre>
+
+{% highlight bash %}
+$ vim /etc/nginx/conf.d/live.domain.org.conf
+{% endhighlight %}
+
+В названиях конфигов я использую доменное имя и .conf чтобы он применился при релоаде веб-сервера. Содержимое конфига в моем случае не претерпело сильных изменений:
+
+{% highlight bash %}
 server {
-        listen 80;
-        server_name live.domain.org;
+  listen 80;
+  server_name live.domain.org;
 
-        access_log /var/log/nginx/access_log;
-        error_log /var/log/nginx/error_log;
+  access_log /var/log/nginx/access_log;
+  error_log /var/log/nginx/error_log;
 
-        root /var/www/live;
-        index index.php;
+  root /var/www/live;
+  index index.php;
 
-        location / {
-                try_files $uri $uri/ /index.php?q=$uri&$args;
-        }
+  location / {
+    try_files $uri $uri/ /index.php?q=$uri&$args;
+  }
 
-        location ~ \.php {
-                fastcgi_pass  unix:/var/run/php-fpm/php-fpm.sock;
-                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-                include fastcgi_params;
-        }
+  location ~ \.php {
+    fastcgi_pass  unix:/var/run/php-fpm/php-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+  }
 
-        location ~ \.(tpl|xml|log)$ {
-                deny all;
-        }
+  location ~ \.(tpl|xml|log)$ {
+    deny all;
+  }
 }
-</pre>
-Перезагружаем nginx: - автор немного перепутал, либо не придает этому значения. Между restart и reload есть принципиальная разница.
-<pre>service nginx reload</pre>
-<h3>Подготавливаемся к установке Livestreet</h3>
-Для каждого проекта я выделяю отдельный каталог в папке /var/www, таким образом путь до файлов сайта будет /var/www/live.
-В описанной в мануале проверке работы php, в моем случае, нет смысла. Так что я пропущу этот шаг.
-<h3>Настраиваем mysql</h3>
-Вот тут наверно у меня возникли самые большие разногласия с автором.
-<pre># mysql -uroot -p</pre>
-Подключаемся к консоли управления mysql.
-<pre>CREATE DATABASE live CHARACTER SET utf8 COLLATE utf8_general_ci;</pre>
-Создаем новую БД.
-<pre>> GRANT SELECT,LOCK TABLES,CREATE TEMPORARY TABLES,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER,INDEX ON live.* TO 'liveuser'@'localhost' identified by 'passwd';</pre>
-Давать все привилегии нет смысла, перечисленных выше достаточно, как показывает практика, для работы любой CMS.
-<pre>> flush privileges;</pre>
-Чтобы применить изменения в политиках доступа, т.е. чтобы новый пользователь смог подключиться к БД, необходимо выполнить команду выше (и выполнять всегда, когда вы производите любые действия по изменению прав доступа).
-<pre>> \q</pre>
+{% endhighlight %}
+
+Перезагружаем `Nginx`: - автор немного перепутал, либо не придает этому значения. Между restart и reload есть принципиальная разница.
+
+{% highlight bash %}
+$ service nginx reload
+{% endhighlight %}
+
+### Подготавливаемся к установке Livestreet
+
+Для каждого проекта я выделяю отдельный каталог в папке `/var/www`, таким образом путь до файлов сайта будет `/var/www/live`. В описанной в мануале проверке работы `PHP`, в моем случае, нет смысла. Так что я пропущу этот шаг.
+
+### Настраиваем mysql
+Вот тут наверно у меня возникли самые большие разногласия с автором. Подключаемся к консоли управления mysql:
+
+{% highlight bash %}
+$ mysql -uroot -p
+{% endhighlight %}
+
+Создаем новую БД:
+
+{% highlight bash %}
+> CREATE DATABASE live CHARACTER SET utf8 COLLATE utf8_general_ci;
+{% endhighlight %}
+
+Давать все привилегии нет смысла, перечисленных ниже достаточно, как показывает практика, для работы любой CMS:
+
+{% highlight bash %}
+> GRANT SELECT,LOCK TABLES,CREATE TEMPORARY TABLES,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER,INDEX ON live.* TO 'liveuser'@'localhost' identified by 'passwd';
+{% endhighlight %}
+
+Чтобы применить изменения в политиках доступа, т.е. чтобы новый пользователь смог подключиться к БД, необходимо выполнить команду ниже (и выполнять всегда, когда вы производите любые действия по изменению прав доступа):
+
+{% highlight bash %}
+> flush privileges;
+{% endhighlight %}
+
 Ну и самое печальное, люди продолжают использовать exit, когда есть \q.
+
+{% highlight bash %}
+> \q
+{% endhighlight %}
+
 Кстати, сейчас заметил, что у автора мануала какая-то странная нумерация - 4.0, 4.1, 4. (?)
-<h3>Установка LS</h3>
-Ну с этим трудностей возникнуть не должно, единственное, что лучше указать ссылку на список релизов, а не на конкретную версию.
-В общем-то, скачали, распокавали, в браузере открыли http://live.domain.org/install и выполнили установку. Удаляем папку install.
-<h3>Sphinx</h3>
+
+### Установка LS
+Ну с этим трудностей возникнуть не должно, единственное, что лучше указать ссылку на список релизов, а не на конкретную версию. В общем-то, скачали, распокавали, в браузере открыли http://live.domain.org/install и выполнили установку. Удаляем папку install.
+
+### Sphinx
 Sphinx нужен чтобы работал поиск по сайту, были некоторые проблемы с mysql и типом таблиц InnoDB, но сейчас все работает (имеется ввиду ОС RHEL).
+
 Установка
-<pre># yum install sphinx</pre>
+
+{% highlight bash %}
+$ yum install sphinx
+{% endhighlight %}
+
 Конфиг для CentOS имеет немного другой вид.
-<pre>
-#cp /etc/sphinx/sphinx.conf /etc/old_sphinx.conf
-#vim /etc/sphinx/sphinx.conf
-</pre>
+
+{% highlight bash %}
+$ cp /etc/sphinx/sphinx.conf /etc/old_sphinx.conf
+$ vim /etc/sphinx/sphinx.conf
+{% endhighlight %}
+
 У меня конфиг получился вот такой:
-<pre>
+
+{% highlight bash %}
 ## Конфигурационный файл Sphinx-а для индексации LiveStreet
 #######################
 # Описываем индексы
@@ -202,33 +246,47 @@ searchd
         # Файл, в который сохраняется PID-процесса при запуске
         pid_file                        = /var/log/sphinx/searchd.pid
 }
-</pre>
-"Настраиваем под себя sql_user, sql_pass, sql_db. Не забываем поменять стандартный «prefix_» на наш (вы же при установке действительно выбрали себе уникальный префикс для таблиц?)"
+{% endhighlight %}
+
+> Настраиваем под себя sql_user, sql_pass, sql_db. Не забываем поменять стандартный «prefix_» на наш (вы же при установке действительно выбрали себе уникальный префикс для таблиц?)
+
 Здесь, автор оригинальной статьи, подразумевает что в строчках, например:
-<pre>
+
+{% highlight bash %}
 sql_query_range         = SELECT MIN(topic_id),MAX(topic_id) FROM PREFIX_topic
-</pre>
+{% endhighlight %}
+
 Нужно заменить PREFIX, на ваш префикс, который вы указали при инсталяции CMS.
+
 Далее нужно созать индексы:
-<pre>
-# /usr/bin/indexer --all
-</pre>
+
+{% highlight bash %}
+$ /usr/bin/indexer --all
+{% endhighlight %}
+
 Теперь запускаем:
-<pre>
-# service searchd start
-</pre>
+
+{% highlight bash %}
+$ service searchd start
+{% endhighlight %}
+
 И добавляем в автозагрузку:
-<pre>
-# chkconfig searchd on
-</pre>
+
+{% highlight bash %}
+$ chkconfig searchd on
+{% endhighlight %}
+
 И настроим автоматическую индексацию:
-<pre>
-# crontab -e
-</pre>
+
+{% highlight bash %}
+$ crontab -e
+{% endhighlight %}
+
 Дописываем в конец:
-<pre>
+
+{% highlight bash %}
 12 */3 * * *  /usr/bin/indexer --rotate topicsIndex > /dev/null 2>&1
 */50 * * * *  /usr/bin/indexer --rotate commentsIndex > /dev/null 2>&1
-</pre>
-На этом моя настройка заканчивается, хотя вроде я еще memcache настраивал, потом допишу, если да.
-И стоит упомянуть, что это актуально для версии 1.0.3, а разработчики готовят релиз версии 2, и там скорее всего будут изменения.
+{% endhighlight %}
+
+На этом моя настройка заканчивается, хотя вроде я еще `Memcache` настраивал, потом допишу, если да. И стоит упомянуть, что это актуально для версии 1.0.3, а разработчики готовят релиз версии 2, и там скорее всего будут изменения.
