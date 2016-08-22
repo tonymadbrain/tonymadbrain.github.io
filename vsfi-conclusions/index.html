@@ -158,16 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <ul>
   <li>не верить организаторам на 100%, проверять все лично (как например свитч, чтобы не пытаться 2 часа сбросить «тупой» коммутатор);</li>
-  <li>чтобы быстро найти девайс в сети</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>arp-scan -I eth0 -l</code></pre></figure>
-
-<p>, либо пинг броадкаст адреса, а потом</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>arp -an</code></pre></figure>
-
-<ul>
+  <li>чтобы быстро найти девайс в сети: <code>arp-scan -I eth0 -l</code>, либо пинг броадкаст адреса, а потом <code>arp -an</code></li>
   <li>сменить пароль на linux: в grub на записи <code>e</code> -&gt; в конец строки загрузки ядра добавить <code>init=/bin/sh</code> -&gt; <code>Enter</code> -&gt; <code>b</code>, после загрузки -&gt; <code>passwd root</code> -&gt; задать новый пароль для root</li>
   <li>получил доступ - смени пароль сразу</li>
   <li>на приходящий порт сколько угодно VLAN тегированным трафиком, на юзерский, только один VLAN антегом (я это, кстати, успешно забыл после смены работы)</li>
