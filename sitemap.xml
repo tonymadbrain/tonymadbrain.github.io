@@ -149,7 +149,7 @@
     <lastmod>2014-08-25T11:12:32+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/vsfi-vyvody/</loc>
+    <loc>http://doam.ru/vsfi-conclusions/</loc>
     <lastmod>2014-08-22T00:00:00+04:00</lastmod>
   </url>
   <url>
@@ -515,13 +515,7 @@
     <loc>http://doam.ru/tag/ctf/</loc>
   </url>
   <url>
-    <loc>http://doam.ru/tag/ructf/</loc>
-  </url>
-  <url>
     <loc>http://doam.ru/tag/vsfi/</loc>
-  </url>
-  <url>
-    <loc>http://doam.ru/tag/formemory/</loc>
   </url>
   <url>
     <loc>http://doam.ru/tag/centos/</loc>
@@ -827,7 +821,7 @@
       <loc>http://doam.ru/ustanovka-livestreet-cms/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/vsfi-vyvody/</loc>
+      <loc>http://doam.ru/vsfi-conclusions/</loc>
     </url>
     <url>
       <loc>http://doam.ru/how-to-block-access-to-site-with-ip/</loc>
