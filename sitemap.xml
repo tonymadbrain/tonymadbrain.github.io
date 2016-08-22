@@ -133,19 +133,15 @@
     <lastmod>2014-10-05T16:04:55+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/domains-and-hosting-webnames/</loc>
-    <lastmod>2014-10-02T12:57:30+04:00</lastmod>
-  </url>
-  <url>
     <loc>http://doam.ru/zakusochnaya-hanara/</loc>
     <lastmod>2014-09-26T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/bortovoj-zhurnal-pereezd-na-gost/</loc>
+    <loc>http://doam.ru/logbook-moving-to-gost/</loc>
     <lastmod>2014-09-26T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/i-snova-pro-ghost/</loc>
+    <loc>http://doam.ru/again-about-ghost/</loc>
     <lastmod>2014-08-26T00:00:00+04:00</lastmod>
   </url>
   <url>
@@ -197,7 +193,7 @@
     <lastmod>2014-06-10T12:01:37+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/ustanovka-ghost-blogging-platform-v-centos/</loc>
+    <loc>http://doam.ru/how-to-install-ghost-blog-in-centos/</loc>
     <lastmod>2014-06-09T18:46:09+04:00</lastmod>
   </url>
   <url>
@@ -798,7 +794,7 @@
       <loc>http://doam.ru/nemnogo-randomny-h-fotografij/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/ustanovka-ghost-blogging-platform-v-centos/</loc>
+      <loc>http://doam.ru/how-to-install-ghost-blog-in-centos/</loc>
     </url>
     <url>
       <loc>http://doam.ru/nginx-locations/</loc>
@@ -837,16 +833,13 @@
       <loc>http://doam.ru/blokiruiemrazrieshaiem-dostup-k-saitu-po-ip/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/i-snova-pro-ghost/</loc>
+      <loc>http://doam.ru/again-about-ghost/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/bortovoj-zhurnal-pereezd-na-gost/</loc>
+      <loc>http://doam.ru/logbook-moving-to-gost/</loc>
     </url>
     <url>
       <loc>http://doam.ru/zakusochnaya-hanara/</loc>
-    </url>
-    <url>
-      <loc>http://doam.ru/domains-and-hosting-webnames/</loc>
     </url>
     <url>
       <loc>http://doam.ru/how-to-install-nginx-in-centos-7/</loc>

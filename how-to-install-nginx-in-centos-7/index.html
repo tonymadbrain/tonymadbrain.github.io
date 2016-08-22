@@ -198,7 +198,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>В случае, если Nginx у вас уже установлен и необходимо его обновить, при условии установленного репозитория вы можете обновить его командой</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum update nginx</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum update nginx</code></pre></figure>
 
 <h3 id="nginx-1">Конфигурирование Nginx</h3>
 
@@ -309,7 +309,7 @@ server <span class="o">{</span>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">service nginx reload</code></pre></figure>
 
-<p>При этом появится сообщение: <code>Redirecting to /bin/systemctl reload  nginx.service</code>. Это потому, что в новой версии решили использовать systemctl и приучать к этому пользователей. Поэтому, добавление в автозагрузку теперь выглядит вот так:</p>
+<p>При этом появится сообщение: <code>Redirecting to /bin/systemctl reload  nginx.service</code>. Это потому, что в новой версии решили использовать <code>systemctl</code> и приучать к этому пользователей. Поэтому, добавление в автозагрузку теперь выглядит вот так:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>systemctl <span class="nb">enable </span>nginx.service
 ln -s <span class="s1">&#39;/usr/lib/systemd/system/nginx.service&#39;</span> <span class="s1">&#39;/etc/systemd/system/multi-user.target.wants/nginx.service&#39;</span></code></pre></figure>
