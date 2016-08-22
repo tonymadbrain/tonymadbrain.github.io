@@ -1,6 +1,7 @@
 ---
 title: 'Закусочная «Ханара»'
 layout: post
+permalink: /hanara-refectory/
 permalink: /zakusochnaya-hanara/
 excerpt: ""
 tags:
@@ -25,6 +26,7 @@ tags:
   * хочется вернуться и попробовать их пельмени
   * живи я в шаговой доступности от этой закусочной, мои размеры превышали бы нынешние в несколько раз
 
-Ну и в конце я приведу пару ссылок
-<a href="https://plus.google.com/108176276646338878954/about?gl=ru&hl=ru" target="_blank">Google</a>
-<a href="http://afisha.cheb.ru/kafe/hanara.html" target="_blank">Местный портал</a>
+Ну и в конце я приведу пару ссылок:
+
+* <a href="https://plus.google.com/108176276646338878954/about?gl=ru&hl=ru" target="_blank">Google</a>
+* <a href="http://afisha.cheb.ru/kafe/hanara.html" target="_blank">Местный портал</a>

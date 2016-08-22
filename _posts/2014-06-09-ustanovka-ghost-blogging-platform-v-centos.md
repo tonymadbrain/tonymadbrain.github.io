@@ -3,6 +3,8 @@ layout: post
 title: Установка Ghost blogging platform в CentOS
 date: '2014-06-09 18:46:09'
 excerpt: ""
+permalink: /how-to-install-ghost-blog-in-centos/
+redirect_from: /ustanovka-ghost-blogging-platform-v-centos/
 ---
 
 

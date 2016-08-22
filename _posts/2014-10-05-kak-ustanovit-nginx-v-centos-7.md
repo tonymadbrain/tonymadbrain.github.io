@@ -42,7 +42,7 @@ $ yum install nginx
 В случае, если Nginx у вас уже установлен и необходимо его обновить, при условии установленного репозитория вы можете обновить его командой
 
 {% highlight bash %}
-yum update nginx
+$ yum update nginx
 {% endhighlight %}
 
 ### Конфигурирование Nginx
@@ -162,7 +162,7 @@ server {
 service nginx reload
 {% endhighlight %}
 
-При этом появится сообщение: `Redirecting to /bin/systemctl reload  nginx.service`. Это потому, что в новой версии решили использовать systemctl и приучать к этому пользователей. Поэтому, добавление в автозагрузку теперь выглядит вот так:
+При этом появится сообщение: `Redirecting to /bin/systemctl reload  nginx.service`. Это потому, что в новой версии решили использовать `systemctl` и приучать к этому пользователей. Поэтому, добавление в автозагрузку теперь выглядит вот так:
 
 {% highlight bash %}
 $ systemctl enable nginx.service

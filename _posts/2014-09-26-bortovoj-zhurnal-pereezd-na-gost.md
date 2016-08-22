@@ -1,12 +1,17 @@
 ---
 title: 'Бортовой журнал: переезд на гост'
 layout: post
-permalink: /bortovoj-zhurnal-pereezd-na-gost/
+permalink: /logbook-moving-to-gost/
+redirect_from: /bortovoj-zhurnal-pereezd-na-gost/
 excerpt: ""
 tags:
   - Root
 ---
-<img class="aligncenter" src="http://cs319627.vk.me/v319627092/4765/MTWWXVs6Evg.jpg" alt="" width="600" height="470" />
+
+<br>
+<img src="https://farm1.staticflickr.com/761/21466116380_27b5eb901e_o.jpg">
+<br>
+<br>
 
 Немного о том, что будет с блогом в дальнейшем:
 
