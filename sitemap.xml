@@ -129,7 +129,7 @@
     <lastmod>2014-10-16T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/kak-ustanovit-nginx-v-centos-7/</loc>
+    <loc>http://doam.ru/how-to-install-nginx-in-centos-7/</loc>
     <lastmod>2014-10-05T16:04:55+04:00</lastmod>
   </url>
   <url>
@@ -528,6 +528,9 @@
     <loc>http://doam.ru/tag/formemory/</loc>
   </url>
   <url>
+    <loc>http://doam.ru/tag/centos/</loc>
+  </url>
+  <url>
     <loc>http://doam.ru/tag/fix/</loc>
   </url>
   <url>
@@ -846,7 +849,7 @@
       <loc>http://doam.ru/domains-and-hosting-webnames/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/kak-ustanovit-nginx-v-centos-7/</loc>
+      <loc>http://doam.ru/how-to-install-nginx-in-centos-7/</loc>
     </url>
     <url>
       <loc>http://doam.ru/problem-with-pgp-keys-in-proxmox/</loc>
