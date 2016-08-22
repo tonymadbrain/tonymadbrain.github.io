@@ -257,12 +257,12 @@ Zend Engine v2.4.0, Copyright <span class="o">(</span>c<span class="o">)</span> 
 <p>Кстати, сейчас заметил, что у автора мануала какая-то странная нумерация - 4.0, 4.1, 4. (?)</p>
 
 <h3 id="ls">Установка LS</h3>
+
 <p>Ну с этим трудностей возникнуть не должно, единственное, что лучше указать ссылку на список релизов, а не на конкретную версию. В общем-то, скачали, распокавали, в браузере открыли http://live.domain.org/install и выполнили установку. Удаляем папку install.</p>
 
 <h3 id="sphinx">Sphinx</h3>
-<p>Sphinx нужен чтобы работал поиск по сайту, были некоторые проблемы с mysql и типом таблиц InnoDB, но сейчас все работает (имеется ввиду ОС RHEL).</p>
 
-<p>Установка</p>
+<p>Sphinx нужен чтобы работал поиск по сайту, были некоторые проблемы с mysql и типом таблиц InnoDB, но сейчас все работает (имеется ввиду ОС RHEL). Установим sphinx:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install sphinx</code></pre></figure>
 
@@ -399,9 +399,7 @@ searchd
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">sql_query_range</span>         <span class="o">=</span> SELECT MIN<span class="o">(</span>topic_id<span class="o">)</span>,MAX<span class="o">(</span>topic_id<span class="o">)</span> FROM PREFIX_topic</code></pre></figure>
 
-<p>Нужно заменить PREFIX, на ваш префикс, который вы указали при инсталяции CMS.</p>
-
-<p>Далее нужно созать индексы:</p>
+<p>Нужно заменить PREFIX, на ваш префикс, который вы указали при инсталяции CMS. Далее нужно созать индексы:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>/usr/bin/indexer --all</code></pre></figure>
 
