@@ -7,7 +7,7 @@ permalink: /how-to-block-access-to-site-with-ip/
 redirect_from: /blokiruiemrazrieshaiem-dostup-k-saitu-po-ip/
 tags:
   - Nginx
-  - Ip
+  - Ghost
 ---
 
 <br>
@@ -23,4 +23,4 @@ allow xx.xxx.xx.xxx;  # разрешить внешнему адресу
 deny    all;          # запретить все
 {% endhighlight %}
 
-Во-первых, так можно писать в любой `lcoation`, чтобы закрыть только часть сайта. Во-вторых, сначала должны следовать разрешающие правила, а потом запрещающие, т.е. **allow xxx.xxx.xxx.xxx;** после правила **deny all;** обрабатываеться уже не будет.
+Во-первых, так можно писать в любой `lcoation`, чтобы закрыть только часть сайта. Во-вторых, сначала должны следовать разрешающие правила, а потом запрещающие, т.е. `allow xxx.xxx.xxx.xxx;` после правила `deny all;` обрабатываеться уже не будет.
