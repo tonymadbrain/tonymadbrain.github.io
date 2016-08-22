@@ -524,9 +524,6 @@
     <loc>http://doam.ru/tag/formemory/</loc>
   </url>
   <url>
-    <loc>http://doam.ru/tag/tips/</loc>
-  </url>
-  <url>
     <loc>http://doam.ru/tag/centos/</loc>
   </url>
   <url>
@@ -570,6 +567,9 @@
   </url>
   <url>
     <loc>http://doam.ru/tag/redmine/</loc>
+  </url>
+  <url>
+    <loc>http://doam.ru/tag/tips/</loc>
   </url>
   <url>
     <loc>http://doam.ru/tag/codeacademy/</loc>
@@ -942,10 +942,10 @@
     </url>
   <url>
     <loc>http://doam.ru/rormatrix/index.html</loc>
-    <lastmod>2016-08-18T22:47:27+03:00</lastmod>
+    <lastmod>2016-08-22T23:04:03+03:00</lastmod>
   </url>
   <url>
     <loc>http://doam.ru/yandex_424342c6a390a9bc.html</loc>
-    <lastmod>2016-07-26T23:28:09+03:00</lastmod>
+    <lastmod>2016-08-22T23:04:03+03:00</lastmod>
   </url>
 </urlset>
