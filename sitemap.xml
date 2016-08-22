@@ -125,7 +125,7 @@
     <lastmod>2014-10-16T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/problema-s-pgp-klyuchami-v-proxmox/</loc>
+    <loc>http://doam.ru/problem-with-pgp-keys-in-proxmox/</loc>
     <lastmod>2014-10-16T00:00:00+04:00</lastmod>
   </url>
   <url>
@@ -534,9 +534,6 @@
     <loc>http://doam.ru/tag/pgp/</loc>
   </url>
   <url>
-    <loc>http://doam.ru/tag/pgp-key/</loc>
-  </url>
-  <url>
     <loc>http://doam.ru/tag/proxmox/</loc>
   </url>
   <url>
@@ -852,7 +849,7 @@
       <loc>http://doam.ru/kak-ustanovit-nginx-v-centos-7/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/problema-s-pgp-klyuchami-v-proxmox/</loc>
+      <loc>http://doam.ru/problem-with-pgp-keys-in-proxmox/</loc>
     </url>
     <url>
       <loc>http://doam.ru/backup-on-nfs-in-proxmox/</loc>
