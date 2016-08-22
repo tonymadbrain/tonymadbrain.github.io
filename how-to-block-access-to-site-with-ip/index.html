@@ -5,14 +5,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Бортовой журнал: переезд на гост &#8211; Diary of madman</title>
+<title>Блокируем/разрешаем доступ к сайту по IP &#8211; Diary of madman</title>
 <meta name="description" content="">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Root, Ghost">
+<meta name="keywords" content="Nginx, Ip">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Бортовой журнал: переезд на гост">
+<meta name="twitter:title" content="Блокируем/разрешаем доступ к сайту по IP">
 <meta name="twitter:description" content="">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
@@ -23,16 +23,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Бортовой журнал: переезд на гост">
+<meta property="og:title" content="Блокируем/разрешаем доступ к сайту по IP">
 <meta property="og:description" content="">
-<meta property="og:url" content="http://doam.ru/logbook-moving-to-gost/">
+<meta property="og:url" content="http://doam.ru/how-to-block-access-to-site-with-ip/">
 <meta property="og:site_name" content="Diary of madman">
 
 
 
 
 
-<link rel="canonical" href="http://doam.ru/logbook-moving-to-gost/">
+<link rel="canonical" href="http://doam.ru/how-to-block-access-to-site-with-ip/">
 <link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -150,56 +150,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://doam.ru/logbook-moving-to-gost/" rel="bookmark" title="Бортовой журнал: переезд на гост">Бортовой журнал: переезд на гост</a></h1>
+        <h1><a href="http://doam.ru/how-to-block-access-to-site-with-ip/" rel="bookmark" title="Блокируем/разрешаем доступ к сайту по IP">Блокируем/разрешаем доступ к сайту по IP</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
       <p><br />
-<img src="https://farm1.staticflickr.com/761/21466116380_27b5eb901e_o.jpg" />
+<img src="https://farm1.staticflickr.com/770/21663180281_2052eb289c_o.jpg" />
 <br />
 <br /></p>
 
-<p>Немного о том, что будет с блогом в дальнейшем:
-<br />
-<br />
-Планируется переезд на более производительный движок <a href="http://ghost.org" target="_blank">Ghost</a>. При этом я откажусь от виджета комментариев вконтакте и перейду на disqus, а так как инструментов переноса комментариев нет — все нынешние комментарии будут утеряны. Так же концепция нового движка не предусматривает статическую главную страницу, поэтому, возможно, я откажусь от нее. Точнее не откажусь, она будет перемещена в раздел «обо мне».
-<br />
-<br />
-Скорее всего я буду проверять все посты на наличие «битых» изображения/ссылок. Так же, есть желание сделать все теги англоязычными. Оказалось, что я мог ставить теги то на английском то на русском и в результате получается не совсем корректно.
-<br />
-<br />
-Предстоит огромная работа, по разгребанию черновиков.
-<br />
-<br />
-UPD: Ghost я более не использую, а запись здесь для истории.</p>
+<p>Если вам нужно забанить кого-нибудь, либо, как в моем случае, разрешить доступ только определенным клиентам, в случае с <code>Nginx</code> следует использовать следующую конструкцию:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">allow 192.168.0.0/24<span class="p">;</span> <span class="c"># разрешить внутренней подсети</span>
+allow xx.xxx.xx.xxx<span class="p">;</span>  <span class="c"># разрешить внешнему адресу</span>
+deny    all<span class="p">;</span>          <span class="c"># запретить все</span></code></pre></figure>
+
+<p>Во-первых, так можно писать в любой <code>lcoation</code>, чтобы закрыть только часть сайта. Во-вторых, сначала должны следовать разрешающие правила, а потом запрещающие, т.е. <strong>allow xxx.xxx.xxx.xxx;</strong> после правила <strong>deny all;</strong> обрабатываеться уже не будет.</p>
 
       
-        <a href="/tag/root">#Root</a>
+        <a href="/tag/nginx">#Nginx</a>
       
-        <a href="/tag/ghost">#Ghost</a>
+        <a href="/tag/ip">#Ip</a>
       
-        <!-- <a href="/tag/root/" rel="tag">Root</a>, <a href="/tag/ghost/" rel="tag">Ghost</a> -->
+        <!-- <a href="/tag/nginx/" rel="tag">Nginx</a>, <a href="/tag/ip/" rel="tag">Ip</a> -->
       <hr />
       <footer role="contentinfo">
         <div style="text-align: center;" class="social-share">
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Бортовой журнал: переезд на гост %23doamru http://doam.ru/logbook-moving-to-gost/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Блокируем/разрешаем доступ к сайту по IP %23doamru http://doam.ru/how-to-block-access-to-site-with-ip/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="http://vk.com/share.php?url=http://doam.ru/logbook-moving-to-gost/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+      <a href="http://vk.com/share.php?url=http://doam.ru/how-to-block-access-to-site-with-ip/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/logbook-moving-to-gost/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/how-to-block-access-to-site-with-ip/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/logbook-moving-to-gost/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/how-to-block-access-to-site-with-ip/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
 
-        <p class="byline"><strong>Бортовой журнал: переезд на гост</strong> опубликовано <time datetime="2014-09-26T00:00:00+04:00">26 September, 2014</time>.</p>
+        <p class="byline"><strong>Блокируем/разрешаем доступ к сайту по IP</strong> опубликовано <time datetime="2014-08-25T11:12:32+04:00">25 August, 2014</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   
