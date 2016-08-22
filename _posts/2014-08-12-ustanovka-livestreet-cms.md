@@ -3,12 +3,16 @@ layout: post
 title: Установка LiveStreet CMS
 date: '2014-08-12 05:30:40'
 excerpt: ""
+permalink: /hwo-to-install-livestreet-cms/
+redirect_from: /ustanovka-livestreet-cms/
 ---
 
 <br>
 <img src="https://farm6.staticflickr.com/5718/21663191041_037d991e0a_o.png">
 <br>
 <br>
+
+{% include _toc.html %}
 
 Заинтересовался данной <a href="http://livestreetcms.ru/" target="_blank">CMS</a>, при запросе в гугле "livestreet cms + nginx" попал  вот на <a href="http://livestreet.ru/blog/dev_documentation/10626.html" target="_blank">такую статью</a>. Она мне не совсем подошла, так как, как минимум я использую CentOS/RHEL. Так что внесу свою лепту.
 
