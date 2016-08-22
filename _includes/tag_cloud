@@ -1,3 +1,0 @@
-{% for tag in site.tags %}
-    <a href="{{ BASE_PATH }}/tag/{{ tag | first | downcase }}">#{{ tag | first }}</a>
-{% endfor %}
