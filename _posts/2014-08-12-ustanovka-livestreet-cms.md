@@ -5,6 +5,11 @@ date: '2014-08-12 05:30:40'
 excerpt: ""
 permalink: /how-to-install-livestreet-cms/
 redirect_from: /ustanovka-livestreet-cms/
+tags:
+  - Nginx
+  - LiveStreetCms
+  - Cms
+  - Centos
 ---
 
 <br>
