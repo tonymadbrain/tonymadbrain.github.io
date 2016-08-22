@@ -93,7 +93,7 @@ gpg:               imported: 1  (RSA: 1)
 {% highlight bash %}
 $ gpg -a --export 6FB2A1C265FFB764 | sudo apt-key add -
 OK
-# gpg -a --export 8B48AD6246925553 | sudo apt-key add -
+$ gpg -a --export 8B48AD6246925553 | sudo apt-key add -
 OK
 {% endhighlight %}
 
