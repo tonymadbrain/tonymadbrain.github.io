@@ -6,6 +6,7 @@ redirect_from: /bortovoj-zhurnal-pereezd-na-gost/
 excerpt: ""
 tags:
   - Root
+  - Ghost
 ---
 
 <br>
