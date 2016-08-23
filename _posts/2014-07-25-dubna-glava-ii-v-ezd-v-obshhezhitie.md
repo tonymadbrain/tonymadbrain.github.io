@@ -1,7 +1,8 @@
 ---
 title: 'Дубна - въезд в общежитие'
 layout: post
-permalink: /dubna-glava-ii-v-ezd-v-obshhezhitie/
+permalink: /dubna_chapter_2-entry_into_the_hostel/
+redirect_from: /dubna-glava-ii-v-ezd-v-obshhezhitie/
 excerpt: ""
 tags:
   - Dubna

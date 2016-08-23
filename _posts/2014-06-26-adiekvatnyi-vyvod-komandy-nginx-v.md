@@ -2,8 +2,10 @@
 layout: post
 title: Адекватный вывод команды nginx -V
 date: '2014-06-26 07:59:55'
-permalink: /best-way-for-search-included-modules-in-nginx/
-redirect_from: /adiekvatnyi-vyvod-komandy-nginx-v/
+permalink: /best_way_for_search_included_modules_in_nginx/
+redirect_from:
+  - /adiekvatnyi-vyvod-komandy-nginx-v/
+  - /best-way-for-search-included-modules-in-nginx/
 excerpt: ""
 tags:
   - Nginx

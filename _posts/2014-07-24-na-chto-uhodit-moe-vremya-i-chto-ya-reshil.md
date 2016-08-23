@@ -1,7 +1,8 @@
 ---
 title: На что уходит мое время, и что я решил
 layout: post
-permalink: /na-chto-uhodit-moe-vremya-i-chto-ya-reshil/
+permalink: /which_takes_my_time_and_what_i_decided/
+redirect_from: /na-chto-uhodit-moe-vremya-i-chto-ya-reshil/
 excerpt: ""
 tags:
   - Root

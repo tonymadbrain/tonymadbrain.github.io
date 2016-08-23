@@ -1,14 +1,14 @@
 ---
 title: 'Невкусная карбонара, уставший официант и поздний кофе &#8212; &#171;made in Dubna&#187;'
 layout: post
-permalink: /nevkusnaya-karbonara-ustavshij-ofitsiant-i-pozdnij-kofe-made-in-dubna/
+permalink: /tasteless_carbonara_tired_waiter_and_late_coffee-made_in_dubna/
+redirect_from: /nevkusnaya-karbonara-ustavshij-ofitsiant-i-pozdnij-kofe-made-in-dubna/
 excerpt: ""
 tags:
   - Dubna
   - OlimPizza
   - Carbonara
   - Cafe
-  - CateringBusiness
   - Terrace
 ---
 <br>

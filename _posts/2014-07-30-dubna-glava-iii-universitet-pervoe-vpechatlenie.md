@@ -1,7 +1,8 @@
 ---
 title: 'Дубна &#8212; Университет &#171;первое впечатление&#187;'
 layout: post
-permalink: /dubna-glava-iii-universitet-pervoe-vpechatlenie/
+permalink: /dubna_chapter_3-first_impression_about_university/
+redirect_from: /dubna-glava-iii-universitet-pervoe-vpechatlenie/
 excerpt: ""
 tags:
   - Dubna

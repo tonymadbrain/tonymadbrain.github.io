@@ -1,8 +1,10 @@
 ---
 layout: post
 title: Location директивы Nginx
-permalink: /nginx-locations/
-redirect_from: /location-direktivi-nginx/
+permalink: /nginx_locations/
+redirect_from:
+  - /location-direktivi-nginx/
+  - /nginx-locations/
 date: '2014-06-10 12:01:37'
 excerpt: "Разбираемся как использовать location"
 tags:
