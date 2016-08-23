@@ -3,13 +3,24 @@ layout: post
 title: Конфиг Nginx для Prestashop
 date: '2014-06-10 12:18:40'
 excerpt: ""
+permalink: /nginx_config_for_prestashop/
+redirect_from: /konfigh-nginx-dlia-prestashop/
+tags:
+	- Nginx
+	- PrestaShop
+	- Cms
 ---
 
-<img src="https://farm9.staticflickr.com/8595/16515667202_4ac4d6b26f_o.png" width="700"/>
+<br>
+<img src="https://farm1.staticflickr.com/648/21628000116_301738289e_o.png">
+<br>
+<br>
 
-<h4>PrestaShop</h4> - это open source, бесплатная, e-commerce CMS. В общем случае, моё знакомство с данным продуктом было не очень впечатляющим, в первый раз была ошибка с авторизацией администратора, после чистой установки, а во второй, административная панель не хотела открываться с 500 ошибкой, что, судя по логам, происходило из-за кривого шаблона, учитывая, что это была чистая установка. При этом, нормальной документации я не нашел, а все что есть сводится к тому, чтобы использовать их собственный клауд хостинг или хоститься у их партнеров.
+**PrestaShop** - это open source, бесплатная, e-commerce CMS. В общем случае, моё знакомство с данным продуктом было не очень впечатляющим, в первый раз была ошибка с авторизацией администратора, после чистой установки, а во второй, административная панель не хотела открываться с 500 ошибкой, что, судя по логам, происходило из-за кривого шаблона, учитывая, что это была чистая установка. При этом, нормальной документации я не нашел, а все что есть сводится к тому, чтобы использовать их собственный клауд хостинг или хоститься у их партнеров.
 Но, если кому-то понадобится конфиг для Nginx то вот он:
-<pre>server {
+
+{% highlight bash %}
+server {
 access_log off;
 error_log  logs/yoursite.com-error_log warn;
 
@@ -70,10 +81,15 @@ error_log  logs/yoursite.com-error_log warn;
 	fastcgi_temp_file_write_size 256k;
 	}
 
-}</pre>
+}
+{% endhighlight %}
+
 Применить новый конфиг можно командой:
-<pre>service nginx reload</pre>
-<h4>Материалы по теме:</h4>
-<ul>
-	<li><a href="http://www.prestashop.com/ru" target="_blank">Официальный сайт</a></li>
-</ul>
+
+{% highlight bash %}
+$ service nginx reload
+{% endhighlight %}
+
+Материалы по теме:
+
+* <a href="http://www.prestashop.com/ru" target="_blank">Официальный сайт</a>
