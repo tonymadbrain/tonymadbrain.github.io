@@ -6,7 +6,6 @@ url:              http://doam.ru
 
 
 # Jekyll configuration
-
 permalink:   /:title/
 markdown:    kramdown
 highlighter: pygments
