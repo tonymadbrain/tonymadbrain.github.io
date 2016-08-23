@@ -1,0 +1,716 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>React.js - tutorial для Rails разработчиков (часть 1) &#8211; Diary of madman</title>
+<meta name="description" content="Учимся работать с React в Rails">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Ruby, RubyOnRails, React, Tutorial">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="React.js - tutorial для Rails разработчиков (часть 1)">
+<meta name="twitter:description" content="Учимся работать с React в Rails">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://doam.ru/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React.js - tutorial для Rails разработчиков (часть 1)">
+<meta property="og:description" content="Учимся работать с React в Rails">
+<meta property="og:url" content="http://doam.ru/react_js_for_rails_developers_part_1/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="http://doam.ru/react_js_for_rails_developers_part_1/">
+<link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://doam.ru/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://doam.ru/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://doam.ru/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://doam.ru/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://doam.ru/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://doam.ru/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://doam.ru/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://doam.ru/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXNSQJ');</script>
+<!-- End Google Tag Manager -->
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://doam.ru/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://doam.ru/tags/" >Теги</a></li>
+				
+				    
+				    <li><a href="http://doam.ru/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://doam.ru/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://doam.ru/react_js_for_rails_developers_part_1/" rel="bookmark" title="React.js - tutorial для Rails разработчиков (часть 1)">React.js - tutorial для Rails разработчиков (часть 1)</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>React.js это новый популярный игрок из команды “Фреймворки JavaScript”, и он отличается своей простотой. Там где другие фреймворки реализуют полноценный MVC, можно сказать что React реализует только V (причем многие заменяют V в своих фреймворках на React). Приложения на React строятся на двух основных принципах: <em>Компоненты</em> (Components) и <em>Состояния</em> (States). Компоненты могут быть сделаны из других компонентов поменьше, встроенных или кастомных; Состояния это, как называют его ребята из Facebook - <em>one-way reactive data flow</em>, означает что наш UI будет реагировать на каждое изменение состояния.</p>
+
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">Макет приложения</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">Создаем приложение</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">Создаем ресурс</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">Вложенные компоненты: список записей</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">Родитель-Потомок коммуникация: Создание записей</a></li>
+  <li><a href="#section-5" id="markdown-toc-section-5">Реюзабельные компоненты: Индикаторы остатка</a></li>
+  <li><a href="#section-6" id="markdown-toc-section-6">Вместо заключения</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p><br />
+<img src="https://farm2.staticflickr.com/1480/23858108174_a563951ceb_o.jpg" />
+<br /></p>
+
+<blockquote>
+  <p>От переводчика: <a href="https://www.airpair.com/reactjs/posts/reactjs-a-guide-for-rails-developers" target="_blank">Оригинал статьи</a></p>
+</blockquote>
+
+<p>Одна из хороших вещей в React это то, что он не требует дополнительных зависимостей, что делает его подключаемым с практически любой JS библиотекой. Воспользовавшись этой функцией, мы собираемся включить его в наш Rails стек и построить <em>frontend-powered</em> приложение, или, если пожелаете, Rails вьюхи на стероидах.</p>
+
+<h2 id="section">Макет приложения</h2>
+
+<p>В данной статье, мы будем создавать с нуля маленькое приложение для отслеживания затрат; каждая запись будет содержать дату, заголовок и сумму. Записи будут делиться на Кредит (Credit) если сумма больше нуля и Дебет (Debit) в обратном случае. Вот макет проекта:</p>
+
+<p><br />
+<img src="https://farm2.staticflickr.com/1659/23794397494_c45a9b62a6_o.png" />
+<br /></p>
+
+<p>Суммируя, в приложении будут следующие кейсы:</p>
+
+<ul>
+  <li>Когда пользователь создает новую запись через горизонтальную форму, она (запись) будет добавляться в таблицу со всеми записями</li>
+  <li>Пользователь сможет построчно редактировать любую запись</li>
+  <li>Клик по любой кнопке <em>Delete</em> будет удалять связанную запись из таблицы</li>
+  <li>Добавление, редактирование и удаление записей будет обновлять сумму в окне на верху страницы</li>
+</ul>
+
+<h2 id="section-1">Создаем приложение</h2>
+
+<p>Любое приложение начинается с простых вещей. Создадим наше приложение и назовем его, например, <code>Accounts</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">rails new accounts</code></pre></figure>
+
+<blockquote>
+  <p>Я рекомендую использовать RVM для управления версиями Ruby и для каждого приложения отдельный gemset, подробнее можно посмотреть в <a href="http://doam.ru/sozdaniye-novogo-prilozheniya-na-rails/" target="_blank">этой статье</a>.</p>
+</blockquote>
+
+<p>Для UI нашего проекта будет использован Twitter Bootstrap. Процесс установки bootstrap немного выходит из рамок данного how-to, вы можете установить например официальный гем <code>bootstrap-sass</code> следуя <a href="https://github.com/twbs/bootstrap-sass" target="_blank">инструкции</a> или использовать <a href="https://rails-assets.org/" target="_blank">rails-assets</a>.</p>
+
+<p>Когда наш проект инициализирован, нужно добавить в него React. В данной записи мы будем устанавливать официальный гем <a href="https://github.com/reactjs/react-rails" target="_blank">react-rails</a> потому что будем использовать некоторые крутые фишки, реализованные в данном геме, но есть и другие способы выполнить эту задачу, например все теже <a href="https://rails-assets.org/" target="_blank">rails-assets</a> или можно скачать исходники с <a href="https://facebook.github.io/react/" target="_blank">официальной страницы</a> и разместить их в паке <code>javascrips</code>.</p>
+
+<p>Если вы до этого имели дело с Rails, то вы знаете как легко добавить гем в проект, добавим нужный нам гем <code>react-rails</code> в <em>Gemfile</em>:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">&#39;react-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 1.0&#39;</span></code></pre></figure>
+
+<p>Затем, естественно, устанавливаем новые гемы:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">bundle install</code></pre></figure>
+
+<p><code>react-rails</code> идет с установочным скриптом, который создаст файл <code>component.js</code> и каталог <code>components</code> в папке <code>app/assets/javascripts</code> где собственно и будут жить наши компоненты React.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">rails g react:install</code></pre></figure>
+
+<p>Если после процесса установки вы загляните в файл <code>application.js</code> то найдете там три новых линии:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="c1">//= require react</span>
+  <span class="c1">//= require react_ujs</span>
+  <span class="c1">//= require components</span></code></pre></figure>
+
+<p>В основном, он включает актуальную react библиотеку, манифест <code>components</code> и <code>ujs</code>. Как вы могли догадаться для имен файлов react-rails включает ненавязчивый JavaScript драйвер, который поможет нам монтировать React компоненты и будет поддерживать события <em>Turbolinks</em>.</p>
+
+<h2 id="section-2">Создаем ресурс</h2>
+
+<p>Мы создадим ресурс <code>Record</code>, который будет включать поля <code>date</code>, <code>title</code> и <code>amount</code>. Вместо использования генератора <code>scaffold</code>, мы будем использовать генератор <code>resource</code>, потому что нам не понадобятся все файлы и методы, которые создаются при исползовании <code>scaffold</code>.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">rails g resource Record title date:date amount:float</code></pre></figure>
+
+<p>Чуть чуть магии и у нас будет готовый ресурс <code>Record</code>, включающий модель, контроллер и маршруты. Остается только создать базу данных и запустить миграции.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">rake db:create db:migrate</code></pre></figure>
+
+<p>Дополнительно вы можете создать несколько записей в базе данных используя <code>rails console</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Record.create title: <span class="s1">&#39;Record 1&#39;</span>, date: Date.today, amount: 500
+Record.create title: <span class="s1">&#39;Record 2&#39;</span>, date: Date.today, amount: -100</code></pre></figure>
+
+<p>Не забудьте запустить сервер с помощью команды <code>rails s</code>.
+<br />
+Ура! Теперь мы можем кодить.</p>
+
+<h2 id="section-3">Вложенные компоненты: список записей</h2>
+
+<p>Нашей первой задачей будет рендерить любые записи в таблице. Для начала, нужно создать экшен <code>index</code> в нашем контроллере <code>Records</code>:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># app/controllers/records_controller.rb</span>
+
+<span class="k">class</span> <span class="nc">RecordsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="vi">@records</span> <span class="o">=</span> <span class="no">Record</span><span class="o">.</span><span class="n">all</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Далее, нам нужно создать новый файл <code>index.html.erb</code> в папке <code>app/views/records/</code>, этот файл будет мостом между нашим Rails приложением и React компонентами. Чтобы достигнуть этого мы будем использовать хелпер метод <code>react_component</code>, который получает имя компонента React, который мы хотим отрендерить вместе с данными которые мы хотим в него передать.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;%</span><span class="c1"># app/views/records/index.html.erb %&gt;</span>
+
+  <span class="o">&lt;%=</span> <span class="n">react_component</span> <span class="s1">&#39;Records&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="ss">data</span><span class="p">:</span> <span class="vi">@records</span> <span class="p">}</span> <span class="o">%&gt;</span></code></pre></figure>
+
+<p>Стоит отметить, что этот хелпер предоставляется гемом <code>react-rails</code> и если использовать другие способы интеграции React в Rails приложение, то он не будет работать.</p>
+
+<p>Теперь вы можете открыть http://localhost:3000/records в браузере. Очевидно, что сейчас ничего работать не будет, потому что у нас просто напросто нет React компонента Records, но если мы посмотрим в код сгенерированной страницы, то увидим примерно следующее:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-react-class=</span><span class="s">&quot;Records&quot;</span> <span class="na">data-react-props=</span><span class="s">&quot;{...}&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>C такой разметкой, <code>react_ujs</code> видит что мы пытаемся рендерить React компонент и будет инициализировать его, включая свойства, которые мы передали через <code>react_component</code>, в нашем случае содержимое <code>@records</code>.</p>
+
+<p>Пришло время сделать наш первый React компонент. В каталоге <code>javascripts/components</code> создаем новый файл и называем его <code>records.js.coffee</code>, этот файл и будет содержать наш компонент Records.</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+
+<span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+      <span class="nv">className: </span><span class="s">&#39;records&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">h2</span>
+        <span class="nv">className: </span><span class="s">&#39;title&#39;</span>
+        <span class="s">&#39;Records&#39;</span></code></pre></figure>
+
+<p>Каждый компонент должен содержать метод <code>render</code>, который будет отвечать за рендеринг самого себя. Этот метод должен возвращать экземпляр класса ReactComponent, в этом случае, когда React выполнит ре-рендер, он (экземпляр) будет обработан оптимальным путем (React обнаруживает существование новых узлов путем создания виртуального DOM в памяти). В примере выше мы создали экзмепляр h2, встроенный ReactComponent.</p>
+
+<blockquote>
+  <p>Другой способ инициализировать ReactComponents внутри метода render через <code>JSX</code> синтаксис. Пример кода выше эквивалентент следующему:</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="o">`&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s">&quot;records&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h2</span> <span class="nx">className</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="o">&gt;</span> <span class="nx">Records</span> <span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;`</span></code></pre></figure>
+
+<p>Я рекомендую, если вы работаете с soffescript, использовать синтаксис <code>React.DOM</code> вместо <code>JSX</code>, потому что код будет выстраиваться иерархично, как, например, в haml. Однако, если вы интегрируете React в существующее приложение с erb, вы можете реюзать уже существующий код конвертируя его в <em>JSX</em>.</p>
+
+<p>Теперь обновим страницу в браузере.</p>
+
+<p>Отлично! Мы отрендерили наш первый компонент React. Теперь настало время для отображения наших записей (records).</p>
+
+<p>Кроме метода рендеринга, React компоненты имеют способность общаться между собой и сообщать свое состояние, чтобы определить необходим ре-рендеринг или нет. Нам нужно инициализировать состояния наших комопнентов и свойства с требуемыми значениями:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+
+<span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="nv">getInitialState: </span><span class="nf">-&gt;</span>
+    <span class="nv">records: </span><span class="nx">@props</span><span class="p">.</span><span class="nx">data</span>
+  <span class="nv">getDefaultProps: </span><span class="nf">-&gt;</span>
+    <span class="nv">records: </span><span class="p">[]</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="p">...</span></code></pre></figure>
+
+<p>Метод <code>getDefaultProps</code> будет выставлять свойства нашего компонента в случае, если мы забыли отправить какие-либо данные при его инициализации, и метод <code>getInitialState</code> будет генерировать начальное состояние наших компонентов. Теперь нам нужно отобразить записи предоставленные нам вьюхой Rails.</p>
+
+<p>Похоже нам нужен хелпер чтобы форматировать строку с суммой (amount), мы можем написать простой форматтер строк и сделать его доступным для всех наших coffee файлов. Создадим новый файл <code>utils.js.coffee</code> в каталоге <code>javascripts/</code> со следующим содержимым:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/utils.js.coffee</span>
+
+  <span class="vi">@amountFormat = </span><span class="nf">(amount) -&gt;</span>
+    <span class="s">&#39;$ &#39;</span> <span class="o">+</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">amount</span><span class="p">).</span><span class="nx">toLocaleString</span><span class="p">()</span></code></pre></figure>
+
+<p>Нам нужно создать новый компонент Record чтобы отображать каждую отдельную запись, создадим новый файл <code>record.js.coffee</code> в папке <code>javascripts/components</code> и запишем в него следующий контент:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
+
+<span class="vi">@Record = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">tr</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">td</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">@props</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">date</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">td</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">@props</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">title</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">td</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">amountFormat</span><span class="p">(</span><span class="nx">@props</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">amount</span><span class="p">)</span></code></pre></figure>
+
+<p>Компонент Record будет отображать строку таблицы содержащую ячейки для каждого аттрибута записи. Не волнуйтесь об этих <em>null</em> в вызовах React.DOM.*, это означает что мы не отправляем атрибуты в компоненты. Теперь обновим метод рендер в компоненте Records следующим кодом:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+
+<span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+      <span class="nv">className: </span><span class="s">&#39;records&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">h2</span>
+        <span class="nv">className: </span><span class="s">&#39;title&#39;</span>
+        <span class="s">&#39;Records&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">table</span>
+        <span class="nv">className: </span><span class="s">&#39;table table-bordered&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">thead</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">tr</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">th</span> <span class="kc">null</span><span class="p">,</span> <span class="s">&#39;Date&#39;</span>
+            <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">th</span> <span class="kc">null</span><span class="p">,</span> <span class="s">&#39;Title&#39;</span>
+            <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">th</span> <span class="kc">null</span><span class="p">,</span> <span class="s">&#39;Amount&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">tbody</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="k">for</span> <span class="nx">record</span> <span class="k">in</span> <span class="nx">@state</span><span class="p">.</span><span class="nx">records</span>
+            <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">Record</span><span class="p">,</span> <span class="nv">key: </span><span class="nx">record</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nv">record: </span><span class="nx">record</span></code></pre></figure>
+
+<p>Мы создали таблицу со строкой заголовком и внутри тела таблицы мы создали элемент Record для каждой существующей записи. Другими словами, мы угнездили встроенный и кастомный React компоненеты. Круто, да?</p>
+
+<p>Чтобы React не тратил много времени на обновление нашего UI, при создании элемента Record, вместе с ним мы посылаем ключ: <code>record.id</code>. Если мы так не сделаем, то увидим предупреждение в консоли браузера (и скорее всего получим головную боль в дальнейшем).</p>
+
+<p><br />
+<img src="https://farm2.staticflickr.com/1628/24485535665_278d25ff67_o.png" />
+<br /></p>
+
+<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/bf1d80cf3d23a9a5e4aa48c86368262b7a7bd809" target="_blank">здесь</a>.</p>
+
+<h2 id="section-4">Родитель-Потомок коммуникация: Создание записей</h2>
+
+<p>Теперь когда мы отображаем все имеющиеся записи, будет неплохо добавить форму для создания новых записей, давайте добавим эту фичу в наше React/Rails приложение. В начале, нам нужно добавить метод в наш Rails контроллер (не забываем использовать <code>strongparams</code>):</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># app/controllers/records_controller.rb</span>
+
+<span class="k">class</span> <span class="nc">RecordsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="vi">@record</span> <span class="o">=</span> <span class="no">Record</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">record_params</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="vi">@record</span><span class="o">.</span><span class="n">save</span>
+      <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@record</span>
+    <span class="k">else</span>
+      <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@record</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span> <span class="ss">status</span><span class="p">:</span> <span class="ss">:unprocessable_entity</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+    <span class="k">def</span> <span class="nf">record_params</span>
+      <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:record</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:amount</span><span class="p">,</span> <span class="ss">:date</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Теперь, нам нужно создать React компонент чтобы обрабатывать создание новых записей. Компонент будет иметь собственное состояние чтобы хранить дату, заголовок и стоимость. Создадим новый файл <code>record_form.js.coffee</code> в каталоге <code>javascript/components</code> со следующим кодом:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record_form.js.coffee</span>
+
+<span class="vi">@RecordForm = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="nv">getInitialState: </span><span class="nf">-&gt;</span>
+    <span class="nv">title: </span><span class="s">&#39;&#39;</span>
+    <span class="nv">date: </span><span class="s">&#39;&#39;</span>
+    <span class="nv">amount: </span><span class="s">&#39;&#39;</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">form</span>
+      <span class="nv">className: </span><span class="s">&#39;form-inline&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&#39;form-group&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">input</span>
+          <span class="nv">type: </span><span class="s">&#39;text&#39;</span>
+          <span class="nv">className: </span><span class="s">&#39;form-control&#39;</span>
+          <span class="nv">placeholder: </span><span class="s">&#39;Date&#39;</span>
+          <span class="nv">name: </span><span class="s">&#39;date&#39;</span>
+          <span class="nv">value: </span><span class="nx">@state</span><span class="p">.</span><span class="nx">date</span>
+          <span class="nv">onChange: </span><span class="nx">@handleChange</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&#39;form-group&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">input</span>
+          <span class="nv">type: </span><span class="s">&#39;text&#39;</span>
+          <span class="nv">className: </span><span class="s">&#39;form-control&#39;</span>
+          <span class="nv">placeholder: </span><span class="s">&#39;Title&#39;</span>
+          <span class="nv">name: </span><span class="s">&#39;title&#39;</span>
+          <span class="nv">value: </span><span class="nx">@state</span><span class="p">.</span><span class="nx">title</span>
+          <span class="nv">onChange: </span><span class="nx">@handleChange</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&#39;form-group&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">input</span>
+          <span class="nv">type: </span><span class="s">&#39;number&#39;</span>
+          <span class="nv">className: </span><span class="s">&#39;form-control&#39;</span>
+          <span class="nv">placeholder: </span><span class="s">&#39;Amount&#39;</span>
+          <span class="nv">name: </span><span class="s">&#39;amount&#39;</span>
+          <span class="nv">value: </span><span class="nx">@state</span><span class="p">.</span><span class="nx">amount</span>
+          <span class="nv">onChange: </span><span class="nx">@handleChange</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">button</span>
+        <span class="nv">type: </span><span class="s">&#39;submit&#39;</span>
+        <span class="nv">className: </span><span class="s">&#39;btn btn-primary&#39;</span>
+        <span class="nv">disabled: </span><span class="o">!</span><span class="nx">@valid</span><span class="p">()</span>
+        <span class="s">&#39;Create record&#39;</span></code></pre></figure>
+
+<p>Ничего фантастического, просто Bootstrap инлайн форма. Обратите внимание как мы объявляем атрибут <code>value</code> для установки значения инпута и атрибут <code>onChange</code> чтобы привязать метод обработчика, который будет вызываться на каждое нажатие клавиши. Метод обработчика <code>handleChange</code> будет использовать имя атрибута чтобы определить какой инпут запустил событие и обновлять соответсвтующее значение состояния:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record_form.js.coffee</span>
+
+<span class="vi">@RecordForm = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">handleChange: </span><span class="nf">(e) -&gt;</span>
+    <span class="nv">name = </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">name</span>
+    <span class="nx">@setState</span> <span class="s">&quot;</span><span class="si">#{</span> <span class="nx">name</span> <span class="si">}</span><span class="s">&quot;</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span>
+  <span class="p">...</span></code></pre></figure>
+
+<p>Мы используем интерполяцию строк чтобы динамически определять ключи объектов, эквивалент <code>@setState title: e.target.value</code> когда <code>name</code> равно <code>title</code>. Но зачем нам использовать <code>@setState</code>? Почему мы не можем просто засетить желаемое значение для <code>@state</code> как мы обычно это делаем в регулярных JS объектах? Потому что <code>@setState</code> будет выполнять 2 действия:</p>
+
+<ol>
+  <li>Обновлять состояния компонента</li>
+  <li>Запускать проверку/обновление UI на основе нового состояния</li>
+</ol>
+
+<p>Очень важно держать это в голове каждый раз когда мы используем <code>state</code> внутри наших компонентов.</p>
+
+<p>Давайте посмотрим на кнопку <code>submit</code>, в самом конце нашего метода <code>render</code>:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record_form.js.coffee</span>
+
+<span class="vi">@RecordForm = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="p">...</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">form</span>
+      <span class="p">...</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">button</span>
+        <span class="nv">type: </span><span class="s">&#39;submit&#39;</span>
+        <span class="nv">className: </span><span class="s">&#39;btn btn-primary&#39;</span>
+        <span class="nv">disabled: </span><span class="o">!</span><span class="nx">@valid</span><span class="p">()</span>
+        <span class="s">&#39;Create record&#39;</span></code></pre></figure>
+
+<p>Мы определили атрибут <code>disabled</code> со значением <code>!@valid()</code>, что означает что мы напишем метод <code>valid</code>, который будет проверять что данные, переданные пользователем, корректные.</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record_form.js.coffee</span>
+
+<span class="vi">@RecordForm = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">valid: </span><span class="nf">-&gt;</span>
+    <span class="nx">@state</span><span class="p">.</span><span class="nx">title</span> <span class="o">&amp;&amp;</span> <span class="nx">@state</span><span class="p">.</span><span class="nx">date</span> <span class="o">&amp;&amp;</span> <span class="nx">@state</span><span class="p">.</span><span class="nx">amount</span>
+  <span class="p">...</span></code></pre></figure>
+
+<p>Для простоты мы проверяем <code>@state</code> на пустые строки. Таким образом, кнопка <code>Create</code> будет включаться и выключаться в зависимости от того есть ли данные в полях.</p>
+
+<p><br />
+<img src="https://farm2.staticflickr.com/1550/24704314451_7131347d71_o.png" />
+<br />
+<img src="https://farm2.staticflickr.com/1646/24502273410_dc01ef41aa_o.png" />
+<br /></p>
+
+<p>Теперь когда у нас есть контроллер и готова форма, время отправлять наши новые записи на сервер. Нам нужно событие для обработки формы, добавим атрибут <code>onSubmit</code> в нашу форму и <code>handleSubmit</code> метод (таким же образом мы обрабатывали событие <code>onChange</code> ранее):</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record_form.js.coffee</span>
+
+<span class="vi">@RecordForm = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">handleSubmit: </span><span class="nf">(e) -&gt;</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">post</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nv">record: </span><span class="nx">@state</span> <span class="p">},</span> <span class="nf">(data) =&gt;</span>
+      <span class="nx">@props</span><span class="p">.</span><span class="nx">handleNewRecord</span> <span class="nx">data</span>
+      <span class="nx">@setState</span> <span class="nx">@getInitialState</span><span class="p">()</span>
+    <span class="p">,</span> <span class="s">&#39;JSON&#39;</span>
+
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">form</span>
+      <span class="nv">className: </span><span class="s">&#39;form-inline&#39;</span>
+      <span class="nv">onSubmit: </span><span class="nx">@handleSubmit</span>
+    <span class="p">...</span></code></pre></figure>
+
+<p>Давайте разберем новый метод построчно:</p>
+
+<ol>
+  <li>предотвращаем отправку html формы</li>
+  <li>постим (POST) данные новой записи на текущий URL</li>
+  <li>колбек в случае успеха (success callback)</li>
+</ol>
+
+<p>Success callback это главная часть процесса, после успешного создания новой записи мы будем уведомлены об этом событии и <code>state</code> восстановится в свое дефолтное значение. Помните я упоминал что компоненты общаются между собой через @props? Вот, это оно. Наш текущий компонент отправляет данные обратно в родительский компонент через <code>@props.handleNewRecord</code> чтобы уведомить его о существовании новой записи.</p>
+
+<p>Как вы уже догадались, везде где мы создаем элемент <code>RecordForm</code> нам нужно передавать свойство <code>handleNewRecord</code> c возвращающим методом, что-то вроде <code>React.createElement RecordForm, handleNewRecord: @addRecord</code>. У нашего родительского компонента <code>Records</code> есть состояние со всеми существующими записями, нам нужно обновить его согласно добавленной записи.</p>
+
+<p>Добавим новый метод <code>addRecord</code> в файле <code>records.js.coffee</code> и создадим новый элемент <code>RecordForm</code>, сразу после заголовка h2 (внутри метода <code>render</code>)</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"> <span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+
+<span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">addRecord: </span><span class="nf">(record) -&gt;</span>
+    <span class="nv">records = </span><span class="nx">@state</span><span class="p">.</span><span class="nx">records</span><span class="p">.</span><span class="nx">slice</span><span class="p">()</span>
+    <span class="nx">records</span><span class="p">.</span><span class="nx">push</span> <span class="nx">record</span>
+    <span class="nx">@setState</span> <span class="nv">records: </span><span class="nx">records</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+      <span class="nv">className: </span><span class="s">&#39;records&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">h2</span>
+        <span class="nv">className: </span><span class="s">&#39;title&#39;</span>
+        <span class="s">&#39;Records&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">RecordForm</span><span class="p">,</span> <span class="nv">handleNewRecord: </span><span class="nx">@addRecord</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">hr</span> <span class="kc">null</span>
+    <span class="p">...</span></code></pre></figure>
+
+<p>Обновите вкладку, заполните форму новой записью и нажмите <code>Create</code> … Никаких задержек, запись добавилась незамедлительно и форма очистилась после сабмита, обновите страницу снова, чтобы убедиться что бекенд сохранил новые данные.</p>
+
+<p><br />
+<img src="https://farm2.staticflickr.com/1656/24798391695_99584043f6_o.png" />
+<br />
+<br /></p>
+
+<p>Если вы использовали другие JS фреймворки с Rails (например AngularJS) чтобы реализовать похожие функции, вы могли столкнуться с проблемой отлупа вашего POST запроса потому что он не содержит CSRF токен, который требует Rails. Почему мы не столкнулись с этим сейчас? Все просто, мы используем <code>jQuery</code> чтобы общаться с бекендом, и <code>jquery_ujs</code> драйвер будет добавлять CSRF токен в каждый AJAX запрос за нас. Круто!</p>
+
+<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/f4708e19f8be929471bc0c8c2bda93f36b9a7f23" target="_blank">здесь</a>.</p>
+
+<h2 id="section-5">Реюзабельные компоненты: Индикаторы остатка</h2>
+
+<p>Какое приложение может быть без (милых) индикаторов? Давайте добавим блоки в верхней части с полезной информацией. Наша цель - показывать 3 значения: количество кредитных средств (total credit), количество дебетовых средств (total debit) и баланс (balance). Кажется что это работа для 3 компонентов или, может быть, для одного но со свойствами?</p>
+
+<p>Мы можем создать новый компонент <code>AmountBox</code>, который будет получать три свойства: amount, text и type. Создадим новый файл <code>amount_box.js.coffee</code> в каталоге <code>javascripts/components/</code> со следующим содержимым:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/amount_box.js.coffee</span>
+
+<span class="vi">@AmountBox = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+      <span class="nv">className: </span><span class="s">&#39;col-md-4&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&quot;panel panel-</span><span class="si">#{</span> <span class="nx">@props</span><span class="p">.</span><span class="nx">type</span> <span class="si">}</span><span class="s">&quot;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+          <span class="nv">className: </span><span class="s">&#39;panel-heading&#39;</span>
+          <span class="nx">@props</span><span class="p">.</span><span class="nx">text</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+          <span class="nv">className: </span><span class="s">&#39;panel-body&#39;</span>
+          <span class="nx">amountFormat</span><span class="p">(</span><span class="nx">@props</span><span class="p">.</span><span class="nx">amount</span><span class="p">)</span></code></pre></figure>
+
+<p>Мы используем элемент Bootstrap - панель, чтобы отображать инфорамцию блоками и установливать цвет через свойство <code>type</code>. Мы также добавили простой форматтер - amountFormat, который читает свойство <code>amount</code> и отображает его в формате валюты.</p>
+
+<p>По хорошему, чтобы иметь законченное решение, нам нужно создать такой элемент (3 раза) внутри нашего основного компонента и отправлять в него требуемые свойства в зависимости от того что мы хотим отобразить. Давайте сначала сделаем метод калькулятор, откроем компонент <code>Records</code> и добавим следующие методы:</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+
+<span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">credits: </span><span class="nf">-&gt;</span>
+    <span class="nv">credits = </span><span class="nx">@state</span><span class="p">.</span><span class="nx">records</span><span class="p">.</span><span class="nx">filter</span> <span class="nf">(val) -&gt;</span> <span class="nx">val</span><span class="p">.</span><span class="nx">amount</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+    <span class="nx">credits</span><span class="p">.</span><span class="nx">reduce</span> <span class="p">(</span><span class="nf">(prev, curr) -&gt;</span>
+      <span class="nx">prev</span> <span class="o">+</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">curr</span><span class="p">.</span><span class="nx">amount</span><span class="p">)</span>
+    <span class="p">),</span> <span class="mi">0</span>
+  <span class="nv">debits: </span><span class="nf">-&gt;</span>
+    <span class="nv">debits = </span><span class="nx">@state</span><span class="p">.</span><span class="nx">records</span><span class="p">.</span><span class="nx">filter</span> <span class="nf">(val) -&gt;</span> <span class="nx">val</span><span class="p">.</span><span class="nx">amount</span> <span class="o">&lt;</span> <span class="mi">0</span>
+    <span class="nx">debits</span><span class="p">.</span><span class="nx">reduce</span> <span class="p">(</span><span class="nf">(prev, curr) -&gt;</span>
+      <span class="nx">prev</span> <span class="o">+</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">curr</span><span class="p">.</span><span class="nx">amount</span><span class="p">)</span>
+    <span class="p">),</span> <span class="mi">0</span>
+  <span class="nv">balance: </span><span class="nf">-&gt;</span>
+    <span class="nx">@debits</span><span class="p">()</span> <span class="o">+</span> <span class="nx">@credits</span><span class="p">()</span>
+  <span class="p">...</span></code></pre></figure>
+
+<p><code>credits</code> суммирует все записи со значением больше 0, <code>debits</code> - суммирует все записи со значением меньше нуля и <code>balance</code> говорит сам за себя. Теперь, когда методы вычислители на месте, нам просто нужно создать элементы <code>AmountBox</code> внутри метода <code>render</code> (сразу над компонентом <code>RecordForm</code>)</p>
+
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+
+<span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
+  <span class="p">...</span>
+  <span class="nv">render: </span><span class="nf">-&gt;</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+      <span class="nv">className: </span><span class="s">&#39;records&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">h2</span>
+        <span class="nv">className: </span><span class="s">&#39;title&#39;</span>
+        <span class="s">&#39;Records&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span>
+        <span class="nv">className: </span><span class="s">&#39;row&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">AmountBox</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;success&#39;</span><span class="p">,</span> <span class="nv">amount: </span><span class="nx">@credits</span><span class="p">(),</span> <span class="nv">text: </span><span class="s">&#39;Credit&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">AmountBox</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;danger&#39;</span><span class="p">,</span> <span class="nv">amount: </span><span class="nx">@debits</span><span class="p">(),</span> <span class="nv">text: </span><span class="s">&#39;Debit&#39;</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">AmountBox</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;info&#39;</span><span class="p">,</span> <span class="nv">amount: </span><span class="nx">@balance</span><span class="p">(),</span> <span class="nv">text: </span><span class="s">&#39;Balance&#39;</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span> <span class="nx">RecordForm</span><span class="p">,</span> <span class="nv">handleNewRecord: </span><span class="nx">@addRecord</span>
+  <span class="p">...</span></code></pre></figure>
+
+<p>Мы закончили с этой фишкой! Обновите страницу в браузере, вы должны увидеть три блока, отобаржющие суммы, которые мы вычислили ранее. Но погодите! Есть еще кое-что! Добавьте новую запись и посмотрите что произойдет…</p>
+
+<p><br />
+<img src="https://farm2.staticflickr.com/1636/24300077614_84ea4aec71_o.png" />
+<br />
+<br /></p>
+
+<p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/8d6f0a4fb62f2a9abd5d34d502461388863302cb" target="_blank">здесь</a>.</p>
+
+<h2 id="section-6">Вместо заключения</h2>
+
+<p>Так как материал получается довольно объемным, я решил разделить его на две части и это первая:</p>
+
+<ol>
+  <li><a href="http://doam.ru/react-js-for-rails-developers-part-1/" target="_blank">React.js - tutorial для Rails разработчиков (часть 1)</a></li>
+  <li><a href="http://doam.ru/react-js-for-rails-developers-part-2/" target="_blank">React.js - tutorial для Rails разработчиков (часть 2)</a></li>
+</ol>
+
+<p>Вторая часть будет про <code>setState/replaceState</code>, удаление и редактирование записей, рефакторинг и <code>Reactive Data Flow</code>.</p>
+
+      
+        <a href="/tag/ruby">#Ruby</a>
+      
+        <a href="/tag/rubyonrails">#RubyOnRails</a>
+      
+        <a href="/tag/react">#React</a>
+      
+        <a href="/tag/tutorial">#Tutorial</a>
+      
+        <!-- <a href="/tag/ruby/" rel="tag">Ruby</a>, <a href="/tag/rubyonrails/" rel="tag">RubyOnRails</a>, <a href="/tag/react/" rel="tag">React</a>, <a href="/tag/tutorial/" rel="tag">Tutorial</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=React.js - tutorial для Rails разработчиков (часть 1) %23doamru http://doam.ru/react_js_for_rails_developers_part_1/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/react_js_for_rails_developers_part_1/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/react_js_for_rails_developers_part_1/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/react_js_for_rails_developers_part_1/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+        <p class="byline"><strong>React.js - tutorial для Rails разработчиков (часть 1)</strong> опубликовано <time datetime="2016-01-15T08:53:14+03:00">15 January, 2016</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru/posts/">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://doam.ru/linux_tools_with_ruby/" title="Создание инструментов Linux с помощью Ruby">Создание инструментов Linux с помощью Ruby</a></li>
+    
+      <li><a href="http://doam.ru/https_in_nginx_using_letsencrypt/" title="HTTPS в Nginx с сертификатом от Let's Encrypt">HTTPS в Nginx с сертификатом от Let's Encrypt</a></li>
+    
+      <li><a href="http://doam.ru/first_bicycle_report/" title="Первый вело-отчет">Первый вело-отчет</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    
+
+<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://doam.ru/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://doam.ru/assets/js/scripts.min.js"></script>
+
+	        
+
+</body>
+</html>
