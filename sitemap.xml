@@ -157,27 +157,27 @@
     <lastmod>2014-08-12T05:30:40+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/why_I_make_selfie/</loc>
+    <loc>http://doam.ru/why_i_make_selfie/</loc>
     <lastmod>2014-08-08T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/dubna-glava-iii-universitet-pervoe-vpechatlenie/</loc>
+    <loc>http://doam.ru/dubna_chapter_3-first_impression_about_university/</loc>
     <lastmod>2014-07-30T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/nevkusnaya-karbonara-ustavshij-ofitsiant-i-pozdnij-kofe-made-in-dubna/</loc>
+    <loc>http://doam.ru/tasteless_carbonara_tired_waiter_and_late_coffee-made_in_dubna/</loc>
     <lastmod>2014-07-29T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/dubna-glava-ii-v-ezd-v-obshhezhitie/</loc>
+    <loc>http://doam.ru/dubna_chapter_2-entry_into_the_hostel/</loc>
     <lastmod>2014-07-25T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/na-chto-uhodit-moe-vremya-i-chto-ya-reshil/</loc>
+    <loc>http://doam.ru/which_takes_my_time_and_what_i_decided/</loc>
     <lastmod>2014-07-24T00:00:00+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/best-way-for-search-included-modules-in-nginx/</loc>
+    <loc>http://doam.ru/best_way_for_search_included_modules_in_nginx/</loc>
     <lastmod>2014-06-26T07:59:55+04:00</lastmod>
   </url>
   <url>
@@ -189,7 +189,7 @@
     <lastmod>2014-06-10T12:18:40+04:00</lastmod>
   </url>
   <url>
-    <loc>http://doam.ru/nginx-locations/</loc>
+    <loc>http://doam.ru/nginx_locations/</loc>
     <lastmod>2014-06-10T12:01:37+04:00</lastmod>
   </url>
   <url>
@@ -490,9 +490,6 @@
     <loc>http://doam.ru/tag/cafe/</loc>
   </url>
   <url>
-    <loc>http://doam.ru/tag/cateringbusiness/</loc>
-  </url>
-  <url>
     <loc>http://doam.ru/tag/terrace/</loc>
   </url>
   <url>
@@ -790,7 +787,7 @@
       <loc>http://doam.ru/how-to-install-ghost-blog-in-centos/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/nginx-locations/</loc>
+      <loc>http://doam.ru/nginx_locations/</loc>
     </url>
     <url>
       <loc>http://doam.ru/konfigh-nginx-dlia-prestashop/</loc>
@@ -799,22 +796,22 @@
       <loc>http://doam.ru/konfigh-nginx-dlia-magento/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/best-way-for-search-included-modules-in-nginx/</loc>
+      <loc>http://doam.ru/best_way_for_search_included_modules_in_nginx/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/na-chto-uhodit-moe-vremya-i-chto-ya-reshil/</loc>
+      <loc>http://doam.ru/which_takes_my_time_and_what_i_decided/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/dubna-glava-ii-v-ezd-v-obshhezhitie/</loc>
+      <loc>http://doam.ru/dubna_chapter_2-entry_into_the_hostel/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/nevkusnaya-karbonara-ustavshij-ofitsiant-i-pozdnij-kofe-made-in-dubna/</loc>
+      <loc>http://doam.ru/tasteless_carbonara_tired_waiter_and_late_coffee-made_in_dubna/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/dubna-glava-iii-universitet-pervoe-vpechatlenie/</loc>
+      <loc>http://doam.ru/dubna_chapter_3-first_impression_about_university/</loc>
     </url>
     <url>
-      <loc>http://doam.ru/why_I_make_selfie/</loc>
+      <loc>http://doam.ru/why_i_make_selfie/</loc>
     </url>
     <url>
       <loc>http://doam.ru/how-to-install-livestreet-cms/</loc>
