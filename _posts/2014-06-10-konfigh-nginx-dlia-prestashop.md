@@ -6,9 +6,9 @@ excerpt: ""
 permalink: /nginx_config_for_prestashop/
 redirect_from: /konfigh-nginx-dlia-prestashop/
 tags:
-	- Nginx
-	- PrestaShop
-	- Cms
+  - Nginx
+  - PrestaShop
+  - Cms
 ---
 
 <br>
