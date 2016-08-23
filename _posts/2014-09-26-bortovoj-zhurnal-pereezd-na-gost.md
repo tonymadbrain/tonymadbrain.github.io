@@ -1,8 +1,10 @@
 ---
 title: 'Бортовой журнал: переезд на гост'
 layout: post
-permalink: /logbook-moving-to-gost/
-redirect_from: /bortovoj-zhurnal-pereezd-na-gost/
+permalink: /logbook_moving_to_gost/
+redirect_from:
+  - /bortovoj-zhurnal-pereezd-na-gost/
+  - /logbook-moving-to-gost/
 excerpt: ""
 tags:
   - Root

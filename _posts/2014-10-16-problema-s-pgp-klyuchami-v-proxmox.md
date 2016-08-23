@@ -1,8 +1,10 @@
 ---
 title: Проблема с PGP ключами в Proxmox
 layout: post
-permalink: /problem-with-pgp-keys-in-proxmox/
-redirect_from: /problema-s-pgp-klyuchami-v-proxmox/
+permalink: /problem_with_pgp_keys_in_proxmox/
+redirect_from:
+  - /problema-s-pgp-klyuchami-v-proxmox/
+  - /problem-with-pgp-keys-in-proxmox/
 excerpt: ""
 tags:
   - Debian

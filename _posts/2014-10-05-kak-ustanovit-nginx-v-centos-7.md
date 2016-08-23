@@ -3,8 +3,10 @@ layout: post
 title: Как установить Nginx в CentOS 7
 date: '2014-10-05 16:04:55'
 excerpt: ""
-permalink: /how-to-install-nginx-in-centos-7/
-redirect_from: /kak-ustanovit-nginx-v-centos-7/
+permalink: /how_to_install_nginx_in_centos_7/
+redirect_from:
+  - /kak-ustanovit-nginx-v-centos-7/
+  - /how-to-install-nginx-in-centos-7/
 tags:
   - Nginx
   - Centos

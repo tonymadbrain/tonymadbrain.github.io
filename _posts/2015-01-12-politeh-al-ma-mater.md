@@ -1,7 +1,8 @@
 ---
 title: 'Политех - альма-матер?'
 layout: post
-permalink: /politeh-al-ma-mater/
+permalink: /politeh_al_ma_mater/
+redirect_from: /politeh-al-ma-mater/
 excerpt: ""
 tags:
   - Bachelor

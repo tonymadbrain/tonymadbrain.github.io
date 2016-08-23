@@ -1,8 +1,10 @@
 ---
 title: 'VSFI - выводы'
 layout: post
-permalink: /vsfi-conclusions/
-redirect_from: /vsfi-vyvody/
+permalink: /vsfi_conclusions/
+redirect_from:
+  - /vsfi-vyvody/
+  - /vsfi-conclusions/
 excerpt: ""
 tags:
   - CTF

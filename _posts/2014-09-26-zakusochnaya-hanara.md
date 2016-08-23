@@ -1,8 +1,10 @@
 ---
 title: 'Закусочная «Ханара»'
 layout: post
-permalink: /hanara-refectory/
-permalink: /zakusochnaya-hanara/
+permalink: /hanara_refectory/
+permalink:
+  - /zakusochnaya-hanara/
+  - /hanara-refectory/
 excerpt: ""
 tags:
   - Root

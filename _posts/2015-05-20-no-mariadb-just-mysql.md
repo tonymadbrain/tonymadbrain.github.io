@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Попытка заменить MySQL на MariaDB"
-permalink: /no-mariadb-just-mysql/
-redirect_from: /2015-05-20-no-mariadb-just-mysql/
+permalink: /no_mariadb_just_mysql/
+redirect_from:
+  - /2015-05-20-no-mariadb-just-mysql/
+  - /no-mariadb-just-mysql/
 date: 2015-05-20T00:12:00+03:00
 excerpt: ""
 tags:

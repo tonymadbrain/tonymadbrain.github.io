@@ -1,7 +1,8 @@
 ---
 title: Смена логотипа в Redmine
 layout: post
-permalink: /smena-logotipa-v-redmine/
+permalink: /how_to_change_logo_in_redmine/
+redirect_from: /smena-logotipa-v-redmine/
 excerpt: ""
 tags:
   - Apache

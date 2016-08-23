@@ -3,8 +3,10 @@ layout: post
 title: Блокируем/разрешаем доступ к сайту по IP
 date: '2014-08-25 11:12:32'
 excerpt: ""
-permalink: /how-to-block-access-to-site-with-ip/
-redirect_from: /blokiruiemrazrieshaiem-dostup-k-saitu-po-ip/
+permalink: /how_to_block_access_to_site_with_ip/
+redirect_from:
+  - /blokiruiemrazrieshaiem-dostup-k-saitu-po-ip/
+  - /how-to-block-access-to-site-with-ip/
 tags:
   - Nginx
   - Ghost

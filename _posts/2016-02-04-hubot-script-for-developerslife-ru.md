@@ -2,7 +2,8 @@
 layout: post
 title: Hubot скрипт для developerslife.ru
 excerpt: Учим бота получать свежие gif
-permalink: /hubot-script-for-developerslife-ru/
+permalink: /hubot_script_for_developerslife_ru/
+redirect_from: /hubot-script-for-developerslife-ru/
 tags:
   - Hubot
   - Imhonet

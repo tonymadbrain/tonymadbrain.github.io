@@ -1,8 +1,10 @@
 ---
 title: Как айтишник ноутбук покупает
 layout: post
-permalink: /how-it-man-buys-a-laptop/
-redirect_from: /kak-ajtishnik-noutbuk-pokupaet/
+permalink: /how_it-man_buys_a_laptop/
+redirect_from:
+  - /kak-ajtishnik-noutbuk-pokupaet/
+  - /how-it-man-buys-a-laptop/
 excerpt: ""
 tags:
   - Apple

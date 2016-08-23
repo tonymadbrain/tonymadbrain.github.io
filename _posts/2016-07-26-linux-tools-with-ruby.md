@@ -2,7 +2,8 @@
 layout: post
 title: Создание инструментов Linux с помощью Ruby
 excerpt: "Практическое руководство"
-permalink: /linux-tools-with-ruby/
+permalink: /linux_tools_with_ruby/
+redirect_from: /linux-tools-with-ruby/
 tags:
   - Linux
   - Ruby

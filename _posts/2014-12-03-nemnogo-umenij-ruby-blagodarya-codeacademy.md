@@ -1,8 +1,10 @@
 ---
 title: Немного умений Ruby благодаря codeacademy
 layout: post
-permalink: /little-ruby-skills-through-the-codeacademy/
-redirect_from: /nemnogo-umenij-ruby-blagodarya-codeacademy/
+permalink: /little_ruby_skills_through_the_codeacademy/
+redirect_from:
+  - /nemnogo-umenij-ruby-blagodarya-codeacademy/
+  - /little-ruby-skills-through-the-codeacademy/
 excerpt: ""
 tags:
   - Codeacademy

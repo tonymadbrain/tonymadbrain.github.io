@@ -1,7 +1,9 @@
 ---
 title: "Создание нового приложения на Rails"
-permalink: /creating-new-app-in-rails/
-redirect_from: /sozdaniye-novogo-prilozheniya-na-rails/
+permalink: /creating_new_app_in_rails/
+redirect_from:
+  - /sozdaniye-novogo-prilozheniya-na-rails/
+  - /creating-new-app-in-rails/
 layout: post
 date: 2015-03-19T09:21:21+03:00
 excerpt: ""

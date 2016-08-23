@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Первый вело-отчет"
-permalink: /first-bicycle-report/
+permalink: /first_bicycle_report/
+redirect_from: /first-bicycle-report/
 excerpt: "Первые 3 недели на GT Timberline COMP (2015)."
 tags:
   - Bicycle

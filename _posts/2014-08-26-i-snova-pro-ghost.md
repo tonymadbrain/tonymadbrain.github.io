@@ -1,8 +1,10 @@
 ---
 title: И снова про Ghost
 layout: post
-permalink: /again-about-ghost/
-redirect_from: /i-snova-pro-ghost/
+permalink: /again_about_ghost/
+redirect_from:
+  - /i-snova-pro-ghost/
+  - /again-about-ghost/
 excerpt: ""
 tags:
   - Root

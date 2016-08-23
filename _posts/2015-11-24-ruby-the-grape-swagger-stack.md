@@ -2,7 +2,8 @@
 layout: post
 title: "Минималистичный стек Grape + Swagger для микросервисов на Ruby"
 excerpt: Пилим микросервисы быстро и удобно
-permalink: /ruby-the-grape-swagger-stack/
+permalink: /ruby_the_grape_swagger_stack/
+redirect_from: /ruby-the-grape-swagger-stack/
 tags:
   - Ruby
   - Development

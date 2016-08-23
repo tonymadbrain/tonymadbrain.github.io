@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Оптимизируем работу Motorola Moto G (first gen.)"
-permalink: /optimiziruem-rabotu-motorola-moto-g-first-gen/
-redirect_from: /2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/
+permalink: /how_to_optimize_motorola_moto-g_first_gen/
+redirect_from:
+  - /2015-06-30-optimiziruem-rabotu-motorola-moto-g-first-gen/
+  - /optimiziruem-rabotu-motorola-moto-g-first-gen/
 excerpt: ""
 date: 2015-06-30T00:12:00+03:00
 image:

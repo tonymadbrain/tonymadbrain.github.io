@@ -1,8 +1,10 @@
 ---
 title: Резервное копирование в NFS хранилище в Proxmox
 layout: post
-permalink: /backup-on-nfs-in-proxmox/
-redirect_from: /rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/
+permalink: /backup_on_nfs_in_proxmox/
+redirect_from:
+  - /rezervnoe-kopirovanie-v-nfs-hranilishhe-v-proxmox/
+  - /backup-on-nfs-in-proxmox/
 excerpt: ""
 tags:
   - CentOS

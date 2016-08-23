@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Обновление прошивки Supermicro X9DRW-iF
-permalink: /supermicro-x9drw-if/
+permalink: /supermicro_x9drw-if/
+redirect_from: /supermicro-x9drw-if/
 excerpt: "Сказ о том как установка новой версии ProxMox пошла наперекосяк"
 tags:
   - Proxmox

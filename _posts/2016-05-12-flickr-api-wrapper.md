@@ -2,7 +2,8 @@
 layout: post
 title: "Flickr API Wrapper"
 excerpt: "Приложение для использования flickr.com в качестве хранилища изображений (например для блога)"
-permalink: /flickr-api-wrapper/
+permalink: /flickr_api_wrapper/
+redirect_from: /flickr-api-wrapper/
 tags:
   - Ruby
   - Development

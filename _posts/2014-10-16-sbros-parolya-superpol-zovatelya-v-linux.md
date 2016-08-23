@@ -1,8 +1,10 @@
 ---
 title: Сброс пароля суперпользователя в linux
 layout: post
-permalink: /reset-root-password-in-linux/
-redirect_from: /sbros-parolya-superpol-zovatelya-v-linux/
+permalink: /reset_root_password_in_linux/
+redirect_from:
+  - /sbros-parolya-superpol-zovatelya-v-linux/
+  - /reset-root-password-in-linux/
 excerpt: ""
 tags:
   - Hack

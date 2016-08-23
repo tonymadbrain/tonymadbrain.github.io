@@ -3,8 +3,10 @@ layout: post
 title: Установка LiveStreet CMS
 date: '2014-08-12 05:30:40'
 excerpt: ""
-permalink: /how-to-install-livestreet-cms/
-redirect_from: /ustanovka-livestreet-cms/
+permalink: /how_to_install_livestreet_cms/
+redirect_from:
+    - /ustanovka-livestreet-cms/
+    - /how-to-install-livestreet-cms/
 tags:
   - Nginx
   - LiveStreetCms
