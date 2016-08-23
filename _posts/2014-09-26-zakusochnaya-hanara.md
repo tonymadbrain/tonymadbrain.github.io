@@ -2,7 +2,7 @@
 title: 'Закусочная «Ханара»'
 layout: post
 permalink: /hanara_refectory/
-permalink:
+redirect_from:
   - /zakusochnaya-hanara/
   - /hanara-refectory/
 excerpt: ""
