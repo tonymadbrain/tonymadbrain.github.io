@@ -13,6 +13,7 @@ tags:
   - Centos
 ---
 
+{% include _toc.html %}
 
 <br>
 <img src="https://farm1.staticflickr.com/761/21466116380_27b5eb901e_o.jpg">
