@@ -154,13 +154,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p> </p>
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">Синапсис</a></li>
+  <li><a href="#imagecms" id="markdown-toc-imagecms">ImageCMS</a></li>
+  <li><a href="#htaccess---nginx" id="markdown-toc-htaccess---nginx">htaccess-конвертер для nginx</a></li>
+  <li><a href="#nginx" id="markdown-toc-nginx">Конфиг для Nginx</a></li>
+  <li><a href="#imagecms-1" id="markdown-toc-imagecms-1">Установка ImageCMS</a></li>
+  <li><a href="#update--" id="markdown-toc-update--">Update тестового сервера</a></li>
+  <li><a href="#imagecms-8212-" id="markdown-toc-imagecms-8212-">ImageCMS — итог</a></li>
+</ul>
 
-<h3 id="a-hrefhttprescloudinarycomdoam-ruimageuploadv14090699711391035277imagecmslogo0r7autipng-rellightbox797-title1391035277imagecmslogo0img-classaligncenter-wp-image-813-size-full-srchttprescloudinarycomdoam-ruimageuploadv14090699711391035277imagecmslogo0r7autipng-alt1391035277imagecmslogo0-width800-height226-a"><a href="http://res.cloudinary.com/doam-ru/image/upload/v1409069971/1391035277_image_cms_logo_0_r7auti.png" rel="lightbox[797]" title="1391035277_image_cms_logo_0"><img class="aligncenter wp-image-813 size-full" src="http://res.cloudinary.com/doam-ru/image/upload/v1409069971/1391035277_image_cms_logo_0_r7auti.png" alt="1391035277_image_cms_logo_0" width="800" height="226" /></a>Синапсис</h3>
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p><br />
+<img src="https://farm1.staticflickr.com/725/21654039305_baf52d6c8a_o.png" />
+<br />
+<br /></p>
+
+<h3 id="section">Синапсис</h3>
 
 <p>В поисках CMS интернет-магазина (e-commerce) для нового проекта, нарвался на ImageCMS. Описание довольно привлекательное, однако именно интернет-магазин у них платный, и демо только на их серверах. Но другой их продукт — Corporate, полностью бесплатен, поэтому я решил затестить для начала его.</p>
-
-<!--more-->
 
 <h3 id="imagecms">ImageCMS</h3>
 
@@ -209,57 +229,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <h3 id="htaccess---nginx">htaccess-конвертер для nginx</h3>
 
-<p>На помощь приходит сервис из заголовка, который располагается например <a href="http://winginx.com/ru/htaccess" target="_blank">здесь</a>. Открываем файл .htaccess в корне каталога с ImageCMS, находим строки:</p>
+<p>На помощь приходит сервис из заголовка, который располагается например <a href="http://winginx.com/ru/htaccess" target="_blank">здесь</a>. Открываем файл <code>.htaccess</code> в корне каталога с ImageCMS, находим строки:</p>
 
-<pre>RewriteCond $1 !^(index.php|user_guide|uploads/.*|favicon.ico|docs|favicon.png|captcha/.*|application/modules/.*/templates|application/modules/.*/assets/js|application/modules/.*/assets/css|application/modules/.*/assets/images|CHANGELOG.xml|templates|js|robots.txt)
-RewriteRule ^(.*)$ /index.php/$1 [L]</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">RewriteCond <span class="nv">$1</span> !^<span class="o">(</span>index.php<span class="p">|</span>user_guide<span class="p">|</span>uploads/.*<span class="p">|</span>favicon.ico<span class="p">|</span>docs<span class="p">|</span>favicon.png<span class="p">|</span>captcha/.*<span class="p">|</span>application/modules/.*/templates<span class="p">|</span>application/modules/.*/assets/js<span class="p">|</span>application/modules/.*/assets/css<span class="p">|</span>application/modules/.*/assets/images<span class="p">|</span>CHANGELOG.xml<span class="p">|</span>templates<span class="p">|</span>js<span class="p">|</span>robots.txt<span class="o">)</span>
+RewriteRule ^<span class="o">(</span>.*<span class="o">)</span><span class="nv">$ </span>/index.php/<span class="nv">$1</span> <span class="o">[</span>L<span class="o">]</span></code></pre></figure>
 
 <p>и с помощью вышеуказанного ресурса конвертируем это в удобоперевариваемое Nginx-ом:</p>
 
-<pre># nginx configuration
-location / {
-rewrite ^(.*)$ /index.php/$1 break;
-}</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># nginx configuration</span>
+location / <span class="o">{</span>
+  rewrite ^<span class="o">(</span>.*<span class="o">)</span><span class="nv">$ </span>/index.php/<span class="nv">$1</span> <span class="nb">break</span><span class="p">;</span>
+<span class="o">}</span></code></pre></figure>
 
 <p>На самом деле не очень удобоперевариваемое, поэтому переделываем так:</p>
 
-<pre>location / {
-if (!-e $request_filename) {
-rewrite ^(.+)$ /index.php?q=$1 last;
-}</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">location / <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span>!-e <span class="nv">$request_filename</span><span class="o">)</span> <span class="o">{</span>
+    rewrite ^<span class="o">(</span>.+<span class="o">)</span><span class="nv">$ </span>/index.php?q<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
 
 <h3 id="nginx">Конфиг для Nginx</h3>
 
 <p>В итоге получаем простой конфиг, следующего вида:</p>
 
-<pre>server {
-listen 80;
-server_name mydomain.com;
-access_log /var/log/nginx/access.log;
-root /var/www/imagecms;
-index index.php index.html index.htm;
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+  listen 80<span class="p">;</span>
+  server_name mydomain.com<span class="p">;</span>
+  access_log /var/log/nginx/access.log<span class="p">;</span>
+  root /var/www/imagecms<span class="p">;</span>
+  index index.php index.html index.htm<span class="p">;</span>
 
-location / {
-if (!-e $request_filename) {
-rewrite ^(.+)$ /index.php?q=$1 last;
-}
+  location / <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span>!-e <span class="nv">$request_filename</span><span class="o">)</span> <span class="o">{</span>
+      rewrite ^<span class="o">(</span>.+<span class="o">)</span><span class="nv">$ </span>/index.php?q<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
 
-}
-
-location ~ .php$ {
-fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
-fastcgi_index index.php;
-fastcgi_param SCRIPT_FILENAME /var/www/imagecms$fastcgi_script_name;
-include fastcgi_params;
-}
-}
-</pre>
+  location ~ .php<span class="nv">$ </span><span class="o">{</span>
+    fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock<span class="p">;</span>
+    fastcgi_index index.php<span class="p">;</span>
+    fastcgi_param SCRIPT_FILENAME /var/www/imagecms<span class="nv">$fastcgi_script_name</span><span class="p">;</span>
+    include fastcgi_params<span class="p">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
 
 <h3 id="imagecms-1">Установка ImageCMS</h3>
 
 <p>После</p>
 
-<pre>service nginx reload</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service nginx reload</code></pre></figure>
 
 <p>открываем главную страницу и «о чудо», оно работает. Первым шагом установки является принятие лицензионного соглашения. Конечно не читая я нажимаю кнопку принять (или как-то так) и дальше следует проверка системы. Скрипт говорит, что все прекрасно, но вот версия PHP 4.3.3 меня не устраивает, хочу 4.3.4 минимум.</p>
 
@@ -271,46 +290,39 @@ include fastcgi_params;
 
 <p>Добавляем репозиторий Remi:</p>
 
-<pre>rpm -ihv http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rpm -ihv http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</code></pre></figure>
 
 <p>Не забудьте включить его в /etc/yum.repos.d/remi.repo</p>
 
 <p>Обновляемся:</p>
 
-<pre>yum update</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum update</code></pre></figure>
 
 <p>И, не буду долго разглагольствовать. Что мне пришлось пофиксить:</p>
 
-<p>PHP</p>
+<p><strong>PHP</strong></p>
 
-<pre>/etc/php-fpm.d/www.conf
+<p><code>/etc/php-fpm.d/www.conf</code></p>
 
-listen.owner = nginx
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">listen.owner <span class="o">=</span> nginx
+listen.group <span class="o">=</span> nginx</code></pre></figure>
 
-listen.group = nginx
+<p>раскомментировать эти две строчки и прописать значения - пользователя из-под которого работает</p>
 
-; раскомментировать эти две строчки и прописать значения - пользователя из-под которого работает Nginx
-</pre>
+<p><strong>Nginx</strong></p>
 
-<p>Так же сбросились права на папку /var/lib/php/session</p>
+<p>Так же сбросились права на папку <code>/var/lib/php/session</code></p>
 
-<pre>cd /var/lib/php
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> /var/lib/php
+<span class="nv">$ </span>chown nginx:nginx session</code></pre></figure>
 
-chown nginx:nginx session
-</pre>
+<p><strong>Mysqld</strong></p>
 
-<p>Mysqld</p>
+<p><code>/etc/my.cnf</code></p>
 
-<pre>/etc/my.cnf
+<p>Новому Mysql не понравилось это: <code>default-character-set=utf8</code>. Просто закомментировал эту строчку</p>
 
-#Новому Mysql не понравилось это:
-
-default-character-set=utf8
-
-#Просто закомментировал эту строчку
-</pre>
-
-<p>После рестарта php-fpm и mysqld все заработало нормально.</p>
+<p>После рестарта <code>php-fpm</code> и <code>mysqld</code> все заработало нормально.</p>
 
 <h3 id="imagecms-8212-">ImageCMS — итог</h3>
 
@@ -318,13 +330,16 @@ default-character-set=utf8
 
 <p>Минусы:</p>
 
-<p>Отсутствие нормальной документации по установке на CentOS+Nginx+php-fpm.</p>
+<ul>
+  <li>Отсутствие нормальной документации по установке на CentOS+Nginx+php-fpm.</li>
+</ul>
 
 <p>Плюсы:</p>
 
-<p>Данная CMS напомнила мне про необходимость обновления core пакетов веб-сервера.</p>
-
-<p>Так же, я научился правильно создавать пользователей в mysql, но это к тексту не относится.</p>
+<ul>
+  <li>Данная CMS напомнила мне про необходимость обновления core пакетов веб-сервера.</li>
+  <li>Так же, я научился правильно создавать пользователей в mysql, но это к тексту не относится.</li>
+</ul>
 
 <p>Материалы по теме:</p>
 
