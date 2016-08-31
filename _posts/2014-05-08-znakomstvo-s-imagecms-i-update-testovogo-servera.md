@@ -1,7 +1,8 @@
 ---
 title: Знакомство с ImageCMS и update тестового сервера
 layout: post
-permalink: /znakomstvo-s-imagecms-i-update-testovogo-servera/
+permalink: /first_look_at_imagecms_and_update_test_stage/
+redirect_from: /znakomstvo-s-imagecms-i-update-testovogo-servera/
 excerpt: ""
 tags:
   - CentOS
