@@ -14,13 +14,17 @@ tags:
   - Remi
   - Update
 ---
-&nbsp;
 
-### <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409069971/1391035277_image_cms_logo_0_r7auti.png" rel="lightbox[797]" title="1391035277_image_cms_logo_0"><img class="aligncenter wp-image-813 size-full" src="http://res.cloudinary.com/doam-ru/image/upload/v1409069971/1391035277_image_cms_logo_0_r7auti.png" alt="1391035277_image_cms_logo_0" width="800" height="226" /></a>Синапсис
+{% include _toc.html %}
+
+<br>
+<img src="https://farm1.staticflickr.com/725/21654039305_baf52d6c8a_o.png">
+<br>
+<br>
+
+### Синапсис
 
 В поисках CMS интернет-магазина (e-commerce) для нового проекта, нарвался на ImageCMS. Описание довольно привлекательное, однако именно интернет-магазин у них платный, и демо только на их серверах. Но другой их продукт &#8212; Corporate, полностью бесплатен, поэтому я решил затестить для начала его.
-
-<!--more-->
 
 ### ImageCMS
 
@@ -65,57 +69,66 @@ tags:
 
 ### htaccess-конвертер для nginx
 
-На помощь приходит сервис из заголовка, который располагается например <a href="http://winginx.com/ru/htaccess" target="_blank">здесь</a>. Открываем файл .htaccess в корне каталога с ImageCMS, находим строки:
+На помощь приходит сервис из заголовка, который располагается например <a href="http://winginx.com/ru/htaccess" target="_blank">здесь</a>. Открываем файл `.htaccess` в корне каталога с ImageCMS, находим строки:
 
-<pre>RewriteCond $1 !^(index.php|user_guide|uploads/.*|favicon.ico|docs|favicon.png|captcha/.*|application/modules/.*/templates|application/modules/.*/assets/js|application/modules/.*/assets/css|application/modules/.*/assets/images|CHANGELOG.xml|templates|js|robots.txt)
-RewriteRule ^(.*)$ /index.php/$1 [L]</pre>
+{% highlight bash %}
+RewriteCond $1 !^(index.php|user_guide|uploads/.*|favicon.ico|docs|favicon.png|captcha/.*|application/modules/.*/templates|application/modules/.*/assets/js|application/modules/.*/assets/css|application/modules/.*/assets/images|CHANGELOG.xml|templates|js|robots.txt)
+RewriteRule ^(.*)$ /index.php/$1 [L]
+{% endhighlight %}
 
 и с помощью вышеуказанного ресурса конвертируем это в удобоперевариваемое Nginx-ом:
 
-<pre># nginx configuration
+{% highlight bash %}
+# nginx configuration
 location / {
-rewrite ^(.*)$ /index.php/$1 break;
-}</pre>
+  rewrite ^(.*)$ /index.php/$1 break;
+}
+{% endhighlight %}
 
 На самом деле не очень удобоперевариваемое, поэтому переделываем так:
 
-<pre>location / {
-if (!-e $request_filename) {
-rewrite ^(.+)$ /index.php?q=$1 last;
-}</pre>
+{% highlight bash %}
+location / {
+  if (!-e $request_filename) {
+    rewrite ^(.+)$ /index.php?q=$1 last;
+  }
+}
+{% endhighlight %}
 
 ### Конфиг для Nginx
 
 В итоге получаем простой конфиг, следующего вида:
 
-<pre>server {
-listen 80;
-server_name mydomain.com;
-access_log /var/log/nginx/access.log;
-root /var/www/imagecms;
-index index.php index.html index.htm;
+{% highlight bash %}
+server {
+  listen 80;
+  server_name mydomain.com;
+  access_log /var/log/nginx/access.log;
+  root /var/www/imagecms;
+  index index.php index.html index.htm;
 
-location / {
-if (!-e $request_filename) {
-rewrite ^(.+)$ /index.php?q=$1 last;
-}
+  location / {
+    if (!-e $request_filename) {
+      rewrite ^(.+)$ /index.php?q=$1 last;
+    }
+  }
 
+  location ~ .php$ {
+    fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME /var/www/imagecms$fastcgi_script_name;
+    include fastcgi_params;
+  }
 }
-
-location ~ .php$ {
-fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
-fastcgi_index index.php;
-fastcgi_param SCRIPT_FILENAME /var/www/imagecms$fastcgi_script_name;
-include fastcgi_params;
-}
-}
-</pre>
+{% endhighlight %}
 
 ### Установка ImageCMS
 
 После
 
-<pre>service nginx reload</pre>
+{% highlight bash %}
+$ service nginx reload
+{% endhighlight %}
 
 открываем главную страницу и &#171;о чудо&#187;, оно работает. Первым шагом установки является принятие лицензионного соглашения. Конечно не читая я нажимаю кнопку принять (или как-то так) и дальше следует проверка системы. Скрипт говорит, что все прекрасно, но вот версия PHP 4.3.3 меня не устраивает, хочу 4.3.4 минимум.
 
@@ -127,46 +140,47 @@ include fastcgi_params;
 
 Добавляем репозиторий Remi:
 
-<pre>rpm -ihv http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</pre>
+{% highlight bash %}
+$ rpm -ihv http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+{% endhighlight %}
 
 Не забудьте включить его в /etc/yum.repos.d/remi.repo
 
 Обновляемся:
 
-<pre>yum update</pre>
+{% highlight bash %}
+$ yum update
+{% endhighlight %}
 
 И, не буду долго разглагольствовать. Что мне пришлось пофиксить:
 
-PHP
+**PHP**
 
-<pre>/etc/php-fpm.d/www.conf
+`/etc/php-fpm.d/www.conf`
 
+{% highlight bash %}
 listen.owner = nginx
-
 listen.group = nginx
+{% endhighlight %}
 
-; раскомментировать эти две строчки и прописать значения - пользователя из-под которого работает Nginx
-</pre>
+раскомментировать эти две строчки и прописать значения - пользователя из-под которого работает
 
-Так же сбросились права на папку /var/lib/php/session
+**Nginx**
 
-<pre>cd /var/lib/php
+Так же сбросились права на папку `/var/lib/php/session`
 
-chown nginx:nginx session
-</pre>
+{% highlight bash %}
+$ cd /var/lib/php
+$ chown nginx:nginx session
+{% endhighlight %}
 
-Mysqld
+**Mysqld**
 
-<pre>/etc/my.cnf
+`/etc/my.cnf`
 
-#Новому Mysql не понравилось это:
+Новому Mysql не понравилось это: `default-character-set=utf8`. Просто закомментировал эту строчку
 
-default-character-set=utf8
-
-#Просто закомментировал эту строчку
-</pre>
-
-После рестарта php-fpm и mysqld все заработало нормально.
+После рестарта `php-fpm` и `mysqld` все заработало нормально.
 
 ### ImageCMS &#8212; итог
 
@@ -174,15 +188,14 @@ default-character-set=utf8
 
 Минусы:
 
-Отсутствие нормальной документации по установке на CentOS+Nginx+php-fpm.
+* Отсутствие нормальной документации по установке на CentOS+Nginx+php-fpm.
 
 Плюсы:
 
-Данная CMS напомнила мне про необходимость обновления core пакетов веб-сервера.
-
-Так же, я научился правильно создавать пользователей в mysql, но это к тексту не относится.
+* Данная CMS напомнила мне про необходимость обновления core пакетов веб-сервера.
+* Так же, я научился правильно создавать пользователей в mysql, но это к тексту не относится.
 
 Материалы по теме:
 
-  * <a href="http://www.imagecms.net/" target="_blank">Официальный сайт</a>
-  * <a href="http://www.nginxtips.ru/znakomstvo-s-imagecms/" target="_blank">Статья взята с сайта</a>
+* <a href="http://www.imagecms.net/" target="_blank">Официальный сайт</a>
+* <a href="http://www.nginxtips.ru/znakomstvo-s-imagecms/" target="_blank">Статья взята с сайта</a>
