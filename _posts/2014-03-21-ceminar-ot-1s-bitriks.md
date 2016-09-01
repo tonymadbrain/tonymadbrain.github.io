@@ -1,7 +1,7 @@
 ---
 title: Cеминар от 1С-битрикс
 layout: post
-permalink: /seminar_from_1C-bitrix/
+permalink: /1C-bitrix_seminar/
 redirect_from: /ceminar-ot-1s-bitriks/
 excerpt: ""
 tags:

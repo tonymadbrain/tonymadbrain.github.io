@@ -1,7 +1,8 @@
 ---
 title: Дубна пролог
 layout: post
-permalink: /dubna-prolog/
+permalink: /dubna-prologue/
+redirect_from: /dubna-prolog/
 excerpt: ""
 tags:
   - Dubna
