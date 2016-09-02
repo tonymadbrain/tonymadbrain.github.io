@@ -171,18 +171,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>В следующую строчку вставляем</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;img <span class="nv">src</span><span class="o">=</span><span class="s2">&quot;&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png&quot;</span> <span class="nv">style</span><span class="o">=</span><span class="s2">&quot;top-margin: 15px; left-margin: 15px;&quot;</span>/&gt;</code></pre></figure>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;img src=&quot;</span><span class="cp">&lt;%=</span> <span class="no">Redmine</span><span class="o">::</span><span class="no">Utils</span><span class="o">.</span><span class="n">relative_url_root</span> <span class="cp">%&gt;</span><span class="x">/images/logo.png&quot; style=&quot;top-margin: 15px; left-margin: 15px;&quot;/&gt;</span></code></pre></figure>
 
 <p><code>Redmine::Utils.relative_url_root</code> - переменная, которая указывает на каталог установки redmine.
 <br />
 <br />
 В итоге, правки должны выглядеть вот так:</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;/div&gt;</span>
-<span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;&lt;%= Redmine::Utils.relative_url_root %&gt;/images/logo.png&quot;</span> <span class="na">style=</span><span class="s">&quot;top-margin: 15px; left-margin: 15px;&quot;</span><span class="nt">/&gt;</span>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;/div&gt;</span>
+<span class="x">&lt;!--&lt;h1&gt;</span><span class="cp">&lt;%=</span> <span class="n">page_header_title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h1&gt;--&gt;</span>
+<span class="x">&lt;img src=&quot;</span><span class="cp">&lt;%=</span> <span class="no">Redmine</span><span class="o">::</span><span class="no">Utils</span><span class="o">.</span><span class="n">relative_url_root</span> <span class="cp">%&gt;</span><span class="x">/images/logo.png&quot; style=&quot;top-margin: 15px; left-margin: 15px;&quot;/&gt;</span>
 
-<span class="err">&lt;</span>% if display_main_menu?(@project) %&gt;</code></pre></figure>
+<span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">display_main_menu?</span><span class="p">(</span><span class="vi">@project</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></figure>
 
 <p>Теперь нужно загрузить изображение</p>
 
