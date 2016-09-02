@@ -5,14 +5,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Смена логотипа в Redmine &#8211; Diary of madman</title>
+<title>Красные &#8211; Diary of madman</title>
 <meta name="description" content="">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Apache, Changelogo, Logo, Nginx, Redmine, Tips">
+<meta name="keywords" content="Root, Photo">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Смена логотипа в Redmine">
+<meta name="twitter:title" content="Красные">
 <meta name="twitter:description" content="">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
@@ -23,16 +23,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Смена логотипа в Redmine">
+<meta property="og:title" content="Красные">
 <meta property="og:description" content="">
-<meta property="og:url" content="http://doam.ru/how_to_change_logo_in_redmine/">
+<meta property="og:url" content="http://doam.ru/reds/">
 <meta property="og:site_name" content="Diary of madman">
 
 
 
 
 
-<link rel="canonical" href="http://doam.ru/how_to_change_logo_in_redmine/">
+<link rel="canonical" href="http://doam.ru/reds/">
 <link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -150,90 +150,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://doam.ru/how_to_change_logo_in_redmine/" rel="bookmark" title="Смена логотипа в Redmine">Смена логотипа в Redmine</a></h1>
+        <h1><a href="http://doam.ru/reds/" rel="bookmark" title="Красные">Красные</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.
-<br />
-<br />
-Редактируем файлик base.html.erb</p>
+      <p>Так как соц. сеть ВКонтакте не хочет адекватно загружать именно эти фотографии, пришлось создать пост.
+<a href="http://doam.ru/wp-content/uploads/2012/08/obrabotano-1-231.jpg" rel="lightbox[501]" title="Красные"><br /> </a>
+<!--more--></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /opt/redmine/app/views/layouts/base.html.erb</code></pre></figure>
+<p><a href="http://doam.ru/wp-content/uploads/2012/08/obrabotano-1-231.jpg" rel="lightbox[501]" title="Красные"><br /> </a></p>
 
-<p>Находим строку:</p>
+<p><a href="http://res.cloudinary.com/doam-ru/image/upload/v1409070672/obrabotano-1-25_e045zh.jpg" rel="lightbox[501]" title="Красные"><img class="alignright  wp-image-504" title="obrabotano-1-25" src="http://res.cloudinary.com/doam-ru/image/upload/v1409070672/obrabotano-1-25_e045zh.jpg" alt="" width="1013" height="675" /></a></p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;h1&gt;</span><span class="cp">&lt;%=</span> <span class="n">page_header_title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h1&gt;</span></code></pre></figure>
-
-<p>И комментируем</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span></code></pre></figure>
-
-<p>В следующую строчку вставляем</p>
-
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;img src=&quot;</span><span class="cp">&lt;%=</span> <span class="no">Redmine</span><span class="o">::</span><span class="no">Utils</span><span class="o">.</span><span class="n">relative_url_root</span> <span class="cp">%&gt;</span><span class="x">/images/logo.png&quot; style=&quot;top-margin: 15px; left-margin: 15px;&quot;/&gt;</span></code></pre></figure>
-
-<p><code>Redmine::Utils.relative_url_root</code> - переменная, которая указывает на каталог установки redmine.
-<br />
-<br />
-В итоге, правки должны выглядеть вот так:</p>
-
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;!--&lt;h1&gt;</span><span class="cp">&lt;%=</span> <span class="n">page_header_title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h1&gt;--&gt;</span>
-<span class="x">&lt;img src=&quot;</span><span class="cp">&lt;%=</span> <span class="no">Redmine</span><span class="o">::</span><span class="no">Utils</span><span class="o">.</span><span class="n">relative_url_root</span> <span class="cp">%&gt;</span><span class="x">/images/logo.png&quot; style=&quot;top-margin: 15px; left-margin: 15px;&quot;/&gt;</span>
-
-<span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">display_main_menu?</span><span class="p">(</span><span class="vi">@project</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></figure>
-
-<p>Теперь нужно загрузить изображение</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>scp logo.png root@example.com:/opt/redmine/public/images</code></pre></figure>
-
-<p>Не забываем выставить права на файл</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chown redmine:redmine /opt/redmine/public/images/logo.png</code></pre></figure>
-
-<p>Ну и теперь осталось перезагрузить redmine, для этого перезагружаем веб-сервер:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service apache2 restart
-<span class="nv">$ </span>service httpd restart
-<span class="nv">$ </span>service nginx restart</code></pre></figure>
-
-<p>Только в статье не указано, что изображение ни как не будет деформировано, т.е. если загрузить 100х100 будет отображаться 100х100, если 1024х1024 будет такое и сдвинет все остальные элементы. Еще, при редактировании фирменного логотипа, я сделал прозрачный фон, чтобы не пытаться попасть в цвет шапки redmine.</p>
+<p><a href="http://res.cloudinary.com/doam-ru/image/upload/v1409070669/obrabotano-1-27_xj0jed.jpg" rel="lightbox[501]" title="Красные"><img class="alignright  wp-image-506" title="obrabotano-1-27" src="http://res.cloudinary.com/doam-ru/image/upload/v1409070669/obrabotano-1-27_xj0jed.jpg" alt="" width="1013" height="675" /></a></p>
 
       
-        <a href="/tag/apache">#Apache</a>
+        <a href="/tag/root">#Root</a>
       
-        <a href="/tag/changelogo">#Changelogo</a>
+        <a href="/tag/photo">#Photo</a>
       
-        <a href="/tag/logo">#Logo</a>
-      
-        <a href="/tag/nginx">#Nginx</a>
-      
-        <a href="/tag/redmine">#Redmine</a>
-      
-        <a href="/tag/tips">#Tips</a>
-      
-        <!-- <a href="/tag/apache/" rel="tag">Apache</a>, <a href="/tag/changelogo/" rel="tag">Changelogo</a>, <a href="/tag/logo/" rel="tag">Logo</a>, <a href="/tag/nginx/" rel="tag">Nginx</a>, <a href="/tag/redmine/" rel="tag">Redmine</a>, <a href="/tag/tips/" rel="tag">Tips</a> -->
+        <!-- <a href="/tag/root/" rel="tag">Root</a>, <a href="/tag/photo/" rel="tag">Photo</a> -->
       <hr />
       <footer role="contentinfo">
         <div style="text-align: center;" class="social-share">
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Смена логотипа в Redmine %23doamru http://doam.ru/how_to_change_logo_in_redmine/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Красные %23doamru http://doam.ru/reds/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="http://vk.com/share.php?url=http://doam.ru/how_to_change_logo_in_redmine/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+      <a href="http://vk.com/share.php?url=http://doam.ru/reds/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/how_to_change_logo_in_redmine/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/reds/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/how_to_change_logo_in_redmine/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/reds/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
 
-        <p class="byline"><strong>Смена логотипа в Redmine</strong> опубликовано <time datetime="2014-11-05T00:00:00+03:00">05 November, 2014</time>.</p>
+        <p class="byline"><strong>Красные</strong> опубликовано <time datetime="2012-08-09T00:00:00+04:00">09 August, 2012</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   
