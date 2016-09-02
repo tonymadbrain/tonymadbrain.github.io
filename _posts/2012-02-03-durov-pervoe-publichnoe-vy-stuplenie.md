@@ -1,7 +1,8 @@
 ---
 title: Дуров, первое публичное выступление
 layout: post
-permalink: /durov-pervoe-publichnoe-vy-stuplenie/
+permalink: /durov-first_public_speech/
+redirect_from: /durov-pervoe-publichnoe-vy-stuplenie/
 excerpt: ""
 tags:
   - Vkontakte

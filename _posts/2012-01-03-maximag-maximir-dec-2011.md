@@ -1,8 +1,10 @@
 ---
 title: Экзотический салат или обычная похлебка?
 layout: post
-permalink: /maximag-maximir-dec-2011/
-redirect_from: "/e-kzoticheskij-salat-ili-oby-chnaya-pohle/"
+permalink: /maximag_maximir_dec_2011/
+redirect_from:
+   - /e-kzoticheskij-salat-ili-oby-chnaya-pohle/
+   - /maximag-maximir-dec-2011/
 excerpt: Cтатья для журнала "МаксиМаг", ТРЦ "Максимир" декабрь 2011
 tags:
   - Acer

@@ -1,7 +1,8 @@
 ---
 title: '«Трон 1982» и «Трон: наследие», тогда и сейчас.'
 layout: post
-permalink: /tron-1982-i-tron-nasledie-togda-i-sejchas/
+permalink: /tron_1982_i_and_tron_legacy-then_and_now/
+redirect_from: /tron-1982-i-tron-nasledie-togda-i-sejchas/
 excerpt: Сравнение фильмов
 tags:
   - Movies

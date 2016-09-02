@@ -1,8 +1,9 @@
 ---
 title: Рецепт приготовления debian на нетбуке
 layout: post
-permalink: /retsept-prigotovleniya-debian-na-netbuke/
-excerpt: Мое первое использование linux в качестве рабочей системы
+permalink: /recipe_for_debian_on_laptop/
+redirect_from: /retsept-prigotovleniya-debian-na-netbuke/
+excerpt: "Мое первое использование linux в качестве рабочей системы"
 tags:
   - Сonky
   - Debian

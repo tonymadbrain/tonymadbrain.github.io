@@ -1,13 +1,15 @@
 ---
 title: Оптимальное разрешение. Работаем с xrandr
 layout: post
-permalink: /optimal-noe-razreshenie-rabotaem-s-xrandr/
+permalink: /optimal_resolution_working_with_xrandr/
+redirect_from: /optimal-noe-razreshenie-rabotaem-s-xrandr/
 excerpt: ""
 tags:
   - Debian
   - Xrandr
   - Root
 ---
+
 Столкнулся с проблемой: монитор поддерживает разрешение 1920x1080 и с драйвером radeon работал нормально, но после того как я решил затестить драйвер radeonhd разрешение изменилось и выхлоп xrandr изменился на
 
 {% highlight bash %}
