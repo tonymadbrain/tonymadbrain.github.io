@@ -46,7 +46,6 @@ $ vim /opt/redmine/app/views/layouts/base.html.erb
 В итоге, правки должны выглядеть вот так:
 
 {% highlight erb %}
-</div>
 <!--<h1><%= page_header_title %></h1>-->
 <img src="<%= Redmine::Utils.relative_url_root %>/images/logo.png" style="top-margin: 15px; left-margin: 15px;"/>
 

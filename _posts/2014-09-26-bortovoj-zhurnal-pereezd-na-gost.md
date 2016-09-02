@@ -1,5 +1,5 @@
 ---
-title: 'Бортовой журнал: переезд на гост'
+title: 'Бортовой журнал: переезд на Ghost'
 layout: post
 permalink: /logbook_moving_to_gost/
 redirect_from:
