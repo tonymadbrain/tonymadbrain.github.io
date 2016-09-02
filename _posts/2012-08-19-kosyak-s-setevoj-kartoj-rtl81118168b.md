@@ -40,6 +40,4 @@ $ chmod +x autorun.sh
 {% highlight bash %}
 $ ./autorun.sh
 {% endhighlight %}
-<br>
-<br>
 Всего-то, скажете Вы, но незнание этих мелочей выливается в большой геморрой.
