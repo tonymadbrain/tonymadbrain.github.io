@@ -24,7 +24,7 @@ $ vim /opt/redmine/app/views/layouts/base.html.erb
 
 Находим строку:
 
-{% highlight html %}
+{% highlight erb %}
 <h1><%= page_header_title %></h1>
 {% endhighlight %}
 
