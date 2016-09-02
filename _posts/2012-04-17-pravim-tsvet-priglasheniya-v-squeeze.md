@@ -1,7 +1,8 @@
 ---
 title: Правим цвет приглашения в squeeze
 layout: post
-permalink: /pravim-tsvet-priglasheniya-v-squeeze/
+permalink: /edit_bash_prompt_in_squeeze/
+redirect_from: /pravim-tsvet-priglasheniya-v-squeeze/
 excerpt: ""
 tags:
   - Bash
@@ -9,6 +10,7 @@ tags:
   - Debian
   - Colors
 ---
+
 Чтобы случайно не натворить чего-нибудь на удаленном серваке по ssh или telnet, я решил изменить цвет приглашения в консоли, чтобы видеть на своем буке я или на удаленке. Нашел много примеров, однако в squeeze они не сработали. В результате всех "ковыряний" и советов гуру пришел к такому методу:
 
 В папке нашего пользователя лежит файл .bashrc все изменения в нем применяются только к данному пользователю, а здесь /etc/bash.bashrc лежит общий конфиг и применяется он когда мы логинимся под рутом. Итак в .bashrc находим строчку примерно такого плана
@@ -40,6 +42,8 @@ PS1='[33[01;32m]u@[33[01;36m]h$[33[00m] '
 Если хотим изменить приглашение рута, то правим /etc/bash.bashrc, там проделываем примерно то же самое по аналогии.
 Вот собственно и всё, а вот и мой скриншот:
 
-<figure>
-  <a href="http://res.cloudinary.com/doam-ru/image/upload/v1409070685/snimok_lhmrec.png"><img src="http://res.cloudinary.com/doam-ru/image/upload/v1409070685/snimok_lhmrec.png"></a>
-</figure>
+<br>
+<img src="https://farm1.staticflickr.com/631/21654068195_2bbb3a1767_o.png">
+<br>
+<br>
+
