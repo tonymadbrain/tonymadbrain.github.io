@@ -7,9 +7,5 @@ image:
 ---
 
 Системный администратор в <a href="http://imhonet.ru/" target="_blank">Имхонет</a>.
-<br>
-<br>
 Технический директор в <a href="https://www.isbis.ru/" target="_blank">Isbis.ru</a>.
-<br>
-<br>
 Велосипедист, фотограф, любитель ритма и качественной музыки в разных жанрах.
