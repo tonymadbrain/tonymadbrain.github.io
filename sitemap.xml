@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://doam.ru/adding_static_pages_to_your_rails_app/</loc>
+    <lastmod>2016-10-02T22:23:54+03:00</lastmod>
+  </url>
+  <url>
     <loc>http://doam.ru/linux_tools_with_ruby/</loc>
     <lastmod>2016-07-26T00:09:58+03:00</lastmod>
   </url>
@@ -928,6 +932,9 @@
     </url>
     <url>
       <loc>http://doam.ru/linux_tools_with_ruby/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/adding_static_pages_to_your_rails_app/</loc>
     </url>
   <url>
     <loc>http://doam.ru/rormatrix/index.html</loc>

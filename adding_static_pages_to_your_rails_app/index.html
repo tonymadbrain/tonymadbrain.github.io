@@ -5,15 +5,15 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Смена логотипа в Redmine &#8211; Diary of madman</title>
-<meta name="description" content="">
+<title>Добавление статических страниц в Rails приложение &#8211; Diary of madman</title>
+<meta name="description" content="С использованием high_voltage">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Apache, Changelogo, Logo, Nginx, Redmine, Tips">
+<meta name="keywords" content="Rails, Ruby, Tutorial">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Смена логотипа в Redmine">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Добавление статических страниц в Rails приложение">
+<meta name="twitter:description" content="С использованием high_voltage">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
 
@@ -23,16 +23,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Смена логотипа в Redmine">
-<meta property="og:description" content="">
-<meta property="og:url" content="http://doam.ru/how_to_change_logo_in_redmine/">
+<meta property="og:title" content="Добавление статических страниц в Rails приложение">
+<meta property="og:description" content="С использованием high_voltage">
+<meta property="og:url" content="http://doam.ru/adding_static_pages_to_your_rails_app/">
 <meta property="og:site_name" content="Diary of madman">
 
 
 
 
 
-<link rel="canonical" href="http://doam.ru/how_to_change_logo_in_redmine/">
+<link rel="canonical" href="http://doam.ru/adding_static_pages_to_your_rails_app/">
 <link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -150,90 +150,61 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://doam.ru/how_to_change_logo_in_redmine/" rel="bookmark" title="Смена логотипа в Redmine">Смена логотипа в Redmine</a></h1>
+        <h1><a href="http://doam.ru/adding_static_pages_to_your_rails_app/" rel="bookmark" title="Добавление статических страниц в Rails приложение">Добавление статических страниц в Rails приложение</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Решил для себя перевести статью по <a href="http://www.redmine.org/projects/redmine/wiki/Howto_add_a_logo_to_your_Redmine_banner" target="_blank">добавлению логотипа в заголовок Redmine</a>. В моем случае проверялось на теме Alternate.
+      <p>Рано или поздно вы захотите добавить в ваше Rails приложение страницы которые не создаются динамически, но содержат какую-нибудь маркетинговую или юридическую информацию или даже лендинги которые ведут, например, на вашу главную страницу.</p>
+
+<blockquote>
+  <p>От переводчика: <a href="https://christoph.luppri.ch/articles/2016/09/25/adding-static-pages-to-your-rails-app/" target="_blank">Оригинал статьи</a></p>
+</blockquote>
+
+<p>Конечно же вы можете накидать для этого собственные контроллер, маршруты и вьюхи (views). Но есть более простое решение: <a href="https://github.com/thoughtbot/high_voltage" target="_blank">high_voltage</a>. Этот гем, созданный ребятами из <a href="https://thoughtbot.com/" target="_blank">thoughbot</a>, позволяет создавать статические страницы на одном дыхании. Давайте начнем.
 <br />
 <br />
-Редактируем файлик base.html.erb</p>
+Добавим его в <code>Gemfile</code> и создадим новую директорию <code>pages</code> в нашем каталоге с вьюхами (app/views). Затем, создадим новую вьюху внутри каталога <code>pages</code>. Допустим нам нужна страница <code>imprint</code>, так что мы назавем наш файл <code>imprint.html.erb</code>. Если вы используете какой-либо другой язык шаблонизации как <code>slim</code> или <code>haml</code>, просто адаптируйте расширение файла. Осталось только открыть страницу <code>http://localhost:3000/pages/imprin</code> в браузере и <em>вуаля</em> - статическая страница imprint будет показана.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /opt/redmine/app/views/layouts/base.html.erb</code></pre></figure>
+<h3 id="section">Бонус</h3>
 
-<p>Находим строку:</p>
+<p>Одна вещь, которую вы, скорее всего, захотите изменить это структуруа URL. Таким образом, чтобы ваши статические страницы были доступны по адресу от корня сайта а не через <code>pages</code>. Например в нашем случае чтобы вместо <code>example.com/pages/imprint</code> использовать <code>example.com/imprint</code>. Для этого создайте новый файл в каталоге <code>initializers</code> в корне Rails приложения с именем <code>high_voltage.rb</code> и следующим содержимым:</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;h1&gt;</span><span class="cp">&lt;%=</span> <span class="n">page_header_title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h1&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">HighVoltage</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">route_drawer</span> <span class="o">=</span> <span class="no">HighVoltage</span><span class="o">::</span><span class="no">RouteDrawers</span><span class="o">::</span><span class="no">Root</span>
+<span class="k">end</span></code></pre></figure>
 
-<p>И комментируем</p>
+<p>После перезапуска <code>rails server</code> страница будет доступна по адресу <code>http://localhost:3000/imprint</code>.</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span></code></pre></figure>
-
-<p>В следующую строчку вставляем</p>
-
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;img src=&quot;</span><span class="cp">&lt;%=</span> <span class="no">Redmine</span><span class="o">::</span><span class="no">Utils</span><span class="o">.</span><span class="n">relative_url_root</span> <span class="cp">%&gt;</span><span class="x">/images/logo.png&quot; style=&quot;top-margin: 15px; left-margin: 15px;&quot;/&gt;</span></code></pre></figure>
-
-<p><code>Redmine::Utils.relative_url_root</code> - переменная, которая указывает на каталог установки redmine.
-<br />
-<br />
-В итоге, правки должны выглядеть вот так:</p>
-
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;!--&lt;h1&gt;</span><span class="cp">&lt;%=</span> <span class="n">page_header_title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h1&gt;--&gt;</span>
-<span class="x">&lt;img src=&quot;</span><span class="cp">&lt;%=</span> <span class="no">Redmine</span><span class="o">::</span><span class="no">Utils</span><span class="o">.</span><span class="n">relative_url_root</span> <span class="cp">%&gt;</span><span class="x">/images/logo.png&quot; style=&quot;top-margin: 15px; left-margin: 15px;&quot;/&gt;</span>
-
-<span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">display_main_menu?</span><span class="p">(</span><span class="vi">@project</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></figure>
-
-<p>Теперь нужно загрузить изображение</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>scp logo.png root@example.com:/opt/redmine/public/images</code></pre></figure>
-
-<p>Не забываем выставить права на файл</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chown redmine:redmine /opt/redmine/public/images/logo.png</code></pre></figure>
-
-<p>Ну и теперь осталось перезагрузить redmine, для этого перезагружаем веб-сервер:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service apache2 restart
-<span class="nv">$ </span>service httpd restart
-<span class="nv">$ </span>service nginx restart</code></pre></figure>
-
-<p>Только в статье не указано, что изображение ни как не будет деформировано, т.е. если загрузить 100х100 будет отображаться 100х100, если 1024х1024 будет такое и сдвинет все остальные элементы. Еще, при редактировании фирменного логотипа, я сделал прозрачный фон, чтобы не пытаться попасть в цвет шапки redmine.</p>
 
       
-        <a href="/tag/apache">#Apache</a>
+        <a href="/tag/rails">#Rails</a>
       
-        <a href="/tag/changelogo">#Changelogo</a>
+        <a href="/tag/ruby">#Ruby</a>
       
-        <a href="/tag/logo">#Logo</a>
+        <a href="/tag/tutorial">#Tutorial</a>
       
-        <a href="/tag/nginx">#Nginx</a>
-      
-        <a href="/tag/redmine">#Redmine</a>
-      
-        <a href="/tag/tips">#Tips</a>
-      
-        <!-- <a href="/tag/apache/" rel="tag">Apache</a>, <a href="/tag/changelogo/" rel="tag">Changelogo</a>, <a href="/tag/logo/" rel="tag">Logo</a>, <a href="/tag/nginx/" rel="tag">Nginx</a>, <a href="/tag/redmine/" rel="tag">Redmine</a>, <a href="/tag/tips/" rel="tag">Tips</a> -->
+        <!-- <a href="/tag/rails/" rel="tag">Rails</a>, <a href="/tag/ruby/" rel="tag">Ruby</a>, <a href="/tag/tutorial/" rel="tag">Tutorial</a> -->
       <hr />
       <footer role="contentinfo">
         <div style="text-align: center;" class="social-share">
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Смена логотипа в Redmine %23doamru http://doam.ru/how_to_change_logo_in_redmine/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Добавление статических страниц в Rails приложение %23doamru http://doam.ru/adding_static_pages_to_your_rails_app/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="http://vk.com/share.php?url=http://doam.ru/how_to_change_logo_in_redmine/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+      <a href="http://vk.com/share.php?url=http://doam.ru/adding_static_pages_to_your_rails_app/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/how_to_change_logo_in_redmine/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/adding_static_pages_to_your_rails_app/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/how_to_change_logo_in_redmine/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/adding_static_pages_to_your_rails_app/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
 
-        <p class="byline"><strong>Смена логотипа в Redmine</strong> опубликовано <time datetime="2014-11-05T00:00:00+03:00">05 November, 2014</time>.</p>
+        <p class="byline"><strong>Добавление статических страниц в Rails приложение</strong> опубликовано <time datetime="2016-10-02T22:23:54+03:00">02 October, 2016</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   
@@ -245,11 +216,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
     <ul>
     
-      <li><a href="http://doam.ru/adding_static_pages_to_your_rails_app/" title="Добавление статических страниц в Rails приложение">Добавление статических страниц в Rails приложение</a></li>
-    
       <li><a href="http://doam.ru/linux_tools_with_ruby/" title="Создание инструментов Linux с помощью Ruby">Создание инструментов Linux с помощью Ruby</a></li>
     
       <li><a href="http://doam.ru/https_in_nginx_using_letsencrypt/" title="HTTPS в Nginx с сертификатом от Let's Encrypt">HTTPS в Nginx с сертификатом от Let's Encrypt</a></li>
+    
+      <li><a href="http://doam.ru/first_bicycle_report/" title="Первый вело-отчет">Первый вело-отчет</a></li>
     
     </ul>
     <hr />

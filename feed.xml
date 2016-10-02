@@ -4,13 +4,34 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2016-09-04T16:22:02+03:00</updated>
+<updated>2016-10-02T23:07:24+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Добавление статических страниц в Rails приложение]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/adding_static_pages_to_your_rails_app/" />
+  <id>http://doam.ru/adding_static_pages_to_your_rails_app</id>
+  <published>2016-10-02T22:23:54+03:00</published>
+  <updated>2016-10-02T22:23:54+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Рано или поздно вы захотите добавить в ваше Rails приложение страницы которые не создаются динамически, но содержат какую-нибудь маркетинговую или юридическую информацию или даже лендинги которые ведут, например, на вашу главную страницу.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;От переводчика: &lt;a href=&quot;https:/...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/adding_static_pages_to_your_rails_app/&quot;&gt;Добавление статических страниц в Rails приложение&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 02, 2016.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -199,24 +220,6 @@
   <content type="html">
     &lt;p&gt;В 2012 я попробовал зафиксировать некоторое свое состояние, чтобы сравнить с тем, каким оно будет через 4 года, описав это самое состояние на одной странице блога и сделав её главной. Сейчас я понимаю что это было полнейшим бредом, так как все меняется гораздо быстрее. Буквально каждую неделю ...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/no_for_stavka/&quot;&gt;Ставка не нужна&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on December 19, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Минималистичный стек Grape + Swagger для микросервисов на Ruby]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru/ruby_the_grape_swagger_stack/" />
-  <id>http://doam.ru/ruby-the-grape-swagger-stack</id>
-  <published>2015-11-24T12:00:00+03:00</published>
-  <updated>2015-11-24T12:00:00+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri>http://doam.ru</uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;Микросервисы сейчас очень популярны и используются в различных архитектурах и средах. Слова Ruby и микросервисы, принято связывать с великолепным минималистичным фреймворком &lt;em&gt;Sinatra&lt;/em&gt;. Есть много хороших ruby микро-фреймворков, но &lt;a href=&quot;http://www.ruby-grape.org/&quot; target=&quot;_blank&quot;&gt;Gra...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru/ruby_the_grape_swagger_stack/&quot;&gt;Минималистичный стек Grape + Swagger для микросервисов на Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 24, 2015.&lt;/p&gt;
   </content>
 </entry>
 
