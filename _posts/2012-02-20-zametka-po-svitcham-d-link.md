@@ -15,6 +15,11 @@ tags:
 
 {% include _toc.html %}
 
+<br>
+<a href="https://isbis.ru/" target="_blank"><img src="https://farm6.staticflickr.com/5273/30061537776_ff4a44f50c_o.png"></a>
+<br>
+<br>
+
 ### Основные команды
 
 {% highlight bash %}
@@ -49,11 +54,6 @@ show switch
 Отображение информации о коммутаторе.
 
 > Важно: не путать версию прошивки и версию конфига
-
-<br>
-<a href="https://isbis.ru/" target="_blank"><img src="https://farm6.staticflickr.com/5273/30061537776_ff4a44f50c_o.png"></a>
-<br>
-<br>
 
 {% highlight bash %}
 show log
