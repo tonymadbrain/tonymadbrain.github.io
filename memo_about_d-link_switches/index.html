@@ -159,7 +159,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 <br /></p>
 
-<p>Команды для свитчей д-линк:</p>
+<h3 id="section">Команды для свитчей д-линк:</h3>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">show ports</code></pre></figure>
 
@@ -189,17 +189,6 @@ config vlan v996 <span class="o">(</span>имя влана<span class="o">)</spa
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">show log</code></pre></figure>
 
 <p>Просмотр логов коммутатора</p>
-
-<p>Варианты записей присутствующих в логах коммутатора:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="m">7028</span> 2008/10/23 18:51:57 Port <span class="m">19</span> link down <span class="p">&amp;</span><span class="c">#8212; упал линк на 19-м порту</span>
-<span class="m">7029</span> 2008/10/23 18:52:01 Port <span class="m">19</span> link up, 100Mbps FULL duplex <span class="p">&amp;</span><span class="c">#8212; линк поднялся на 19-м порту установлена скорость передачи 100Mb установлен режим полного дуплекса</span>
-<span class="m">7045</span> 2008/10/23 19:28:19 Multicast storm is occurring <span class="o">(</span>port: 18<span class="o">)</span> <span class="p">&amp;</span><span class="c">#8212; зафиксирован мультикаст шторм на 18 порту.</span>
-<span class="m">7035</span> 2008/10/23 19:06:19 Multicast storm has cleared <span class="o">(</span>port: 8<span class="o">)</span> <span class="p">&amp;</span><span class="c">#8212; мультикаст шторм был очищен</span>
-<span class="m">7313</span> 2008/10/24 21:59:16 Broadcast storm is occurring <span class="o">(</span>port: 15<span class="o">)</span> <span class="p">&amp;</span><span class="c">#8212; зафиксирован броадкаст шторм на 18 порту.</span>
-<span class="m">7429</span> 2008/10/25 14:11:12 Broadcast storm has cleared <span class="o">(</span>port: 18<span class="o">)</span> <span class="p">&amp;</span><span class="c">#8212; броадкаст шторм был очищен</span></code></pre></figure>
-
-<p>Если в логах коммутатора вы видите записи о том что на всех активных портах одновременно были зафиксированы броадкаст и мультикаст шторм, коммутатор перезагружался.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">show ports description</code></pre></figure>
 
@@ -237,7 +226,18 @@ config vlan v996 <span class="o">(</span>имя влана<span class="o">)</spa
 
 <p>Отображение ошибок передачи пакетов на заданном порту</p>
 
-<h4 id="section">Типы ошибок:</h4>
+<h3 id="section-1">Варианты записей присутствующих в логах коммутатора</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="m">7028</span> 2008/10/23 18:51:57 Port <span class="m">19</span> link down <span class="p">&amp;</span><span class="c">#8212; упал линк на 19-м порту</span>
+<span class="m">7029</span> 2008/10/23 18:52:01 Port <span class="m">19</span> link up, 100Mbps FULL duplex <span class="p">&amp;</span><span class="c">#8212; линк поднялся на 19-м порту установлена скорость передачи 100Mb установлен режим полного дуплекса</span>
+<span class="m">7045</span> 2008/10/23 19:28:19 Multicast storm is occurring <span class="o">(</span>port: 18<span class="o">)</span> <span class="p">&amp;</span><span class="c">#8212; зафиксирован мультикаст шторм на 18 порту.</span>
+<span class="m">7035</span> 2008/10/23 19:06:19 Multicast storm has cleared <span class="o">(</span>port: 8<span class="o">)</span> <span class="p">&amp;</span><span class="c">#8212; мультикаст шторм был очищен</span>
+<span class="m">7313</span> 2008/10/24 21:59:16 Broadcast storm is occurring <span class="o">(</span>port: 15<span class="o">)</span> <span class="p">&amp;</span><span class="c">#8212; зафиксирован броадкаст шторм на 18 порту.</span>
+<span class="m">7429</span> 2008/10/25 14:11:12 Broadcast storm has cleared <span class="o">(</span>port: 18<span class="o">)</span> <span class="p">&amp;</span><span class="c">#8212; броадкаст шторм был очищен</span></code></pre></figure>
+
+<p>Если в логах коммутатора вы видите записи о том что на всех активных портах одновременно были зафиксированы броадкаст и мультикаст шторм, коммутатор перезагружался.</p>
+
+<h4 id="section-2">Типы ошибок:</h4>
 
 <ul>
   <li>
@@ -459,7 +459,9 @@ Unknown TLVs count : 0</code></pre></figure>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">show address_binding dhcp_snoop binding_entry</code></pre></figure>
 
 <p>Просмотр таблицы dhcp snooping binding</p>
-<div></div>
+
+<h3 id="ip-mac-port-binding">IP-MAC-Port Binding</h3>
+
 <p>Функция IP-MAC-Port Binding в коммутаторах D-Link позволяет контролировать доступ компьютеров в сеть на основе их IP и MAC-адресов, а также порта подключения. Если какая-нибудь составляющая в этой записи меняется, то коммутатор отбрасывает фреймы от этого мака (аналог фунции IP Source Address Guard на Alcatel’ях). Соответствие мака, порта и ip коммутатор проверяет по таблице dhcp snooping binding. Посмотреть эту таблицу можно командой show address_binding dhcp_snoop binding_entry. Соответственно, если с кокого-либо порта уходят ip-пакеты, в которых ip-адрес отправителя отличен от указанного в этой таблице (скажем 169.254.255.5 или 0.0.0.0, или некорректная статика), то свич такие пакеты отбрасывает, при этом занося в лог следующую запись:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Unauthenticated IP-MAC address and discardet by ip mac port binding <span class="o">(</span>IP 169.254.255.5, MAC 00-24-26-35-56-08, port: 19<span class="o">)</span></code></pre></figure>
