@@ -12,6 +12,12 @@ tags:
   - Commands
   - Switches
 ---
+
+<br>
+<img src="https://farm6.staticflickr.com/5020/29468335333_762a44ba19_o.png">
+<br>
+<br>
+
 Команды для свитчей д-линк:
 
 {% highlight bash %}
