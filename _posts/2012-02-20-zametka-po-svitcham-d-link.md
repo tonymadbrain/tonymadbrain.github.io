@@ -16,7 +16,7 @@ tags:
 {% include _toc.html %}
 
 <br>
-<img src="https://farm6.staticflickr.com/5273/30061537776_ff4a44f50c_o.png">
+<a href="https://isbis.ru/" target="_blank"><img src="https://farm6.staticflickr.com/5273/30061537776_ff4a44f50c_o.png"></a>
 <br>
 <br>
 
