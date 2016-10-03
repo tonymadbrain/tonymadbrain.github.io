@@ -154,7 +154,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p><br />
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">Команды для свитчей д-линк</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">Варианты записей присутствующих в логах коммутатора</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">Типы ошибок:</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-3" id="markdown-toc-section-3">Диагностика кабеля</a></li>
+  <li><a href="#ip-mac-port-binding" id="markdown-toc-ip-mac-port-binding">IP-MAC-Port Binding</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p><br />
 <img src="https://farm6.staticflickr.com/5273/30061537776_ff4a44f50c_o.png" />
 <br />
 <br /></p>
@@ -333,9 +352,7 @@ config vlan v996 <span class="o">(</span>имя влана<span class="o">)</spa
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">show dhcp_relay</code></pre></figure>
 
-<p>Отображение настроек dhcp_relay на коммутаторе. Обязательно должно быть включено в сегментированном районе, выключено в несегментированном.</p>
-
-<p>Пример вывода:</p>
+<p>Отображение настроек dhcp_relay на коммутаторе. Обязательно должно быть включено в сегментированном районе, выключено в несегментированном. Пример вывода:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Command: show dhcp_relay
 DHCP/BOOTP Relay Status : Enabled <span class="p">&amp;</span><span class="c">#8212; включена или выключена функция</span>
@@ -358,15 +375,44 @@ System 83.102.233.203 <span class="p">&amp;</span><span class="c">#8212; адр�
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">show current<span class="se">\_</span>config access<span class="se">\_</span>profile</code></pre></figure>
 
-<p>Отображение настроек ACL по всем портам (На свичах DES-3028 команда show access_profile) .</p>
-
-<p>Пример вывода:</p>
+<p>Отображение настроек ACL по всем портам (На свичах DES-3028 команда show access_profile). Пример вывода:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">config access<span class="se">\_</span>profile profile<span class="se">\_</span>id <span class="m">150</span> add access<span class="se">\_</span>id <span class="m">24</span> ip destination<span class="se">\_</span>ip 0.0.0.0 port <span class="m">24</span> deny <span class="o">(</span><span class="m">150</span> <span class="p">&amp;</span><span class="c">#8212; номер правила, далее указывается, что блокируется этим правилом, порт на который действует данное правило, состояние правила deny &amp;#8212; запрещено, permit &amp;#8212; разрешено)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">show vlan</code></pre></figure>
 
 <p>Отображение настроек Vlan на коммутаторе.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">show lldp remote_ports</code></pre></figure>
+
+<p>Отображение следующего оборудования на порту (отображает мак адрес во 2й строчке). Пример вывода: <code>Command: show lldp remote_ports 26</code></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Port ID : 26
+Remote Entities count : <span class="m">1</span> Entity 1
+Chassis Id Subtype : MACADDRESS
+Chassis Id : 00-1E-58-AE-DC-14
+Port Id Subtype : LOCAL
+Port ID : 1/25
+Port Description : D-Link DES-3028 R2.50 Port 25
+System Name : P1CV186021772-1#B340237#B340238
+System Description : Fast Ethernet Switch
+System Capabilities : Repeater, Bridge,
+Management Address count : 1
+Port PVID : 0
+PPVID Entries count : 0
+VLAN Name Entries count : 0
+Protocol ID Entries count : 0
+MAC/PHY Configuration/Status : <span class="o">(</span>None<span class="o">)</span>
+Power Via MDI : <span class="o">(</span>None<span class="o">)</span>
+Link Aggregation : <span class="o">(</span>None<span class="o">)</span>
+Maximum Frame Size : 0
+Unknown TLVs count : 0</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">show address_binding dhcp_snoop binding_entry</code></pre></figure>
+
+<p>Просмотр таблицы dhcp snooping binding</p>
+
+<h3 id="section-3">Диагностика кабеля</h3>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">cable_diag ports</code></pre></figure>
 
@@ -428,37 +474,6 @@ Perform Cable Diagnostics <span class="p">&amp;</span><span class="c">#8230;</sp
 Port Type Link Status Test Result Cable Length <span class="o">(</span>M<span class="o">)</span>
 <span class="p">&amp;</span><span class="c">#8212;- &amp;#8212;&amp;#8212; &amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;- &amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212; &amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;-</span>
 <span class="m">1</span> FE Link Down ОК <span class="p">&amp;</span><span class="c">#8212;</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">show lldp remote_ports</code></pre></figure>
-
-<p>Отображение следующего оборудования на порту (отображает мак адрес во 2й строчке).</p>
-
-<p>Пример вывода: Command: show lldp remote_ports 26</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Port ID : 26
-Remote Entities count : <span class="m">1</span> Entity 1
-Chassis Id Subtype : MACADDRESS
-Chassis Id : 00-1E-58-AE-DC-14
-Port Id Subtype : LOCAL
-Port ID : 1/25
-Port Description : D-Link DES-3028 R2.50 Port 25
-System Name : P1CV186021772-1#B340237#B340238
-System Description : Fast Ethernet Switch
-System Capabilities : Repeater, Bridge,
-Management Address count : 1
-Port PVID : 0
-PPVID Entries count : 0
-VLAN Name Entries count : 0
-Protocol ID Entries count : 0
-MAC/PHY Configuration/Status : <span class="o">(</span>None<span class="o">)</span>
-Power Via MDI : <span class="o">(</span>None<span class="o">)</span>
-Link Aggregation : <span class="o">(</span>None<span class="o">)</span>
-Maximum Frame Size : 0
-Unknown TLVs count : 0</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">show address_binding dhcp_snoop binding_entry</code></pre></figure>
-
-<p>Просмотр таблицы dhcp snooping binding</p>
 
 <h3 id="ip-mac-port-binding">IP-MAC-Port Binding</h3>
 
