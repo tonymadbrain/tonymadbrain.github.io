@@ -13,6 +13,8 @@ tags:
   - Switches
 ---
 
+{% include _toc.html %}
+
 <br>
 <img src="https://farm6.staticflickr.com/5273/30061537776_ff4a44f50c_o.png">
 <br>
@@ -179,9 +181,8 @@ show arpentry ipaddress <IP-адрес>
 {% highlight bash %}
 show dhcp_relay
 {% endhighlight %}
-Отображение настроек dhcp_relay на коммутаторе. Обязательно должно быть включено в сегментированном районе, выключено в несегментированном.
+Отображение настроек dhcp_relay на коммутаторе. Обязательно должно быть включено в сегментированном районе, выключено в несегментированном. Пример вывода:
 
-Пример вывода:
 {% highlight bash %}
 Command: show dhcp_relay
 DHCP/BOOTP Relay Status : Enabled &#8212; включена или выключена функция
@@ -208,9 +209,8 @@ show traffic_segmentation <№ порта>
 {% highlight bash %}
 show current\_config access\_profile
 {% endhighlight %}
-Отображение настроек ACL по всем портам (На свичах DES-3028 команда show access_profile) .
+Отображение настроек ACL по всем портам (На свичах DES-3028 команда show access_profile). Пример вывода:
 
-Пример вывода:
 {% highlight bash %}
 config access\_profile profile\_id 150 add access\_id 24 ip destination\_ip 0.0.0.0 port 24 deny (150 &#8212; номер правила, далее указывается, что блокируется этим правилом, порт на который действует данное правило, состояние правила deny &#8212; запрещено, permit &#8212; разрешено)
 {% endhighlight %}
@@ -219,6 +219,42 @@ config access\_profile profile\_id 150 add access\_id 24 ip destination\_ip 0.0.
 show vlan
 {% endhighlight %}
 Отображение настроек Vlan на коммутаторе.
+
+{% highlight bash %}
+show lldp remote_ports
+{% endhighlight %}
+Отображение следующего оборудования на порту (отображает мак адрес во 2й строчке). Пример вывода: `Command: show lldp remote_ports 26`
+
+{% highlight bash %}
+Port ID : 26
+Remote Entities count : 1 Entity 1
+Chassis Id Subtype : MACADDRESS
+Chassis Id : 00-1E-58-AE-DC-14
+Port Id Subtype : LOCAL
+Port ID : 1/25
+Port Description : D-Link DES-3028 R2.50 Port 25
+System Name : P1CV186021772-1#B340237#B340238
+System Description : Fast Ethernet Switch
+System Capabilities : Repeater, Bridge,
+Management Address count : 1
+Port PVID : 0
+PPVID Entries count : 0
+VLAN Name Entries count : 0
+Protocol ID Entries count : 0
+MAC/PHY Configuration/Status : (None)
+Power Via MDI : (None)
+Link Aggregation : (None)
+Maximum Frame Size : 0
+Unknown TLVs count : 0
+{% endhighlight %}
+
+{% highlight bash %}
+show address_binding dhcp_snoop binding_entry
+{% endhighlight %}
+
+Просмотр таблицы dhcp snooping binding
+
+### Диагностика кабеля
 
 {% highlight bash %}
 cable_diag ports
@@ -286,42 +322,6 @@ Port Type Link Status Test Result Cable Length (M)
 &#8212;- &#8212;&#8212; &#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; &#8212;&#8212;&#8212;&#8212;&#8212;-
 1 FE Link Down ОК &#8212;
 {% endhighlight %}
-
-{% highlight bash %}
-show lldp remote_ports
-{% endhighlight %}
-Отображение следующего оборудования на порту (отображает мак адрес во 2й строчке).
-
-Пример вывода: Command: show lldp remote_ports 26
-
-{% highlight bash %}
-Port ID : 26
-Remote Entities count : 1 Entity 1
-Chassis Id Subtype : MACADDRESS
-Chassis Id : 00-1E-58-AE-DC-14
-Port Id Subtype : LOCAL
-Port ID : 1/25
-Port Description : D-Link DES-3028 R2.50 Port 25
-System Name : P1CV186021772-1#B340237#B340238
-System Description : Fast Ethernet Switch
-System Capabilities : Repeater, Bridge,
-Management Address count : 1
-Port PVID : 0
-PPVID Entries count : 0
-VLAN Name Entries count : 0
-Protocol ID Entries count : 0
-MAC/PHY Configuration/Status : (None)
-Power Via MDI : (None)
-Link Aggregation : (None)
-Maximum Frame Size : 0
-Unknown TLVs count : 0
-{% endhighlight %}
-
-{% highlight bash %}
-show address_binding dhcp_snoop binding_entry
-{% endhighlight %}
-
-Просмотр таблицы dhcp snooping binding
 
 ### IP-MAC-Port Binding
 
