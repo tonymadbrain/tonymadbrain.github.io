@@ -15,11 +15,6 @@ tags:
 
 {% include _toc.html %}
 
-<br>
-<a href="https://isbis.ru/" target="_blank"><img src="https://farm6.staticflickr.com/5273/30061537776_ff4a44f50c_o.png"></a>
-<br>
-<br>
-
 ### Основные команды
 
 {% highlight bash %}
@@ -123,6 +118,11 @@ show error ports <№ порта>
 {% endhighlight %}
 Отображение ошибок передачи пакетов на заданном порту
 
+<br>
+<a href="https://isbis.ru/" target="_blank"><img src="https://farm6.staticflickr.com/5273/30061537776_ff4a44f50c_o.png"></a>
+<br>
+<br>
+
 ### Варианты записей присутствующих в логах коммутатора
 
 {% highlight bash %}
@@ -135,7 +135,7 @@ show error ports <№ порта>
 {% endhighlight %}
 Если в логах коммутатора вы видите записи о том что на всех активных портах одновременно были зафиксированы броадкаст и мультикаст шторм, коммутатор перезагружался.
 
-#### Типы ошибок
+### Типы ошибок
 
 * CRC Error &#8212; ошибки проверки контрольной суммы
 
