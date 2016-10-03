@@ -20,69 +20,104 @@ tags:
 <br>
 <br>
 
-###Команды для свитчей д-линк
+### Основные команды
 
 {% highlight bash %}
 show ports
 {% endhighlight %}
 Показать инфо о портах
+
 {% highlight bash %}
 config ports x state enable
 {% endhighlight %}
 Включить порт
+
 {% highlight bash %}
 config ports x state disable
 {% endhighlight %}
 Выключить порт
+
 {% highlight bash %}
 config bandwidth_control <portlist>
 {% endhighlight %}
 Изменение скорости
+
 {% highlight bash %}
 config vlan default(имя влана) delete xx
 config vlan v996 (имя влана) add untagged xx
 {% endhighlight %}
 Изменение влана
+
 {% highlight bash %}
 show switch
 {% endhighlight %}
-Отображение информации о коммутаторе. Важно: не путать версию прошивки и версию конфига
+Отображение информации о коммутаторе.
+
+> Важно: не путать версию прошивки и версию конфига
+
 {% highlight bash %}
 show log
 {% endhighlight %}
 Просмотр логов коммутатора
+
 {% highlight bash %}
 show ports description
 {% endhighlight %}
 Просмотр описания порта
+
 {% highlight bash %}
 config ports X description
 {% endhighlight %}
 Добавить описание порта
+
 {% highlight bash %}
 show arpentry
 {% endhighlight %}
 Отображает ARP-кэш. В D-Link нет функции поиска IP по заданному MAC&#8217;y, поэтому при необходимости такого поиска приходится выводить весь кэш на экран и искать вручную.
+
+{% highlight bash %}
+show fdb port <№ порта>
+{% endhighlight %}
+Отображение MAC-адресов на заданном порту
+
+{% highlight bash %}
+show fdb mac_address <MAC-адрес>
+{% endhighlight %}
+Отображает принадлежность MAC-адреса порту коммутатора
+
+{% highlight bash %}
+show packet ports <№ порта>
+{% endhighlight %}
+Отображение статистики трафика на порту в реальном времени.
+
+* RX &#8212; пакеты приходящие от клиента
+* TX &#8212; пакеты приходящие к клиенту
+
 {% highlight bash %}
 show utilization cpu
 {% endhighlight %}
 Отображение загрузки центрального процессора, за последние 5 секунд, минуту и 5 минут.
+
 {% highlight bash %}
 show utilization ports
 {% endhighlight %}
 Отображение загрузки портов в PPS (пакеты в секунду)
+
 {% highlight bash %}
 show ipif
 {% endhighlight %}
 Отображение информации по всем сконфигурированным интерфейсам на данном свитче.
+
 {% highlight bash %}
 show iproute
 {% endhighlight %}
 Отображение таблицы маршрутизации свитча
+
 {% highlight bash %}
 sh fdb
 {% endhighlight %}
 Отображение всех сконфигурированных интерфейсов свитча и MAC-адреса подключенных к ним устройств.
+
 {% highlight bash %}
 show error ports <№ порта>
 {% endhighlight %}
@@ -100,7 +135,7 @@ show error ports <№ порта>
 {% endhighlight %}
 Если в логах коммутатора вы видите записи о том что на всех активных портах одновременно были зафиксированы броадкаст и мультикаст шторм, коммутатор перезагружался.
 
-#### Типы ошибок:
+#### Типы ошибок
 
 * CRC Error &#8212; ошибки проверки контрольной суммы
 
@@ -127,21 +162,7 @@ show error ports <№ порта>
 
 * Single Collision &#8212; единичная коллизия
 
-{% highlight bash %}
-show fdb port <№ порта>
-{% endhighlight %}
-Отображение MAC-адресов на заданном порту
-{% highlight bash %}
-show fdb mac_address <MAC-адрес>
-{% endhighlight %}
-Отображает принадлежность MAC-адреса порту коммутатора
-{% highlight bash %}
-show packet ports <№ порта>
-{% endhighlight %}
-Отображение статистики трафика на порту в реальном времени.
-
-* RX &#8212; пакеты приходящие от клиента
-* TX &#8212; пакеты приходящие к клиенту
+### Дополнительные команды
 
 {% highlight bash %}
 show traffic control
@@ -223,9 +244,10 @@ show vlan
 {% highlight bash %}
 show lldp remote_ports
 {% endhighlight %}
-Отображение следующего оборудования на порту (отображает мак адрес во 2й строчке). Пример вывода: `Command: show lldp remote_ports 26`
+Отображение следующего оборудования на порту (отображает мак адрес во 2й строчке). Пример вывода:
 
 {% highlight bash %}
+Command: show lldp remote_ports 26
 Port ID : 26
 Remote Entities count : 1 Entity 1
 Chassis Id Subtype : MACADDRESS
