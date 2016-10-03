@@ -14,7 +14,7 @@ tags:
 ---
 
 <br>
-<img src="https://farm6.staticflickr.com/5020/29468335333_762a44ba19_o.png">
+<img src="https://farm6.staticflickr.com/5273/30061537776_ff4a44f50c_o.png">
 <br>
 <br>
 
