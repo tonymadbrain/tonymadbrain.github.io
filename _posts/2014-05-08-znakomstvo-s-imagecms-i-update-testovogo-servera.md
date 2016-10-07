@@ -6,7 +6,7 @@ redirect_from: /znakomstvo-s-imagecms-i-update-testovogo-servera/
 excerpt: ""
 tags:
   - CentOS
-  - CMS
+  - Cms
   - E-commerce
   - Imagecms
   - Nginx

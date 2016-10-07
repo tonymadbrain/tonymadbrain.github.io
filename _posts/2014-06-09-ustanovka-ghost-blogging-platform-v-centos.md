@@ -11,6 +11,7 @@ tags:
   - Ghost
   - Linux
   - Centos
+  - Cms
 ---
 
 {% include _toc.html %}
