@@ -219,11 +219,11 @@ webpack/
   <li>Запуск web сервера на основании <code>Procfile</code> или <a href="https://github.com/heroku/heroku-buildpack-ruby/blob/v146/lib/language_pack/rack.rb#L27" target="_blank">веб сервера по умолчанию</a></li>
 </ol>
 
-<p>Таким же образом Heroku выполняет шаги для Node.js приложений, основываясь на наличии файла <code>package.json</code> в корневой директории. Итак, чтоже делать если нам нужна сборка и Ruby и Node.js одновременно? Нужно чтобы и <code>Gemfile</code>, и <code>package.json</code> присутствовали в корневой директории. Это <strong>шаг №1</strong>.</p>
+<p>Таким же образом Heroku выполняет шаги для Node.js приложений, основываясь на наличии файла <code>package.json</code> в корневой директории. Итак, что же делать если нам нужна сборка и Ruby и Node.js одновременно? Нужно чтобы и <code>Gemfile</code>, и <code>package.json</code> присутствовали в корневой директории. Это <strong>шаг №1</strong>.</p>
 
 <h3 id="heroku-1">Множественные билдпаки Heroku</h3>
 
-<p>Heroku поддерживает <a href="https://devcenter.heroku.com/articles/using-multiple-buildpacks-for-an-app" target="_blank">множественные билдпаки</a> для одного приложения. Если у нас Node.js и Ruby билдпаки, то нужен способ указать Heroku, что сначала нужно выполнить сборку для npm и только потом запускать сборку Ruby. Это нужно для того, чтобы файл <code>react_bundle.js</code> был на своем месте в <code>app/assets/javascripts</code> до того как запустится сборка assets в Rails. Командная строка Heroku дает нам способ задавать билдпаки и указвать порядок в котором они должны запускатьс:</p>
+<p>Heroku поддерживает <a href="https://devcenter.heroku.com/articles/using-multiple-buildpacks-for-an-app" target="_blank">множественные билдпаки</a> для одного приложения. Если у нас Node.js и Ruby билдпаки, то нужен способ указать Heroku, что сначала нужно выполнить сборку для npm и только потом запускать сборку Ruby. Это нужно для того, чтобы файл <code>react_bundle.js</code> был на своем месте в <code>app/assets/javascripts</code> до того как запустится сборка assets в Rails. Командная строка Heroku дает нам способ задавать билдпаки и указывать порядок в котором они должны запускаться:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku buildpacks:clear
 heroku buildpacks:set heroku/nodejs
