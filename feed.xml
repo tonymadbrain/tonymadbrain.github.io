@@ -4,13 +4,31 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2016-10-15T11:22:17+03:00</updated>
+<updated>2016-10-17T14:29:42+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Поход в российску государственную библиотеку]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/russian_state_library/" />
+  <id>http://doam.ru/russian_state_library</id>
+  <published>2016-10-17T13:51:16+03:00</published>
+  <updated>2016-10-17T13:51:16+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Добрались мы тут наконец до “Ленинки”. Пока оформляли читательский пришлось еще помочь с оформлением паре иностранных студентов, а потом оказалось что в библиотеке кроме тетеньки в кабинке в которой собственно и оформляется билет, никто больше не говорит на английском. Вообще сервис и персонал...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/russian_state_library/&quot;&gt;Поход в российску государственную библиотеку&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 17, 2016.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -209,24 +227,6 @@
   <content type="html">
     &lt;p&gt;В качестве вступления: сейчас я работаю в проекте &lt;a href=&quot;http://imhonet.ru/&quot; target=&quot;_blank&quot;&gt;imhonet&lt;/a&gt; - это технически сложная система, у которой под капотом математический рекомендательный движок, а прикрыто все веб-мордой на PHP. К слову, сейчас команда активно переписывает фронтенд на ...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/hubot_script_for_developerslife_ru/&quot;&gt;Hubot скрипт для developerslife.ru&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on February 04, 2016.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[React.js - tutorial для Rails разработчиков (часть 1)]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru/react_js_for_rails_developers_part_1/" />
-  <id>http://doam.ru/react-js-for-rails-developers</id>
-  <published>2016-01-15T08:53:14+03:00</published>
-  <updated>2016-01-15T08:53:14+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri>http://doam.ru</uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;React.js это новый популярный игрок из команды “Фреймворки JavaScript”, и он отличается своей простотой. Там где другие фреймворки реализуют полноценный MVC, можно сказать что React реализует только V (причем многие заменяют V в своих фреймворках на React). Приложения на React строятся на двух...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru/react_js_for_rails_developers_part_1/&quot;&gt;React.js - tutorial для Rails разработчиков (часть 1)&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on January 15, 2016.&lt;/p&gt;
   </content>
 </entry>
 

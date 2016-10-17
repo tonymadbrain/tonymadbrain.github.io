@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://doam.ru/russian_state_library/</loc>
+    <lastmod>2016-10-17T13:51:16+03:00</lastmod>
+  </url>
+  <url>
     <loc>http://doam.ru/rails-webpack-heroku/</loc>
     <lastmod>2016-10-08T23:35:17+03:00</lastmod>
   </url>
@@ -727,6 +731,12 @@
   <url>
     <loc>http://doam.ru/tag/webpack/</loc>
   </url>
+  <url>
+    <loc>http://doam.ru/tag/publiclibrary/</loc>
+  </url>
+  <url>
+    <loc>http://doam.ru/tag/russiastatelibrary/</loc>
+  </url>
     <url>
       <loc>http://doam.ru/tron_1982_i_and_tron_legacy-then_and_now/</loc>
     </url>
@@ -945,6 +955,9 @@
     </url>
     <url>
       <loc>http://doam.ru/rails-webpack-heroku/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/russian_state_library/</loc>
     </url>
   <url>
     <loc>http://doam.ru/rormatrix/index.html</loc>
