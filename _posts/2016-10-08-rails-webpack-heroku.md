@@ -2,6 +2,7 @@
 layout: post
 title: Деплоим Rails + Webpack приложение на Heroku
 excerpt: ""
+permalink: /rails-webpack-heroku/
 tags:
   - Rails
   - Heroku
