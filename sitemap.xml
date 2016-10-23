@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://doam.ru/small_notes_from_redmine/</loc>
+    <lastmod>2016-10-23T14:45:37+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://doam.ru/upload_proxmox_backups_to_yandex_disk/</loc>
+    <lastmod>2016-10-23T14:05:30+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/</loc>
+    <lastmod>2016-10-23T13:19:26+03:00</lastmod>
+  </url>
+  <url>
     <loc>http://doam.ru/russian_state_library/</loc>
     <lastmod>2016-10-17T13:51:16+03:00</lastmod>
   </url>
@@ -737,6 +749,15 @@
   <url>
     <loc>http://doam.ru/tag/russiastatelibrary/</loc>
   </url>
+  <url>
+    <loc>http://doam.ru/tag/zabbix/</loc>
+  </url>
+  <url>
+    <loc>http://doam.ru/tag/openvz/</loc>
+  </url>
+  <url>
+    <loc>http://doam.ru/tag/yandexdisk/</loc>
+  </url>
     <url>
       <loc>http://doam.ru/tron_1982_i_and_tron_legacy-then_and_now/</loc>
     </url>
@@ -958,6 +979,15 @@
     </url>
     <url>
       <loc>http://doam.ru/russian_state_library/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/upload_proxmox_backups_to_yandex_disk/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/small_notes_from_redmine/</loc>
     </url>
   <url>
     <loc>http://doam.ru/rormatrix/index.html</loc>
