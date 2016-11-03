@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://doam.ru/deploying-ssl-private-keys-with-ansible/</loc>
+    <lastmod>2016-11-03T10:49:52+03:00</lastmod>
+  </url>
+  <url>
     <loc>http://doam.ru/small_notes_from_redmine/</loc>
     <lastmod>2016-10-23T14:45:37+03:00</lastmod>
   </url>
@@ -758,6 +762,9 @@
   <url>
     <loc>http://doam.ru/tag/yandexdisk/</loc>
   </url>
+  <url>
+    <loc>http://doam.ru/tag/ansible/</loc>
+  </url>
     <url>
       <loc>http://doam.ru/tron_1982_i_and_tron_legacy-then_and_now/</loc>
     </url>
@@ -988,6 +995,9 @@
     </url>
     <url>
       <loc>http://doam.ru/small_notes_from_redmine/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/deploying-ssl-private-keys-with-ansible/</loc>
     </url>
   <url>
     <loc>http://doam.ru/rormatrix/index.html</loc>
