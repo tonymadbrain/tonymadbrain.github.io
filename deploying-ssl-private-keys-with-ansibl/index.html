@@ -1,0 +1,410 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Деплой приватных SSL ключей с помощью Ansible &#8211; Diary of madman</title>
+<meta name="description" content="">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Ansible, Tutorial">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Деплой приватных SSL ключей с помощью Ansible">
+<meta name="twitter:description" content="">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Деплой приватных SSL ключей с помощью Ansible">
+<meta property="og:description" content="">
+<meta property="og:url" content="http://localhost:4000/deploying-ssl-private-keys-with-ansibl/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/deploying-ssl-private-keys-with-ansibl/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXNSQJ');</script>
+<!-- End Google Tag Manager -->
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://localhost:4000/tags/" >Теги</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://localhost:4000/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://localhost:4000/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/deploying-ssl-private-keys-with-ansibl/" rel="bookmark" title="Деплой приватных SSL ключей с помощью Ansible">Деплой приватных SSL ключей с помощью Ansible</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p><br />
+<img src="https://farm6.staticflickr.com/5488/30713598396_b204277003_o.png" />
+<br />
+<br /></p>
+
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">Проблема с приватными ключами</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">Вариант 1: Проверять права на файлы</a></li>
+  <li><a href="#ansible--" id="markdown-toc-ansible--">Вариант 2: Копирование сертификатов с помощью Ansible по требованию</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">Вариант 3: Деплой сертификатов после запроса переменных</a></li>
+  <li><a href="#ansible-play" id="markdown-toc-ansible-play">Вариант 4: Деплой сертификатов с помощью Ansible play</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">Заключение</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p>Когда используете систему для управления конфигурацией как Ansible или любую другую, рано или поздно вы столкнетесь с доставкой/выкладкой/деплоем приватных ключей SSL. Деплой публичных SSL cертификатов не является проблемой безопасности, тогда как выкладка приватных ключей очень критичный момент.</p>
+
+<blockquote>
+  <p>От переводчика: <a href="https://blog.confirm.ch/deploying-ssl-private-keys-with-ansible/" target="_blank">Оригинал статьи</a>. В моем случае была задача раскладывать по агентам приватные SSH ключи, чтобы они могли “ходить” в git репозиторий.</p>
+</blockquote>
+
+<h3 id="section">Проблема с приватными ключами</h3>
+
+<p>Слово <em>приватный</em> уже говорит о многом, потому что приватные ключи должны оставаться приватными в любом случае. Но если ваше рабочее окружение содержит много инструментов автоматизации и управления конфигурацией, вы можете задаться вопросом:</p>
+
+<blockquote>
+  <p>Как я могу деплоить и конфигурировать зашифрованное с помощью SSL приложение автоматически?</p>
+</blockquote>
+
+<p>К счастью в Ansible есть несколько вариантов для этого.</p>
+
+<h3 id="section-1">Вариант 1: Проверять права на файлы</h3>
+
+<p>Наиболее простой вариант это пропустить сам процесс доставки сертификатов и просто проверять что файлы находятся на своих местах и права на доступ корректные:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># tasks/main.yml</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">make sure SSL certificate is existing and secured</span>
+  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">state</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">file</span>
+    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span>   <span class="s">&#39;&#39;</span>
+    <span class="l-Scalar-Plain">owner</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">root</span>
+    <span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">root</span>
+    <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span>   <span class="s">&#39;&#39;</span>
+  <span class="l-Scalar-Plain">with_items</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/path/to/my/cert.pem</span>
+      <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span> <span class="s">&#39;0644&#39;</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/path/to/my/key.pem</span>
+      <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span> <span class="s">&#39;0600&#39;</span></code></pre></figure>
+
+<p>Вы увидите сообщение об ошибке во время деплоя вашего приложения если сертификат не установлен. Конечно же Ansible поправит права доступа в том случае, если вы установили сертификат вручную но забыли выставить права. К сожалению, сертификаты в этом случае придется устанавливать вручную.</p>
+
+<h3 id="ansible--">Вариант 2: Копирование сертификатов с помощью Ansible по требованию</h3>
+
+<p>Может очень раздражать тот факт, что у вас деплой на сервера и все задачи автоматизированы, кроме долбанных сертификатов. Так что есть обходной путь, с задачей (task) “по требованию” в Ansible:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Copy certificate</span>
+<span class="nv">$ </span>ansible -m copy -a <span class="s2">&quot;src=certificate.pem dest=/path/to/my/certificate.pem owner=root group=root mode=0644&quot;</span> webservers
+
+<span class="c"># Copy private key</span>
+<span class="nv">$ </span>ansible -m copy -a <span class="s2">&quot;src=key.pem dest=/path/to/my/key.pem owner=root group=root mode=0600&quot;</span> webservers</code></pre></figure>
+
+<p>Используя выше указанные команды вы просто копируете ваши сертификаты и приватный ключ на все необходимые вебсерверы. В зависимости от вашей конфигурации Ansible вам могут потребоваться ключи <code>-i</code>(inventory) и <code>-s</code>(sudo).</p>
+
+<blockquote>
+  <p>От переводчика: в новых версиях Ansible нужно использовать флаг <code>--become</code> вместо <code>-s</code></p>
+</blockquote>
+
+<p>К сожалению, вы все еще должны копировать сертификаты на вашу Ansible ноду и выполнять указанные выше команды вручную перед тем как запускать деплой приложения. А после деплоя нужно быть уверенным что вы удалили сертификаты с управляющей машины или хотя бы устанавливать корректные права доступа, чтобы только авторизированные пользователи могли читать их.</p>
+
+<h3 id="section-2">Вариант 3: Деплой сертификатов после запроса переменных</h3>
+
+<p>Тем временем, есть альтернативный способ, который смешивает два предыдущих. Вы все еще используете задачу из <a href="#section-1">варианта 1</a>, но вместо модуля <code>file</code> используете модуль <code>copy</code> из <a href="#ansible--">варианта 2</a>. Тогда вместо указания постоянного <code>src</code> будут использоваться переменные:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># tasks/main.yml</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">make sure SSL certificate is existing and secured</span>
+  <span class="l-Scalar-Plain">copy</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">src</span><span class="p-Indicator">:</span>    <span class="s">&#39;&#39;</span>
+    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span>   <span class="s">&#39;&#39;</span>
+    <span class="l-Scalar-Plain">owner</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">root</span>
+    <span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">root</span>
+    <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span>   <span class="s">&#39;&#39;</span>
+  <span class="l-Scalar-Plain">with_items</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">src</span><span class="p-Indicator">:</span>  <span class="s">&#39;&#39;</span>
+      <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/path/to/my/cert.pem</span>
+      <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span> <span class="s">&#39;0644&#39;</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">src</span><span class="p-Indicator">:</span>  <span class="s">&#39;&#39;</span>
+      <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/path/to/my/key.pem</span>
+      <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span> <span class="s">&#39;0600&#39;</span></code></pre></figure>
+
+<p>Затем, спрашиваем у пользователя ввод путей сертификатов и приватного ключа в плейбуке.</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># play.yml</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">hosts</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">roles</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">my_app</span>
+  <span class="l-Scalar-Plain">vars_prompt</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">ssl_certificate</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Enter path to SSL certificate</span>
+    <span class="l-Scalar-Plain">ssl_private_key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Enter path to SSL private key</span></code></pre></figure>
+
+<p>Это довольно безопасный вариант при условии что вы удаляете сертфикаты с управляющей ноды после деплоя. Однако он не полностью автоматизирован, потому что необходим ввод параметров от пользователя.</p>
+
+<h3 id="ansible-play">Вариант 4: Деплой сертификатов с помощью Ansible play</h3>
+
+<p>Конечно же автоматизированный деплой доступов или приватных ключей очень крутая штука, хотя безопасность очень важна. Вы не должны даже думать о том чтобы хранить эти данные в <u>незащищенном</u> виде в вашем SCM репозитории, как это делают <a href="http://www.securityweek.com/github-search-makes-easy-discovery-encryption-keys-passwords-source-code" target="_blank">некоторые</a>. Просто не думайте об этом - не делайте этого - никогда - серьезно!</p>
+
+<p>В Ansible вы можете деплоить сертификаты и приватные ключи автоматически и при этом хранить их в репозитории. Но, как было сказано ранее, не стоит хранить их незащищенными! Ansible внедрил <a href="http://docs.ansible.com/ansible/playbooks_vault.html" target="_blank">Vault</a> в версии 1.5, который добавляет функционал для сохранения вашей секретной информации приватной. Ваулты (Vaults) это как файлы переменных только зашифрованные.</p>
+
+<p>В начале создайте новый ваулт или отредактируйте существующий:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Create a new vault</span>
+<span class="nv">$ </span>ansible-vault create certificate.yml
+
+<span class="c"># Edit an existing vault</span>
+<span class="nv">$ </span>ansible-vault edit certificate.yml</code></pre></figure>
+
+<p>Теперь добавьте секретные ключи или сертификаты как переменные:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># certificate.yml</span>
+<span class="nn">---</span>
+<span class="l-Scalar-Plain">ssl_certificate</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+  <span class="no">-----BEGIN CERTIFICATE-----</span>
+  <span class="no">...</span>
+  <span class="no">-----END CERTIFICATE-----</span>
+
+<span class="l-Scalar-Plain">ssl_private_key</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+  <span class="no">-----BEGIN PRIVATE KEY-----</span>
+  <span class="no">...</span>
+  <span class="no">-----END PRIVATE KEY-----</span></code></pre></figure>
+
+<p>Убедитесь что ваулт загружен, либо через <code>vars_files</code> директиву в плейбуке, либо через <code>include_vars</code> стейт в role/tasks:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># play.yml</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">hosts</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">roles</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">my_app</span>
+  <span class="l-Scalar-Plain">vars_files</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">vars/certificate.yml</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># tasks/main.yml</span>
+
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">include_vars</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">certificate.yml</span></code></pre></figure>
+
+<p>Установим сертификат и приватный ключ с помощью модуля <code>copy</code>:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># tasks/main.yml</span>
+<span class="nn">---</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">make sure SSL certificate is installed</span>
+  <span class="l-Scalar-Plain">copy</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">content</span><span class="p-Indicator">:</span> <span class="s">&#39;&#39;</span>
+    <span class="l-Scalar-Plain">dest</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/path/to/my/cert.pem</span>
+    <span class="l-Scalar-Plain">owner</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">root</span>
+    <span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">root</span>
+    <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0644</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">make sure SSL private key is installed</span>
+  <span class="l-Scalar-Plain">copy</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">content</span><span class="p-Indicator">:</span> <span class="s">&#39;&#39;</span>
+    <span class="l-Scalar-Plain">dest</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/path/to/my/key.pem</span>
+    <span class="l-Scalar-Plain">owner</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">root</span>
+    <span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">root</span>
+    <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0600</span>
+  <span class="l-Scalar-Plain">no_log</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span></code></pre></figure>
+
+<p>Теперь, при запуске команды <code>ansible-playbook</code> вы должны добавить ключ <code>--ask-vault-pass</code> или <code>--vault-password-file FILE</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ansible-playbook play.yml --ask-vault-pass</code></pre></figure>
+
+<p>Таким образом вы можете деплоить ваши сертификаты внутри плейбука. В файлах переменных круто то, что они могут храниться где угодно, так что вы не обязаны хранить все все Ansibel SCM репозитории. Конечно, если вам необходимо иметь портативную (portable) версию Ansible, можете хранить ваулты в репозитории или любой другой расшаренной системе хранения. Но если вы используете только одну управляющую ноду, легче хранить ваулты вне репозитория.</p>
+
+<h3 id="section-3">Заключение</h3>
+
+<p>Самый безопасный способ хранить ваши ключи действительно приватными это варианты 1, 2 и 3, тогда как это может быть очень нудным и раздражающим.</p>
+
+<p>Если вы ищете способ деплоить секретную информацию как приватные ключи через Ansible автоматически, вам нужен вариант 4. Вы должны будете хранить данные в Ansible SCM репозитории, но по крайней мере они будут зашифрованы.</p>
+
+
+      
+        <a href="/tag/ansible">#Ansible</a>
+      
+        <a href="/tag/tutorial">#Tutorial</a>
+      
+        <!-- <a href="/tag/ansible/" rel="tag">Ansible</a>, <a href="/tag/tutorial/" rel="tag">Tutorial</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Деплой приватных SSL ключей с помощью Ansible %23doamru http://doam.ru/deploying-ssl-private-keys-with-ansibl/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/deploying-ssl-private-keys-with-ansibl/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/deploying-ssl-private-keys-with-ansibl/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/deploying-ssl-private-keys-with-ansibl/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+
+        <p class="byline"><strong>Деплой приватных SSL ключей с помощью Ansible</strong> опубликовано <time datetime="2016-11-03T10:49:52+03:00">03 November, 2016</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://localhost:4000">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://localhost:4000/small_notes_from_redmine/" title="Мелкие заметки из redmine">Мелкие заметки из redmine</a></li>
+    
+      <li><a href="http://localhost:4000/upload_proxmox_backups_to_yandex_disk/" title="Загрузка резервных копий OpenVZ из Proxmox в Yandex.Disk">Загрузка резервных копий OpenVZ из Proxmox в Yandex.Disk</a></li>
+    
+      <li><a href="http://localhost:4000/how_to_install_zabbix_2_on_centos_6_lemp_stack/" title="Установка Zabbix 2.2 на CentOS 6.5 + LEMP">Установка Zabbix 2.2 на CentOS 6.5 + LEMP</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    <a href="#" class="go-top">Go Top</a>
+
+
+<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>
