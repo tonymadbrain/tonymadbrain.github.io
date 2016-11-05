@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Деплой приватных SSL ключей с помощью Ansible
+permalink: /deploying_ssl_private_keys_with_ansible/
+redirect_from: /deploying-ssl-private-keys-with-ansible/
 excerpt: ""
 tags:
   - Ansible

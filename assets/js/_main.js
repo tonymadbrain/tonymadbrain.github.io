@@ -10,7 +10,7 @@ var changeClass = function (r,className1,className2) {
     r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
     }
     return r.className;
-};  
+};
 //  Creating our button in JS for smaller screens
 var menuElements = document.getElementById('site-nav');
 menuElements.insertAdjacentHTML('afterBegin','<button type="button" role="button" id="menutoggle" class="navtoogle navicon-lines-button x" aria-hidden="true"><span class="navicon-lines"></span>menu</button>');
@@ -60,8 +60,55 @@ $(document).ready(function() {
       tError: '<a href="%url%">Image #%curr%</a> could not be loaded.',
     },
     removalDelay: 300, // Delay in milliseconds before popup is removed
-    // Class that is added to body when popup is open. 
+    // Class that is added to body when popup is open.
     // make it unique to apply your CSS animations just to this exact popup
     mainClass: 'mfp-fade'
   });
+  // Show or hide the sticky footer button
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 200) {
+      $('.go-top').fadeIn(200);
+    } else {
+      $('.go-top').fadeOut(200);
+    }
+  });
+
+  // Animate the scroll to top
+  $('.go-top').click(function(event) {
+    event.preventDefault();
+
+    $('html, body').animate({scrollTop: 0}, 300);
+  });
+
+  $('.sticky').Stickyfill();
+
+  // $(window).resize(function(){
+  //   var windowWidth = $(window).width();
+  //   if(windowWidth > 992)$(".colum1 p").addClass("wow slideInLeft");
+  //   else $(".colum1 p").removeClass("wow slideInLeft");
+  // });
+
+  // var stickySideBar = function(){
+  //   var show = $(".author__urls-wrapper button").length === 0 ? $(window).width() > 1024 : !$(".author__urls-wrapper button").is(":visible");
+  //   // console.log("has button: " + $(".author__urls-wrapper button").length === 0);
+  //   // console.log("Window Width: " + windowWidth);
+  //   // console.log("show: " + show);
+  //   //old code was if($(window).width() > 1024)
+  //   if (show) {
+  //     // fix
+  //     Stickyfill.rebuild();
+  //     Stickyfill.init();
+  //     $(".author__urls").show();
+  //   } else {
+  //     // unfix
+  //     Stickyfill.stop();
+  //     $(".author__urls").hide();
+  //   }
+  // };
+
+  // stickySideBar();
+
+  // $(window).resize(function(){
+  //   stickySideBar();
+  // });
 });

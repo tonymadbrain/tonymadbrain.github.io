@@ -2,22 +2,22 @@
    Site wide styles
    ========================================================================== */
 
-/* 
+/*
    Selection
    ========================================================================== */
 
-::-moz-selection { 
-	background-color: lighten($basecolor, 65%); 
-	color: $basecolor; 
-	text-shadow: none; 
-}  	
-::selection { 
-	background-color: lighten($basecolor, 65%); 
-	color: $basecolor; 
-	text-shadow: none; 
+::-moz-selection {
+	background-color: lighten($basecolor, 65%);
+	color: $basecolor;
+	text-shadow: none;
+}
+::selection {
+	background-color: lighten($basecolor, 65%);
+	color: $basecolor;
+	text-shadow: none;
 }
 
-/* 
+/*
    Global classes
    ========================================================================== */
 
@@ -63,7 +63,7 @@
 	}
 }
 
-/* 
+/*
    Global transition
    ========================================================================== */
 
@@ -74,3 +74,53 @@ b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a 
 /* tag cloud */
 
 /* end tag cloud */
+
+/* Button go top */
+.go-top {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  padding: 1em;
+  display: none;
+}
+
+.go-top:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+/* End button go top */
+
+/* Stickem */
+.stickem-container {
+  position: relative;
+}
+
+.stickit {
+    margin-left: 660px;
+    position: fixed;
+    top: 0;
+}
+
+.stickit-end {
+    bottom: 40px;
+    position: absolute;
+    right: 0;
+}
+/* End stickem */
+
+/* Stickyfill */
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 25px;
+}
+
+.sticky:before,
+.sticky:after {
+    content: '';
+    display: table;
+}
+/* End stickyfill*/
