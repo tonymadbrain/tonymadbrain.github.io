@@ -460,6 +460,7 @@ $button-size: 1.5rem;
 		top: 5.5em;
 		right: 0;
 		background-color: $white;
+		position: fixed;
 	}
 	header {
 		background: lighten($black, 10);
