@@ -5,6 +5,7 @@ permalink: /closing_the_2016_cycling_season/
 excerpt: "Хотел опубликовать пост еще 1 ноября."
 tags:
   - Root
+  - Bicycle
 date: 2016-11-13T13:59:07+03:00
 ---
 
