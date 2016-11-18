@@ -89,7 +89,8 @@ b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a 
 }
 
 .go-top:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: black;
+  color: white;
 }
 /* End button go top */
 
@@ -106,3 +107,9 @@ b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a 
     display: table;
 }
 /* End stickyfill*/
+
+/* Subscribe-form */
+.mailerlite-subscribe-form {
+  margin-top: 2em;
+}
+/* End subscribe-form */
