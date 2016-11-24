@@ -294,7 +294,7 @@ ping.path <span class="o">=</span> /ping</code></pre></figure>
   <li>Установить пользователя <code>chown -R zabbix:zabbix fcgi</code></li>
 </ol>
 
-<p>Также для работы скрипта должна быть установлена программа <code>cgi-fcgi</code> в debian пакет для установки называется <code>fcgiwrap</code>.</p>
+<p>Также для работы скрипта должна быть установлена программа <code>cgi-fcgi</code> в Debian пакет для установки называется <code>fcgiwrap</code>.</p>
 
 <h3 id="section">Шаблон</h3>
 
@@ -304,7 +304,7 @@ ping.path <span class="o">=</span> /ping</code></pre></figure>
 
 <h2 id="section-1">Заключение</h2>
 
-<p>Таким образом я решил задачу мониторинга необходимых нам параметров, но эту реализация считаю недостаточной. В дальнейшем хочу переписать его на <a href="https://golang.org/" target="_blank">golang</a> c использованием вот <a href="https://github.com/tomasen/fcgi_client" target="_blank">этой библиотеки</a>. Так как это внешняя проверка она должна работать быстро, а <code>bash</code> не подходит по этому параметру.</p>
+<p>Таким образом я решил задачу мониторинга необходимых нам параметров, но эту реализация считаю недостаточной. В дальнейшем хочу переписать его на <a href="https://golang.org/" target="_blank">golang</a> c использованием вот <a href="https://github.com/tomasen/fcgi_client" target="_blank">этой библиотеки</a>. Так как это внешняя проверка она должна работать быстро, а <code>bash</code> не подходит по этому параметру. Если у вас есть рекомендации или доработки пишите мне на почту или в Twitter.</p>
 
       
         <a href="/tag/zabbix">#Zabbix</a>
