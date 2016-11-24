@@ -1,0 +1,377 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Мониторинг PHP-FPM через fcgi в Zabbix &#8211; Diary of madman</title>
+<meta name="description" content="">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Zabbix, Php-fpm, SA">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Мониторинг PHP-FPM через fcgi в Zabbix">
+<meta name="twitter:description" content="">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://doam.ru/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Мониторинг PHP-FPM через fcgi в Zabbix">
+<meta property="og:description" content="">
+<meta property="og:url" content="http://doam.ru/fcgi_monitoring_with_zabbix/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="http://doam.ru/fcgi_monitoring_with_zabbix/">
+<link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://doam.ru/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://doam.ru/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://doam.ru/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://doam.ru/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://doam.ru/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://doam.ru/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://doam.ru/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://doam.ru/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXNSQJ');</script>
+<!-- End Google Tag Manager -->
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://doam.ru/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://doam.ru/tags/" >Теги</a></li>
+				
+				    
+				    <li><a href="http://doam.ru/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side sticky">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://doam.ru/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://doam.ru/fcgi_monitoring_with_zabbix/" rel="bookmark" title="Мониторинг PHP-FPM через fcgi в Zabbix">Мониторинг PHP-FPM через fcgi в Zabbix</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>Решил у нас в <a href="http://imhonet.ru" target="_blank">Имхонете</a> сделать мониторинг PHP-FPM, чтобы все было как у нормальных пацанов. Советы в интернете сводятся к тому, чтобы включить статус и проксировать запросы в него через Nginx. Но я считаю, что это как ездить на метро с пересадкой, при условии что пешком дойти ближе и быстрее, поэтому сделал все сам.</p>
+
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#php-fpm" id="markdown-toc-php-fpm">PHP-FPM</a></li>
+  <li><a href="#zabbix" id="markdown-toc-zabbix">Zabbix</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">Шаблон</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-1" id="markdown-toc-section-1">Заключение</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<h2 id="php-fpm">PHP-FPM</h2>
+
+<p>В самом PHP-FPM нам нужно только включить страницу статуса и ответ на пинг запрос. Для этого в конфиг пула (по умолчанию это <code>/etc/php/fpm/pool.d/www.conf</code>) нужно добавить следующие строки:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pm.status_path <span class="o">=</span> /status
+ping.path <span class="o">=</span> /ping</code></pre></figure>
+
+<p>И перезагрузить демон:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>/etc/init.d/php-fpm restart</code></pre></figure>
+
+<h2 id="zabbix">Zabbix</h2>
+<p>### Cкрипт</p>
+
+<p>Первую реализацию я написал на Bash, сначала напишу его разбор а потом приведу целиком.</p>
+
+<p>Первой строкой указываем чем необходимо выполнять скрипт:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span></code></pre></figure>
+
+<p>Записываем в переменную подсказку по использованию скрипта:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">help</span><span class="o">=</span><span class="s2">&quot;Usage: fcgi &lt;ip or dns for check&gt; &lt;port&gt; &lt;check type, maybe ping or status&gt; &lt;parameter, only for status&gt;\nExample: fcgi 127.0.0.1 3000 ping&quot;</span></code></pre></figure>
+
+<p>В скрипте есть три функции <code>ping</code> - для простой проверки, <code>status</code> - для получения пар параметр:значение и <code>status_clear</code> - для получения статуса без парсинга:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">function</span> ping <span class="o">{</span>
+  <span class="nv">SCRIPT_NAME</span><span class="o">=</span>/ping <span class="nv">SCRIPT_FILENAME</span><span class="o">=</span>/ping <span class="nv">REQUEST_METHOD</span><span class="o">=</span>GET cgi-fcgi -bind -connect <span class="nv">$address</span>:<span class="nv">$port</span>
+<span class="o">}</span>
+
+<span class="k">function</span> status <span class="o">{</span>
+  <span class="nv">SCRIPT_NAME</span><span class="o">=</span>/status <span class="nv">SCRIPT_FILENAME</span><span class="o">=</span>/status <span class="nv">REQUEST_METHOD</span><span class="o">=</span>GET cgi-fcgi -bind -connect <span class="nv">$address</span>:<span class="nv">$port</span> <span class="p">|</span> sed -n <span class="s2">&quot;$1p;$1q&quot;</span> <span class="p">|</span> awk -F: <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/^[ \t]*//;s/[ \t]*$//&#39;</span>
+<span class="o">}</span>
+
+<span class="k">function</span> status_clear <span class="o">{</span>
+  <span class="nv">SCRIPT_NAME</span><span class="o">=</span>/status <span class="nv">SCRIPT_FILENAME</span><span class="o">=</span>/status <span class="nv">REQUEST_METHOD</span><span class="o">=</span>GET cgi-fcgi -bind -connect <span class="nv">$address</span>:<span class="nv">$port</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>После объявления функций сетим переменные:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">address</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">port</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nv">parameter</span><span class="o">=</span><span class="nv">$4</span></code></pre></figure>
+
+<p>Ну и дальше основная обработка, в зависимости от типа проверки и параметров вызываются функции и каким-либо образом обрабатываются:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">case</span> <span class="s2">&quot;$3&quot;</span> in
+  <span class="s2">&quot;ping&quot;</span> <span class="o">)</span>
+    ping <span class="p">|</span> tail -n1
+  <span class="p">;;</span>
+  <span class="s2">&quot;status&quot;</span> <span class="o">)</span>
+    <span class="k">case</span> <span class="s2">&quot;$parameter&quot;</span> in
+      <span class="s2">&quot;pool&quot;</span> <span class="o">)</span>
+        status_clear <span class="p">|</span> sed -n <span class="s1">&#39;6p;6q&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span>
+      <span class="p">;;</span>
+      <span class="s2">&quot;version&quot;</span> <span class="o">)</span>
+        status_clear <span class="p">|</span> sed -n <span class="s1">&#39;1p;1q&#39;</span> <span class="p">|</span> awk -F/ <span class="s1">&#39;{print $2}&#39;</span>
+      <span class="p">;;</span>
+      <span class="s2">&quot;process_manager&quot;</span> <span class="o">)</span>
+        status 7
+      <span class="p">;;</span>
+      <span class="s2">&quot;accepted_conn&quot;</span> <span class="o">)</span>
+        status 10
+      <span class="p">;;</span>
+      <span class="s2">&quot;listen_queue&quot;</span> <span class="o">)</span>
+        status 11
+      <span class="p">;;</span>
+      <span class="s2">&quot;max_listen_queue&quot;</span> <span class="o">)</span>
+        status 12
+      <span class="p">;;</span>
+      <span class="s2">&quot;listen_queue_len&quot;</span> <span class="o">)</span>
+        status 13
+      <span class="p">;;</span>
+      <span class="s2">&quot;idle_processes&quot;</span> <span class="o">)</span>
+        status 14
+      <span class="p">;;</span>
+      <span class="s2">&quot;active_processes&quot;</span> <span class="o">)</span>
+        status 15
+      <span class="p">;;</span>
+      <span class="s2">&quot;total_processes&quot;</span> <span class="o">)</span>
+        status 16
+      <span class="p">;;</span>
+      <span class="s2">&quot;max_active_processes&quot;</span> <span class="o">)</span>
+        status 17
+      <span class="p">;;</span>
+      <span class="s2">&quot;max_children_reached&quot;</span> <span class="o">)</span>
+        status 18
+      <span class="p">;;</span>
+      <span class="s2">&quot;slow_requests&quot;</span> <span class="o">)</span>
+        status 19
+      <span class="p">;;</span>
+      <span class="s2">&quot;latency&quot;</span> <span class="o">)</span>
+        <span class="nb">time</span><span class="o">=</span><span class="k">$(</span>date +%s%N<span class="k">)</span>
+        ping &gt;&gt; /dev/null
+        <span class="nb">echo</span> <span class="s2">&quot;$(( ($(date +%s%N)-$time) / 1000000 ))&quot;</span>
+      <span class="p">;;</span>
+      <span class="s2">&quot;all&quot;</span> <span class="o">)</span>
+        status_clear
+      <span class="p">;;</span>
+      * <span class="o">)</span>
+        <span class="nb">echo</span> -e <span class="s2">&quot;Bad command!\n$help&quot;</span>
+      <span class="p">;;</span>
+    <span class="k">esac</span>
+  <span class="p">;;</span>
+  * <span class="o">)</span>
+  <span class="nb">echo</span> -e <span class="s2">&quot;Bad command $3!\n$help&quot;</span>
+  <span class="p">;;</span>
+<span class="k">esac</span></code></pre></figure>
+
+<p>Скрипт полностью можно скачать <a href="http://s.doam.ru/blog/fcgi_monitoring_with_zabbix/fcgi.txt" target="_blank">здесь</a>. Чтобы использвать его во внешних проверках нужно:</p>
+
+<ol>
+  <li>Переместить его в каталог <code>/usr/lib/zabbix/externalscripts/</code></li>
+  <li>Переименовать <code>fcgi.txt</code> -&gt; <code>fcgi</code></li>
+  <li>Сделать исполняемым <code>chmod +x fcgi</code></li>
+  <li>Установить пользователя <code>chown -R zabbix:zabbix fcgi</code></li>
+</ol>
+
+<p>Также для работы скрипта должна быть установлена программа <code>cgi-fcgi</code> в debian пакет для установки называется <code>fcgiwrap</code>.</p>
+
+<h3 id="section">Шаблон</h3>
+
+<p>Сам шаблон можно скачать <a href="http://s.doam.ru/blog/fcgi_monitoring_with_zabbix/zbx_php-fpm_template.xml" target="_blank">тут</a>. После импорта его необходимо подключить к узлам на которых крутится PHP-FPM. Для запросов используются две переменные встроенная <code>HOST.CONN</code> и макрос <code>FPM_PORT</code> добавленный мной, по дефолту там стоит значение <code>3000</code>.</p>
+
+<p>В шаблоне несколько итемов, 2 триггера, графики и даже скрины, все как положено.</p>
+
+<h2 id="section-1">Заключение</h2>
+
+<p>Таким образом я решил задачу мониторинга необходимых нам параметров, но эту реализация считаю недостаточной. В дальнейшем хочу переписать его на <a href="https://golang.org/" target="_blank">golang</a> c использованием вот <a href="https://github.com/tomasen/fcgi_client" target="_blank">этой библиотеки</a>. Так как это внешняя проверка она должна работать быстро, а <code>bash</code> не подходит по этому параметру.</p>
+
+      
+        <a href="/tag/zabbix">#Zabbix</a>
+      
+        <a href="/tag/php-fpm">#Php-fpm</a>
+      
+        <a href="/tag/sa">#SA</a>
+      
+        <!-- <a href="/tag/zabbix/" rel="tag">Zabbix</a>, <a href="/tag/php-fpm/" rel="tag">Php-fpm</a>, <a href="/tag/sa/" rel="tag">SA</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <p class="byline"><strong>Мониторинг PHP-FPM через fcgi в Zabbix</strong> опубликовано <time datetime="2016-11-23T21:34:01+03:00">23 November, 2016</time>.</p>
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Мониторинг PHP-FPM через fcgi в Zabbix %23doamru http://doam.ru/fcgi_monitoring_with_zabbix/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/fcgi_monitoring_with_zabbix/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/fcgi_monitoring_with_zabbix/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/fcgi_monitoring_with_zabbix/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+  <div class="mailerlite-subscribe-form">
+    <script type="text/javascript" src="//app.mailerlite.com/data/webforms/225081/h4i6o3.js?v1"></script>
+  </div>
+</div><!-- /.social-share -->
+
+
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://doam.ru/closing_the_2016_cycling_season/" title="Закрытие велосезона 2016">Закрытие велосезона 2016</a></li>
+    
+      <li><a href="http://doam.ru/deploying_ssl_private_keys_with_ansible/" title="Деплой приватных SSL ключей с помощью Ansible">Деплой приватных SSL ключей с помощью Ansible</a></li>
+    
+      <li><a href="http://doam.ru/small_notes_from_redmine/" title="Мелкие заметки из redmine">Мелкие заметки из redmine</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    <a href="#" class="go-top">Наверх</a>
+
+
+<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://doam.ru/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://doam.ru/assets/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>
