@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Мониторинг PHP-FPM через fcgi в Zabbix
+title: Мониторинг PHP-FPM через FastCGI в Zabbix
 permalink: /fcgi_monitoring_with_zabbix/
 excerpt: ""
 tags:
@@ -149,7 +149,7 @@ esac
 
 ### Шаблон
 
-Сам шаблон можно скачать <a href="http://s.doam.ru/blog/fcgi_monitoring_with_zabbix/zbx_php-fpm_template.xml" target="_blank">тут</a>. После импорта его необходимо подключить к узлам на которых крутится PHP-FPM. Для запросов используются две переменные встроенная `HOST.CONN` и макрос `FPM_PORT` добавленный мной, по дефолту там стоит значение `3000`.
+Сам шаблон можно скачать <a href="http://s.doam.ru/blog/fcgi_monitoring_with_zabbix/zbx_php-fpm_template.xml" target="_blank">тут</a>. После импорта его необходимо подключить к узлам на которых крутится PHP-FPM. Для запросов используются две переменные: встроенная `HOST.CONN` и макрос `FPM_PORT` добавленный мной, по дефолту там стоит значение `3000`.
 
 В шаблоне несколько итемов, 2 триггера, графики и даже скрины, все как положено.
 
