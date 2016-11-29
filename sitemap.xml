@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/</loc>
+    <lastmod>2016-11-29T21:59:32+03:00</lastmod>
+  </url>
+  <url>
     <loc>http://doam.ru/fcgi_monitoring_with_zabbix/</loc>
     <lastmod>2016-11-23T21:34:01+03:00</lastmod>
   </url>
@@ -773,6 +777,12 @@
   <url>
     <loc>http://doam.ru/tag/ansible/</loc>
   </url>
+  <url>
+    <loc>http://doam.ru/tag/telegram/</loc>
+  </url>
+  <url>
+    <loc>http://doam.ru/tag/gitlab/</loc>
+  </url>
     <url>
       <loc>http://doam.ru/tron_1982_i_and_tron_legacy-then_and_now/</loc>
     </url>
@@ -1012,6 +1022,9 @@
     </url>
     <url>
       <loc>http://doam.ru/fcgi_monitoring_with_zabbix/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/</loc>
     </url>
   <url>
     <loc>http://doam.ru/rormatrix/index.html</loc>

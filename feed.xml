@@ -4,13 +4,33 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2016-11-25T11:39:17+03:00</updated>
+<updated>2016-11-29T23:55:50+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Пишем Telegram бота на Ruby для уведомлений в канале]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" />
+  <id>http://doam.ru/telegram_bot_for_push_messages_when_new_post_published</id>
+  <published>2016-11-29T21:59:32+03:00</published>
+  <updated>2016-11-29T21:59:32+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;h3 id=&quot;section&quot;&gt;Вступление&lt;/h3&gt;
+
+&lt;p&gt;Заикнулся в присутствии нового коллеги о своем блоге, первый его вопрос был “что за блог?”, а второй “а телеграм бот у тебя есть?”. Поймал себя на мысли &lt;em&gt;неужели я стал ретроградом&lt;/em&gt;. Когда начался хайп вокруг влогов и youtube каналов я остался верен теп...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/&quot;&gt;Пишем Telegram бота на Ruby для уведомлений в канале&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 29, 2016.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -215,31 +235,6 @@
 &lt;blockquote&gt;
   &lt;p&gt;От переводчика: &lt;a href=&quot;https:/...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/adding_static_pages_to_your_rails_app/&quot;&gt;Добавление статических страниц в Rails приложение&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 02, 2016.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Создание инструментов Linux с помощью Ruby]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru/linux_tools_with_ruby/" />
-  <id>http://doam.ru/linux-tools-with-ruby</id>
-  <published>2016-07-26T00:09:58+03:00</published>
-  <updated>2016-07-26T00:09:58+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri>http://doam.ru</uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
-  &lt;header&gt;
-    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
-  &lt;/header&gt;
-&lt;div id=&quot;drawer&quot;&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;Находим информацию о статусе&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru/linux_tools_with_ruby/&quot;&gt;Создание инструментов Linux с помощью Ruby&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on July 26, 2016.&lt;/p&gt;
   </content>
 </entry>
 
