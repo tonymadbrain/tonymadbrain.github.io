@@ -1,0 +1,3 @@
+User-agent: *
+Host: doam.ru
+Sitemap: http://doam.ru/sitemap.xml
