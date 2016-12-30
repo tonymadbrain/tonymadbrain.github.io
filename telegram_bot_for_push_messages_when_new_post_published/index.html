@@ -1,0 +1,538 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Пишем Telegram бота на Ruby для уведомлений в канале &#8211; Diary of madman</title>
+<meta name="description" content="Задача бота парсить rss ленту и при появлении новых постов слать уведомление в Telegram канал">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Ruby, Telegram, Heroku, Gitlab">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Пишем Telegram бота на Ruby для уведомлений в канале">
+<meta name="twitter:description" content="Задача бота парсить rss ленту и при появлении новых постов слать уведомление в Telegram канал">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://doam.ru/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Пишем Telegram бота на Ruby для уведомлений в канале">
+<meta property="og:description" content="Задача бота парсить rss ленту и при появлении новых постов слать уведомление в Telegram канал">
+<meta property="og:url" content="http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/">
+<link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://doam.ru/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://doam.ru/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://doam.ru/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://doam.ru/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://doam.ru/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://doam.ru/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://doam.ru/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://doam.ru/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXNSQJ');</script>
+<!-- End Google Tag Manager -->
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://doam.ru/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://doam.ru/tags/" >Теги</a></li>
+				
+				    
+				    <li><a href="http://doam.ru/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side sticky">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://doam.ru/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" rel="bookmark" title="Пишем Telegram бота на Ruby для уведомлений в канале">Пишем Telegram бота на Ruby для уведомлений в канале</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <h3 id="section">Вступление</h3>
+
+<p>Заикнулся в присутствии нового коллеги о своем блоге, первый его вопрос был “что за блог?”, а второй “а телеграм бот у тебя есть?”. Поймал себя на мысли <em>неужели я стал ретроградом</em>. Когда начался хайп вокруг влогов и youtube каналов я остался верен теплому ламповому формату текстовых статей, так и сейчас, считаю что нет необходимости иметь свой Telegram канал, но задача меня заинтересовала.
+<br />
+<br />
+Вокруг Telegram ботов сейчас много шумихи, не собираюсь писать тут тривиальные вещи как завести своего бота или канал, это сделали за меня, например <a href="https://habrahabr.ru/post/316222/" target="_blank">тут</a>. Не хотелось делать что-то надуманное, только ради “попробовать” и я решил что более менее полезной задачей будет уведомление о новых статьях в этом же блоге и только потом понял, что в принципе, мою реализацию можно использовать для любой <code>RSS</code> ленты c небольшими правками <em>под себя</em>.</p>
+
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">Вступление</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">Наивная реализация или <em>тупой бот</em></a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">Используем простую БД или <em>чуть более умный бот</em></a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">Прикручиваем РСУБД или <em>умеренно сообразительный бот</em></a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">Заключение</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<h3 id="section-1">Наивная реализация или <em>тупой бот</em></h3>
+
+<blockquote>
+  <p>Первое что нужно сделать это создать бота и получить API токен.</p>
+</blockquote>
+
+<p>Недолго думая, я взял самую популярную либу-обертку для ботов Telegram - <a href="https://github.com/atipugin/telegram-bot-ruby" target="_blank">gem telegram-bot-ruby</a> и наваял следующий код:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">]</span>
+
+<span class="n">rss</span> <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://doam.ru/feed.xml&#39;</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+
+<span class="no">Telegram</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">bot</span><span class="o">|</span>
+  <span class="n">rss</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="ss">chat_id</span><span class="p">:</span> <span class="s2">&quot;@doam_ru&quot;</span><span class="p">,</span> <span class="ss">text</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">href</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Что же тут происходит? Все очень просто, вот здесь:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span></code></pre></figure>
+
+<p>подключаем библиотеки для работы с RSS и Telegram, а вот здесь:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">]</span></code></pre></figure>
+
+<p>сетим в переменную с именем <code>token</code> наш API токен, который получили от <code>@BotFather</code>.</p>
+
+<blockquote>
+  <p>Здесь я использую переменные окружения (Environment variables), чтобы это работало, перед запуском скрипта нужно выполнить в командной строке <code>export TELEGRAM_BOT_API_KEY=123456789</code>, где вместо 123456789 нужно вставить собственно токен. Использование переменных окружения один из двенадцати факторов приложения согласно - <a href="https://12factor.net/" target="_blank">Adam Wiggins</a></p>
+</blockquote>
+
+<p>Затем, с помощью строчки:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rss</span> <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://doam.ru/feed.xml&#39;</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span></code></pre></figure>
+
+<p>сохраняем в объект <code>rss</code> всю <code>RSS</code> ленту моего блога (я точно знаю что у меня там только 10 записей, поэтому не боюсь никаких переполнений или задержек).</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Telegram</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">bot</span><span class="o">|</span>
+  <span class="n">rss</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="ss">chat_id</span><span class="p">:</span> <span class="s2">&quot;@doam_ru&quot;</span><span class="p">,</span> <span class="ss">text</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">href</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>После этого мы создаем бот клиента, обходим каждый <code>item</code> внутри <code>rss</code> и отправляем его ссылку в канал Telegram.
+<br />
+<br />
+Таким образом, при каждом запуске скрипта в канал будет отправляться 10 сообщений с одинаковыми ссылками. Я использую бота, хотя для такого же функционала, например, в Slack я бы использовал Incoming Hooks.</p>
+
+<blockquote>
+  <p>Кстати, чтобы бот мог слать сообщения в канал, его нужно добавить в администраторы этого канала.</p>
+</blockquote>
+
+<p>На этом этапе я понял что нужно хранить состояние постов, т.е. запоминать информацию какие записи уже отправлены в канал, а какие еще нет.</p>
+
+<h3 id="section-2">Используем простую БД или <em>чуть более умный бот</em></h3>
+
+<p>На самом деле новая версия бота растянулась на 55 строк кода, и вот он целиком:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;sdbm&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;logger&#39;</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">].</span><span class="n">nil?</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">fatal</span> <span class="s2">&quot;Environment variable TELEGRAM_BOT_API_KEY not set!&quot;</span>
+  <span class="nb">exit</span> <span class="mi">0</span>
+<span class="k">else</span>
+  <span class="n">token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">]</span>
+<span class="k">end</span>
+
+<span class="n">rss</span> <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://doam.ru/feed.xml&#39;</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+
+<span class="no">SDBM</span><span class="o">.</span><span class="n">open</span> <span class="s1">&#39;doam_posts.db&#39;</span> <span class="k">do</span> <span class="o">|</span><span class="n">posts</span><span class="o">|</span>
+  <span class="n">rss</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+    <span class="n">key</span>       <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">href</span>
+    <span class="n">title</span>     <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">content</span>
+    <span class="n">published</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">content</span>
+    <span class="c1"># next if posts[key]</span>
+    <span class="k">if</span> <span class="n">posts</span><span class="o">.</span><span class="n">has_key?</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">info</span> <span class="s2">&quot;Post exist in DB will not rewrite&quot;</span>
+    <span class="k">else</span>
+      <span class="n">posts</span><span class="o">[</span><span class="n">key</span><span class="o">]</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span>
+        <span class="ss">title</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+        <span class="ss">published</span><span class="p">:</span> <span class="n">published</span><span class="p">,</span>
+        <span class="ss">sended</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">posts</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span>
+    <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="s2">&quot;sended&quot;</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span>
+      <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Новая запись в блоге: </span><span class="si">#{</span><span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="s2">&quot;title&quot;</span><span class="o">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="no">Telegram</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">bot</span><span class="o">|</span>
+        <span class="k">if</span> <span class="n">bot</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="ss">chat_id</span><span class="p">:</span> <span class="s2">&quot;@doam_ru&quot;</span><span class="p">,</span> <span class="ss">text</span><span class="p">:</span> <span class="n">text</span><span class="p">)</span>
+          <span class="n">posts</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span>
+            <span class="ss">title</span><span class="p">:</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="s2">&quot;title&quot;</span><span class="o">]</span><span class="p">,</span>
+            <span class="ss">published</span><span class="p">:</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="s2">&quot;published&quot;</span><span class="o">]</span><span class="p">,</span>
+            <span class="ss">sended</span><span class="p">:</span> <span class="mi">1</span>
+          <span class="p">)</span>
+          <span class="n">logger</span><span class="o">.</span><span class="n">info</span> <span class="s2">&quot;Successfuly send </span><span class="si">#{</span><span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="si">}</span><span class="s2"> to telegram!&quot;</span>
+        <span class="k">else</span>
+          <span class="n">logger</span><span class="o">.</span><span class="n">error</span> <span class="s2">&quot;Can not send </span><span class="si">#{</span><span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="si">}</span><span class="s2"> to telegram!&quot;</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Опять же приведу разбор этого кода по кусочкам далее по тексту.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;sdbm&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;logger&#39;</span></code></pre></figure>
+
+<p>Я использую теже две библиотеки что и раньше <code>rss</code> и <code>telegram</code>, затем подключаю <code>sdbm</code> это встроенная либа Ruby, которая предоставляет простое хранилище типа ключ-значение (key-value), в качестве ключей или значений могут выступать только строки. Далее я подключаю <code>json</code>, чтобы легко кодировать объекты в строки и декодировать обратно. И еще одной библиотекой является <code>logger</code>, который предоставляет простой способ для отладки.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">].</span><span class="n">nil?</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">fatal</span> <span class="s2">&quot;Environment variable TELEGRAM_BOT_API_KEY not set!&quot;</span>
+  <span class="nb">exit</span> <span class="mi">1</span>
+<span class="k">else</span>
+  <span class="n">token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">]</span>
+<span class="k">end</span>
+
+<span class="n">rss</span> <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://doam.ru/feed.xml&#39;</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span></code></pre></figure>
+
+<p>Сперва делаем простые вещи, создаем объект для логирования и сетим переменную окружения.</p>
+
+<blockquote>
+  <p>Устанавливаем переменную окружения в этот раз мы чуть сложнее. Вначале мы проверяем что ENV пустая и если это так то выбрасываем ошибку через логгер и выходим из программы c использованием <code>exit</code> кода 1, в обратном случае, если переменная не пустая, записываем её значение в переменную, которую мы будем использовать в дальнейшем.</p>
+</blockquote>
+
+<p>Парсинг <code>RSS</code> ленты происходит таким же образом как и ранее.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">SDBM</span><span class="o">.</span><span class="n">open</span> <span class="s1">&#39;doam_posts.db&#39;</span> <span class="k">do</span> <span class="o">|</span><span class="n">posts</span><span class="o">|</span></code></pre></figure>
+
+<p>Далее, этой строчкой мы открываем нашу базу данных, которая является просто файлами в нашей файловой системе, в случае если базы не существует она будет создана с нуля.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">rss</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+    <span class="n">key</span>       <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">href</span>
+    <span class="n">title</span>     <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">content</span>
+    <span class="n">published</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">content</span>
+    <span class="c1"># next if posts[key]</span>
+    <span class="k">if</span> <span class="n">posts</span><span class="o">.</span><span class="n">has_key?</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">info</span> <span class="s2">&quot;Post exist in DB will not rewrite&quot;</span>
+    <span class="k">else</span>
+      <span class="n">posts</span><span class="o">[</span><span class="n">key</span><span class="o">]</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span>
+        <span class="ss">title</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+        <span class="ss">published</span><span class="p">:</span> <span class="n">published</span><span class="p">,</span>
+        <span class="ss">sended</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>И после этого мы начинаем первый цикл: обходим все полученные rss итемы, записываем ссылки, заголовок и дату публикации соответственно в переменные key, title и published. Проверяем есть ли в нашей базе ключ с таким же значением как наш и если есть просто выводим в лог текст, что не будем ничего перезаписывать (это нужно только на этапе отладки, но вообще не обязательно), в обратном случае, если в базе нет записи с таким ключом мы генерируем json строку и записываем её в базу. В качестве ключа я выбрал URL, так как они обеспечивают уникальность, всегда написаны в одном регистре и латиницей.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">posts</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span>
+  <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="s2">&quot;sended&quot;</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Новая запись в блоге: </span><span class="si">#{</span><span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="s2">&quot;title&quot;</span><span class="o">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="no">Telegram</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">bot</span><span class="o">|</span>
+      <span class="k">if</span> <span class="n">bot</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="ss">chat_id</span><span class="p">:</span> <span class="s2">&quot;@doam_ru&quot;</span><span class="p">,</span> <span class="ss">text</span><span class="p">:</span> <span class="n">text</span><span class="p">)</span>
+        <span class="n">posts</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span>
+          <span class="ss">title</span><span class="p">:</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="s2">&quot;title&quot;</span><span class="o">]</span><span class="p">,</span>
+          <span class="ss">published</span><span class="p">:</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="s2">&quot;published&quot;</span><span class="o">]</span><span class="p">,</span>
+          <span class="ss">sended</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span> <span class="s2">&quot;Successfuly send </span><span class="si">#{</span><span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="si">}</span><span class="s2"> to telegram!&quot;</span>
+      <span class="k">else</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span> <span class="s2">&quot;Can not send </span><span class="si">#{</span><span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="si">}</span><span class="s2"> to telegram!&quot;</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Следующим шагом я создаю объект типа <code>Hash</code> и прохожусь по всем записям которые есть в базе. С помощью <code>hash[k] = JSON.parse(v)</code> я делаю парсинг строки значения и создаю вложенные хеши. Затем проверяю значение поля <code>sended</code>, если там 0 то генерирую текст и отправляю его в канал, после чего перезаписываю объект cо значением 1, чтобы не отправить эту же запись при следующем запуске.</p>
+
+<blockquote>
+  <p>На самом деле это не совсем рабочая версия кода, я почему-то не закоммитил тот момент когда довел работу с SDBM до ума. Можете попробовать сами понять что здесь не так.</p>
+</blockquote>
+
+<p>Теперь уже я решил попробовать задеплоить мой код на Heroku и выполнить его там. С использоавнием раннера задач все получилось, да только вот Heroku не сохраняет файлы между запусками задачи (да и вообще). Так что мое решение с SDBM является быстрым и простым, но может быть использовано только как selfhosted.</p>
+
+<h3 id="section-3">Прикручиваем РСУБД или <em>умеренно сообразительный бот</em></h3>
+
+<p>Пост становится довольно длинным, но вы же вместе сомной прошли все этапы разработки этого бота и уже в курсе дела, поэтому привожу код обновленной версии:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;sdbm&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;logger&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;pg&#39;</span>
+
+<span class="k">class</span> <span class="nc">DoamTelegramBot</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>
+    <span class="vi">@logger</span>   <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">].</span><span class="n">nil?</span>
+      <span class="vi">@logger</span><span class="o">.</span><span class="n">fatal</span> <span class="s2">&quot;Environment variable TELEGRAM_BOT_API_KEY not set!&quot;</span>
+      <span class="nb">exit</span> <span class="mi">0</span>
+    <span class="k">else</span>
+      <span class="vi">@token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">]</span>
+    <span class="k">end</span>
+
+    <span class="vi">@url</span>      <span class="o">=</span> <span class="n">url</span>
+    <span class="vi">@channel</span>  <span class="o">=</span> <span class="n">channel</span>
+    <span class="n">uri</span>       <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;DATABASE_URL&#39;</span><span class="o">]</span><span class="p">)</span>
+    <span class="vi">@db</span>       <span class="o">=</span> <span class="no">PG</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">path</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
+    <span class="vi">@rss</span>      <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+
+    <span class="vi">@db</span><span class="o">.</span><span class="n">exec</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE IF NOT EXISTS posts (id serial, url varchar(450) NOT NULL, sended bool DEFAULT false)&quot;</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">sync</span>
+    <span class="vi">@rss</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+      <span class="n">url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">href</span>
+      <span class="k">if</span> <span class="vi">@db</span><span class="o">.</span><span class="n">exec</span><span class="p">(</span><span class="s2">&quot;SELECT exists (SELECT 1 FROM posts WHERE url = &#39;</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">&#39; LIMIT 1)::int&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">to_i</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="vi">@logger</span><span class="o">.</span><span class="n">info</span> <span class="s2">&quot;Post exist in DB will not rewrite&quot;</span>
+      <span class="k">else</span>
+        <span class="k">if</span> <span class="vi">@db</span><span class="o">.</span><span class="n">exec</span><span class="p">(</span><span class="s2">&quot;INSERT INTO posts (url) VALUES (&#39;</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">&#39;)&quot;</span><span class="p">)</span>
+          <span class="vi">@logger</span><span class="o">.</span><span class="n">info</span> <span class="s2">&quot;Write post to DB </span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">send</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="vi">@db</span><span class="o">.</span><span class="n">exec</span><span class="p">(</span><span class="s2">&quot;SELECT url FROM posts WHERE sended = false&quot;</span><span class="p">)</span>
+    <span class="n">urls</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">url</span><span class="o">|</span>
+      <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Новая запись в блоге - </span><span class="si">#{</span><span class="n">url</span><span class="o">[</span><span class="s1">&#39;url&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="k">if</span> <span class="n">telegram_send</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="vi">@db</span><span class="o">.</span><span class="n">exec</span><span class="p">(</span><span class="s2">&quot;UPDATE posts SET sended = true WHERE url = &#39;</span><span class="si">#{</span><span class="n">url</span><span class="o">[</span><span class="s1">&#39;url&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">telegram_send</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="no">Telegram</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="vi">@token</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">bot</span><span class="o">|</span>
+      <span class="k">if</span> <span class="n">bot</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="ss">chat_id</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@channel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="ss">text</span><span class="p">:</span> <span class="n">message</span><span class="p">)</span>
+        <span class="vi">@logger</span><span class="o">.</span><span class="n">info</span> <span class="s2">&quot;Successfuly send </span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="s2"> to telegram!&quot;</span>
+        <span class="kp">true</span>
+      <span class="k">else</span>
+        <span class="vi">@logger</span><span class="o">.</span><span class="n">error</span> <span class="s2">&quot;Can not send </span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="s2"> to telegram!&quot;</span>
+        <span class="kp">false</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Здесь проделывается точно такая же работа: иницилизируются необходимые компоннеты, синхронизируется <code>rss</code> лента и локальная база данных и отправляются ссылки на записи которые числятся в базе как “неотправленные”. Только в качестве базы используется <code>PostgreSQL</code> и все это обернуто в класс и методы. Метод <code>initialize</code> выполняется при вызове метода <code>new</code> на объекте класса <code>DoamTelegramBot</code>, остальные методы нужно вызывать отдельно. И чтобы выполнить всё правильно, я создал каталог <code>bin</code> в который положил файл с именем <code>doam_bot</code> и содержимым:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#!/usr/bin/env ruby</span>
+<span class="n">require_relative</span> <span class="s1">&#39;../app&#39;</span>
+
+<span class="n">telegram</span> <span class="o">=</span> <span class="no">DoamTelegramBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;http://doam.ru/feed.xml&quot;</span><span class="p">,</span> <span class="s2">&quot;@doam_ru&quot;</span><span class="p">)</span>
+<span class="n">telegram</span><span class="o">.</span><span class="n">sync</span>
+<span class="n">telegram</span><span class="o">.</span><span class="n">send</span></code></pre></figure>
+
+<p>В котором я указываю что для выполнения скрипта нужно использовать язык Ruby, подключаю созданный мной класс через файл <code>app.rb</code>, создаю объект <code>telegram</code> и передаю в него урл для парсинга и id канала, вызываю методы <code>sync</code> и <code>send</code>. После чего я заливаю код на Heroku и создаю периодическую задачу, например раз в сутки. И если за сутки появились новые записи то в мой канал придет уведомление, уже без моего содействия в автоматическом режиме.
+<br />
+<br /></p>
+
+<h3 id="section-4">Заключение</h3>
+
+<p>Полностью это маленькое приложение можно посмотреть у меня в <a href="https://gitlab.com/tonymadbrain/telegram_bot" target="_blank">gitlab</a> (для этого нужно залогиниться в gitlab.com). Лицензия пока не указана, но она MIT, т.е. можете править и использовать в своих целях. Если будет время я хотел бы прикрутить еще несколько функций, например отправку не только в телеграм но и другие сервисы, а также решить проблему первого запуска, когда база наполняется новыми записями с флагом “не отправлено” но неизвестно точно какие записи уже были отправлены в канал. В любом случае готов рассмотреть ваши Merge Requests.</p>
+
+
+      
+        <a href="/tag/ruby">#Ruby</a>
+      
+        <a href="/tag/telegram">#Telegram</a>
+      
+        <a href="/tag/heroku">#Heroku</a>
+      
+        <a href="/tag/gitlab">#Gitlab</a>
+      
+        <!-- <a href="/tag/ruby/" rel="tag">Ruby</a>, <a href="/tag/telegram/" rel="tag">Telegram</a>, <a href="/tag/heroku/" rel="tag">Heroku</a>, <a href="/tag/gitlab/" rel="tag">Gitlab</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <p class="byline"><strong>Пишем Telegram бота на Ruby для уведомлений в канале</strong> опубликовано <time datetime="2016-11-29T21:59:32+03:00">29 November, 2016</time>.</p>
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Пишем Telegram бота на Ruby для уведомлений в канале %23doamru http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+  <div class="mailerlite-subscribe-form">
+    <script type="text/javascript" src="//app.mailerlite.com/data/webforms/225081/h4i6o3.js?v1"></script>
+  </div>
+</div><!-- /.social-share -->
+
+
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://doam.ru/the_results_of_2016/" title="Итоги 2016">Итоги 2016</a></li>
+    
+      <li><a href="http://doam.ru/fcgi_monitoring_with_zabbix/" title="Мониторинг PHP-FPM через FastCGI в Zabbix">Мониторинг PHP-FPM через FastCGI в Zabbix</a></li>
+    
+      <li><a href="http://doam.ru/closing_the_2016_cycling_season/" title="Закрытие велосезона 2016">Закрытие велосезона 2016</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    <a href="#" class="go-top">Наверх</a>
+
+
+<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://doam.ru/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://doam.ru/assets/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Установка Zabbix 2.2 на CentOS 6.5 + LEMP &#8211; Diary of madman</title>
+<meta name="description" content="Заметки из redmine">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Zabbix, Centos, Tutorial, Nginx, Mysql, Php">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Установка Zabbix 2.2 на CentOS 6.5 + LEMP">
+<meta name="twitter:description" content="Заметки из redmine">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://doam.ru/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Установка Zabbix 2.2 на CentOS 6.5 + LEMP">
+<meta property="og:description" content="Заметки из redmine">
+<meta property="og:url" content="http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/">
+<link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://doam.ru/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://doam.ru/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://doam.ru/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://doam.ru/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://doam.ru/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://doam.ru/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://doam.ru/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://doam.ru/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXNSQJ');</script>
+<!-- End Google Tag Manager -->
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://doam.ru/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://doam.ru/tags/" >Теги</a></li>
+				
+				    
+				    <li><a href="http://doam.ru/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side sticky">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://doam.ru/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/" rel="bookmark" title="Установка Zabbix 2.2 на CentOS 6.5 + LEMP">Установка Zabbix 2.2 на CentOS 6.5 + LEMP</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <blockquote>
+  <p>У меня в redmine лежат заметки, к которым не обращаюсь, но выглядят они полезными, поэтому перенесу их сюда, как бы в архив.</p>
+</blockquote>
+
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#zabbix-server" id="markdown-toc-zabbix-server">Установка zabbix-server</a></li>
+  <li><a href="#mysql" id="markdown-toc-mysql">Установка MySQL</a></li>
+  <li><a href="#section" id="markdown-toc-section">Создание базы данных</a></li>
+  <li><a href="#zabbix" id="markdown-toc-zabbix">Конфигурирование Zabbix</a></li>
+  <li><a href="#php" id="markdown-toc-php">Установка и настройка PHP</a></li>
+  <li><a href="#nginx" id="markdown-toc-nginx">Установка и настройка NGINX</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">Последние штрихи</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<h1 id="zabbix-server">Установка zabbix-server</h1>
+
+<p>Добавляем репозиторий zabbix</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rpm -ivh http://repo.zabbix.com/zabbix/2.0/rhel/6/x86_64/zabbix-release-2.0-1.el6.noarch.rpm</code></pre></figure>
+
+<p>Устанавливаем zabbix-server</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install zabbix-server-mysql zabbix-web-mysql -y</code></pre></figure>
+
+<p>Отключаем репозиторий zabbix</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># enabled=1 =&gt; enabled=0</span>
+<span class="nv">$ </span>vim /etc/yum.repos.d/zabbix.repo</code></pre></figure>
+
+<h1 id="mysql">Установка MySQL</h1>
+
+<p>Добавляем репозиторий epel</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rpm -ivh http://mirror.yandex.ru/epel/6/x86_64/epel-release-6-8.noarch.rpm</code></pre></figure>
+
+<p>Устанавливаем MySQL cервер и консоль</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install mysql-server mysql-client -y</code></pre></figure>
+
+<p>Запускаем демон базы данных</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service mysqld start</code></pre></figure>
+
+<h1 id="section">Создание базы данных</h1>
+
+<p>Логинимся под рутом</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mysql -uroot</code></pre></figure>
+
+<p>Создаем БД и пользователя</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&gt; create database zabbix character <span class="nb">set </span>utf8<span class="p">;</span> grant all privileges on zabbix.* to zabbix@localhost identified by <span class="s1">&#39;zabbix&#39;</span><span class="p">;</span> <span class="nb">exit</span></code></pre></figure>
+
+<p>Переходим в папку с дампами бд от zabbix</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> /usr/share/doc/zabbix-server-mysql-2.0.11/create/</code></pre></figure>
+
+<p>Восстанавливаем таблицы из дампов</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mysql -uroot zabbix &lt; schema.sql mysql -uroot zabbix &lt; images.sql mysql -uroot zabbix &lt; data.sql</code></pre></figure>
+
+<p>Устанавливаем свои пароли mysql для пользователей root и zabbix</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mysql -uroot SET <span class="nv">PASSWORD</span> <span class="o">=</span> PASSWORD<span class="o">(</span><span class="s1">&#39;root_pass&#39;</span><span class="o">)</span><span class="p">;</span> <span class="nb">exit </span>mysql -uzabbix -pzabbix SET <span class="nv">PASSWORD</span> <span class="o">=</span> PASSWORD<span class="o">(</span><span class="s1">&#39;zabbix_pass&#39;</span><span class="o">)</span><span class="p">;</span> <span class="nb">exit</span></code></pre></figure>
+
+<h1 id="zabbix">Конфигурирование Zabbix</h1>
+
+<p>Правим конфиг zabbix</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/zabbix/zabbix_server.conf</code></pre></figure>
+
+<p>Проверяем следующие параметры:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">DBHost</span><span class="o">=</span>localhost
+<span class="nv">DBName</span><span class="o">=</span>zabbix
+<span class="nv">DBUser</span><span class="o">=</span>zabbix
+<span class="nv">DBPassword</span><span class="o">=</span>zabbix_pass</code></pre></figure>
+
+<p>Запускаем сервер zabbix</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service zabbix-server start</code></pre></figure>
+
+<h1 id="php">Установка и настройка PHP</h1>
+
+<p>Устанавливаем пакеты</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install php php-mysql php-mbstring php-mcrypt gcc libtool php-fpm php-cli php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc php-pecl-apc snmp sysstat -y</code></pre></figure>
+
+<p>Правим настройки PHP</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/php.ini</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php_value max_execution_time 300
+php_value max_input_time 300
+php_value memory_limit 128M //дефолт
+php_value post_max_size 16M
+php_value upload_max_filesize 2M //дефолт
+//раскомментировать строку и подставить Europe/Moscow
+date.timezone <span class="o">=</span> Europe/Moscow</code></pre></figure>
+
+<h1 id="nginx">Установка и настройка NGINX</h1>
+
+<p>Инсталим nginx</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install nginx -y</code></pre></figure>
+
+<p>Создаем папку для резервных копий</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mkdir /home/backups/</code></pre></figure>
+
+<p>Перемещаем все дефолтные конфиги</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mv /etc/nginx/conf.d/default.conf /home/backups/ mv /etc/nginx/conf.d/virtual.conf /home/backups/ mv /etc/nginx/nginx.conf /home/backups/</code></pre></figure>
+
+<p>Создаем новый конфиг nginx</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/nginx/nginx.conf</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">user nginx<span class="p">;</span>
+worker_processes 10<span class="p">;</span>
+pid /var/run/nginx.pid<span class="p">;</span>
+events <span class="o">{</span>
+  worker_connections 1024<span class="p">;</span>
+  use epoll<span class="p">;</span>
+  multi_accept on<span class="p">;</span>
+<span class="o">}</span>
+error_log /var/log/nginx/error.log warn<span class="p">;</span>
+http <span class="o">{</span>
+  include /etc/nginx/mime.types<span class="p">;</span>
+  default_type application/octet-stream<span class="p">;</span>
+  log_format main <span class="s1">&#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;</span>
+  <span class="s1">&#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span>
+  <span class="s1">&#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;</span><span class="p">;</span>
+  access_log /var/log/nginx/access.log main<span class="p">;</span>
+  connection_pool_size 256<span class="p">;</span>
+  client_header_buffer_size 4k<span class="p">;</span>
+  client_max_body_size 100m<span class="p">;</span>
+  large_client_header_buffers <span class="m">8</span> 8k<span class="p">;</span>
+  request_pool_size 4k<span class="p">;</span>
+  output_buffers <span class="m">1</span> 32k<span class="p">;</span>
+  postpone_output 1460<span class="p">;</span>
+  proxy_max_temp_file_size 0<span class="p">;</span>
+  gzip on<span class="p">;</span>
+  gzip_min_length 1024<span class="p">;</span>
+  gzip_proxied any<span class="p">;</span>
+  gzip_proxied expired no-cache no-store private auth<span class="p">;</span>
+  gzip_types text/plain text/xml application/xml application/x-javascript text/javascript text/css text/json<span class="p">;</span>
+  gzip_comp_level 8<span class="p">;</span>
+  gzip_disable «MSIE <span class="o">[</span>1-6<span class="o">]</span><span class="se">\.</span><span class="o">(</span>?!.*SV1<span class="o">)</span>»<span class="p">;</span>
+  sendfile on<span class="p">;</span>
+  tcp_nopush on<span class="p">;</span>
+  tcp_nodelay on<span class="p">;</span>
+  keepalive_timeout <span class="m">75</span> 20<span class="p">;</span>
+  server_names_hash_max_size 8192<span class="p">;</span>
+  ignore_invalid_headers on<span class="p">;</span>
+  server_name_in_redirect off<span class="p">;</span>
+  proxy_buffer_size 8k<span class="p">;</span>
+  proxy_buffers <span class="m">32</span> 4k<span class="p">;</span>
+  proxy_connect_timeout 1000<span class="p">;</span>
+  proxy_read_timeout 12000<span class="p">;</span>
+  proxy_send_timeout 12000<span class="p">;</span>
+  proxy_cache_path /var/cache/nginx <span class="nv">levels</span><span class="o">=</span><span class="m">2</span> <span class="nv">keys_zone</span><span class="o">=</span>pagecache:5m <span class="nv">inactive</span><span class="o">=</span>10m <span class="nv">max_size</span><span class="o">=</span>50m<span class="p">;</span>
+  real_ip_header X-Real-IP<span class="p">;</span>
+  proxy_set_header Host <span class="nv">$host</span><span class="p">;</span>
+  proxy_set_header X-Real-IP <span class="nv">$remote_addr</span><span class="p">;</span>
+  proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+  allow all<span class="p">;</span>
+  include /etc/nginx/conf.d/*.conf<span class="p">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Создаем конфиг виртуального сервера для zabbix’a</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vim /etc/nginx/conf.d/zabbix.conf</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+  listen 80<span class="p">;</span>
+  server_name zabbix.hostname.ru<span class="p">;</span>
+
+  location / <span class="o">{</span>
+    root /usr/share/zabbix<span class="p">;</span>
+    index index.php index.html index.htm<span class="p">;</span>
+  <span class="o">}</span>
+
+  location ~ <span class="se">\.</span>php<span class="nv">$ </span><span class="o">{</span>
+    root /usr/share/zabbix<span class="p">;</span>
+    try_files <span class="nv">$uri</span> <span class="o">=</span>404<span class="p">;</span>
+    fastcgi_pass 127.0.0.1:9000<span class="p">;</span>
+    fastcgi_index index.php<span class="p">;</span>
+    fastcgi_buffers <span class="m">4</span> 256k<span class="p">;</span>
+    fastcgi_busy_buffers_size 256k<span class="p">;</span>
+    fastcgi_temp_file_write_size 256k<span class="p">;</span>
+    fastcgi_param SCRIPT_FILENAME <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+    include fastcgi_params<span class="p">;</span>
+  <span class="o">}</span>
+
+  <span class="c"># deny access to .htaccess files, if Apache&#39;s document root concurs with nginx&#39;s one</span>
+  location ~ /<span class="se">\.</span>ht <span class="o">{</span>
+    deny all<span class="p">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h1 id="section-1">Последние штрихи</h1>
+
+<p>Удаляем предустановленный apache из автозапуска</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chkconfig httpd off</code></pre></figure>
+
+<p>Добавляем в автозагрузку nginx, php-fpm, mysqld и zabbix</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chkconfig --levels <span class="m">235</span> nginx on
+<span class="nv">$ </span>chkconfig --levels <span class="m">235</span> php-fpm on
+<span class="nv">$ </span>chkconfig --levels <span class="m">235</span> mysqld on
+<span class="nv">$ </span>chkconfig zabbix-server on</code></pre></figure>
+
+<p>Стопаем apache и запускаем все наши сервисы</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service httpd stop
+<span class="nv">$ </span>service nginx start
+<span class="nv">$ </span>service php-fpm start
+<span class="nv">$ </span>service mysqld restart</code></pre></figure>
+
+
+      
+        <a href="/tag/zabbix">#Zabbix</a>
+      
+        <a href="/tag/centos">#Centos</a>
+      
+        <a href="/tag/tutorial">#Tutorial</a>
+      
+        <a href="/tag/nginx">#Nginx</a>
+      
+        <a href="/tag/mysql">#Mysql</a>
+      
+        <a href="/tag/php">#Php</a>
+      
+        <!-- <a href="/tag/zabbix/" rel="tag">Zabbix</a>, <a href="/tag/centos/" rel="tag">Centos</a>, <a href="/tag/tutorial/" rel="tag">Tutorial</a>, <a href="/tag/nginx/" rel="tag">Nginx</a>, <a href="/tag/mysql/" rel="tag">Mysql</a>, <a href="/tag/php/" rel="tag">Php</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <p class="byline"><strong>Установка Zabbix 2.2 на CentOS 6.5 + LEMP</strong> опубликовано <time datetime="2016-10-23T13:19:26+03:00">23 October, 2016</time>.</p>
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Установка Zabbix 2.2 на CentOS 6.5 + LEMP %23doamru http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+  <div class="mailerlite-subscribe-form">
+    <script type="text/javascript" src="//app.mailerlite.com/data/webforms/225081/h4i6o3.js?v1"></script>
+  </div>
+</div><!-- /.social-share -->
+
+
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://doam.ru/the_results_of_2016/" title="Итоги 2016">Итоги 2016</a></li>
+    
+      <li><a href="http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" title="Пишем Telegram бота на Ruby для уведомлений в канале">Пишем Telegram бота на Ruby для уведомлений в канале</a></li>
+    
+      <li><a href="http://doam.ru/fcgi_monitoring_with_zabbix/" title="Мониторинг PHP-FPM через FastCGI в Zabbix">Мониторинг PHP-FPM через FastCGI в Zabbix</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    <a href="#" class="go-top">Наверх</a>
+
+
+<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://doam.ru/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://doam.ru/assets/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>

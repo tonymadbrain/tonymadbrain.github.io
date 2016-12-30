@@ -1,0 +1,324 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Деплоим Rails + Webpack приложение на Heroku &#8211; Diary of madman</title>
+<meta name="description" content="">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Rails, Heroku, Webpack">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Деплоим Rails + Webpack приложение на Heroku">
+<meta name="twitter:description" content="">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://doam.ru/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Деплоим Rails + Webpack приложение на Heroku">
+<meta property="og:description" content="">
+<meta property="og:url" content="http://doam.ru/rails-webpack-heroku/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="http://doam.ru/rails-webpack-heroku/">
+<link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://doam.ru/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://doam.ru/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://doam.ru/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://doam.ru/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://doam.ru/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://doam.ru/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://doam.ru/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://doam.ru/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXNSQJ');</script>
+<!-- End Google Tag Manager -->
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://doam.ru/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://doam.ru/tags/" >Теги</a></li>
+				
+				    
+				    <li><a href="http://doam.ru/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side sticky">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://doam.ru/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://doam.ru/rails-webpack-heroku/" rel="bookmark" title="Деплоим Rails + Webpack приложение на Heroku">Деплоим Rails + Webpack приложение на Heroku</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">Вступление</a></li>
+  <li><a href="#heroku" id="markdown-toc-heroku">Билдпаки Heroku</a></li>
+  <li><a href="#heroku-1" id="markdown-toc-heroku-1">Множественные билдпаки Heroku</a></li>
+  <li><a href="#heroku-2" id="markdown-toc-heroku-2">Отправка билд хука на Heroku</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">Резюме</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p><br />
+<img src="https://farm6.staticflickr.com/5711/29580740974_9ddf4c9f93_o.png" />
+<br />
+<br /></p>
+
+<blockquote>
+  <p>От переводчика: <a href="http://crypt.codemancers.com/posts/2016-03-18-rails-webpack-heroku/" target="_blank">Оригинал статьи</a></p>
+</blockquote>
+
+<h3 id="section">Вступление</h3>
+
+<p>Деплой на Heroku Rails приложения которое использует Webpack требует некоторых хитростей, так как для этого нужны одновременно и Ruby, и Node.js. После нескольких неудачных попыток, я нашел решение которое работает без кастомизации билдпаков (buildpacks) Heroku. Если вы знаете как работают билдпаки Heroku, можете прочитать только резюме для <a href="#section-1">TL;DR версии</a>.
+<br />
+<br />
+Для начала небольшая вводная. Приложение, над которым я работаю, использует <code>React</code> для отрисовки интерактивных компонентов на фронтенде. Rails обрабатывает роутинг и общается с базой данных. Компоненты React написаны на синтаксисе ES6 который <em>транспилируется</em> в более широко используемый ES5 API с помощью Babel. Также я использую ESLint и Redux. Все модули JavaScript собираются в один файл при помощи Webpack.</p>
+
+<blockquote>
+  <p>Транспилер -  компилятор, транслирующий исходный код на одном языке программирования в исходный код на другом языке программирования или более раннюю версию того же языка</p>
+</blockquote>
+
+<p>Стоит отметить, что есть хорошо поддерживаемый гем <a href="https://github.com/reactjs/react-rails" target="_blank">react-rails</a>, но мы выбрали <code>npm</code>, потому что хотели использовать последние версии пакетов React, Redux, ESLint и чувствовали что рабочий процесс (workflow) с npm-based управлением пакетов подойдет лучше в данном случае.
+<br />
+<br />
+Вот структура проекта с которой мы решили работать:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">app/
+lib/
+config/
+... <span class="o">(</span>обычные каталоги rails<span class="o">)</span>
+webpack/
+  <span class="p">|</span>-- package.json
+  <span class="p">|</span>-- components
+  <span class="p">|</span>-- reducers</code></pre></figure>
+
+<p>Первоначально, <code>package.json</code> требуемый для npm был помещен в каталоге <code>webpack/</code>, но это усложнило деплой на Heroku. После компиляции Webpack весь JavaScript собирается в файле <code>react_bundle.js</code> и кладется в каталог <code>app/assets/javascripts</code>. Этот файл в свою очередь загружается через asset pipeline. Собранный файл должен лежать на своем месте до того как запустится <code>assets:precompile</code> в процессе деплоя.</p>
+
+<h3 id="heroku">Билдпаки Heroku</h3>
+
+<p>Heroku использует установочные скрипты, которые они назвали <a href="https://devcenter.heroku.com/articles/buildpacks" target="_blank">buildpacks</a>, для определения типа приложения и запуска необходимых шагов для деплоя. Например, Heroku запускает сборку и деплой Rack-based приложения если видит файл <code>Gemfile</code> в корне приложения. Если при этом в списке гемов будут рельсовые то запустится сборка и деплой Rails приложения. Упрощенно, для запуска Rack приложения нужны следующие шаги:</p>
+
+<ol>
+  <li>Поиск <code>Gemfile</code> и <code>Gemfile.lock</code> в корневой директории. Если такие есть то предполагаем что это Ruby приложение и стартуем соответствующие задачи.</li>
+  <li>Проверка что в <code>Gemfile.lock</code> есть Rack.</li>
+  <li>Установка требуемой версии Ruby</li>
+  <li>Установка bundler’а и всех зависимостей</li>
+  <li>Запуск web сервера на основании <code>Procfile</code> или <a href="https://github.com/heroku/heroku-buildpack-ruby/blob/v146/lib/language_pack/rack.rb#L27" target="_blank">веб сервера по умолчанию</a></li>
+</ol>
+
+<p>Таким же образом Heroku выполняет шаги для Node.js приложений, основываясь на наличии файла <code>package.json</code> в корневой директории. Итак, что же делать если нам нужна сборка и Ruby и Node.js одновременно? Нужно чтобы и <code>Gemfile</code>, и <code>package.json</code> присутствовали в корневой директории. Это <strong>шаг №1</strong>.</p>
+
+<h3 id="heroku-1">Множественные билдпаки Heroku</h3>
+
+<p>Heroku поддерживает <a href="https://devcenter.heroku.com/articles/using-multiple-buildpacks-for-an-app" target="_blank">множественные билдпаки</a> для одного приложения. Если у нас Node.js и Ruby билдпаки, то нужен способ указать Heroku, что сначала нужно выполнить сборку для npm и только потом запускать сборку Ruby. Это нужно для того, чтобы файл <code>react_bundle.js</code> был на своем месте в <code>app/assets/javascripts</code> до того как запустится сборка assets в Rails. Командная строка Heroku дает нам способ задавать билдпаки и указывать порядок в котором они должны запускаться:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku buildpacks:clear
+heroku buildpacks:set heroku/nodejs
+heroku buildpacks:add heroku/ruby --index 2</code></pre></figure>
+
+<p>Аргумент <code>--index</code> означает что <code>heroku/ruby</code> билдпак добавляется <em>после</em> <code>heroku/nodejs</code>. Это завершает <strong>шаг №2</strong>.</p>
+
+<h3 id="heroku-2">Отправка билд хука на Heroku</h3>
+
+<p>После того как билдпаки установлены, нам нужен способ запустить команду Webpack сразу после того как Node.js собран, но до того как будет начата сборка Ruby/Rails. Билдпак для Node.js <a href="https://devcenter.heroku.com/articles/nodejs-support#customizing-the-build-process" target="_blank">поддерживает способ</a> выполнить кастомный скрипт сразу после того как сборка Node.js прошла. Для этого команда должна быть указана в <code>package.json</code> внутри секции <code>scripts</code> c ключом <code>heroku-postbuild</code>. Вот пример актуальной секции <code>scripts</code> из <code>package.json</code>:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="s2">&quot;scripts&quot;</span><span class="err">:</span> <span class="p">{</span>
+  <span class="nt">&quot;webpack:deploy&quot;</span><span class="p">:</span> <span class="s2">&quot;webpack --config=webpack/webpack.config.js -p&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;heroku-postbuild&quot;</span><span class="p">:</span> <span class="s2">&quot;npm run webpack:deploy&quot;</span>
+<span class="p">}</span><span class="err">,</span></code></pre></figure>
+
+<p>На этом заканчивается <strong>шаг №3</strong>. Благодаря этим 3 шагам, я смог построить работающий процесс деплоя для Rails + Webpack приложения.</p>
+
+<h3 id="section-1">Резюме</h3>
+
+<ol>
+  <li>Поместите <code>package.json</code> в корневом каталоге вашего Rails приложения.</li>
+  <li>Настройте множественные билдпаки на Heroku через утилиту командной строки так, чтобы <code>heroku/nodejs</code> был на первом месте а <code>heroku/ruby</code> втором.</li>
+  <li>Добавьте Webpack команду для сборки бандла в секцию <code>scripts</code> файла <code>package.json</code> с ключом <code>heroku-postbuild</code>.</li>
+</ol>
+
+
+      
+        <a href="/tag/rails">#Rails</a>
+      
+        <a href="/tag/heroku">#Heroku</a>
+      
+        <a href="/tag/webpack">#Webpack</a>
+      
+        <!-- <a href="/tag/rails/" rel="tag">Rails</a>, <a href="/tag/heroku/" rel="tag">Heroku</a>, <a href="/tag/webpack/" rel="tag">Webpack</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <p class="byline"><strong>Деплоим Rails + Webpack приложение на Heroku</strong> опубликовано <time datetime="2016-10-08T23:35:17+03:00">08 October, 2016</time>.</p>
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Деплоим Rails + Webpack приложение на Heroku %23doamru http://doam.ru/rails-webpack-heroku/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/rails-webpack-heroku/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/rails-webpack-heroku/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/rails-webpack-heroku/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+  <div class="mailerlite-subscribe-form">
+    <script type="text/javascript" src="//app.mailerlite.com/data/webforms/225081/h4i6o3.js?v1"></script>
+  </div>
+</div><!-- /.social-share -->
+
+
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://doam.ru/the_results_of_2016/" title="Итоги 2016">Итоги 2016</a></li>
+    
+      <li><a href="http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" title="Пишем Telegram бота на Ruby для уведомлений в канале">Пишем Telegram бота на Ruby для уведомлений в канале</a></li>
+    
+      <li><a href="http://doam.ru/fcgi_monitoring_with_zabbix/" title="Мониторинг PHP-FPM через FastCGI в Zabbix">Мониторинг PHP-FPM через FastCGI в Zabbix</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    <a href="#" class="go-top">Наверх</a>
+
+
+<div style="text-align: center;"><span>&copy; 2011 - 2016 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://doam.ru/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://doam.ru/assets/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>
