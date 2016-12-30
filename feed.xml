@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">Diary of madman</title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
+<link rel="alternate" type="text/html" href="http://doam.ru" />
+<updated>2016-12-30T12:58:07+03:00</updated>
+<id>http://doam.ru/</id>
+<author>
+  <name>Антон Рябов</name>
+  <uri>http://doam.ru/</uri>
+  <email>mail@doam.ru</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Итоги 2016]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/the_results_of_2016/" />
+  <id>http://doam.ru/the_results_of_2016</id>
+  <published>2016-12-27T14:10:52+03:00</published>
+  <updated>2016-12-27T14:10:52+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;figure&gt;
+  &lt;img src=&quot;https://farm6.staticflickr.com/5717/31603113140_d4f0e1317e_o.jpg&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Возникло жгучее желание подвести итоги прошедшего года (или оно возникает в конце каждого года, просто только сейчас “руки дошли”?). Это первый &lt;em&gt;полный&lt;/em&gt; год, который мы прожили в Москве....
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/the_results_of_2016/&quot;&gt;Итоги 2016&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on December 27, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Пишем Telegram бота на Ruby для уведомлений в канале]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" />
+  <id>http://doam.ru/telegram_bot_for_push_messages_when_new_post_published</id>
+  <published>2016-11-29T21:59:32+03:00</published>
+  <updated>2016-11-29T21:59:32+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;h3 id=&quot;section&quot;&gt;Вступление&lt;/h3&gt;
+
+&lt;p&gt;Заикнулся в присутствии нового коллеги о своем блоге, первый его вопрос был “что за блог?”, а второй “а телеграм бот у тебя есть?”. Поймал себя на мысли &lt;em&gt;неужели я стал ретроградом&lt;/em&gt;. Когда начался хайп вокруг влогов и youtube каналов я остался верен теп...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/&quot;&gt;Пишем Telegram бота на Ruby для уведомлений в канале&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 29, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Мониторинг PHP-FPM через FastCGI в Zabbix]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/fcgi_monitoring_with_zabbix/" />
+  <id>http://doam.ru/fcgi_monitoring_with_zabbix</id>
+  <published>2016-11-23T21:34:01+03:00</published>
+  <updated>2016-11-23T21:34:01+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;figure&gt;
+  &lt;img src=&quot;https://farm6.staticflickr.com/5498/30407849124_bfc7ab4bbe_o.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Решил у нас в &lt;a href=&quot;http://imhonet.ru&quot; target=&quot;_blank&quot;&gt;Имхонете&lt;/a&gt; сделать мониторинг PHP-FPM, чтобы все было как у нормальных пацанов. Советы в интернете сводятся к тому, чтобы включить ст...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/fcgi_monitoring_with_zabbix/&quot;&gt;Мониторинг PHP-FPM через FastCGI в Zabbix&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 23, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Закрытие велосезона 2016]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/closing_the_2016_cycling_season/" />
+  <id>http://doam.ru/closing_the_2016_cycling_season</id>
+  <published>2016-11-13T13:59:07+03:00</published>
+  <updated>2016-11-13T13:59:07+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;В этой записи хочу зафиксировать некоторые моменты прошедшего лета на велосипеде. Для меня это был первый сезон и пусть я отъездил не столько сколько хотелось бы, все равно считаю его удачным.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://doam.ru/first_bicycle_report/&quot; target=&quot;_blank&quot;&gt;Вот здесь&lt;/a&gt; я...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/closing_the_2016_cycling_season/&quot;&gt;Закрытие велосезона 2016&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 13, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Деплой приватных SSL ключей с помощью Ansible]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/deploying_ssl_private_keys_with_ansible/" />
+  <id>http://doam.ru/deploying-ssl-private-keys-with-ansible</id>
+  <published>2016-11-03T10:49:52+03:00</published>
+  <updated>2016-11-03T10:49:52+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;https://farm6.staticflickr.com/5488/30713598396_b204277003_o.png&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Когда используете систему для управления конфигурацией как Ansible или любую другую, рано или поздно вы столкнетесь с доставкой/выкладкой/деплоем приватных ключей SSL. Деплой публичных S...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/deploying_ssl_private_keys_with_ansible/&quot;&gt;Деплой приватных SSL ключей с помощью Ansible&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 03, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Мелкие заметки из redmine]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/small_notes_from_redmine/" />
+  <id>http://doam.ru/small_notes_from_redmine</id>
+  <published>2016-10-23T14:45:37+03:00</published>
+  <updated>2016-10-23T14:45:37+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;blockquote&gt;
+  &lt;p&gt;У меня в redmine лежат заметки, к которым не обращаюсь, но выглядят они полезными, поэтому перенесу их сюда, как бы в архив.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
+  &lt;header&gt;
+    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/small_notes_from_redmine/&quot;&gt;Мелкие заметки из redmine&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 23, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Загрузка резервных копий OpenVZ из Proxmox в Yandex.Disk]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/upload_proxmox_backups_to_yandex_disk/" />
+  <id>http://doam.ru/upload_proxmox_backups_to_yandex_disk</id>
+  <published>2016-10-23T14:05:30+03:00</published>
+  <updated>2016-10-23T14:05:30+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;blockquote&gt;
+  &lt;p&gt;У меня в redmine лежат заметки, к которым не обращаюсь, но выглядят они полезными, поэтому перенесу их сюда, как бы в архив.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://disk.yandex.ru/&quot; target=&quot;_blank&quot;&gt;Яндекс диск&lt;/a&gt; поддерживает загрузку по протоколу WebDAV. Логика будет такая:&lt;/p&gt;...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/upload_proxmox_backups_to_yandex_disk/&quot;&gt;Загрузка резервных копий OpenVZ из Proxmox в Yandex.Disk&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 23, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Установка Zabbix 2.2 на CentOS 6.5 + LEMP]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/" />
+  <id>http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack</id>
+  <published>2016-10-23T13:19:26+03:00</published>
+  <updated>2016-10-23T13:19:26+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;blockquote&gt;
+  &lt;p&gt;У меня в redmine лежат заметки, к которым не обращаюсь, но выглядят они полезными, поэтому перенесу их сюда, как бы в архив.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
+  &lt;header&gt;
+    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/how_to_install_zabbix_2_on_centos_6_lemp_stack/&quot;&gt;Установка Zabbix 2.2 на CentOS 6.5 + LEMP&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 23, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Поход в российскую государственную библиотеку]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/russian_state_library/" />
+  <id>http://doam.ru/russian_state_library</id>
+  <published>2016-10-17T13:51:16+03:00</published>
+  <updated>2016-10-17T13:51:16+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Добрались мы тут наконец до “Ленинки”. Пока оформляли читательский пришлось еще помочь с оформлением паре иностранных студентов, а потом оказалось что в библиотеке кроме тетеньки в кабинке в которой собственно и оформляется билет, никто больше не говорит на английском. Вообще сервис и персонал...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/russian_state_library/&quot;&gt;Поход в российскую государственную библиотеку&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 17, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Деплоим Rails + Webpack приложение на Heroku]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/rails-webpack-heroku/" />
+  <id>http://doam.ru/rails-webpack-heroku</id>
+  <published>2016-10-08T23:35:17+03:00</published>
+  <updated>2016-10-08T23:35:17+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
+  &lt;header&gt;
+    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;Вступление&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#heroku&quot; id=&quot;markdown-toc-heroku&quot;&gt;Билдпаки Heroku&lt;/a&gt;&lt;/l...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/rails-webpack-heroku/&quot;&gt;Деплоим Rails + Webpack приложение на Heroku&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 08, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+</feed>
