@@ -6,6 +6,8 @@ tags: [diary, madman, responsive, blog, jekyll]
 
 # Резюме
 
+{% include _toc.html %}
+
 ### Образование
 
 2013-2015
@@ -24,12 +26,6 @@ tags: [diary, madman, responsive, blog, jekyll]
 
 На данный момент работаю в команде <a href="http://imhonet.ru" target="_blank">Имхонета</a>, крутого портала с рекомендациями и большой инфраструктурой. Администрирую production, development, test, stage площадки. Поддерживаю рабоспособность инфраструктуры и помогаю команде бороться с трудностями и работать эффективнее.
 
-Внедрил chatOps на базе проекта от Github - Hubot. Активно занимаюсь переходом frontend на новую технологию (с twig на node.js). Совместно с коллегами внедрил Continuous Delivery с использованием системы GO CD. Администрирую кластер Proxmox с виртуальными серверами на технологии LXC. Для управления конфигурацией используем Ansible поэтому занимаюсь написанием ролей для него. Также автоматизирую задачи написанием скриптов на bash.
-
-Занимаюсь конфигурированием и поддержкой основного стека web-приложения Nginx+PHP-PFM+MySQL+Memcached+Elasticsearch+RabbitMQ. Провел обновление системы мониторинга Zabbix с версии 2.X на 3.X. Поддерживаю системы для хранения кода: Git (Gitolite, Phabricator, Gitlab), SVN. Реализовал систему Blue-Green deployment на базе Nginx, для тестирования релизов без переключения пользователей.
-
-Совместно с системным архитектором и старшими программистами занимаюсь проработкой и проектированием программных решений. В связи с обновлением операционной системы (Wheezy -> Jessie) кластера Имхонет активно использую Systemd. Поддерживаю системы сторонних разработчиков на различных языках программирования: php, python, go. При создании нового решения, а также по мере появления свободного времени занимаюсь развитием внутренней документации.
-
 <br>
 **ООО «Роспартнер»:**
 
@@ -43,41 +39,39 @@ tags: [diary, madman, responsive, blog, jekyll]
 **ЗАО «Компания ВИСМ»:**
 
 Работал на должности сервис-инженера, в задачи входило обслуживание и замена оборудования сети интернет-провайдера, а так же решение "сложных" заявок от абонентов.
-
+<br>
+<br>
 *Ранее у меня так же был опыт работы в различных сферах деятельности, но я не стал его описывать.*
 
 ### Навыки
 
-Администрирование
-:	**Linux:** Активно работаю с операционными системами Debian/Ubuntu, RHEL/CentOS
-:	**Базы данных:** MySQL/MariaDB, Elasticsearch, Redis, PostgreSQL
-:	**Веб-серверы:** Apache, Nginx, Puma, Unicorn
-:	**Серверы приложений:** PHP-FPM, Passenger, python(uwsgi), node.js
-:	**Системы мониторинга:** Zabbix, Cacti, Nagios
-^
-Программирование
-:   **Знакомство** с программированием началось с pascal в старшей школе, затем был С и Java в университете, параллельно изучал php. Так же по университетской программе изучал основы ООП, технологии программирования и паттерны проектирования. Все это базовый университетский уровень.
+* **Linux:** Debian/Ubuntu, CentOS/RHEL
+* **Web-servers:** Nginx, Unicorn, Puma, PHP-FPM, HHVM, Tomcat
+* **Servers:** Bind, OpenVPN, SSH
+* **Databases:** MySQL/MariaDB, Elasticsearch, Redis, PostgreSQL
+* **Virtualization:** Proxmox, OpenVZ, LXC, KVM, Vagrant, VMware
+* **CI/CD:** Go CD, Jenkins
+* **CM:** Ansible
+* **VCS:** Git (gitolite, gitlab), Subversion
+* **Cloud:** Heroku, Swift (OpenStack)
+* **Programming/Scripting:** Bash, Ruby, Go, PHP
+* **Frontend:** HTML, CSS, Bootstrap, JavaScript, JQuery
+* **Frameworks:** Rails, Sinatra, Opencart
+* **Issue & Project Tracking:** Jira, Redmine, Youtrack
+* **Monitoring:** Zabbix, Nagios, Munin, Monit, Cacti
+* **Methodology:** Agile/Scrum, ITIL
+* **Networking:** vpn, vlan, nat, dhcp, ipv4/6
 
-:   **Ruby:** Этим языком я увлекся благодаря интерактивным курсам на сodeacademy.com. Следующим шагом было прочтение (с выполнением заданий) книги Майкла Хартла <a href="https://www.railstutorial.org/" target="_blank">"Ruby on rails tutorial"</a>. Прошел курс профессиональной разработки на Ruby on Rails в школе thinknetica.com. Мое мнение: Ruby - программирование без боли.
-^
-Web технологии
-:   **HTML+CSS:** Знаю основные теги, различаю табличную верстку и верстку
-	блоками. Обладаю базовыми знаниями.
-:	**Bootstrap:** Стараюсь использовать возможности фреймворка, там где это
-	необходимо. Могу верстать простые шаблоны с использованием сетки
-	bootstrap. Предположительно, могу и сложные, пока не приходилось.
-:	**JavaScript/JQuery:** На стадии изучения. Могу читать код и писать простые функции.
-^
-Open Source
-:   **<a href="https://github.com/tonymadbrain/qna" target="_blank">QnA (Github)</a>:** Сервис вопросов и ответов.
-:   **<a href="http://doam.ru/rormatrix/" target="_blank">RoR matrix ru (Site)</a>:** Интерактивная версия матрицы компетенции Ruby on Rails разработчика.
-:   **<a href="https://github.com/tonymadbrain/parser" target="_blank">Parser (Github)</a>:** Парсер цен на товары.
-:   **<a href="https://github.com/tonymadbrain/sample_app" target="_blank">Sample app (Github)</a>:** Сервис микроблоггинга.
-:   **<a href="https://github.com/tonymadbrain/flickr_api" target="_blank">Flickr API wrapper (Github):</a>** Обертка для работы с Flickr API.
-:   **<a href="https://github.com/tonymadbrain/flickr_wrap" target="_blank">Flickr API wrapper (Github):</a>** Переосмысленный Flickr wrapper.
+### Open Source
+
+* **<a href="https://github.com/tonymadbrain/qna" target="_blank">QnA (Github)</a>:** Сервис вопросов и ответов.
+* **<a href="http://doam.ru/rormatrix/" target="_blank">RoR matrix ru (Site)</a>:** Интерактивная версия матрицы компетенции Ruby on Rails разработчика.
+* **<a href="https://github.com/tonymadbrain/parser" target="_blank">Parser (Github)</a>:** Парсер цен на товары.
+* **<a href="https://github.com/tonymadbrain/sample_app" target="_blank">Sample app (Github)</a>:** Сервис микроблоггинга.
+* **<a href="https://github.com/tonymadbrain/flickr_api" target="_blank">Flickr API wrapper (Github):</a>** Обертка для работы с Flickr API.
+* **<a href="https://github.com/tonymadbrain/flickr_wrap" target="_blank">Flickr API wrapper (Github):</a>** Переосмысленный Flickr wrapper.
 
 ### Дополнительно
 
-* Личные качества: коммуникабельность, умение находить подход к людям, организованность, ответственность, быстрая обучаемость, инициативность, умение работать в команде, стремление достичь мастерства в выбранной сфере деятельности
 * Английский язык - технический
 * Работа с Git и знание Gitflow
