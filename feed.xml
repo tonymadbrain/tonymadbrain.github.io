@@ -4,13 +4,35 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2017-02-06T22:50:33+03:00</updated>
+<updated>2017-02-07T14:39:47+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Скрипты внешних проверок Nginx и PHP-FPM для Zabbix]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/open_source_some_zabbix_scripts/" />
+  <id>http://doam.ru/open_source_some_zabbix_scripts</id>
+  <published>2017-02-07T11:45:03+03:00</published>
+  <updated>2017-02-07T11:45:03+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;figure&gt;
+  &lt;img src=&quot;https://farm1.staticflickr.com/458/32382332380_9e8f620d42_o.jpg&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://doam.ru/fcgi_monitoring_with_zabbix/&quot;&gt;Вот здесь&lt;/a&gt; я писал про мониторинг PHP-FPM в Zabbix и в заключении указал что собираюсь переписать скрипт на Golang. Как и обещал, я это с...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/open_source_some_zabbix_scripts/&quot;&gt;Скрипты внешних проверок Nginx и PHP-FPM для Zabbix&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on February 07, 2017.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -211,31 +233,6 @@
   <content type="html">
     &lt;p&gt;Добрались мы тут наконец до “Ленинки”. Пока оформляли читательский пришлось еще помочь с оформлением паре иностранных студентов, а потом оказалось что в библиотеке кроме тетеньки в кабинке в которой собственно и оформляется билет, никто больше не говорит на английском. Вообще сервис и персонал...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/russian_state_library/&quot;&gt;Поход в российскую государственную библиотеку&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 17, 2016.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Деплоим Rails + Webpack приложение на Heroku]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru/rails-webpack-heroku/" />
-  <id>http://doam.ru/rails-webpack-heroku</id>
-  <published>2016-10-08T23:35:17+03:00</published>
-  <updated>2016-10-08T23:35:17+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri>http://doam.ru</uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
-  &lt;header&gt;
-    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
-  &lt;/header&gt;
-&lt;div id=&quot;drawer&quot;&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;Вступление&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#heroku&quot; id=&quot;markdown-toc-heroku&quot;&gt;Билдпаки Heroku&lt;/a&gt;&lt;/l...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru/rails-webpack-heroku/&quot;&gt;Деплоим Rails + Webpack приложение на Heroku&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 08, 2016.&lt;/p&gt;
   </content>
 </entry>
 

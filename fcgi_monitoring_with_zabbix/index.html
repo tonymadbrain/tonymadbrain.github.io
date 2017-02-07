@@ -40,6 +40,10 @@
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Open Graph Image-->
+
+<!-- End Open Graph Image -->
+
 <!-- For all browsers -->
 <link rel="stylesheet" href="http://doam.ru/assets/css/main.css">
 
@@ -173,6 +177,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </ul>
   </li>
   <li><a href="#section-1" id="markdown-toc-section-1">Заключение</a></li>
+  <li><a href="#upd" id="markdown-toc-upd">UPD:</a></li>
 </ul>
 
   </div>
@@ -310,6 +315,10 @@ ping.path <span class="o">=</span> /ping</code></pre></figure>
 
 <p>Таким образом я решил задачу мониторинга необходимых нам параметров, но эту реализация считаю недостаточной. В дальнейшем хочу переписать его на <a href="https://golang.org/" target="_blank">golang</a> c использованием вот <a href="https://github.com/tomasen/fcgi_client" target="_blank">этой библиотеки</a>. Так как это внешняя проверка она должна работать быстро, а <code>bash</code> не подходит по этому параметру. Если у вас есть рекомендации или доработки пишите мне на почту или в Twitter.</p>
 
+<h2 id="upd">UPD:</h2>
+
+<p>Переписал скрипт на Golang и выложил в open source, подробнее можно почитать вот <a href="http://doam.ru/open_source_some_zabbix_scripts/">тут</a>.</p>
+
       
         <a href="/tag/zabbix">#Zabbix</a>
       
@@ -354,11 +363,11 @@ ping.path <span class="o">=</span> /ping</code></pre></figure>
   <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
     <ul>
     
+      <li><a href="http://doam.ru/open_source_some_zabbix_scripts/" title="Скрипты внешних проверок Nginx и PHP-FPM для Zabbix">Скрипты внешних проверок Nginx и PHP-FPM для Zabbix</a></li>
+    
       <li><a href="http://doam.ru/the_results_of_2016/" title="Итоги 2016">Итоги 2016</a></li>
     
       <li><a href="http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" title="Пишем Telegram бота на Ruby для уведомлений в канале">Пишем Telegram бота на Ruby для уведомлений в канале</a></li>
-    
-      <li><a href="http://doam.ru/closing_the_2016_cycling_season/" title="Закрытие велосезона 2016">Закрытие велосезона 2016</a></li>
     
     </ul>
     <hr />

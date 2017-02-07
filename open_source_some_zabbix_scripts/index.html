@@ -5,15 +5,15 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Почему я делаю селфи? &#8211; Diary of madman</title>
-<meta name="description" content="">
+<title>Скрипты внешних проверок Nginx и PHP-FPM для Zabbix &#8211; Diary of madman</title>
+<meta name="description" content="Заопенсорсил свой "говнокод" на Golang.">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Research, LittlePost, Selfie, Photo">
+<meta name="keywords" content="Zabbix, Golang, DevOps">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Почему я делаю селфи?">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Скрипты внешних проверок Nginx и PHP-FPM для Zabbix">
+<meta name="twitter:description" content="Заопенсорсил свой "говнокод" на Golang.">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
 
@@ -23,16 +23,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Почему я делаю селфи?">
-<meta property="og:description" content="">
-<meta property="og:url" content="http://doam.ru/why_i_make_selfie/">
+<meta property="og:title" content="Скрипты внешних проверок Nginx и PHP-FPM для Zabbix">
+<meta property="og:description" content="Заопенсорсил свой "говнокод" на Golang.">
+<meta property="og:url" content="http://doam.ru/open_source_some_zabbix_scripts/">
 <meta property="og:site_name" content="Diary of madman">
 
 
 
 
 
-<link rel="canonical" href="http://doam.ru/why_i_make_selfie/">
+<link rel="canonical" href="http://doam.ru/open_source_some_zabbix_scripts/">
 <link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -41,6 +41,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Open Graph Image-->
+
+  <meta property="og:image" content="https://farm1.staticflickr.com/458/32382332380_9e8f620d42_o.jpg" />
 
 <!-- End Open Graph Image -->
 
@@ -154,46 +156,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://doam.ru/why_i_make_selfie/" rel="bookmark" title="Почему я делаю селфи?">Почему я делаю селфи?</a></h1>
+        <h1><a href="http://doam.ru/open_source_some_zabbix_scripts/" rel="bookmark" title="Скрипты внешних проверок Nginx и PHP-FPM для Zabbix">Скрипты внешних проверок Nginx и PHP-FPM для Zabbix</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p><br />
-<img src="https://farm6.staticflickr.com/5672/21031390964_ac6c70344a_o.jpg" />
-<br />
-<br /></p>
+      <figure>
+  <img src="https://farm1.staticflickr.com/458/32382332380_9e8f620d42_o.jpg" />
+</figure>
 
-<p><em>Небольшой, спонтанный пост.</em></p>
+<p><a href="http://doam.ru/fcgi_monitoring_with_zabbix/">Вот здесь</a> я писал про мониторинг PHP-FPM в Zabbix и в заключении указал что собираюсь переписать скрипт на Golang. Как и обещал, я это сделал, правда, будучи новичком в этом языке, предполагаю что там говнокодец. Помимо мониторинга PHP-FPM также сделал скрипт для чека Nginx. Оба скрипта я заопенсорсил, выложив на Github:</p>
 
-<p>Сейчас много людей делают селфи и много разговоров и статей по этому поводу. Некоторые считают что это болезнь, другие говорят что это из-за проблем с психикой, недостатком внимания и тому подобное. По сути можно сказать, что я делаю фотографии себя систематически. Однако в свое оправдание скажу — я не расшариваю их. В моем случае, это имеет определенный смысл. Если собрать все эти фотографии в один альбом, можно видеть, как я менялся. Я смотрю, каким я устроился на работу, и каким стал через полгода, могу явно видеть, когда что-то менял в себе: прическу, бороду, одежду. Мне кажется это интересным, и интерес к такому исследованию возрастает пропорционально времени. Замечу так же, что систематически, означает по системе, а не каждый день. В основном я стараюсь фиксировать разные аспекты своей жизни, например, «я уволился с работы», «я поступил в магистратур»у и т.д.</p>
+<ul>
+  <li><a href="https://github.com/tonymadbrain/fcgi_stat_getter">PHP-FPM</a></li>
+  <li><a href="https://github.com/tonymadbrain/nginx_stat_getter">Nginx</a></li>
+</ul>
+
+<p>А также на share.zabbix.com:</p>
+
+<ul>
+  <li><a href="https://share.zabbix.com/cat-app/web-servers/fcgi-stat-getter-monitor-php-fpm-without-nginx-proxy">PHP-FPM</a></li>
+  <li><a href="https://share.zabbix.com/cat-app/web-servers/nginx-stat-getter-simple-check-for-nginx-stats">Nginx</a></li>
+</ul>
+
+<p>В обоих шаблонах присутствуют графики и даже скрины. Скомпилиированный бинарник Golang отрабатывает почти также быстро как и проверки самого Zabbix. Код тривиальный и может быть доработан с минимальными знаниями.</p>
 
       
-        <a href="/tag/research">#Research</a>
+        <a href="/tag/zabbix">#Zabbix</a>
       
-        <a href="/tag/littlepost">#LittlePost</a>
+        <a href="/tag/golang">#Golang</a>
       
-        <a href="/tag/selfie">#Selfie</a>
+        <a href="/tag/devops">#DevOps</a>
       
-        <a href="/tag/photo">#Photo</a>
-      
-        <!-- <a href="/tag/research/" rel="tag">Research</a>, <a href="/tag/littlepost/" rel="tag">LittlePost</a>, <a href="/tag/selfie/" rel="tag">Selfie</a>, <a href="/tag/photo/" rel="tag">Photo</a> -->
+        <!-- <a href="/tag/zabbix/" rel="tag">Zabbix</a>, <a href="/tag/golang/" rel="tag">Golang</a>, <a href="/tag/devops/" rel="tag">DevOps</a> -->
       <hr />
       <footer role="contentinfo">
-        <p class="byline"><strong>Почему я делаю селфи?</strong> опубликовано <time datetime="2014-08-08T00:00:00+04:00">08 August, 2014</time>.</p>
+        <p class="byline"><strong>Скрипты внешних проверок Nginx и PHP-FPM для Zabbix</strong> опубликовано <time datetime="2017-02-07T11:45:03+03:00">07 February, 2017</time>.</p>
         <div style="text-align: center;" class="social-share">
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Почему я делаю селфи? %23doamru http://doam.ru/why_i_make_selfie/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Скрипты внешних проверок Nginx и PHP-FPM для Zabbix %23doamru http://doam.ru/open_source_some_zabbix_scripts/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="http://vk.com/share.php?url=http://doam.ru/why_i_make_selfie/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+      <a href="http://vk.com/share.php?url=http://doam.ru/open_source_some_zabbix_scripts/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/why_i_make_selfie/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/open_source_some_zabbix_scripts/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/why_i_make_selfie/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/open_source_some_zabbix_scripts/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
   <div class="mailerlite-subscribe-form">
@@ -213,11 +224,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
     <ul>
     
-      <li><a href="http://doam.ru/open_source_some_zabbix_scripts/" title="Скрипты внешних проверок Nginx и PHP-FPM для Zabbix">Скрипты внешних проверок Nginx и PHP-FPM для Zabbix</a></li>
-    
       <li><a href="http://doam.ru/the_results_of_2016/" title="Итоги 2016">Итоги 2016</a></li>
     
       <li><a href="http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/" title="Пишем Telegram бота на Ruby для уведомлений в канале">Пишем Telegram бота на Ruby для уведомлений в канале</a></li>
+    
+      <li><a href="http://doam.ru/fcgi_monitoring_with_zabbix/" title="Мониторинг PHP-FPM через FastCGI в Zabbix">Мониторинг PHP-FPM через FastCGI в Zabbix</a></li>
     
     </ul>
     <hr />
