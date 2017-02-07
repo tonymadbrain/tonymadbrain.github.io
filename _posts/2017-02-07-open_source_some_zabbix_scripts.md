@@ -26,4 +26,4 @@ date: 2017-02-07T11:45:03+03:00
 * <a href="https://share.zabbix.com/cat-app/web-servers/fcgi-stat-getter-monitor-php-fpm-without-nginx-proxy">PHP-FPM</a>
 * <a href="https://share.zabbix.com/cat-app/web-servers/nginx-stat-getter-simple-check-for-nginx-stats">Nginx</a>
 
-В обоих шаблонах присутствуют графики и даже скрины. Скомпилиированный бинарник Golang отрабатывает почти также быстро как и проверки самого Zabbix. Код тривиальный и может быть доработан с минимальными знаниями. 
+В обоих шаблонах присутствуют графики и даже скрины. Скомпилированный бинарник Golang отрабатывает почти также быстро как и проверки самого Zabbix. Код тривиальный и может быть доработан с минимальными знаниями.
