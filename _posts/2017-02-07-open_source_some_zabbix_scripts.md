@@ -8,12 +8,12 @@ tags:
   - Golang
   - DevOps
 image:
-  graph: https://farm1.staticflickr.com/465/32721910346_39365af838_o.jpg
+  graph: https://farm1.staticflickr.com/574/32639476871_cf88b37084_o.jpg
 date: 2017-02-07T11:45:03+03:00
 ---
 
 <figure>
-  <img src="https://farm1.staticflickr.com/465/32721910346_39365af838_o.jpg"></a>
+  <img src="https://farm1.staticflickr.com/574/32639476871_cf88b37084_o.jpg"></a>
 </figure>
 
 <a href="http://doam.ru/fcgi_monitoring_with_zabbix/">Вот здесь</a> я писал про мониторинг PHP-FPM в Zabbix и в заключении указал что собираюсь переписать скрипт на Golang. Как и обещал, я это сделал, правда, будучи новичком в этом языке, предполагаю что там говнокодец. Помимо мониторинга PHP-FPM также сделал скрипт для чека Nginx. Оба скрипта я заопенсорсил, выложив на Github:
