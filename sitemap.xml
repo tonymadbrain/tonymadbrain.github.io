@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://doam.ru/setting_up_react_and_rails_has_never_been_easier/</loc>
+    <lastmod>2017-03-05T12:34:17+03:00</lastmod>
+  </url>
+  <url>
     <loc>http://doam.ru/open_source_some_zabbix_scripts/</loc>
     <lastmod>2017-02-07T11:45:03+03:00</lastmod>
   </url>
@@ -1042,6 +1046,9 @@
     </url>
     <url>
       <loc>http://doam.ru/open_source_some_zabbix_scripts/</loc>
+    </url>
+    <url>
+      <loc>http://doam.ru/setting_up_react_and_rails_has_never_been_easier/</loc>
     </url>
   <url>
     <loc>http://doam.ru/bookshelf/index.html</loc>
