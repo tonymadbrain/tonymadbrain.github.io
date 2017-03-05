@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Понимание методов Enumerable методом реализации их на Ruby"
-excerpt: Разбираемся что к чему
+excerpt: "Разбираемся что к чему"
 permalink: /understanding_enumerable_methods_by_re-implementing_them_in_ruby/
 tags:
   - Ruby
@@ -500,12 +500,3 @@ end
 Есть еще много методов `Enumerable` помимо `reduce`, такие как `each_with_index`, `each_with_object`, `count`, `max_by, min_by` и другие, попробуйте также реализовать их на `ruby`.
 
 Ну и все что было сделано в этом примере доступно на <a href="https://github.com/mauricio/enumerable_example" target="_blank">github</a>.
-
-
-
-
-
-
-
-
-

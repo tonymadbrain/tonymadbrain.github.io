@@ -3,7 +3,7 @@ layout: post
 title: React.js - tutorial для Rails разработчиков (часть 2)
 permalink: /react_js_for_rails_developers_part_2/
 redirect_from: /react-js-for-rails-developers-part-2/
-excerpt: Учимся работать с React в Rails
+excerpt: "Учимся работать с React в Rails"
 tags:
   - Ruby
   - RubyOnRails
@@ -430,16 +430,3 @@ end
 Мы также на примере научились интегрировать `React` в `Rails assets pipeline` и разобрались как использовать его вместе с CoffeeScript, jQuery, Turbolinks и остальными частями Rails. Но это не единственный способ достигнуть желаемого результата. Например, если вы не используете `Turbolinks` (следовательно, вам не нужен `react_ujs`) вы можете юзать `Rails Assets` вместо гема `react-rails`, можете использовать `Jbuilder` чтобы создавать более сложные JSON ответы; вы по-прежнему сможете получить такие же замечательные результаты.
 
 React определенно улучшит возможности вашего фронтенда, позволяя иметь крутую библиотеку в вашем Rails стеке.
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,7 +2,7 @@
 layout: post
 title: Закрытие велосезона 2016
 permalink: /closing_the_2016_cycling_season/
-excerpt: "Хотел опубликовать пост еще 1 ноября."
+excerpt: "Хотел опубликовать пост еще 1 ноября"
 tags:
   - Root
   - Bicycle

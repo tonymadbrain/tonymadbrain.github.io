@@ -23,3 +23,20 @@ tags:
 Линк по теме - <a href="http://ru.wikipedia.org/wiki/Сетевая_модель_OSI" target="_BLANK"> Wikipedia </a>
 <br />
 P.S. На экзамене мне это не пригодилось, но вот на работе теперь довольно часто вспоминаю =)
+<br />
+<br />
+UPD:
+Также можно использовать, так называемый мнемонический трюк:
+
+{% highlight bash %}
+All People Seem To Need Data Processing
+(A)pplication
+(P)resentation
+(S)ession
+(T)ransport
+(N)etwork
+(D)ata Link
+(P)hysical
+{% endhighlight %}
+
+Просто как с цветами радуги.

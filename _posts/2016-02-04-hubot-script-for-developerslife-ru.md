@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Hubot скрипт для developerslife.ru
-excerpt: Учим бота получать свежие gif
+excerpt: "Учим бота получать свежие gif"
 permalink: /hubot_script_for_developerslife_ru/
 redirect_from: /hubot-script-for-developerslife-ru/
 tags:
@@ -84,4 +84,3 @@ module.exports = (robot)->
 <br>
 <img src="https://farm2.staticflickr.com/1561/24523370100_50e5128c91_o.jpg">
 <br>
-

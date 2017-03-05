@@ -3,7 +3,7 @@ layout: post
 title: Обновление прошивки Supermicro X9DRW-iF
 permalink: /supermicro_x9drw-if/
 redirect_from: /supermicro-x9drw-if/
-excerpt: "Сказ о том как установка новой версии ProxMox пошла наперекосяк"
+excerpt: "Сказ о том как установка новой версии Proxmox пошла наперекосяк"
 tags:
   - Proxmox
   - Supermicro
@@ -44,12 +44,3 @@ date: 2016-04-02T01:56:10+03:00
 ##Заключение
 
 До прошивки контроллера дисков я так и не дошел. Так как после прошивки bios Proxmox 4 отлично стартанул. А в сумме на все эти ковыряния ушло 3 рабочих дня и виню я, конечно же, Supermicro, за плохо написанную документацию и readme.
-
-
-
-
-
-
-
-
-

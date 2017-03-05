@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Скрипты внешних проверок Nginx и PHP-FPM для Zabbix
-excerpt: Заопенсорсил свой "говнокод" на Golang.
+excerpt: 'Заопенсорсил свой "говнокод" на Golang'
 permalink: /open_source_some_zabbix_scripts/
 tags:
   - Zabbix

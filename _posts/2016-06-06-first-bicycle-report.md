@@ -3,7 +3,7 @@ layout: post
 title: "Первый вело-отчет"
 permalink: /first_bicycle_report/
 redirect_from: /first-bicycle-report/
-excerpt: "Первые 3 недели на GT Timberline COMP (2015)."
+excerpt: "Первые 3 недели на GT Timberline COMP (2015)"
 tags:
   - Bicycle
 date: 2016-06-06T17:48:56+03:00

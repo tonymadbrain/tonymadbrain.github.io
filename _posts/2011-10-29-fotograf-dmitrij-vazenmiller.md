@@ -3,7 +3,7 @@ title: Фотограф Дмитрий Вазенмиллер
 layout: post
 permalink: /dmitrij_vazenmiller/
 redirect_from: /fotograf-dmitrij-vazenmiller/
-excerpt: Из раздела "пиарю воронежскую братву"
+excerpt: 'Из раздела "пиарю воронежскую братву"'
 tags:
   - Photo
 ---

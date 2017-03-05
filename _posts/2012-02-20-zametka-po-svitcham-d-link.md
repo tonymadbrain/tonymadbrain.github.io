@@ -3,7 +3,6 @@ title: Заметка по свитчам D-link
 layout: post
 permalink: /memo_about_d-link_switches/
 redirect_from:
-  - "/?p=354"
   - /zametka-po-svitcham-d-link/
 excerpt: "Список полезных команд"
 tags:

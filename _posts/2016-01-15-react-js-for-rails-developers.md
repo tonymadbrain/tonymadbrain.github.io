@@ -3,7 +3,7 @@ layout: post
 title: React.js - tutorial для Rails разработчиков (часть 1)
 permalink: /react_js_for_rails_developers_part_1/
 redirect_from: /react-js-for-rails-developers-part-1/
-excerpt: Учимся работать с React в Rails
+excerpt: "Учимся работать с React в Rails"
 tags:
   - Ruby
   - RubyOnRails
