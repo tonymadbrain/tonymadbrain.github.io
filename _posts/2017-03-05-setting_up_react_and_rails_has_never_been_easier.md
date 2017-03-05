@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Настройка React + Rails никогда не была проще
-excerpt: "На самом деле нет"
+excerpt: "Релиз Rails 5.1 beta 1 принес много frontend изменений"
 permalink: /setting_up_react_and_rails_has_never_been_easier/
 tags:
   - Rails
