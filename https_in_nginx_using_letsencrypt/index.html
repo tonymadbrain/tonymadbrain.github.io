@@ -163,6 +163,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h3><i class="fa fa-book"></i> Обзор</h3>
   </header>
 <div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#Предварительные-требования" id="markdown-toc-Предварительные-требования">Предварительные требования</a></li>
+  <li><a href="#Установка-клиента-lets-encrypt" id="markdown-toc-Установка-клиента-lets-encrypt">Установка клиента Let’s Encrypt</a>    <ul>
+      <li><a href="#Установка-необходимых-зависимостей" id="markdown-toc-Установка-необходимых-зависимостей">Установка необходимых зависимостей</a></li>
+      <li><a href="#Клонирование-репозитория" id="markdown-toc-Клонирование-репозитория">Клонирование репозитория</a></li>
+    </ul>
+  </li>
+  <li><a href="#Получение-сертификата" id="markdown-toc-Получение-сертификата">Получение сертификата</a>    <ul>
+      <li><a href="#Использование-webroot" id="markdown-toc-Использование-webroot">Использование Webroot</a></li>
+      <li><a href="#Файлы-сертификата" id="markdown-toc-Файлы-сертификата">Файлы сертификата</a></li>
+      <li><a href="#Генерация-группы-Диффи--Хеллмана" id="markdown-toc-Генерация-группы-Диффи--Хеллмана">Генерация группы Диффи — Хеллмана</a></li>
+    </ul>
+  </li>
+  <li><a href="#Настройка-tlsssl-в-nginx" id="markdown-toc-Настройка-tlsssl-в-nginx">Настройка TLS/SSL в Nginx</a></li>
+  <li><a href="#Автообновление-сертифката" id="markdown-toc-Автообновление-сертифката">Автообновление сертифката</a></li>
+  <li><a href="#Обновление-клиента-lets-encrypt" id="markdown-toc-Обновление-клиента-lets-encrypt">Обновление клиента Let’s Encrypt</a></li>
+  <li><a href="#Повышаем-градус-безопасности" id="markdown-toc-Повышаем-градус-безопасности">Повышаем градус безопасности</a>    <ul>
+      <li><a href="#Заключение" id="markdown-toc-Заключение">Заключение</a></li>
+    </ul>
+  </li>
+</ul>
 
   </div>
 </section>
@@ -175,7 +196,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p><a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt</a> это новый Центр сертификации (CA) который предоставляет простой способ для получения и установки бесплатных TLS/SSL сертификатов, позволяя включить HTTPS шифрование на веб серверах.</p>
 
-<p>##Предварительные требования</p>
+<h2 id="Предварительные-требования">Предварительные требования</h2>
 
 <p>Перед тем как начать вам потребуется несколько вещей.</p>
 
@@ -193,25 +214,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li><b>A</b> запись домена должна вести на ваш сервер.</li>
 </ul>
 
-<p>##Установка клиента Let’s Encrypt</p>
+<h2 id="Установка-клиента-lets-encrypt">Установка клиента Let’s Encrypt</h2>
 
 <p>Во-первых нужно установить программное обеспечение <code>letsencrypt</code>. На данный момент лучший способ это сделать это склонировать официальный git репозиторий на Github. Надеемся в будущем будет доступна адекватная установка через пакетные менеджеры (такие как apt/dpkg и yum/rpm).</p>
 
-<p>####Установка необходимых зависимостей</p>
+<h4 id="Установка-необходимых-зависимостей">Установка необходимых зависимостей</h4>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get -y install git bc</code></pre></figure>
 
-<p>####Клонирование репозитория</p>
+<h4 id="Клонирование-репозитория">Клонирование репозитория</h4>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt</code></pre></figure>
 
 <p>После выполнения этой команды у нас должна появится рабочая версия ПО letsencrypt в каталоге <code>/opt/letsencrypt</code></p>
 
-<p>##Получение сертификата</p>
+<h2 id="Получение-сертификата">Получение сертификата</h2>
 
 <p>Let’s Encrypt предоставляет разные способы получения сертификата. Для <code>Apache</code> например имеется модуль, который “делает все сам”, для <code>Nginx</code> такого плагина нет, поэтому мы будем только получать сертификат, а настраивать его самостоятельно. Для получения сертификата мы будем использовать функцию <code>Webroot</code> доступную в Let’s Encrypt.</p>
 
-<p>####Использование Webroot</p>
+<h4 id="Использование-webroot">Использование Webroot</h4>
 
 <p>Плагин <code>Webroot</code> размещает специальный файл в каталоге <code>/.well-known</code> внутри вашего document root.</p>
 
@@ -279,7 +300,7 @@ $ ./letsencrypt-auto certonly -a webroot --webroot-path<span class="o">=</span>/
    Donating to ISRG / Let<span class="err">&#39;</span>s Encrypt:   https://letsencrypt.org/donate
    Donating to EFF:                    https://eff.org/donate-le</code></pre></figure>
 
-<p>####Файлы сертификата</p>
+<h4 id="Файлы-сертификата">Файлы сертификата</h4>
 
 <p>После успешного получения сертификата вам будут доступны следующие PEM-encoded файлы:</p>
 
@@ -292,7 +313,7 @@ $ ./letsencrypt-auto certonly -a webroot --webroot-path<span class="o">=</span>/
 
 <p>Важно знать куда сохраняются данные файлы, так как мы будем настраивать Nginx. Сами файлы складываются в каталог <code>/etc/letsencrypt/archive</code>. Однако, Let’s Encrypt создает символические ссылки на них вида <code>/etc/letsencrypt/live/your_domain_name</code>. Таким образом ссылки всегда будут указывать на самые актуальные сертификаты.</p>
 
-<p>####Генерация группы Диффи — Хеллмана</p>
+<h4 id="Генерация-группы-Диффи--Хеллмана">Генерация группы Диффи — Хеллмана</h4>
 
 <p>Для повышения градуса безопасности нам нужно сгенерировать группу Диффи — Хеллмана (Diffie-Hellman Group), для этого используем команду:</p>
 
@@ -300,7 +321,7 @@ $ ./letsencrypt-auto certonly -a webroot --webroot-path<span class="o">=</span>/
 
 <p>Это может занять какое-то время, но по завершении команды вы будете иметь сильную ДХ группу по пути <code>/etc/ssl/certs/dhparam.pem</code>.</p>
 
-<p>##Настройка TLS/SSL в Nginx</p>
+<h2 id="Настройка-tlsssl-в-nginx">Настройка TLS/SSL в Nginx</h2>
 
 <p>Теперь когда у нас есть SSL сертификат, снова пойдем в конфиг Nginx и изменим настройки.</p>
 
@@ -350,7 +371,7 @@ add_header Strict-Transport-Security max-age<span class="o">=</span><span class=
 
 <p>В отчете должна светиться оценка - <b>A+</b>.</p>
 
-<p>##Автообновление сертифката</p>
+<h2 id="Автообновление-сертифката">Автообновление сертифката</h2>
 
 <p>Сертификаты Let’s Encrypt действительны только в течение 90 дней, это одна из политик, также направленная на обеспечение безопасности. Чтобы обновить, или правильнее сказать, перевыпустить сертификат, нужно выполнить некоторые действия, похожие на получение сертификата.
 <br />
@@ -369,14 +390,14 @@ add_header Strict-Transport-Security max-age<span class="o">=</span><span class=
 
 <p>Сохраняем файл и выходим, после этого команда будет выполняться каждый понедельник в 2.30 ночи, после чего в 2.35 будет применяться конфигурация Nginx.</p>
 
-<p>##Обновление клиента Let’s Encrypt</p>
+<h2 id="Обновление-клиента-lets-encrypt">Обновление клиента Let’s Encrypt</h2>
 
 <p>Если для установки вы использовали клонирование репозитория то обновление сводится к выкачиванию изменений из репозитория. Это можно сделать с помощью команд:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> /opt/letsencrypt
 $ sudo git pull</code></pre></figure>
 
-<p>##Повышаем градус безопасности</p>
+<h2 id="Повышаем-градус-безопасности">Повышаем градус безопасности</h2>
 
 <p>В принципе на этом можно остановиться, у нас уже есть шифрование на сайте. Однако для более полной безопасности нашего приложения стоит установить некоторые заголовки:</p>
 
@@ -392,7 +413,7 @@ add_header          Content-Security-Policy <span class="s2">&quot;default-src &
 
 <p>Проверить заголовки можно <a href="https://securityheaders.io/" target="_blank">тут</a>.</p>
 
-<p>###Заключение</p>
+<h3 id="Заключение">Заключение</h3>
 
 <p>Данный метод был протестирован и применен мной на нескольких проектах, на таких операционных системах как Debian, Ubuntu, Centos. Например, теперь мы шифруем все в магазине беспроводного оборудования - <a href="https://www.isbis.ru" target="_blank">https://www.isbis.ru</a>. Чтобы разобраться в вопросе я перечитал много всего, но наиболее полезными оказались следующие статьи:</p>
 
@@ -400,7 +421,6 @@ add_header          Content-Security-Policy <span class="s2">&quot;default-src &
   <li><a href="https://blog.benroux.me/production-https-rails-app-using-nginx-and-lets-encrypt/" target="_blank">Setting Up Rails Over HTTPS Using Nginx and Let’s Encrypt</a></li>
   <li><a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04" target="_blank">How To Secure Nginx with Let’s Encrypt on Ubuntu 14.04</a></li>
 </ul>
-
 
       
         <a href="/tag/nginx">#Nginx</a>
