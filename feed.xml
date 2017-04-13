@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2017-03-05T18:33:12+03:00</updated>
+<updated>2017-04-13T10:19:37+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
@@ -26,7 +26,7 @@
   </author>
   <content type="html">
     &lt;figure&gt;
-  &lt;img src=&quot;https://farm1.staticflickr.com/590/32445618893_0efe70151b_o.jpg&quot; /&gt;
+  &lt;img src=&quot;https://farm1.staticflickr.com/590/32445618893_0efe70151b_o.jpg&quot; /&gt;&amp;lt;/a&amp;gt;
 &lt;/figure&gt;
 
 &lt;blockquote&gt;
@@ -34,7 +34,7 @@
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;От переводчик...
+  &lt;p&gt;От ...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/setting_up_react_and_rails_has_never_been_easier/&quot;&gt;Настройка React + Rails никогда не была проще&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on March 05, 2017.&lt;/p&gt;
   </content>
 </entry>
@@ -53,10 +53,10 @@
   </author>
   <content type="html">
     &lt;figure&gt;
-  &lt;img src=&quot;https://farm1.staticflickr.com/574/32639476871_cf88b37084_o.jpg&quot; /&gt;
+  &lt;img src=&quot;https://farm1.staticflickr.com/574/32639476871_cf88b37084_o.jpg&quot; /&gt;&amp;lt;/a&amp;gt;
 &lt;/figure&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://doam.ru/fcgi_monitoring_with_zabbix/&quot;&gt;Вот здесь&lt;/a&gt; я писал про мониторинг PHP-FPM в Zabbix и в заключении указал что собираюсь переписать скрипт на Golang. Как и обещал, я это с...
+&lt;p&gt;&lt;a href=&quot;http://doam.ru/fcgi_monitoring_with_zabbix/&quot;&gt;Вот здесь&lt;/a&gt; я писал про мониторинг PHP-FPM в Zabbix и в заключении указал что собираюсь переписать скрипт на Golang. Как и обеща...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/open_source_some_zabbix_scripts/&quot;&gt;Скрипты внешних проверок Nginx и PHP-FPM для Zabbix&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on February 07, 2017.&lt;/p&gt;
   </content>
 </entry>
@@ -96,9 +96,9 @@
     <email>mail@doam.ru</email>
   </author>
   <content type="html">
-    &lt;h3 id=&quot;section&quot;&gt;Вступление&lt;/h3&gt;
+    &lt;h3 id=&quot;Вступление&quot;&gt;Вступление&lt;/h3&gt;
 
-&lt;p&gt;Заикнулся в присутствии нового коллеги о своем блоге, первый его вопрос был “что за блог?”, а второй “а телеграм бот у тебя есть?”. Поймал себя на мысли &lt;em&gt;неужели я стал ретроградом&lt;/em&gt;. Когда начался хайп вокруг влогов и youtube каналов я остался верен теп...
+&lt;p&gt;Заикнулся в присутствии нового коллеги о своем блоге, первый его вопрос был “что за блог?”, а второй “а телеграм бот у тебя есть?”. Поймал себя на мысли &lt;em&gt;неужели я стал ретроградом&lt;/em&gt;. Когда начался хайп вокруг влогов и youtube каналов я остался верен ...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/telegram_bot_for_push_messages_when_new_post_published/&quot;&gt;Пишем Telegram бота на Ruby для уведомлений в канале&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 29, 2016.&lt;/p&gt;
   </content>
 </entry>
@@ -117,10 +117,10 @@
   </author>
   <content type="html">
     &lt;figure&gt;
-  &lt;img src=&quot;https://farm6.staticflickr.com/5498/30407849124_bfc7ab4bbe_o.png&quot; /&gt;
+  &lt;img src=&quot;https://farm6.staticflickr.com/5498/30407849124_bfc7ab4bbe_o.png&quot; /&gt;&amp;lt;/a&amp;gt;
 &lt;/figure&gt;
 
-&lt;p&gt;Решил у нас в &lt;a href=&quot;http://imhonet.ru&quot; target=&quot;_blank&quot;&gt;Имхонете&lt;/a&gt; сделать мониторинг PHP-FPM, чтобы все было как у нормальных пацанов. Советы в интернете сводятся к тому, чтобы включить ст...
+&lt;p&gt;Решил у нас в &lt;a href=&quot;http://imhonet.ru&quot; target=&quot;_blank&quot;&gt;Имхонете&lt;/a&gt; сделать мониторинг PHP-FPM, чтобы все было как у нормальных пацанов. Советы в интернете сводятся к тому, чтобы в...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/fcgi_monitoring_with_zabbix/&quot;&gt;Мониторинг PHP-FPM через FastCGI в Zabbix&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 23, 2016.&lt;/p&gt;
   </content>
 </entry>

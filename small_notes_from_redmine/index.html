@@ -168,96 +168,96 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 <div id="drawer">
 <ul id="markdown-toc">
-  <li><a href="#hostname--centos" id="markdown-toc-hostname--centos">Смена hostname в CentOS</a></li>
-  <li><a href="#centos" id="markdown-toc-centos">Смена часового пояса в CentOS</a></li>
-  <li><a href="#centos-1" id="markdown-toc-centos-1">Работа со временем в CentOS</a></li>
-  <li><a href="#mysql" id="markdown-toc-mysql">Создание новой базы в MySQL</a></li>
+  <li><a href="#Смена-hostname-в-centos" id="markdown-toc-Смена-hostname-в-centos">Смена hostname в CentOS</a></li>
+  <li><a href="#Смена-часового-пояса-в-centos" id="markdown-toc-Смена-часового-пояса-в-centos">Смена часового пояса в CentOS</a></li>
+  <li><a href="#Работа-со-временем-в-centos" id="markdown-toc-Работа-со-временем-в-centos">Работа со временем в CentOS</a></li>
+  <li><a href="#Создание-новой-базы-в-mysql" id="markdown-toc-Создание-новой-базы-в-mysql">Создание новой базы в MySQL</a></li>
 </ul>
 
   </div>
 </section>
 <!-- /#table-of-contents -->
 
-<h1 id="hostname--centos">Смена hostname в CentOS</h1>
+<h1 id="Смена-hostname-в-centos">Смена hostname в CentOS</h1>
 
 <p>Открываем файл <code>/etc/sysconfig/network</code> и редактируем</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">HOSTNAME</span><span class="o">=</span><span class="s2">&quot;example.com&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">HOSTNAME</span><span class="o">=</span><span class="s2">&quot;example.com&quot;</span></code></pre></figure>
 
 <p>Далее выполняем команду:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hostname example.com</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ hostname example.com</code></pre></figure>
 
 <p>Потом открываем файл <code>/etc/hosts</code> и редактируем или добавляем если нет такой строки:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">127.0.0.1 example.com localhost localhost.localdomain</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="m">127</span>.0.0.1 example.com localhost localhost.localdomain</code></pre></figure>
 
-<h1 id="centos">Смена часового пояса в CentOS</h1>
+<h1 id="Смена-часового-пояса-в-centos">Смена часового пояса в CentOS</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime</code></pre></figure>
 
-<h1 id="centos-1">Работа со временем в CentOS</h1>
+<h1 id="Работа-со-временем-в-centos">Работа со временем в CentOS</h1>
 
 <p>Для синхронизации времени нужно установить пакет ntp</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum y install ntp</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum y install ntp</code></pre></figure>
 
 <p>Для выполнения синхронизации в настоящий момент:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ntpdate pool.ntp.org</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ ntpdate pool.ntp.org</code></pre></figure>
 
 <p>Зимнее московское время отображается не верно? Обновите пакет tzdata!</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum upgrade tzdata</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum upgrade tzdata</code></pre></figure>
 
 <p>Открываем конфиг:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/sysconfig/ntpd</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ vim /etc/sysconfig/ntpd</code></pre></figure>
 
 <p>Корректируем там:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">SYNC_HWCLOCK</span><span class="o">=</span>yes</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">SYNC_HWCLOCK</span><span class="o">=</span>yes</code></pre></figure>
 
 <p>А также изменяем (-L чтобы не слушать сеть вообще):</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-u ntp:ntp -p /var/run/ntpd.pid -L&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-u ntp:ntp -p /var/run/ntpd.pid -L&quot;</span></code></pre></figure>
 
 <p>Синхронизируем время:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>/usr/sbin/ntpdate 0.rhel.pool.ntp.org europe.pool.ntp.org</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ /usr/sbin/ntpdate <span class="m">0</span>.rhel.pool.ntp.org europe.pool.ntp.org</code></pre></figure>
 
 <p>Добавляем в автозапуск:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>/sbin/chkconfig ntpd on</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ /sbin/chkconfig ntpd on</code></pre></figure>
 
 <p>Запускаем:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>/etc/init.d/ntpd start</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ /etc/init.d/ntpd start</code></pre></figure>
 
 <p>Но иногда ntpd глючит и получается большие отставания:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sntp time.nist.gov
-<span class="m">2010</span> Feb <span class="m">19</span> 16:33:10.653 + 79.089 +/ 0.152 secs</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sntp time.nist.gov
+<span class="m">2010</span> Feb <span class="m">19</span> <span class="m">16</span>:33:10.653 + <span class="m">79</span>.089 +/ <span class="m">0</span>.152 secs</code></pre></figure>
 
 <p>Тогда надо делать следующее:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>/etc/init.d/ntpd stop
-<span class="nv">$ </span>/usr/sbin/ntpdate 0.rhel.pool.ntp.org europe.pool.ntp.org
-<span class="nv">$ </span>/etc/init.d/ntpd start</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ /etc/init.d/ntpd stop
+$ /usr/sbin/ntpdate <span class="m">0</span>.rhel.pool.ntp.org europe.pool.ntp.org
+$ /etc/init.d/ntpd start</code></pre></figure>
 
 <p>Теперь все ок:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sntp time.nist.gov
-<span class="m">2010</span> Feb <span class="m">19</span> 16:33:25.111 - 0.009 +/- 0.151 secs</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sntp time.nist.gov
+<span class="m">2010</span> Feb <span class="m">19</span> <span class="m">16</span>:33:25.111 - <span class="m">0</span>.009 +/- <span class="m">0</span>.151 secs</code></pre></figure>
 
 <p>Время железа и его синхронизация с системным</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hwclock --show
-<span class="nv">$ </span>hwclock --systohc</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ hwclock --show
+$ hwclock --systohc</code></pre></figure>
 
-<h1 id="mysql">Создание новой базы в MySQL</h1>
+<h1 id="Создание-новой-базы-в-mysql">Создание новой базы в MySQL</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&gt; CREATE DATABASE db_name CHARACTER SET utf8 COLLATE utf8_general_ci<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>&gt; CREATE DATABASE db_name CHARACTER SET utf8 COLLATE utf8_general_ci<span class="p">;</span>
 &gt; use db_name<span class="p">;</span>
 &gt; GRANT SELECT,LOCK TABLES,CREATE TEMPORARY TABLES,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER,INDEX ON db_name.* TO <span class="s1">&#39;db_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span> identified by <span class="s1">&#39;password&#39;</span><span class="p">;</span>
 &gt; flush privileges<span class="p">;</span></code></pre></figure>

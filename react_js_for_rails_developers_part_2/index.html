@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <h2 id="section">Вместо вступления</h2>
+      <p>##Вместо вступления</p>
 
 <p>Так как материал получается довольно объемным, я решил разделить его на две части и это вторая:</p>
 
@@ -174,13 +174,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h3><i class="fa fa-book"></i> Обзор</h3>
   </header>
 <div id="drawer">
-<ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">Вместо вступления</a></li>
-  <li><a href="#setstatereplacestate--" id="markdown-toc-setstatereplacestate--">setState/replaceState: Удаляем записи</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">Рефакторинг: Хелперы состояний</a></li>
-  <li><a href="#reactive-data-flow--" id="markdown-toc-reactive-data-flow--">Reactive Data Flow: Редактирование записей</a></li>
-  <li><a href="#reactjs" id="markdown-toc-reactjs">Заключение: Простота и гибкость React.js</a></li>
-</ul>
 
   </div>
 </section>
@@ -194,14 +187,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <p>От переводчика: <a href="https://www.airpair.com/reactjs/posts/reactjs-a-guide-for-rails-developers" target="_blank">Оригинал статьи</a></p>
 </blockquote>
 
-<h2 id="setstatereplacestate--">setState/replaceState: Удаляем записи</h2>
+<p>##setState/replaceState: Удаляем записи</p>
 
 <p>Следующая функция в нашем списке это возможность удалять записи, нам нужна новая колонка <code>Actions</code> в таблице с записями. В этой колонке будет находиться кнопка <code>Delete</code> для каждой записи. Как и в предыдущем примере, нам нужно создать метод <code>destroy</code> в контроллере Rails:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># app/controllers/records_controller.rb</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="c1"># app/controllers/records_controller.rb</span>
 
 <span class="k">class</span> <span class="nc">RecordsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+  <span class="o">...</span>
 
   <span class="k">def</span> <span class="nf">destroy</span>
     <span class="vi">@record</span> <span class="o">=</span> <span class="no">Record</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
@@ -209,12 +202,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span class="n">head</span> <span class="ss">:no_content</span>
   <span class="k">end</span>
 
-  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+  <span class="o">...</span>
 <span class="k">end</span></code></pre></figure>
 
 <p>Это весь сервер-сайд код, который нам потребуется для нашей фичи. Теперь добавим колонку <em>Actions</em> в заголовок таблицы в нашем <code>React</code> компоненте <code>Records</code>:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
 
 <span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
   <span class="p">...</span>
@@ -234,7 +227,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>И в заключение, откроем компоненет <code>Record</code> и добавим колонку с ссылкой <code>Delete</code>:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
 
 <span class="vi">@Record = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
   <span class="nv">render: </span><span class="nf">-&gt;</span>
@@ -267,7 +260,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Добавим новый метод <code>handleDelete</code> и атрибут <code>onClick</code> для наших, пока что, бесполезных кнопок удаления в компоненте <code>Record</code>:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
 
 <span class="vi">@Record = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
   <span class="nv">handleDelete: </span><span class="nf">(e) -&gt;</span>
@@ -292,7 +285,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>При клике на кнопку удаления, <code>handleDelete</code> отправляет <em>AJAX</em> запрос на сервер для удаления записи на бекенде и, после этого, уведомляет родительский компонент о данном событии через обработчик <code>handleDeleteRecord</code> доступный через <code>props</code>, это значит что мы должны настроить создание элементов <code>Record</code> в компоненте родителе таким образом, чтобы оно включало дополнительное свойство <code>handleDeleteRecor</code> и также реализовать актуальный обработчик метода в родителе:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
 
 <span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
   <span class="p">...</span>
@@ -335,18 +328,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/1a4dc646e53fecebc821c709347aae774e9ef170" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/1a4dc646e53fecebc821c709347aae774e9ef170" target="_blank">здесь</a>.</p>
 
-<h2 id="section-1">Рефакторинг: Хелперы состояний</h2>
+<p>##Рефакторинг: Хелперы состояний</p>
 
 <p>На данный момент, у нас есть пачка методов в которых состояния обновляются без каких-либо сложностей, так как наши данные сложно назвать сложными. Но подумайте о более сложном приложении с многоуровневыми JSON состояниями, представьте себя делающего большое количество копий и жонглирующего состояними данных. React включает несколько чудных хелперов состояний нам в помощь. Неважно как глубоко (вложены) состояния, хелперы позволяют манипулировать ими (состояними) с большой свободой, используя аналог языка запросов MongoDB (по крайней мере вот что <a href="https://facebook.github.io/react/docs/update.html">говорит документация React</a> ).</p>
 
 <p>Перед тем как использовать хелперы, нам нужно сконфигурировать наше Rails приложение чтобы подключить их. Откройте <code>config/application.rb</code> и добавьте <code>config.react.addons = true</code> в самом низу блока <code>Application</code>:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># config/application.rb</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="c1"># config/application.rb</span>
 
-  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+  <span class="o">...</span>
   <span class="k">module</span> <span class="nn">Accounts</span>
     <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
-      <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+      <span class="o">...</span>
       <span class="n">config</span><span class="o">.</span><span class="n">react</span><span class="o">.</span><span class="n">addons</span> <span class="o">=</span> <span class="kp">true</span>
     <span class="k">end</span>
   <span class="k">end</span></code></pre></figure>
@@ -360,7 +353,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Мы попробуем упростить методы <code>addRecord</code> и <code>deleteRecord</code> в компоненте <code>Record</code> используя эти хелперы, примерно вот так:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
 
 <span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
   <span class="p">...</span>
@@ -376,13 +369,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/d19127f40ae2f795a30b7de6470cde95d3734eee" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/d19127f40ae2f795a30b7de6470cde95d3734eee" target="_blank">здесь</a>.</p>
 
-<h2 id="reactive-data-flow--">Reactive Data Flow: Редактирование записей</h2>
+<p>##Reactive Data Flow: Редактирование записей</p>
 
 <p>Для финальной функциональности, мы добавим кнопку <code>Edit</code> рядом с каждой кнопкой <code>Delete</code> в нашей таблице записей. Когда эта кнопка будет нажата, строка с записью будет переключена из режима read-only (wink wink) в состояние редактирования, появится строчная форма, в которой пользователь сможет обновить содержимое полей записи. После отправки изменений или их отмены, строка с записью вернется в исходное состояние read-only.</p>
 
 <p>Как вы могли догадаться из предыдщуего параграфа, нам нужно обрабатывать изменение данных чтобы переключать состояние каждой записи внутри нашего компонента <code>Record</code>. Это юзкейс для штуки, которая в React называется <em>reactive data flow</em>. Давайте добавим флаг <code>edit</code> и метод <code>handleToggle</code> в наш <code>record.js.coffee</code>:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
 
 <span class="vi">@Record = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
   <span class="nv">getInitialState: </span><span class="nf">-&gt;</span>
@@ -398,7 +391,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>У нас уже есть начальная версия <code>recordRow</code>, это наш текущий метод <code>render</code>. Давайте перенесем его в наш абсолютно новый (brand new) метод <code>recordRow</code> и добавим новый код:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
 
 <span class="vi">@Record = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
   <span class="p">...</span>
@@ -422,7 +415,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Забегая вперед, у реализации <code>recordForm</code> будет похожая структура, но с <code>imput</code> полями в каждой ячейке. Мы будет использовать аттрибут <code>ref</code> для наших инпутов чтобы сделать их доступными; так как этот компоненет не обрабатывает <em>state</em>, этот новый атрибут позволит нашему компоненту читать данные, предоставляемые пользователем через <code>@refs</code>:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
 
 <span class="vi">@Record = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
   <span class="p">...</span>
@@ -463,7 +456,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>В итоге, метод <code>render</code> сводится к следующему коду:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
 
   <span class="vi">@Record = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
     <span class="p">...</span>
@@ -482,10 +475,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Чтобы обрабатывать обновление записей, нам нужно добавить метод <code>update</code> в наш rails контроллер:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># app/controllers/records_controller.rb</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="c1"># app/controllers/records_controller.rb</span>
 
 <span class="k">class</span> <span class="nc">RecordsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+  <span class="o">...</span>
   <span class="k">def</span> <span class="nf">update</span>
     <span class="vi">@record</span> <span class="o">=</span> <span class="no">Record</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
     <span class="k">if</span> <span class="vi">@record</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">record_params</span><span class="p">)</span>
@@ -494,12 +487,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@record</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span> <span class="ss">status</span><span class="p">:</span> <span class="ss">:unprocessable_entity</span>
     <span class="k">end</span>
   <span class="k">end</span>
-  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+  <span class="o">...</span>
 <span class="k">end</span></code></pre></figure>
 
 <p>Вернемся к нашему компоненту <code>Record</code>, нам нужно имплементировать метод <code>handleEdit</code>, который будет отправлять <code>AJAX</code> запрос на сервер с информацией об обновленной записи, затем он должен уведомить родительский компонент через отправку обновленной версии записи через метод <code>handleEditRecord</code>, который будет получен через <code>@props</code>, такую же схему мы использовали до этого когда удаляли записи:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/record.js.coffee</span>
 
 <span class="vi">@Record = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
   <span class="p">...</span>
@@ -525,7 +518,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Последнее, но не менее важное, нам нужно обновить состояние компоненета <code>Records</code> чтобы перезаписать бывшую запись, записью с новыми данными и дать реакту показать свою магию. Реализация может выглядеть так:</p>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="c1"># app/assets/javascripts/components/records.js.coffee</span>
 
   <span class="vi">@Records = </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span>
     <span class="p">...</span>
@@ -561,7 +554,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/1a62dd0e48b31aa55659e0035e754cee1776aa61" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/1a62dd0e48b31aa55659e0035e754cee1776aa61" target="_blank">здесь</a>.</p>
 
-<h2 id="reactjs">Заключение: Простота и гибкость React.js</h2>
+<p>##Заключение: Простота и гибкость React.js</p>
 
 <p>Мы изучили некоторые функции React и едва ли выучили какие-то новые концепции. Я слышал как люди говорили - JavaScript фреймворк X или Y имеет крутую кривую обучения …</p>
 

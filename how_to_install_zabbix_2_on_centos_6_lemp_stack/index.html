@@ -168,128 +168,128 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 <div id="drawer">
 <ul id="markdown-toc">
-  <li><a href="#zabbix-server" id="markdown-toc-zabbix-server">Установка zabbix-server</a></li>
-  <li><a href="#mysql" id="markdown-toc-mysql">Установка MySQL</a></li>
-  <li><a href="#section" id="markdown-toc-section">Создание базы данных</a></li>
-  <li><a href="#zabbix" id="markdown-toc-zabbix">Конфигурирование Zabbix</a></li>
-  <li><a href="#php" id="markdown-toc-php">Установка и настройка PHP</a></li>
-  <li><a href="#nginx" id="markdown-toc-nginx">Установка и настройка NGINX</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">Последние штрихи</a></li>
+  <li><a href="#Установка-zabbix-server" id="markdown-toc-Установка-zabbix-server">Установка zabbix-server</a></li>
+  <li><a href="#Установка-mysql" id="markdown-toc-Установка-mysql">Установка MySQL</a></li>
+  <li><a href="#Создание-базы-данных" id="markdown-toc-Создание-базы-данных">Создание базы данных</a></li>
+  <li><a href="#Конфигурирование-zabbix" id="markdown-toc-Конфигурирование-zabbix">Конфигурирование Zabbix</a></li>
+  <li><a href="#Установка-и-настройка-php" id="markdown-toc-Установка-и-настройка-php">Установка и настройка PHP</a></li>
+  <li><a href="#Установка-и-настройка-nginx" id="markdown-toc-Установка-и-настройка-nginx">Установка и настройка NGINX</a></li>
+  <li><a href="#Последние-штрихи" id="markdown-toc-Последние-штрихи">Последние штрихи</a></li>
 </ul>
 
   </div>
 </section>
 <!-- /#table-of-contents -->
 
-<h1 id="zabbix-server">Установка zabbix-server</h1>
+<h1 id="Установка-zabbix-server">Установка zabbix-server</h1>
 
 <p>Добавляем репозиторий zabbix</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rpm -ivh http://repo.zabbix.com/zabbix/2.0/rhel/6/x86_64/zabbix-release-2.0-1.el6.noarch.rpm</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rpm -ivh http://repo.zabbix.com/zabbix/2.0/rhel/6/x86_64/zabbix-release-2.0-1.el6.noarch.rpm</code></pre></figure>
 
 <p>Устанавливаем zabbix-server</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install zabbix-server-mysql zabbix-web-mysql -y</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum install zabbix-server-mysql zabbix-web-mysql -y</code></pre></figure>
 
 <p>Отключаем репозиторий zabbix</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># enabled=1 =&gt; enabled=0</span>
-<span class="nv">$ </span>vim /etc/yum.repos.d/zabbix.repo</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="c1"># enabled=1 =&gt; enabled=0</span>
+$ vim /etc/yum.repos.d/zabbix.repo</code></pre></figure>
 
-<h1 id="mysql">Установка MySQL</h1>
+<h1 id="Установка-mysql">Установка MySQL</h1>
 
 <p>Добавляем репозиторий epel</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rpm -ivh http://mirror.yandex.ru/epel/6/x86_64/epel-release-6-8.noarch.rpm</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rpm -ivh http://mirror.yandex.ru/epel/6/x86_64/epel-release-6-8.noarch.rpm</code></pre></figure>
 
 <p>Устанавливаем MySQL cервер и консоль</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install mysql-server mysql-client -y</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum install mysql-server mysql-client -y</code></pre></figure>
 
 <p>Запускаем демон базы данных</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service mysqld start</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ service mysqld start</code></pre></figure>
 
-<h1 id="section">Создание базы данных</h1>
+<h1 id="Создание-базы-данных">Создание базы данных</h1>
 
 <p>Логинимся под рутом</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mysql -uroot</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>mysql -uroot</code></pre></figure>
 
 <p>Создаем БД и пользователя</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&gt; create database zabbix character <span class="nb">set </span>utf8<span class="p">;</span> grant all privileges on zabbix.* to zabbix@localhost identified by <span class="s1">&#39;zabbix&#39;</span><span class="p">;</span> <span class="nb">exit</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>&gt; create database zabbix character <span class="nb">set</span> utf8<span class="p">;</span> grant all privileges on zabbix.* to zabbix@localhost identified by <span class="s1">&#39;zabbix&#39;</span><span class="p">;</span> <span class="nb">exit</span></code></pre></figure>
 
 <p>Переходим в папку с дампами бд от zabbix</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> /usr/share/doc/zabbix-server-mysql-2.0.11/create/</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> /usr/share/doc/zabbix-server-mysql-2.0.11/create/</code></pre></figure>
 
 <p>Восстанавливаем таблицы из дампов</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mysql -uroot zabbix &lt; schema.sql mysql -uroot zabbix &lt; images.sql mysql -uroot zabbix &lt; data.sql</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ mysql -uroot zabbix &lt; schema.sql mysql -uroot zabbix &lt; images.sql mysql -uroot zabbix &lt; data.sql</code></pre></figure>
 
 <p>Устанавливаем свои пароли mysql для пользователей root и zabbix</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mysql -uroot SET <span class="nv">PASSWORD</span> <span class="o">=</span> PASSWORD<span class="o">(</span><span class="s1">&#39;root_pass&#39;</span><span class="o">)</span><span class="p">;</span> <span class="nb">exit </span>mysql -uzabbix -pzabbix SET <span class="nv">PASSWORD</span> <span class="o">=</span> PASSWORD<span class="o">(</span><span class="s1">&#39;zabbix_pass&#39;</span><span class="o">)</span><span class="p">;</span> <span class="nb">exit</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ mysql -uroot SET <span class="nv">PASSWORD</span> <span class="o">=</span> PASSWORD<span class="o">(</span><span class="s1">&#39;root_pass&#39;</span><span class="o">)</span><span class="p">;</span> <span class="nb">exit</span> mysql -uzabbix -pzabbix SET <span class="nv">PASSWORD</span> <span class="o">=</span> PASSWORD<span class="o">(</span><span class="s1">&#39;zabbix_pass&#39;</span><span class="o">)</span><span class="p">;</span> <span class="nb">exit</span></code></pre></figure>
 
-<h1 id="zabbix">Конфигурирование Zabbix</h1>
+<h1 id="Конфигурирование-zabbix">Конфигурирование Zabbix</h1>
 
 <p>Правим конфиг zabbix</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/zabbix/zabbix_server.conf</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ vim /etc/zabbix/zabbix_server.conf</code></pre></figure>
 
 <p>Проверяем следующие параметры:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">DBHost</span><span class="o">=</span>localhost
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">DBHost</span><span class="o">=</span>localhost
 <span class="nv">DBName</span><span class="o">=</span>zabbix
 <span class="nv">DBUser</span><span class="o">=</span>zabbix
 <span class="nv">DBPassword</span><span class="o">=</span>zabbix_pass</code></pre></figure>
 
 <p>Запускаем сервер zabbix</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service zabbix-server start</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ service zabbix-server start</code></pre></figure>
 
-<h1 id="php">Установка и настройка PHP</h1>
+<h1 id="Установка-и-настройка-php">Установка и настройка PHP</h1>
 
 <p>Устанавливаем пакеты</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install php php-mysql php-mbstring php-mcrypt gcc libtool php-fpm php-cli php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc php-pecl-apc snmp sysstat -y</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum install php php-mysql php-mbstring php-mcrypt gcc libtool php-fpm php-cli php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc php-pecl-apc snmp sysstat -y</code></pre></figure>
 
 <p>Правим настройки PHP</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/php.ini</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ vim /etc/php.ini</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php_value max_execution_time 300
-php_value max_input_time 300
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>php_value max_execution_time <span class="m">300</span>
+php_value max_input_time <span class="m">300</span>
 php_value memory_limit 128M //дефолт
 php_value post_max_size 16M
 php_value upload_max_filesize 2M //дефолт
 //раскомментировать строку и подставить Europe/Moscow
 date.timezone <span class="o">=</span> Europe/Moscow</code></pre></figure>
 
-<h1 id="nginx">Установка и настройка NGINX</h1>
+<h1 id="Установка-и-настройка-nginx">Установка и настройка NGINX</h1>
 
 <p>Инсталим nginx</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install nginx -y</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum install nginx -y</code></pre></figure>
 
 <p>Создаем папку для резервных копий</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mkdir /home/backups/</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ mkdir /home/backups/</code></pre></figure>
 
 <p>Перемещаем все дефолтные конфиги</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mv /etc/nginx/conf.d/default.conf /home/backups/ mv /etc/nginx/conf.d/virtual.conf /home/backups/ mv /etc/nginx/nginx.conf /home/backups/</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ mv /etc/nginx/conf.d/default.conf /home/backups/ mv /etc/nginx/conf.d/virtual.conf /home/backups/ mv /etc/nginx/nginx.conf /home/backups/</code></pre></figure>
 
 <p>Создаем новый конфиг nginx</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/nginx/nginx.conf</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ vim /etc/nginx/nginx.conf</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">user nginx<span class="p">;</span>
-worker_processes 10<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>user nginx<span class="p">;</span>
+worker_processes <span class="m">10</span><span class="p">;</span>
 pid /var/run/nginx.pid<span class="p">;</span>
 events <span class="o">{</span>
-  worker_connections 1024<span class="p">;</span>
+  worker_connections <span class="m">1024</span><span class="p">;</span>
   use epoll<span class="p">;</span>
   multi_accept on<span class="p">;</span>
 <span class="o">}</span>
@@ -301,33 +301,33 @@ http <span class="o">{</span>
   <span class="s1">&#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span>
   <span class="s1">&#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;</span><span class="p">;</span>
   access_log /var/log/nginx/access.log main<span class="p">;</span>
-  connection_pool_size 256<span class="p">;</span>
+  connection_pool_size <span class="m">256</span><span class="p">;</span>
   client_header_buffer_size 4k<span class="p">;</span>
   client_max_body_size 100m<span class="p">;</span>
   large_client_header_buffers <span class="m">8</span> 8k<span class="p">;</span>
   request_pool_size 4k<span class="p">;</span>
   output_buffers <span class="m">1</span> 32k<span class="p">;</span>
-  postpone_output 1460<span class="p">;</span>
-  proxy_max_temp_file_size 0<span class="p">;</span>
+  postpone_output <span class="m">1460</span><span class="p">;</span>
+  proxy_max_temp_file_size <span class="m">0</span><span class="p">;</span>
   gzip on<span class="p">;</span>
-  gzip_min_length 1024<span class="p">;</span>
+  gzip_min_length <span class="m">1024</span><span class="p">;</span>
   gzip_proxied any<span class="p">;</span>
   gzip_proxied expired no-cache no-store private auth<span class="p">;</span>
   gzip_types text/plain text/xml application/xml application/x-javascript text/javascript text/css text/json<span class="p">;</span>
-  gzip_comp_level 8<span class="p">;</span>
-  gzip_disable «MSIE <span class="o">[</span>1-6<span class="o">]</span><span class="se">\.</span><span class="o">(</span>?!.*SV1<span class="o">)</span>»<span class="p">;</span>
+  gzip_comp_level <span class="m">8</span><span class="p">;</span>
+  gzip_disable «MSIE <span class="o">[</span><span class="m">1</span>-6<span class="o">]</span><span class="se">\.</span><span class="o">(</span>?!.*SV1<span class="o">)</span>»<span class="p">;</span>
   sendfile on<span class="p">;</span>
   tcp_nopush on<span class="p">;</span>
   tcp_nodelay on<span class="p">;</span>
-  keepalive_timeout <span class="m">75</span> 20<span class="p">;</span>
-  server_names_hash_max_size 8192<span class="p">;</span>
+  keepalive_timeout <span class="m">75</span> <span class="m">20</span><span class="p">;</span>
+  server_names_hash_max_size <span class="m">8192</span><span class="p">;</span>
   ignore_invalid_headers on<span class="p">;</span>
   server_name_in_redirect off<span class="p">;</span>
   proxy_buffer_size 8k<span class="p">;</span>
   proxy_buffers <span class="m">32</span> 4k<span class="p">;</span>
-  proxy_connect_timeout 1000<span class="p">;</span>
-  proxy_read_timeout 12000<span class="p">;</span>
-  proxy_send_timeout 12000<span class="p">;</span>
+  proxy_connect_timeout <span class="m">1000</span><span class="p">;</span>
+  proxy_read_timeout <span class="m">12000</span><span class="p">;</span>
+  proxy_send_timeout <span class="m">12000</span><span class="p">;</span>
   proxy_cache_path /var/cache/nginx <span class="nv">levels</span><span class="o">=</span><span class="m">2</span> <span class="nv">keys_zone</span><span class="o">=</span>pagecache:5m <span class="nv">inactive</span><span class="o">=</span>10m <span class="nv">max_size</span><span class="o">=</span>50m<span class="p">;</span>
   real_ip_header X-Real-IP<span class="p">;</span>
   proxy_set_header Host <span class="nv">$host</span><span class="p">;</span>
@@ -339,10 +339,10 @@ http <span class="o">{</span>
 
 <p>Создаем конфиг виртуального сервера для zabbix’a</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vim /etc/nginx/conf.d/zabbix.conf</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>vim /etc/nginx/conf.d/zabbix.conf</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
-  listen 80<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>server <span class="o">{</span>
+  listen <span class="m">80</span><span class="p">;</span>
   server_name zabbix.hostname.ru<span class="p">;</span>
 
   location / <span class="o">{</span>
@@ -350,10 +350,10 @@ http <span class="o">{</span>
     index index.php index.html index.htm<span class="p">;</span>
   <span class="o">}</span>
 
-  location ~ <span class="se">\.</span>php<span class="nv">$ </span><span class="o">{</span>
+  location ~ <span class="se">\.</span>php$ <span class="o">{</span>
     root /usr/share/zabbix<span class="p">;</span>
-    try_files <span class="nv">$uri</span> <span class="o">=</span>404<span class="p">;</span>
-    fastcgi_pass 127.0.0.1:9000<span class="p">;</span>
+    try_files <span class="nv">$uri</span> <span class="o">=</span><span class="m">404</span><span class="p">;</span>
+    fastcgi_pass <span class="m">127</span>.0.0.1:9000<span class="p">;</span>
     fastcgi_index index.php<span class="p">;</span>
     fastcgi_buffers <span class="m">4</span> 256k<span class="p">;</span>
     fastcgi_busy_buffers_size 256k<span class="p">;</span>
@@ -362,31 +362,31 @@ http <span class="o">{</span>
     include fastcgi_params<span class="p">;</span>
   <span class="o">}</span>
 
-  <span class="c"># deny access to .htaccess files, if Apache&#39;s document root concurs with nginx&#39;s one</span>
+  <span class="c1"># deny access to .htaccess files, if Apache&#39;s document root concurs with nginx&#39;s one</span>
   location ~ /<span class="se">\.</span>ht <span class="o">{</span>
     deny all<span class="p">;</span>
   <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<h1 id="section-1">Последние штрихи</h1>
+<h1 id="Последние-штрихи">Последние штрихи</h1>
 
 <p>Удаляем предустановленный apache из автозапуска</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chkconfig httpd off</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ chkconfig httpd off</code></pre></figure>
 
 <p>Добавляем в автозагрузку nginx, php-fpm, mysqld и zabbix</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chkconfig --levels <span class="m">235</span> nginx on
-<span class="nv">$ </span>chkconfig --levels <span class="m">235</span> php-fpm on
-<span class="nv">$ </span>chkconfig --levels <span class="m">235</span> mysqld on
-<span class="nv">$ </span>chkconfig zabbix-server on</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ chkconfig --levels <span class="m">235</span> nginx on
+$ chkconfig --levels <span class="m">235</span> php-fpm on
+$ chkconfig --levels <span class="m">235</span> mysqld on
+$ chkconfig zabbix-server on</code></pre></figure>
 
 <p>Стопаем apache и запускаем все наши сервисы</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service httpd stop
-<span class="nv">$ </span>service nginx start
-<span class="nv">$ </span>service php-fpm start
-<span class="nv">$ </span>service mysqld restart</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ service httpd stop
+$ service nginx start
+$ service php-fpm start
+$ service mysqld restart</code></pre></figure>
 
 
       

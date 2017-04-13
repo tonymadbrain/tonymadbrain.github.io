@@ -162,23 +162,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>В папке нашего пользователя лежит файл .bashrc все изменения в нем применяются только к данному пользователю, а здесь /etc/bash.bashrc лежит общий конфиг и применяется он когда мы логинимся под рутом. Итак в .bashrc находим строчку примерно такого плана</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;${debian_chroot:+($debian_chroot)}[33[0;40;4;32m]u@h[33[00m]:[33[01;34m]w[33[00m]$ &#39;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;${debian_chroot:+($debian_chroot)}[33[0;40;4;32m]u@h[33[00m]:[33[01;34m]w[33[00m]$ &#39;</span></code></pre></figure>
 
 <p>и заменяем на</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;[33[01;32m]u@[33[01;36m]h$[33[00m] &#39;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;[33[01;32m]u@[33[01;36m]h$[33[00m] &#39;</span></code></pre></figure>
 
 <p>Цифра перед буквой m означает цвет, они бывают:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Название цвета Текст Фон
-Черный <span class="m">30</span> 40
-Красный <span class="m">31</span> 41
-Зеленый <span class="m">32</span> 42
-Желтый <span class="m">33</span> 43
-Синий <span class="m">34</span> 44
-Маджента <span class="m">35</span> 45
-Циановый <span class="m">36</span> 46
-Белый <span class="m">37</span> 47</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>Название цвета Текст Фон
+Черный <span class="m">30</span> <span class="m">40</span>
+Красный <span class="m">31</span> <span class="m">41</span>
+Зеленый <span class="m">32</span> <span class="m">42</span>
+Желтый <span class="m">33</span> <span class="m">43</span>
+Синий <span class="m">34</span> <span class="m">44</span>
+Маджента <span class="m">35</span> <span class="m">45</span>
+Циановый <span class="m">36</span> <span class="m">46</span>
+Белый <span class="m">37</span> <span class="m">47</span></code></pre></figure>
 
 <p>Если хотим изменить приглашение рута, то правим /etc/bash.bashrc, там проделываем примерно то же самое по аналогии.
 Вот собственно и всё, а вот и мой скриншот:</p>

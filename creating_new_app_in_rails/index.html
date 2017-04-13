@@ -167,44 +167,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Выбираем версию ruby</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rvm use 2.2.0</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rvm use <span class="m">2</span>.2.0</code></pre></figure>
 
 <p>Создаем гемсет</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rvm gemset create my_app</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rvm gemset create my_app</code></pre></figure>
 
 <p>переключаемся на новый гемсет</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rvm gemset use my_app</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rvm gemset use my_app</code></pre></figure>
 
 <p>Устанавливаем rails</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gem install rails --no-ri --no-rdoc</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ gem install rails --no-ri --no-rdoc</code></pre></figure>
 
 <p>Создаем новое приложение</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rails new my_app -d postgresql</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rails new my_app -d postgresql</code></pre></figure>
 
 <p>Переходим в каталог нового приложения</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd </span>my_app</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> my_app</code></pre></figure>
 
 <p>Закрепляем версию руби и гемсет за данным каталогом, т.е. проектом</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rvm --ruby-version use rvm current@my_app</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rvm --ruby-version use rvm current@my_app</code></pre></figure>
 
 <p>сохраняем исходный конфиг database.yml и редактируем database.yml</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cp config/database.yml config/database.yml.sample</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ cp config/database.yml config/database.yml.sample</code></pre></figure>
 
 <p>Создаем базы</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rake db:create:all</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rake db:create:all</code></pre></figure>
 
 <p>Ну и git</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git init
-<span class="nb">echo </span>config/database.yml &gt;&gt; .gitignore
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>git init
+<span class="nb">echo</span> config/database.yml &gt;&gt; .gitignore
 git add .
 git ci -am <span class="s2">&quot;initial commit&quot;</span></code></pre></figure>
 
@@ -212,20 +212,20 @@ git ci -am <span class="s2">&quot;initial commit&quot;</span></code></pre></figu
 
 <p>Сам скрипт:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="ch">#!/bin/bash</span>
 
 <span class="nb">read</span> -n <span class="m">1</span> -p <span class="s2">&quot;Ты запустил скрипт с параметрами - x.x.x my_super_app (y/[a])?: &quot;</span> AMSURE
-<span class="o">[</span> <span class="s2">&quot;$AMSURE&quot;</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span>
-<span class="nb">echo</span> <span class="s2">&quot;&quot;</span> 1&gt;<span class="p">&amp;</span>2
+<span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$AMSURE</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span>
+<span class="nb">echo</span> <span class="s2">&quot;&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 
 <span class="nb">cd</span> ~/projects
 
 <span class="nv">rubyVersion</span><span class="o">=</span><span class="nv">$1</span>
 <span class="nv">appName</span><span class="o">=</span><span class="nv">$2</span>
-<span class="nb">echo</span> -e <span class="s2">&quot;\x1B[33m### Try ruby version: $rubyVersion ###\x1B[39m&quot;</span>
-<span class="nb">echo</span> -e <span class="s2">&quot;\x1B[33m### Try application name: $appName ###\x1B[39m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\x1B[33m### Try ruby version: </span><span class="nv">$rubyVersion</span><span class="s2"> ###\x1B[39m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\x1B[33m### Try application name: </span><span class="nv">$appName</span><span class="s2"> ###\x1B[39m&quot;</span>
 
-<span class="k">if</span> which rvm 1&gt;/dev/null<span class="p">;</span> <span class="k">then</span>
+<span class="k">if</span> which rvm <span class="m">1</span>&gt;/dev/null<span class="p">;</span> <span class="k">then</span>
   <span class="nb">echo</span> -e <span class="s2">&quot;\x1B[32m### Using RVM ###\x1B[39m&quot;</span>
 <span class="k">else</span>
   <span class="nb">echo</span> -e <span class="s2">&quot;\x1B[31m### RVM not instaled ###\x1B[39m&quot;</span>
@@ -242,11 +242,11 @@ rails new <span class="nv">$appName</span> -d postgresql
 rvm --ruby-version use rvm current@<span class="nv">$appName</span>
 cp config/database.yml config/database.yml.sample
 
-<span class="c">#git</span>
+<span class="c1">#git</span>
 git init
-<span class="nb">echo </span>config/database.yml &gt;&gt; .gitignore
+<span class="nb">echo</span> config/database.yml &gt;&gt; .gitignore
 git add .
-git ci -am <span class="s2">&quot;Initial commit for $appName&quot;</span>
+git ci -am <span class="s2">&quot;Initial commit for </span><span class="nv">$appName</span><span class="s2">&quot;</span>
 <span class="nb">echo</span> -e <span class="s2">&quot;\x1B[32m### All done! ###\x1B[39m&quot;</span>
 <span class="nb">echo</span> -e <span class="s2">&quot;\x1B[33m### Do not forget edit database.yml and create DBs with &#39;rake db:create:all&#39; ###\x1B[39m&quot;</span></code></pre></figure>
 

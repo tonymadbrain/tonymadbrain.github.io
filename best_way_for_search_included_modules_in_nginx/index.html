@@ -160,28 +160,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="article-wrap">
       <p>В nginx есть несколько функций, например:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">nginx -t</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>nginx -t</code></pre></figure>
 
 <p>Проверит конфиги на правильность и скажет где ошибка, что очень удобно, ведь не приходится релоадить или перезапускать сервер, да и команда короткая. Так же можно посмотреть версию установленного nginx:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">nginx -v</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>nginx -v</code></pre></figure>
 
 <p>Еще есть ключ (-V), с которым команда nginx выводит список всех модулей, которые включены в состав пакета. И вот, при установке из разных репозиториев список этих модулей может варьироваться. Но когда вы захотите найти что-то в этом списке, то обнаружите, что вывод данной команды нельзя отфильтровать командой grep. Многие просто внимательно читают вывод и находят глазами, но это не мой путь.
 В один прекрасный день, когда в очередной раз потребовалось проверить в каких же репозиториях Nginx поставляется с модулем geoip, я докопался до следующего:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>2&gt;<span class="p">&amp;</span><span class="m">1</span> nginx -V <span class="p">|</span> tr -- - <span class="s1">&#39;\n&#39;</span> <span class="p">|</span> grep --color geoip</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> nginx -V <span class="p">|</span> tr -- - <span class="s1">&#39;\n&#39;</span> <span class="p">|</span> grep --color geoip</code></pre></figure>
 
 <p>Вывод команды:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">http_geoip_module</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>http_geoip_module</code></pre></figure>
 
 <p>Такая команда подходит если вам нужно что-то отфильтровать, полный вывод же, будет не очень удобочитаемым. Дальнейшие исследования привели к следующему:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ A</span><span class="o">=</span><span class="sb">`</span>nginx -V 2&gt;<span class="p">&amp;</span>1<span class="sb">`</span><span class="p">;</span><span class="nv">B</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$A</span><span class="p">|</span>sed <span class="s1">&#39;s/ --/# --/g&#39;</span><span class="p">|</span>tr <span class="s1">&#39;#&#39;</span> <span class="s1">&#39;\n&#39;</span><span class="p">|</span>sed -n <span class="s1">&#39;/^ --/p&#39;</span><span class="p">|</span>sort<span class="sb">`</span><span class="p">;</span><span class="nb">printf</span> <span class="s2">&quot;$A&quot;</span><span class="p">|</span>head -2<span class="p">;</span><span class="nb">printf</span> <span class="s2">&quot;configure arguments:\n$B\n&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nv">A</span><span class="o">=</span><span class="sb">`</span>nginx -V <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="sb">`</span><span class="p">;</span><span class="nv">B</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$A</span><span class="p">|</span>sed <span class="s1">&#39;s/ --/# --/g&#39;</span><span class="p">|</span>tr <span class="s1">&#39;#&#39;</span> <span class="s1">&#39;\n&#39;</span><span class="p">|</span>sed -n <span class="s1">&#39;/^ --/p&#39;</span><span class="p">|</span>sort<span class="sb">`</span><span class="p">;</span><span class="nb">printf</span> <span class="s2">&quot;</span><span class="nv">$A</span><span class="s2">&quot;</span><span class="p">|</span>head -2<span class="p">;</span><span class="nb">printf</span> <span class="s2">&quot;configure arguments:\n</span><span class="nv">$B</span><span class="s2">\n&quot;</span></code></pre></figure>
 
 <p>В данном случае вывод будет такой:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">nginx version: nginx/1.2.1
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>nginx version: nginx/1.2.1
 TLS SNI support enabled
 configure arguments:
  --add-module<span class="o">=</span>/tmp/buildd/nginx-1.2.1/debian/modules/nginx-auth-pam
@@ -219,11 +219,11 @@ configure arguments:
 
 <p>Вывод классный! Но вот каждый раз, когда нужно проверить список модулей, такую команду не введешь. Так что я продолжил поиски и пришел к такому варианту:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>2&gt;<span class="p">&amp;</span><span class="m">1</span> nginx -V <span class="p">|</span> xargs -n1</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> nginx -V <span class="p">|</span> xargs -n1</code></pre></figure>
 
 <p>Который дает вывод:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">nginx
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>nginx
 version:
 nginx/1.2.1
 TLS

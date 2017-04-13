@@ -163,43 +163,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 Редактируем файлик base.html.erb</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /opt/redmine/app/views/layouts/base.html.erb</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ vim /opt/redmine/app/views/layouts/base.html.erb</code></pre></figure>
 
 <p>Находим строку:</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;h1&gt;</span><span class="cp">&lt;%=</span> <span class="n">page_header_title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h1&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span></span><span class="x">&lt;h1&gt;</span><span class="cp">&lt;%=</span> <span class="n">page_header_title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h1&gt;</span></code></pre></figure>
 
 <p>И комментируем</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="c">&lt;!--&lt;h1&gt;&lt;%= page_header_title %&gt;&lt;/h1&gt;--&gt;</span></code></pre></figure>
 
 <p>В следующую строчку вставляем</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;img src=&quot;</span><span class="cp">&lt;%=</span> <span class="no">Redmine</span><span class="o">::</span><span class="no">Utils</span><span class="o">.</span><span class="n">relative_url_root</span> <span class="cp">%&gt;</span><span class="x">/images/logo.png&quot; style=&quot;top-margin: 15px; left-margin: 15px;&quot;/&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span></span><span class="x">&lt;img src=&quot;</span><span class="cp">&lt;%=</span> <span class="no">Redmine</span><span class="o">::</span><span class="no">Utils</span><span class="o">.</span><span class="n">relative_url_root</span> <span class="cp">%&gt;</span><span class="x">/images/logo.png&quot; style=&quot;top-margin: 15px; left-margin: 15px;&quot;/&gt;</span></code></pre></figure>
 
 <p><code>Redmine::Utils.relative_url_root</code> - переменная, которая указывает на каталог установки redmine.
 <br />
 <br />
 В итоге, правки должны выглядеть вот так:</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="x">&lt;!--&lt;h1&gt;</span><span class="cp">&lt;%=</span> <span class="n">page_header_title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h1&gt;--&gt;</span>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span></span><span class="x">&lt;!--&lt;h1&gt;</span><span class="cp">&lt;%=</span> <span class="n">page_header_title</span> <span class="cp">%&gt;</span><span class="x">&lt;/h1&gt;--&gt;</span>
 <span class="x">&lt;img src=&quot;</span><span class="cp">&lt;%=</span> <span class="no">Redmine</span><span class="o">::</span><span class="no">Utils</span><span class="o">.</span><span class="n">relative_url_root</span> <span class="cp">%&gt;</span><span class="x">/images/logo.png&quot; style=&quot;top-margin: 15px; left-margin: 15px;&quot;/&gt;</span>
 
 <span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">display_main_menu?</span><span class="p">(</span><span class="vi">@project</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></figure>
 
 <p>Теперь нужно загрузить изображение</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>scp logo.png root@example.com:/opt/redmine/public/images</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ scp logo.png root@example.com:/opt/redmine/public/images</code></pre></figure>
 
 <p>Не забываем выставить права на файл</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chown redmine:redmine /opt/redmine/public/images/logo.png</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ chown redmine:redmine /opt/redmine/public/images/logo.png</code></pre></figure>
 
 <p>Ну и теперь осталось перезагрузить redmine, для этого перезагружаем веб-сервер:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service apache2 restart
-<span class="nv">$ </span>service httpd restart
-<span class="nv">$ </span>service nginx restart</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ service apache2 restart
+$ service httpd restart
+$ service nginx restart</code></pre></figure>
 
 <p>Только в статье не указано, что изображение ни как не будет деформировано, т.е. если загрузить 100х100 будет отображаться 100х100, если 1024х1024 будет такое и сдвинет все остальные элементы. Еще, при редактировании фирменного логотипа, я сделал прозрачный фон, чтобы не пытаться попасть в цвет шапки redmine.</p>
 

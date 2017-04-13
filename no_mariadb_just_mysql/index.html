@@ -167,13 +167,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>В начале на сервере с Centos 6.6 работали redmine, gitlab и несколько простых парсеров на ruby, которые с базой не общаются (пока). Стояла версия <code>mysql-server-5.1.73-3.el6_5.x86_64</code>. Было произведено “легкое” обновление до <code>mysql-community-server-5.6.24-3.el6.x86_64</code> по <a href="https://www.digitalocean.com/community/tutorials/how-to-install-mysql-5-6-from-official-yum-repositories" target="_blank">инструкции с DO</a>. Затем был произведен полный backup утилитой xtrabackup из <a href="https://www.percona.com/doc/percona-server/5.5/installation/yum_repo.html" target="_blank">репозитория Percona</a>. И наконец было выполнено обновление до версии MariaDB-server-10 (<a href="https://mariadb.com/kb/en/mariadb/yum/" target="_blank">ман</a>).
 Естественно на время обновлений сервисы отключались. И вот, готовый к неожиданностям я начал их запускать и столкнулся с ошибкой:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Incorrect MySQL client library version! This gem was compiled <span class="k">for</span> 5.1.73 but the client library is 5.3.12-MariaDB.</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>Incorrect MySQL client library version! This gem was compiled <span class="k">for</span> <span class="m">5</span>.1.73 but the client library is <span class="m">5</span>.3.12-MariaDB.</code></pre></figure>
 
 <p>Гугления привели к <a href="https://github.com/brianmario/mysql2/issues/506" target="_blank">решению</a>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gem uninstall mysql2
-<span class="nv">$ </span>bundle config build.mysql2 --with-mysql-config<span class="o">=</span>/usr/bin/mysql_config
-<span class="nv">$ </span>bundle install</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ gem uninstall mysql2
+$ bundle config build.mysql2 --with-mysql-config<span class="o">=</span>/usr/bin/mysql_config
+$ bundle install</code></pre></figure>
 
 <p>Сперва я опробовал его на redmine, и оно сработало, redmine принял новую версию базы данных как родную. Однако с gitlab это не прокатило…</p>
 

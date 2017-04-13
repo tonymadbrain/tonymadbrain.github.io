@@ -175,7 +175,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li>live update - раз в 10 минут скрипт проверяет наличие новых записей и если такие есть, присылает в заданную комнату</li>
 </ol>
 
-<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span class="nv">module.exports = </span><span class="nf">(robot)-&gt;</span>
+<figure class="highlight"><pre><code class="language-coffeescript" data-lang="coffeescript"><span></span><span class="nv">module.exports = </span><span class="nf">(robot)-&gt;</span>
 
   <span class="c1"># метод для проверки новых постов</span>
   <span class="nv">getDevGifsDigest = </span><span class="nf">-&gt;</span>
@@ -213,14 +213,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <span class="nx">setInterval</span><span class="p">((</span><span class="nf">-&gt;</span> <span class="nx">getDevGifsDigest</span><span class="p">()),</span> <span class="mi">600000</span><span class="p">)</span>
 
   <span class="c1"># простой метод для получения рандомной гифки по запросу</span>
-  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/dev\s+me$/i</span><span class="p">,</span> <span class="nf">(msg)-&gt;</span>
+  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="o">/</span><span class="nx">dev</span><span class="err">\</span><span class="nx">s</span><span class="o">+</span><span class="nx">me$</span><span class="o">/</span><span class="nx">i</span><span class="p">,</span> <span class="nf">(msg)-&gt;</span>
     <span class="nv">url = </span><span class="s">&quot;http://developerslife.ru/random?json=true&quot;</span>
     <span class="nx">msg</span><span class="p">.</span><span class="nx">http</span><span class="p">(</span> <span class="nx">url</span> <span class="p">).</span><span class="nx">get</span><span class="p">()</span> <span class="nf">(err, res, body)-&gt;</span>
       <span class="nv">life = </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span> <span class="nx">body</span>
       <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">life</span><span class="p">.</span><span class="nx">description</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">life</span><span class="p">.</span><span class="nx">gifURL</span><span class="si">}</span><span class="s">&quot;</span> <span class="k">unless</span> <span class="nx">err</span>
 
   <span class="c1"># простой метод для получения последних 5 постов по запросу</span>
-  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/dev\s+me\s+last$/i</span><span class="p">,</span> <span class="nf">(msg)-&gt;</span>
+  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="o">/</span><span class="nx">dev</span><span class="err">\</span><span class="nx">s</span><span class="o">+</span><span class="nx">me</span><span class="err">\</span><span class="nx">s</span><span class="o">+</span><span class="nx">last$</span><span class="o">/</span><span class="nx">i</span><span class="p">,</span> <span class="nf">(msg)-&gt;</span>
     <span class="nv">url = </span><span class="s">&quot;http://developerslife.ru/latest/0?json=true&quot;</span>
     <span class="nx">msg</span><span class="p">.</span><span class="nx">http</span><span class="p">(</span> <span class="nx">url</span> <span class="p">).</span><span class="nx">get</span><span class="p">()</span> <span class="nf">(err, res, body)-&gt;</span>
       <span class="nv">life = </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span> <span class="nx">body</span>

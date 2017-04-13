@@ -164,13 +164,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 <div id="drawer">
 <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">Синапсис</a></li>
+  <li><a href="#Синапсис" id="markdown-toc-Синапсис">Синапсис</a></li>
   <li><a href="#imagecms" id="markdown-toc-imagecms">ImageCMS</a></li>
-  <li><a href="#htaccess---nginx" id="markdown-toc-htaccess---nginx">htaccess-конвертер для nginx</a></li>
-  <li><a href="#nginx" id="markdown-toc-nginx">Конфиг для Nginx</a></li>
-  <li><a href="#imagecms-1" id="markdown-toc-imagecms-1">Установка ImageCMS</a></li>
-  <li><a href="#update--" id="markdown-toc-update--">Update тестового сервера</a></li>
-  <li><a href="#imagecms-8212-" id="markdown-toc-imagecms-8212-">ImageCMS — итог</a></li>
+  <li><a href="#htaccess-конвертер-для-nginx" id="markdown-toc-htaccess-конвертер-для-nginx">htaccess-конвертер для nginx</a></li>
+  <li><a href="#Конфиг-для-nginx" id="markdown-toc-Конфиг-для-nginx">Конфиг для Nginx</a></li>
+  <li><a href="#Установка-imagecms" id="markdown-toc-Установка-imagecms">Установка ImageCMS</a></li>
+  <li><a href="#update-тестового-сервера" id="markdown-toc-update-тестового-сервера">Update тестового сервера</a></li>
+  <li><a href="#imagecms--итог" id="markdown-toc-imagecms--итог">ImageCMS — итог</a></li>
 </ul>
 
   </div>
@@ -182,7 +182,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 <br /></p>
 
-<h3 id="section">Синапсис</h3>
+<h3 id="Синапсис">Синапсис</h3>
 
 <p>В поисках CMS интернет-магазина (e-commerce) для нового проекта, нарвался на ImageCMS. Описание довольно привлекательное, однако именно интернет-магазин у них платный, и демо только на их серверах. Но другой их продукт — Corporate, полностью бесплатен, поэтому я решил затестить для начала его.</p>
 
@@ -215,7 +215,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
   <div class="entry-content">
-  Подскажите конфиг для NGINX без использования Апача.<br /> В частности, секции реврайтов.<br /> Сейчас установка ссылается на папку install, которой есстно и нет.
+  Подскажите конфиг для NGINX без использования Апача.<br /> В частности, секции реврайтов.<br /> Сейчас установка ссылается на папку install, которой есстно и нет.&lt;/p&gt;
 
   <div id="pc12216" class="title-h4">
     supleader:
@@ -231,34 +231,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </blockquote>
 
-<h3 id="htaccess---nginx">htaccess-конвертер для nginx</h3>
+<h3 id="htaccess-конвертер-для-nginx">htaccess-конвертер для nginx</h3>
 
 <p>На помощь приходит сервис из заголовка, который располагается например <a href="http://winginx.com/ru/htaccess" target="_blank">здесь</a>. Открываем файл <code>.htaccess</code> в корне каталога с ImageCMS, находим строки:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">RewriteCond <span class="nv">$1</span> !^<span class="o">(</span>index.php<span class="p">|</span>user_guide<span class="p">|</span>uploads/.*<span class="p">|</span>favicon.ico<span class="p">|</span>docs<span class="p">|</span>favicon.png<span class="p">|</span>captcha/.*<span class="p">|</span>application/modules/.*/templates<span class="p">|</span>application/modules/.*/assets/js<span class="p">|</span>application/modules/.*/assets/css<span class="p">|</span>application/modules/.*/assets/images<span class="p">|</span>CHANGELOG.xml<span class="p">|</span>templates<span class="p">|</span>js<span class="p">|</span>robots.txt<span class="o">)</span>
-RewriteRule ^<span class="o">(</span>.*<span class="o">)</span><span class="nv">$ </span>/index.php/<span class="nv">$1</span> <span class="o">[</span>L<span class="o">]</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>RewriteCond <span class="nv">$1</span> !^<span class="o">(</span>index.php<span class="p">|</span>user_guide<span class="p">|</span>uploads/.*<span class="p">|</span>favicon.ico<span class="p">|</span>docs<span class="p">|</span>favicon.png<span class="p">|</span>captcha/.*<span class="p">|</span>application/modules/.*/templates<span class="p">|</span>application/modules/.*/assets/js<span class="p">|</span>application/modules/.*/assets/css<span class="p">|</span>application/modules/.*/assets/images<span class="p">|</span>CHANGELOG.xml<span class="p">|</span>templates<span class="p">|</span>js<span class="p">|</span>robots.txt<span class="o">)</span>
+RewriteRule ^<span class="o">(</span>.*<span class="o">)</span>$ /index.php/<span class="nv">$1</span> <span class="o">[</span>L<span class="o">]</span></code></pre></figure>
 
 <p>и с помощью вышеуказанного ресурса конвертируем это в удобоперевариваемое Nginx-ом:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># nginx configuration</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="c1"># nginx configuration</span>
 location / <span class="o">{</span>
-  rewrite ^<span class="o">(</span>.*<span class="o">)</span><span class="nv">$ </span>/index.php/<span class="nv">$1</span> <span class="nb">break</span><span class="p">;</span>
+  rewrite ^<span class="o">(</span>.*<span class="o">)</span>$ /index.php/<span class="nv">$1</span> break<span class="p">;</span>
 <span class="o">}</span></code></pre></figure>
 
 <p>На самом деле не очень удобоперевариваемое, поэтому переделываем так:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">location / <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>location / <span class="o">{</span>
   <span class="k">if</span> <span class="o">(</span>!-e <span class="nv">$request_filename</span><span class="o">)</span> <span class="o">{</span>
-    rewrite ^<span class="o">(</span>.+<span class="o">)</span><span class="nv">$ </span>/index.php?q<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
+    rewrite ^<span class="o">(</span>.+<span class="o">)</span>$ /index.php?q<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
   <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<h3 id="nginx">Конфиг для Nginx</h3>
+<h3 id="Конфиг-для-nginx">Конфиг для Nginx</h3>
 
 <p>В итоге получаем простой конфиг, следующего вида:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
-  listen 80<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>server <span class="o">{</span>
+  listen <span class="m">80</span><span class="p">;</span>
   server_name mydomain.com<span class="p">;</span>
   access_log /var/log/nginx/access.log<span class="p">;</span>
   root /var/www/imagecms<span class="p">;</span>
@@ -266,11 +266,11 @@ location / <span class="o">{</span>
 
   location / <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span>!-e <span class="nv">$request_filename</span><span class="o">)</span> <span class="o">{</span>
-      rewrite ^<span class="o">(</span>.+<span class="o">)</span><span class="nv">$ </span>/index.php?q<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
+      rewrite ^<span class="o">(</span>.+<span class="o">)</span>$ /index.php?q<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
     <span class="o">}</span>
   <span class="o">}</span>
 
-  location ~ .php<span class="nv">$ </span><span class="o">{</span>
+  location ~ .php$ <span class="o">{</span>
     fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock<span class="p">;</span>
     fastcgi_index index.php<span class="p">;</span>
     fastcgi_param SCRIPT_FILENAME /var/www/imagecms<span class="nv">$fastcgi_script_name</span><span class="p">;</span>
@@ -278,29 +278,29 @@ location / <span class="o">{</span>
   <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<h3 id="imagecms-1">Установка ImageCMS</h3>
+<h3 id="Установка-imagecms">Установка ImageCMS</h3>
 
 <p>После</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service nginx reload</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ service nginx reload</code></pre></figure>
 
 <p>открываем главную страницу и «о чудо», оно работает. Первым шагом установки является принятие лицензионного соглашения. Конечно не читая я нажимаю кнопку принять (или как-то так) и дальше следует проверка системы. Скрипт говорит, что все прекрасно, но вот версия PHP 4.3.3 меня не устраивает, хочу 4.3.4 минимум.</p>
 
 <p>Что же, если хочешь — получай.</p>
 
-<h3 id="update--">Update тестового сервера</h3>
+<h3 id="update-тестового-сервера">Update тестового сервера</h3>
 
 <p>Естественно, что играюсь с разными системами я на тестовом сервере, который был скопирован с моего боевого сервера (т.е. да, там до сих пор стоит PHP 4.3.3) и обновляться не страшно.</p>
 
 <p>Добавляем репозиторий Remi:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rpm -ihv http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rpm -ihv http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</code></pre></figure>
 
 <p>Не забудьте включить его в /etc/yum.repos.d/remi.repo</p>
 
 <p>Обновляемся:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum update</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum update</code></pre></figure>
 
 <p>И, не буду долго разглагольствовать. Что мне пришлось пофиксить:</p>
 
@@ -308,7 +308,7 @@ location / <span class="o">{</span>
 
 <p><code>/etc/php-fpm.d/www.conf</code></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">listen.owner <span class="o">=</span> nginx
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>listen.owner <span class="o">=</span> nginx
 listen.group <span class="o">=</span> nginx</code></pre></figure>
 
 <p>раскомментировать эти две строчки и прописать значения - пользователя из-под которого работает</p>
@@ -317,8 +317,8 @@ listen.group <span class="o">=</span> nginx</code></pre></figure>
 
 <p>Так же сбросились права на папку <code>/var/lib/php/session</code></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> /var/lib/php
-<span class="nv">$ </span>chown nginx:nginx session</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> /var/lib/php
+$ chown nginx:nginx session</code></pre></figure>
 
 <p><strong>Mysqld</strong></p>
 
@@ -328,7 +328,7 @@ listen.group <span class="o">=</span> nginx</code></pre></figure>
 
 <p>После рестарта <code>php-fpm</code> и <code>mysqld</code> все заработало нормально.</p>
 
-<h3 id="imagecms-8212-">ImageCMS — итог</h3>
+<h3 id="imagecms--итог">ImageCMS — итог</h3>
 
 <p>После обновления я закончил установку и теперь приступлю к тестированию данной CMS.</p>
 

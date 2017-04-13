@@ -169,8 +169,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Так как этот блог посвящен советам по Nginx, приведу конфиг для Magento:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
-  listen   80<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>server <span class="o">{</span>
+  listen   <span class="m">80</span><span class="p">;</span>
   server_name domain.com www.domain.com<span class="p">;</span>
   root   /var/www/domain.com<span class="p">;</span>
 
@@ -178,10 +178,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   index index.html index.php<span class="p">;</span>
 
   try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ @handler<span class="p">;</span>
-  expires max<span class="p">;</span> <span class="c">## Максимальное время длительности кеша для файлов</span>
+  expires max<span class="p">;</span> <span class="c1">## Максимальное время длительности кеша для файлов</span>
   <span class="o">}</span>
 
-  <span class="c">## Закрываем системные каталоги</span>
+  <span class="c1">## Закрываем системные каталоги</span>
   location ^~ /app/                <span class="o">{</span> deny all<span class="p">;</span> <span class="o">}</span>
   location ^~ /includes/           <span class="o">{</span> deny all<span class="p">;</span> <span class="o">}</span>
   location ^~ /lib/                <span class="o">{</span> deny all<span class="p">;</span> <span class="o">}</span>
@@ -190,51 +190,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   location ^~ /report/config.xml   <span class="o">{</span> deny all<span class="p">;</span> <span class="o">}</span>
   location ^~ /var/                <span class="o">{</span> deny all<span class="p">;</span> <span class="o">}</span>
 
-  <span class="c">## Allow admins only to view export directory</span>
-  <span class="c">## Set up the password for any username using this command:</span>
-  <span class="c">## htpasswd -c /etc/nginx/htpasswd magentoadmin</span>
+  <span class="c1">## Allow admins only to view export directory</span>
+  <span class="c1">## Set up the password for any username using this command:</span>
+  <span class="c1">## htpasswd -c /etc/nginx/htpasswd magentoadmin</span>
 
   location /var/export/ <span class="o">{</span>
     auth_basic           <span class="s2">&quot;Restricted&quot;</span><span class="p">;</span>
-    auth_basic_user_file htpasswd<span class="p">;</span> <span class="c">## Defined at /etc/nginx/htpassword</span>
+    auth_basic_user_file htpasswd<span class="p">;</span> <span class="c1">## Defined at /etc/nginx/htpassword</span>
     autoindex            on<span class="p">;</span>
   <span class="o">}</span>
 
-  <span class="c">## Disable .htaccess and other hidden files</span>
+  <span class="c1">## Disable .htaccess and other hidden files</span>
   location  /. <span class="o">{</span>
-    <span class="k">return</span> 404<span class="p">;</span>
+    <span class="k">return</span> <span class="m">404</span><span class="p">;</span>
   <span class="o">}</span>
 
-  <span class="c">## Magento uses a common front handler</span>
+  <span class="c1">## Magento uses a common front handler</span>
   location @handler <span class="o">{</span>
     rewrite / /index.php<span class="p">;</span>
   <span class="o">}</span>
 
-  <span class="c">## Forward paths like /js/index.php/x.js to relevant handler</span>
+  <span class="c1">## Forward paths like /js/index.php/x.js to relevant handler</span>
   location ~ .php/ <span class="o">{</span>
     rewrite ^<span class="o">(</span>.*.php<span class="o">)</span>/ <span class="nv">$1</span> last<span class="p">;</span>
   <span class="o">}</span>
 
-  <span class="c">## php-fpm parsing</span>
-  location ~ .php<span class="nv">$ </span><span class="o">{</span>
+  <span class="c1">## php-fpm parsing</span>
+  location ~ .php$ <span class="o">{</span>
 
-    <span class="c">## Catch 404s that try_files miss</span>
+    <span class="c1">## Catch 404s that try_files miss</span>
     <span class="k">if</span> <span class="o">(</span>!-e <span class="nv">$request_filename</span><span class="o">)</span> <span class="o">{</span> rewrite / /index.php last<span class="p">;</span> <span class="o">}</span>
 
-    <span class="c">## Disable cache for php files</span>
+    <span class="c1">## Disable cache for php files</span>
     expires        off<span class="p">;</span>
 
-    <span class="c">## конфигурация php-fpm с использованием сокетов</span>
+    <span class="c1">## конфигурация php-fpm с использованием сокетов</span>
     fastcgi_pass   unix:/tmp/php5-fpm.sock<span class="p">;</span>
     fastcgi_param  HTTPS <span class="nv">$fastcgi_https</span><span class="p">;</span>
     fastcgi_param  SCRIPT_FILENAME  <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
     include        fastcgi_params<span class="p">;</span>
 
-    <span class="c">## Store code is located at Administration &amp;gt; Configuration &amp;gt; Manage Stores in your Magento Installation.</span>
+    <span class="c1">## Store code is located at Administration &amp;gt; Configuration &amp;gt; Manage Stores in your Magento Installation.</span>
     fastcgi_param  MAGE_RUN_CODE default<span class="p">;</span>
     fastcgi_param  MAGE_RUN_TYPE store<span class="p">;</span>
 
-    <span class="c">## Tweak fastcgi buffers, just in case.</span>
+    <span class="c1">## Tweak fastcgi buffers, just in case.</span>
     fastcgi_buffer_size 128k<span class="p">;</span>
     fastcgi_buffers <span class="m">256</span> 4k<span class="p">;</span>
     fastcgi_busy_buffers_size 256k<span class="p">;</span>
@@ -244,7 +244,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Не забудьте заменить <code>domain.com</code> на ваше доменное имя, а так же выполнить:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service nginx reload</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ service nginx reload</code></pre></figure>
 
 <p>Материалы по теме:</p>
 

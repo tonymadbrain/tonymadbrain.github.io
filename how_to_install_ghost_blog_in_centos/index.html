@@ -164,17 +164,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 <div id="drawer">
 <ul id="markdown-toc">
-  <li><a href="#ghost" id="markdown-toc-ghost">Что такое Ghost?</a></li>
-  <li><a href="#ghost--centos" id="markdown-toc-ghost--centos">Установка Ghost в CentOS</a>    <ul>
-      <li><a href="#nodejs" id="markdown-toc-nodejs">Устанавливаем Node.js</a></li>
-      <li><a href="#ghost-1" id="markdown-toc-ghost-1">Устанавливаем Ghost</a></li>
-      <li><a href="#ghost-2" id="markdown-toc-ghost-2">Создание пользователя Ghost</a></li>
-      <li><a href="#ghost---" id="markdown-toc-ghost---">Запуск Ghost в режиме разработчика</a></li>
+  <li><a href="#Что-такое-ghost" id="markdown-toc-Что-такое-ghost">Что такое Ghost?</a></li>
+  <li><a href="#Установка-ghost-в-centos" id="markdown-toc-Установка-ghost-в-centos">Установка Ghost в CentOS</a>    <ul>
+      <li><a href="#Устанавливаем-nodejs" id="markdown-toc-Устанавливаем-nodejs">Устанавливаем Node.js</a></li>
+      <li><a href="#Устанавливаем-ghost" id="markdown-toc-Устанавливаем-ghost">Устанавливаем Ghost</a></li>
+      <li><a href="#Создание-пользователя-ghost" id="markdown-toc-Создание-пользователя-ghost">Создание пользователя Ghost</a></li>
+      <li><a href="#Запуск-ghost-в-режиме-разработчика" id="markdown-toc-Запуск-ghost-в-режиме-разработчика">Запуск Ghost в режиме разработчика</a></li>
     </ul>
   </li>
-  <li><a href="#ghost-3" id="markdown-toc-ghost-3">Дальнейшая настройка Ghost</a></li>
-  <li><a href="#ghost---nginx" id="markdown-toc-ghost---nginx">Настройка Ghost с использованием Nginx</a>    <ul>
-      <li><a href="#nginx" id="markdown-toc-nginx">Установка Nginx</a></li>
+  <li><a href="#Дальнейшая-настройка-ghost" id="markdown-toc-Дальнейшая-настройка-ghost">Дальнейшая настройка Ghost</a></li>
+  <li><a href="#Настройка-ghost-с-использованием-nginx" id="markdown-toc-Настройка-ghost-с-использованием-nginx">Настройка Ghost с использованием Nginx</a>    <ul>
+      <li><a href="#Установка-nginx" id="markdown-toc-Установка-nginx">Установка Nginx</a></li>
     </ul>
   </li>
 </ul>
@@ -188,7 +188,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 <br /></p>
 
-<h2 id="ghost">Что такое Ghost?</h2>
+<h2 id="Что-такое-ghost">Что такое Ghost?</h2>
 <p>О данном проекте писали на хабре, как минимум <a href="http://habrahabr.ru/post/197546/" target="_blank">здесь</a>. Так что, много рассказывать не собираюсь. Выделю самое главное:</p>
 
 <ul>
@@ -198,44 +198,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li>Собственный магазин с платными и бесплатными шаблонами</li>
 </ul>
 
-<h2 id="ghost--centos">Установка Ghost в CentOS</h2>
+<h2 id="Установка-ghost-в-centos">Установка Ghost в CentOS</h2>
 
 <p>Системные требования:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum groupinstall -y <span class="s2">&quot;Development Tools&quot;</span>
-<span class="nv">$ </span>yum install -y wget</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum groupinstall -y <span class="s2">&quot;Development Tools&quot;</span>
+$ yum install -y wget</code></pre></figure>
 
-<h3 id="nodejs">Устанавливаем Node.js</h3>
+<h3 id="Устанавливаем-nodejs">Устанавливаем Node.js</h3>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wget http://nodejs.org/dist/node-latest.tar.gz
-<span class="nv">$ </span>tar -xzf node-latest.tar.gz
-<span class="nv">$ </span><span class="nb">cd </span>node-v*
-<span class="nv">$ </span>./configure 
-<span class="nv">$ </span>make 
-<span class="nv">$ </span>make install
-<span class="nv">$ </span>ln -s /usr/local/bin/node /usr/bin/node
-<span class="nv">$ </span>ln -s /usr/local/bin/npm /usr/bin/npm</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ wget http://nodejs.org/dist/node-latest.tar.gz
+$ tar -xzf node-latest.tar.gz
+$ <span class="nb">cd</span> node-v*
+$ ./configure 
+$ make 
+$ make install
+$ ln -s /usr/local/bin/node /usr/bin/node
+$ ln -s /usr/local/bin/npm /usr/bin/npm</code></pre></figure>
 
-<h3 id="ghost-1">Устанавливаем Ghost</h3>
+<h3 id="Устанавливаем-ghost">Устанавливаем Ghost</h3>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mkdir -p /var/www/ghost
-<span class="nv">$ </span><span class="nb">cd</span> /var/www/ghost
-<span class="nv">$ </span>wget https://ghost.org/zip/ghost-latest.zip 
-<span class="nv">$ </span>unzip ghost-latest.zip  
-<span class="nv">$ </span>npm install --production</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ mkdir -p /var/www/ghost
+$ <span class="nb">cd</span> /var/www/ghost
+$ wget https://ghost.org/zip/ghost-latest.zip 
+$ unzip ghost-latest.zip  
+$ npm install --production</code></pre></figure>
 
-<h3 id="ghost-2">Создание пользователя Ghost</h3>
+<h3 id="Создание-пользователя-ghost">Создание пользователя Ghost</h3>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>useradd ghost
-<span class="nv">$ </span>chown ghost:ghost /var/www/ghost/ -R</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ useradd ghost
+$ chown ghost:ghost /var/www/ghost/ -R</code></pre></figure>
 
-<h3 id="ghost---">Запуск Ghost в режиме разработчика</h3>
+<h3 id="Запуск-ghost-в-режиме-разработчика">Запуск Ghost в режиме разработчика</h3>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm start</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ npm start</code></pre></figure>
 
 <p>Таким образом мы запустили движок в режиме разработчика/отладки (dev) на localhost’е на порту 2368 (127.0.0.1:2368). Можно посмотреть результат, открыв в браузере адрес <a href="http://127.0.0.1:2368">http://127.0.0.1:2368</a>.</p>
 
-<h2 id="ghost-3">Дальнейшая настройка Ghost</h2>
+<h2 id="Дальнейшая-настройка-ghost">Дальнейшая настройка Ghost</h2>
 
 <p>Естественно нам необходимо две вещи, чтобы блог открывался по доменному имени и на 80 порту. В папке с ghost есть два файла <code>config.example.js</code> и <code>config.js</code> (если второго нет, необходимо переименовать первый или скопировать). Считывается <code>config.js</code>.</p>
 
@@ -245,7 +245,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Итак, чтобы решить задачу с доменным именем и портом, можно изменить настройки в конфиге самого ghost’а, а можно установить nginx и через него проксировать запросы в node.js. Тут, на мой взгляд, кому как удобнее. В конфиге ghost, нас интересует следующее:</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">),</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">),</span>
 <span class="nx">config</span><span class="p">;</span>
 
 <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
@@ -293,38 +293,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span class="p">}</span>
 <span class="p">},</span></code></pre></figure>
 
-<h2 id="ghost---nginx">Настройка Ghost с использованием Nginx</h2>
+<h2 id="Настройка-ghost-с-использованием-nginx">Настройка Ghost с использованием Nginx</h2>
 
 <p>При этом мы сохраняем дефолтные настройки Ghost и запускаем сервер на localhost на порту 2368.</p>
 
-<h3 id="nginx">Установка Nginx</h3>
+<h3 id="Установка-nginx">Установка Nginx</h3>
 
 <p>Добавляем репозиторий Nginx</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/yum.repos.d/nginx.repo</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ vim /etc/yum.repos.d/nginx.repo</code></pre></figure>
 
 <p>В файл добавляем текст:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>nginx<span class="o">]</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="o">[</span>nginx<span class="o">]</span>
 <span class="nv">name</span><span class="o">=</span>nginx repo
 <span class="nv">baseurl</span><span class="o">=</span>http://nginx.org/packages/centos/<span class="nv">$releasever</span>/<span class="nv">$basearch</span>/
-<span class="nv">gpgcheck</span><span class="o">=</span>0
-<span class="nv">enabled</span><span class="o">=</span>1</code></pre></figure>
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span></code></pre></figure>
 
 <p>Сохраняем файл, устанавливаем Nginx, запускаем его и добавляем в автозагрузку, следующими командами:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install nginx -y
-<span class="nv">$ </span>service nginx start
-<span class="nv">$ </span>chkconfig nginx on</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum install nginx -y
+$ service nginx start
+$ chkconfig nginx on</code></pre></figure>
 
 <p>Далее создаем конфиг виртуального хоста для нашего Ghost сервера:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/nginx/conf.d/ghost.mysite.com.conf</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ vim /etc/nginx/conf.d/ghost.mysite.com.conf</code></pre></figure>
 
 <p>Со следующим содержимым:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
-  listen 80<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>server <span class="o">{</span>
+  listen <span class="m">80</span><span class="p">;</span>
   server_name yourdomain.com www.yourdomain.com<span class="p">;</span>
 
   location / <span class="o">{</span>
@@ -336,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Для применения настроек выполняем команду:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service nginx reload</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ service nginx reload</code></pre></figure>
 
 <p>Вот и все, теперь ваш блог на движке Ghost доступен по адресу <code>yourdomain.com</code> на <code>80</code> порту.
 <br />

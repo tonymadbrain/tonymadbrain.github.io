@@ -166,57 +166,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p><strong>PrestaShop</strong> - это open source, бесплатная, e-commerce CMS. В общем случае, моё знакомство с данным продуктом было не очень впечатляющим, в первый раз была ошибка с авторизацией администратора, после чистой установки, а во второй, административная панель не хотела открываться с 500 ошибкой, что, судя по логам, происходило из-за кривого шаблона, учитывая, что это была чистая установка. При этом, нормальной документации я не нашел, а все что есть сводится к тому, чтобы использовать их собственный клауд хостинг или хоститься у их партнеров.
 Но, если кому-то понадобится конфиг для Nginx то вот он:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>server <span class="o">{</span>
 access_log off<span class="p">;</span>
 error_log  logs/yoursite.com-error_log warn<span class="p">;</span>
 
-	listen 80<span class="p">;</span>
+	listen <span class="m">80</span><span class="p">;</span>
         server_name  yoursite.com www.yoursite.com<span class="p">;</span>
         root /var/www/yoursite.com<span class="p">;</span>
         index index.php index.html<span class="p">;</span>
 
-       <span class="c"># PrestaShop rewrite rules</span>
-	rewrite ^/<span class="o">([</span>a-z0-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-z0-9<span class="o">]</span>+<span class="o">)(</span>-<span class="o">[</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>/<span class="o">([</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.jpg<span class="nv">$ </span>/img/p/<span class="nv">$1</span>-<span class="nv">$2$3</span>.jpg last<span class="p">;</span>
-	rewrite ^/<span class="o">([</span>0-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>0-9<span class="o">]</span>+<span class="o">)</span>/<span class="o">([</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.jpg<span class="nv">$ </span>/img/p/<span class="nv">$1</span>-<span class="nv">$2</span>.jpg last<span class="p">;</span>
-	rewrite ^/<span class="o">([</span>0-9<span class="o">]</span>+<span class="o">)(</span>-<span class="o">[</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>/<span class="o">([</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.jpg<span class="nv">$ </span>/img/c/<span class="nv">$1$2</span>.jpg last<span class="p">;</span>
-	rewrite <span class="s2">&quot;^/lang-([a-z]{2})/([a-zA-Z0-9-]*)/([0-9]+)-([a-zA-Z0-9-]*).html(.*)$&quot;</span> /product.php?id_product<span class="o">=</span><span class="nv">$3</span><span class="p">&amp;</span>amp<span class="p">;</span><span class="nv">isolang</span><span class="o">=</span><span class="nv">$1$5</span> last<span class="p">;</span>
-	rewrite <span class="s2">&quot;^/lang-([a-z]{2})/([0-9]+)-([a-zA-Z0-9-]*).html(.*)$&quot;</span> /product.php?id_product<span class="o">=</span><span class="nv">$2</span><span class="p">&amp;</span>amp<span class="p">;</span><span class="nv">isolang</span><span class="o">=</span><span class="nv">$1$4</span> last<span class="p">;</span>
-	rewrite <span class="s2">&quot;^/lang-([a-z]{2})/([0-9]+)-([a-zA-Z0-9-]*)(.*)$&quot;</span> /category.php?id_category<span class="o">=</span><span class="nv">$2</span><span class="p">&amp;</span>amp<span class="p">;</span><span class="nv">isolang</span><span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
-	rewrite ^/<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>/<span class="o">([</span>0-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.html<span class="o">(</span>.*<span class="o">)</span><span class="nv">$ </span>/product.php?id_product<span class="o">=</span><span class="nv">$2$4</span> last<span class="p">;</span>
-	rewrite ^/<span class="o">([</span>0-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.html<span class="o">(</span>.*<span class="o">)</span><span class="nv">$ </span>/product.php?id_product<span class="o">=</span><span class="nv">$1$3</span> last<span class="p">;</span>
-	rewrite ^/<span class="o">([</span>0-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)(</span>.*<span class="o">)</span><span class="nv">$ </span>/category.php?id_category<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
-	rewrite ^/content/<span class="o">([</span>0-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)(</span>.*<span class="o">)</span><span class="nv">$ </span>/cms.php?id_cms<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
-	rewrite ^/<span class="o">([</span>0-9<span class="o">]</span>+<span class="o">)</span>__<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)(</span>.*<span class="o">)</span><span class="nv">$ </span>/supplier.php?id_supplier<span class="o">=</span><span class="nv">$1$3</span> last<span class="p">;</span>
-	rewrite ^/<span class="o">([</span>0-9<span class="o">]</span>+<span class="o">)</span>_<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)(</span>.*<span class="o">)</span><span class="nv">$ </span>/manufacturer.php?id_manufacturer<span class="o">=</span><span class="nv">$1$3</span> last<span class="p">;</span>
-	rewrite <span class="s2">&quot;^/lang-([a-z]{2})/(.*)$&quot;</span> /<span class="nv">$2</span>?isolang<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
+       <span class="c1"># PrestaShop rewrite rules</span>
+	rewrite ^/<span class="o">([</span>a-z0-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-z0-9<span class="o">]</span>+<span class="o">)(</span>-<span class="o">[</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>/<span class="o">([</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.jpg$ /img/p/<span class="nv">$1</span>-<span class="nv">$2$3</span>.jpg last<span class="p">;</span>
+	rewrite ^/<span class="o">([</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>/<span class="o">([</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.jpg$ /img/p/<span class="nv">$1</span>-<span class="nv">$2</span>.jpg last<span class="p">;</span>
+	rewrite ^/<span class="o">([</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)(</span>-<span class="o">[</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>/<span class="o">([</span>_a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.jpg$ /img/c/<span class="nv">$1$2</span>.jpg last<span class="p">;</span>
+	rewrite <span class="s2">&quot;^/lang-([a-z]{2})/([a-zA-Z0-9-]*)/([0-9]+)-([a-zA-Z0-9-]*).html(.*)</span>$<span class="s2">&quot;</span> /product.php?id_product<span class="o">=</span><span class="nv">$3</span><span class="p">&amp;</span>amp<span class="p">;</span><span class="nv">isolang</span><span class="o">=</span><span class="nv">$1$5</span> last<span class="p">;</span>
+	rewrite <span class="s2">&quot;^/lang-([a-z]{2})/([0-9]+)-([a-zA-Z0-9-]*).html(.*)</span>$<span class="s2">&quot;</span> /product.php?id_product<span class="o">=</span><span class="nv">$2</span><span class="p">&amp;</span>amp<span class="p">;</span><span class="nv">isolang</span><span class="o">=</span><span class="nv">$1$4</span> last<span class="p">;</span>
+	rewrite <span class="s2">&quot;^/lang-([a-z]{2})/([0-9]+)-([a-zA-Z0-9-]*)(.*)</span>$<span class="s2">&quot;</span> /category.php?id_category<span class="o">=</span><span class="nv">$2</span><span class="p">&amp;</span>amp<span class="p">;</span><span class="nv">isolang</span><span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
+	rewrite ^/<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>/<span class="o">([</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.html<span class="o">(</span>.*<span class="o">)</span>$ /product.php?id_product<span class="o">=</span><span class="nv">$2$4</span> last<span class="p">;</span>
+	rewrite ^/<span class="o">([</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)</span>.html<span class="o">(</span>.*<span class="o">)</span>$ /product.php?id_product<span class="o">=</span><span class="nv">$1$3</span> last<span class="p">;</span>
+	rewrite ^/<span class="o">([</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)(</span>.*<span class="o">)</span>$ /category.php?id_category<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
+	rewrite ^/content/<span class="o">([</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>-<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)(</span>.*<span class="o">)</span>$ /cms.php?id_cms<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
+	rewrite ^/<span class="o">([</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>__<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)(</span>.*<span class="o">)</span>$ /supplier.php?id_supplier<span class="o">=</span><span class="nv">$1$3</span> last<span class="p">;</span>
+	rewrite ^/<span class="o">([</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>_<span class="o">([</span>a-zA-Z0-9-<span class="o">]</span>*<span class="o">)(</span>.*<span class="o">)</span>$ /manufacturer.php?id_manufacturer<span class="o">=</span><span class="nv">$1$3</span> last<span class="p">;</span>
+	rewrite <span class="s2">&quot;^/lang-([a-z]{2})/(.*)</span>$<span class="s2">&quot;</span> /<span class="nv">$2</span>?isolang<span class="o">=</span><span class="nv">$1</span> last<span class="p">;</span>
 
-	<span class="c"># static file cache configuration</span>
-	location ~* .<span class="o">(</span>gif<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
+	<span class="c1"># static file cache configuration</span>
+	location ~* .<span class="o">(</span>gif<span class="o">)</span>$ <span class="o">{</span>
 	expires 2592000s<span class="p">;</span>
 	<span class="o">}</span>
-	location ~* .<span class="o">(</span>jpeg<span class="p">|</span>jpg<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
+	location ~* .<span class="o">(</span>jpeg<span class="p">|</span>jpg<span class="o">)</span>$ <span class="o">{</span>
 	expires 2592000s<span class="p">;</span>
 	<span class="o">}</span>
-	location ~* .<span class="o">(</span>png<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
+	location ~* .<span class="o">(</span>png<span class="o">)</span>$ <span class="o">{</span>
 	expires 2592000s<span class="p">;</span>
 	<span class="o">}</span>
-	location ~* .<span class="o">(</span>css<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
+	location ~* .<span class="o">(</span>css<span class="o">)</span>$ <span class="o">{</span>
 	expires 604800s<span class="p">;</span>
 	<span class="o">}</span>
-	location ~* .<span class="o">(</span>js<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
+	location ~* .<span class="o">(</span>js<span class="o">)</span>$ <span class="o">{</span>
 	expires 604800s<span class="p">;</span>
 	<span class="o">}</span>
-	location ~* .<span class="o">(</span>js<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
+	location ~* .<span class="o">(</span>js<span class="o">)</span>$ <span class="o">{</span>
 	expires 604800s<span class="p">;</span>
 	<span class="o">}</span>
-	location ~* .<span class="o">(</span>ico<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
+	location ~* .<span class="o">(</span>ico<span class="o">)</span>$ <span class="o">{</span>
 	expires 31536000s<span class="p">;</span>
 	<span class="o">}</span>
 
-	<span class="c"># php-fpm configuration</span>
-	location ~ .php<span class="nv">$ </span><span class="o">{</span>
+	<span class="c1"># php-fpm configuration</span>
+	location ~ .php$ <span class="o">{</span>
 	root /var/www/yoursite.com<span class="p">;</span>
-	try_files <span class="nv">$uri</span> <span class="o">=</span>404<span class="p">;</span>
+	try_files <span class="nv">$uri</span> <span class="o">=</span><span class="m">404</span><span class="p">;</span>
 	fastcgi_pass unix:/tmp/php5-fpm.sock<span class="p">;</span>
 	fastcgi_index index.php<span class="p">;</span>
 	fastcgi_param SCRIPT_FILENAME <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
@@ -231,7 +231,7 @@ error_log  logs/yoursite.com-error_log warn<span class="p">;</span>
 
 <p>Применить новый конфиг можно командой:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service nginx reload</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ service nginx reload</code></pre></figure>
 
 <p>Материалы по теме:</p>
 

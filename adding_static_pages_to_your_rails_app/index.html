@@ -169,11 +169,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 Добавим его в <code>Gemfile</code> и создадим новую директорию <code>pages</code> в нашем каталоге с вьюхами (app/views). Затем, создадим новую вьюху внутри каталога <code>pages</code>. Допустим нам нужна страница <code>imprint</code>, так что мы назовем наш файл <code>imprint.html.erb</code>. Если вы используете какой-либо другой язык шаблонизации как <code>slim</code> или <code>haml</code>, просто адаптируйте расширение файла. Осталось только открыть страницу <code>http://localhost:3000/pages/imprin</code> в браузере и <em>вуаля</em> - статическая страница imprint будет показана.</p>
 
-<h3 id="section">Бонус</h3>
+<p>###Бонус</p>
 
 <p>Одна вещь, которую вы, скорее всего, захотите изменить это структуруа URL. Таким образом, чтобы ваши статические страницы были доступны по адресу от корня сайта а не через <code>pages</code>. Например в нашем случае чтобы вместо <code>example.com/pages/imprint</code> использовать <code>example.com/imprint</code>. Для этого создайте новый файл в каталоге <code>initializers</code> в корне Rails приложения с именем <code>high_voltage.rb</code> и следующим содержимым:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">HighVoltage</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="no">HighVoltage</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="o">.</span><span class="n">route_drawer</span> <span class="o">=</span> <span class="no">HighVoltage</span><span class="o">::</span><span class="no">RouteDrawers</span><span class="o">::</span><span class="no">Root</span>
 <span class="k">end</span></code></pre></figure>
 

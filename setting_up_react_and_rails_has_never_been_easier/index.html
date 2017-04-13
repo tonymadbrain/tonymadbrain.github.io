@@ -161,7 +161,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
       <figure>
-  <img src="https://farm1.staticflickr.com/590/32445618893_0efe70151b_o.jpg" />
+  <img src="https://farm1.staticflickr.com/590/32445618893_0efe70151b_o.jpg" />&lt;/a&gt;
 </figure>
 
 <blockquote>
@@ -183,7 +183,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 Чтобы начать, нам нужно получить самую последнюю версию Rails. К счастью, есть очень простой способ для этого. Вместо того чтобы вручную выбирать версию и возиться с Gemfile, мы просто выполним команду</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gem install rails --pre</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ gem install rails --pre</code></pre></figure>
 
 <blockquote>
   <p>От переводчика: Для управления разными версиями Ruby и наборами гемов я использую RVM, например <a href="http://doam.ru/creating_new_app_in_rails/">вот в этой статье</a> я описал как создать отдельный gemset (набор гемов) и закрепить его за проектом.</p>
@@ -191,21 +191,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>После того как с этим покончено, мы можем создать Rails проект используя инструкцию ниже. В данном конкретном случае мы не будем устанавливать CoffeeScript и Turbolinks, так как приложение их не использует.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rails new test_app - dev - force --webpack --skip-coffee --skip-turbolinks</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rails new test_app - dev - force --webpack --skip-coffee --skip-turbolinks</code></pre></figure>
 
 <p>Обратите внимание, что <a href="https://github.com/yarnpkg/yarn" target="_blank">Yarn</a> должен быть установлен в системе до запуска данной команды, чтобы Rails мог сконфигурировать все правильно, однако если вы запустили команду выше в тот момент когда Yarn не был установлен, вы можете доустановить все требуемые пакеты позже.
 <br />
 <br />
 Установить Yarn на macOS можно с помощью <code>Homebrew</code> командой <code>brew install yarn</code>. А доустановить все требуемые пакеты вот так</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yarn add --dev babel-core babel-loader babel-preset-latest babel-preset-react babel-preset-env coffee-loader coffee-script glob path-complete-extname rails-erb-loader webpack webpack-dev-server webpack-merge</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yarn add --dev babel-core babel-loader babel-preset-latest babel-preset-react babel-preset-env coffee-loader coffee-script glob path-complete-extname rails-erb-loader webpack webpack-dev-server webpack-merge</code></pre></figure>
 
 <p>Yarn скачает все необходимые зависимости и сохранит статус в lock файл.
 <br />
 <br />
 Затем мы установим React используя наш локальный бинарный файл Rails и новую утилиту командной строки <code>webpacker</code>.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bin/rails webpacker:install:react</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ bin/rails webpacker:install:react</code></pre></figure>
 
 <p>Эта команда автоматически подтянет всё что нужно чтобы использовать React. Вы заметите новые каталоги/файлы, в том числе <code>webpack</code>, <code>webpack-dev-server</code> и <code>yarn</code> внутри <code>bin</code>, а также множество других конфигурационных файлов, с которыми вам стоит разобраться в будущем, если планируете использовать данную связку.
 <br />
@@ -215,43 +215,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 Теперь сделаем необходимые <em>вещи</em> на стороне Rails. Чтобы объединить Rails и React в одно целое, мы будем использовать новые webpack теги внутри наших шаблонов. Для начала создадим минимальый контроллер, конечно же</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rails g controller Main index</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ rails g controller Main index</code></pre></figure>
 
 <p>Теперь, внутри нашего шаблона <code>app/views/main/index.html.erb</code> заменим содержимое на</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;%=</span> <span class="nx">javascript_pack_tag</span> <span class="s1">&#39;hello_react&#39;</span> <span class="o">%&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="o">&lt;%=</span> <span class="nx">javascript_pack_tag</span> <span class="s1">&#39;hello_react&#39;</span> <span class="o">%&gt;</span></code></pre></figure>
 
 <p>hello_react - это пакет (pack) который уже существует по пути <code>app/javascript/packs/hello_react.jsx</code> благодаря Webpack React генератору встроенному в Rails.
 <br />
 <br />
 Однако, этого недостаточно чтобы наша связка React+Rails заработала. Что же нам делать? Открыть файл <code>config/environments/development.rb</code> и раскомментировать 3 строку содержащую следующий параметр</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="o">...</span>
 <span class="n">config</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">webpacker</span><span class="o">[</span><span class="ss">:dev_server_host</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8080&quot;</span>
-<span class="o">.</span><span class="n">.</span><span class="o">.</span></code></pre></figure>
+<span class="o">...</span></code></pre></figure>
 
 <p>Теперь мы можем запустить <code>webpack-dev-server</code> c помощью команды</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./bin/webpack-dev-server</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ ./bin/webpack-dev-server</code></pre></figure>
 
 <p>А Rails сервер стандартной командой</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bundle <span class="nb">exec </span>rails s</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ bundle <span class="nb">exec</span> rails s</code></pre></figure>
 
 <p>Чтобы запускать оба сервера одновременно в одной вкладке можно воспользоваться утилитой <a href="https://github.com/ddollar/foreman" target="_blank">Foreman</a>. После установки необходимо создать <code>Procfile</code> c содержанием:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">rails</span><span class="p">:</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rails</span> <span class="n">s</span>
-<span class="ss">webpack</span><span class="p">:</span> <span class="o">.</span><span class="n">/bin</span><span class="o">/</span><span class="n">webpack</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">server</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="ss">rails</span><span class="p">:</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rails</span> <span class="n">s</span>
+<span class="ss">webpack</span><span class="p">:</span> <span class="o">.</span><span class="n n-Operator">/</span><span class="n">bin</span><span class="o">/</span><span class="n">webpack</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">server</span></code></pre></figure>
 
 <p>Это позволит использовать команду <code>foreman s</code> для запуска. После чего можно открыть страницу в браузере <code>http://localhost:5000/main/index</code> на которой должен быть текст <code>Hello React!</code>.
 <br />
 <br />
 P.S. Версии Ruby и Rails использованные в данной статье:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ruby --version
-ruby 2.3.1p112 <span class="o">(</span>2016-04-26 revision 54768<span class="o">)</span> <span class="o">[</span>x86_64-darwin16<span class="o">]</span>
-<span class="nv">$ </span>rails version
-Rails 5.1.0.beta1</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ ruby --version
+ruby <span class="m">2</span>.3.1p112 <span class="o">(</span><span class="m">2016</span>-04-26 revision <span class="m">54768</span><span class="o">)</span> <span class="o">[</span>x86_64-darwin16<span class="o">]</span>
+$ rails version
+Rails <span class="m">5</span>.1.0.beta1</code></pre></figure>
 
 
       

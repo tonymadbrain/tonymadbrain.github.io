@@ -164,11 +164,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 <div id="drawer">
 <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">Вступление</a></li>
-  <li><a href="#heroku" id="markdown-toc-heroku">Билдпаки Heroku</a></li>
-  <li><a href="#heroku-1" id="markdown-toc-heroku-1">Множественные билдпаки Heroku</a></li>
-  <li><a href="#heroku-2" id="markdown-toc-heroku-2">Отправка билд хука на Heroku</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">Резюме</a></li>
+  <li><a href="#Вступление" id="markdown-toc-Вступление">Вступление</a></li>
+  <li><a href="#Билдпаки-heroku" id="markdown-toc-Билдпаки-heroku">Билдпаки Heroku</a></li>
+  <li><a href="#Множественные-билдпаки-heroku" id="markdown-toc-Множественные-билдпаки-heroku">Множественные билдпаки Heroku</a></li>
+  <li><a href="#Отправка-билд-хука-на-heroku" id="markdown-toc-Отправка-билд-хука-на-heroku">Отправка билд хука на Heroku</a></li>
+  <li><a href="#Резюме" id="markdown-toc-Резюме">Резюме</a></li>
 </ul>
 
   </div>
@@ -184,7 +184,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <p>От переводчика: <a href="http://crypt.codemancers.com/posts/2016-03-18-rails-webpack-heroku/" target="_blank">Оригинал статьи</a></p>
 </blockquote>
 
-<h3 id="section">Вступление</h3>
+<h3 id="Вступление">Вступление</h3>
 
 <p>Деплой на Heroku Rails приложения которое использует Webpack требует некоторых хитростей, так как для этого нужны одновременно и Ruby, и Node.js. После нескольких неудачных попыток, я нашел решение которое работает без кастомизации билдпаков (buildpacks) Heroku. Если вы знаете как работают билдпаки Heroku, можете прочитать только резюме для <a href="#section-1">TL;DR версии</a>.
 <br />
@@ -200,7 +200,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 Вот структура проекта с которой мы решили работать:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">app/
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>app/
 lib/
 config/
 ... <span class="o">(</span>обычные каталоги rails<span class="o">)</span>
@@ -211,7 +211,7 @@ webpack/
 
 <p>Первоначально, <code>package.json</code> требуемый для npm был помещен в каталоге <code>webpack/</code>, но это усложнило деплой на Heroku. После компиляции Webpack весь JavaScript собирается в файле <code>react_bundle.js</code> и кладется в каталог <code>app/assets/javascripts</code>. Этот файл в свою очередь загружается через asset pipeline. Собранный файл должен лежать на своем месте до того как запустится <code>assets:precompile</code> в процессе деплоя.</p>
 
-<h3 id="heroku">Билдпаки Heroku</h3>
+<h3 id="Билдпаки-heroku">Билдпаки Heroku</h3>
 
 <p>Heroku использует установочные скрипты, которые они назвали <a href="https://devcenter.heroku.com/articles/buildpacks" target="_blank">buildpacks</a>, для определения типа приложения и запуска необходимых шагов для деплоя. Например, Heroku запускает сборку и деплой Rack-based приложения если видит файл <code>Gemfile</code> в корне приложения. Если при этом в списке гемов будут рельсовые то запустится сборка и деплой Rails приложения. Упрощенно, для запуска Rack приложения нужны следующие шаги:</p>
 
@@ -225,28 +225,28 @@ webpack/
 
 <p>Таким же образом Heroku выполняет шаги для Node.js приложений, основываясь на наличии файла <code>package.json</code> в корневой директории. Итак, что же делать если нам нужна сборка и Ruby и Node.js одновременно? Нужно чтобы и <code>Gemfile</code>, и <code>package.json</code> присутствовали в корневой директории. Это <strong>шаг №1</strong>.</p>
 
-<h3 id="heroku-1">Множественные билдпаки Heroku</h3>
+<h3 id="Множественные-билдпаки-heroku">Множественные билдпаки Heroku</h3>
 
 <p>Heroku поддерживает <a href="https://devcenter.heroku.com/articles/using-multiple-buildpacks-for-an-app" target="_blank">множественные билдпаки</a> для одного приложения. Если у нас Node.js и Ruby билдпаки, то нужен способ указать Heroku, что сначала нужно выполнить сборку для npm и только потом запускать сборку Ruby. Это нужно для того, чтобы файл <code>react_bundle.js</code> был на своем месте в <code>app/assets/javascripts</code> до того как запустится сборка assets в Rails. Командная строка Heroku дает нам способ задавать билдпаки и указывать порядок в котором они должны запускаться:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku buildpacks:clear
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>heroku buildpacks:clear
 heroku buildpacks:set heroku/nodejs
-heroku buildpacks:add heroku/ruby --index 2</code></pre></figure>
+heroku buildpacks:add heroku/ruby --index <span class="m">2</span></code></pre></figure>
 
 <p>Аргумент <code>--index</code> означает что <code>heroku/ruby</code> билдпак добавляется <em>после</em> <code>heroku/nodejs</code>. Это завершает <strong>шаг №2</strong>.</p>
 
-<h3 id="heroku-2">Отправка билд хука на Heroku</h3>
+<h3 id="Отправка-билд-хука-на-heroku">Отправка билд хука на Heroku</h3>
 
 <p>После того как билдпаки установлены, нам нужен способ запустить команду Webpack сразу после того как Node.js собран, но до того как будет начата сборка Ruby/Rails. Билдпак для Node.js <a href="https://devcenter.heroku.com/articles/nodejs-support#customizing-the-build-process" target="_blank">поддерживает способ</a> выполнить кастомный скрипт сразу после того как сборка Node.js прошла. Для этого команда должна быть указана в <code>package.json</code> внутри секции <code>scripts</code> c ключом <code>heroku-postbuild</code>. Вот пример актуальной секции <code>scripts</code> из <code>package.json</code>:</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="s2">&quot;scripts&quot;</span><span class="err">:</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span></span><span class="s2">&quot;scripts&quot;</span><span class="err">:</span> <span class="p">{</span>
   <span class="nt">&quot;webpack:deploy&quot;</span><span class="p">:</span> <span class="s2">&quot;webpack --config=webpack/webpack.config.js -p&quot;</span><span class="p">,</span>
   <span class="nt">&quot;heroku-postbuild&quot;</span><span class="p">:</span> <span class="s2">&quot;npm run webpack:deploy&quot;</span>
 <span class="p">}</span><span class="err">,</span></code></pre></figure>
 
 <p>На этом заканчивается <strong>шаг №3</strong>. Благодаря этим 3 шагам, я смог построить работающий процесс деплоя для Rails + Webpack приложения.</p>
 
-<h3 id="section-1">Резюме</h3>
+<h3 id="Резюме">Резюме</h3>
 
 <ol>
   <li>Поместите <code>package.json</code> в корневом каталоге вашего Rails приложения.</li>

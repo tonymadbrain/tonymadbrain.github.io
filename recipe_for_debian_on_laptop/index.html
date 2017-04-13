@@ -170,32 +170,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Первым делом после запуска системы логинимся под рутом (надеюсь единственный раз) и редактируем файлик /etc/sudoers это можно сделать так же командой visudo. После строк</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># User privilege specification</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="c1"># User privilege specification</span>
 root <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL</code></pre></figure>
 
 <p>добавляем запись типа:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">user <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD:ALL</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>user <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD:ALL</code></pre></figure>
 
 <p>Где <code>user</code> ваше имя пользователя. После чего для получения прав суперпользователя нам не потребуется логиниться, а нужно будет всего лишь перед необходимой командой добавить - sudo, что означает выполнять от суперпользователя. Продолжаем, теперь отредактируем файл /etc/apt/sources.list в нем необходимо за комментировать строчку с cdrom (обычно первая), и добавить ftp репозиторий</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">deb http://ftp.debian.org/debian/ squeeze main non-free contrib
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>deb http://ftp.debian.org/debian/ squeeze main non-free contrib
 deb-src http://ftp.debian.org/debian/ squeeze main non-free contrib</code></pre></figure>
 
 <p>После этого выполнить</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get update</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>sudo apt-get update</code></pre></figure>
 
 <p>И можно приступать к забойной закачке пакетов (^^)</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install x-window-system openbox slim libreoffice guake wicd psi qbittorent thunar xarchiver gedit iceweasel flashplugin-nonfree grandr tint2 conky feh menu</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>sudo apt-get install x-window-system openbox slim libreoffice guake wicd psi qbittorent thunar xarchiver gedit iceweasel flashplugin-nonfree grandr tint2 conky feh menu</code></pre></figure>
 
 <p>После установки всех пакетов уходим в ребут, логинимся, и видим серый экран и курсор мыши оО. Не удивляйтесь, так и должно быть) По нажатии правой кнопки мыши мы можем лицезреть меню openbox в котором уже должен быть пункт debian, где можно найти все установленные программы.
 Дальше все очень просто в каталоге /$HOME/.conig/ находим папки с конфигами openbox, tint2 и conky, редактируем конфигурационные файлы и наслаждаемся приятной работой отличной операционной системы ^^). Для примера ниже приведу свои конфиги, скажу только, что они не сильно изменены, ибо мне много не нужно =).</p>
 
 <p><em>autostart.sh</em></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">feh -bg-scale ~/back1.jpg <span class="p">&amp;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>feh -bg-scale ~/back1.jpg <span class="p">&amp;</span>
 conky -c ~/.config/conky/conkyrc -p <span class="m">10</span> <span class="p">&amp;</span>
 tint2 <span class="p">&amp;</span>
 guake <span class="p">&amp;</span>
@@ -204,42 +204,42 @@ psi <span class="p">&amp;</span></code></pre></figure>
 
 <p><em>rc.xml</em>(только мною добавленные секции, для регулировки звука и подсветки)</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;!-- zvuk + --&gt;
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>&lt;!-- zvuk + --&gt;
   &lt;keybind <span class="nv">key</span><span class="o">=</span><span class="s2">&quot;XF86AudioRaiseVolume&quot;</span>&gt;
     &lt;action <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Execute&quot;</span>&gt;
-      &lt;<span class="nb">command</span>&gt;amixer <span class="nb">set </span>Master 2+&lt;/command&gt;
+      &lt;command&gt;amixer <span class="nb">set</span> Master <span class="m">2</span>+&lt;/command&gt;
     &lt;/action&gt;
   &lt;/keybind&gt;
   &lt;keybind <span class="nv">key</span><span class="o">=</span><span class="s2">&quot;XF86AudioLowerVolume&quot;</span>&gt;
     &lt;action <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Execute&quot;</span>&gt;
-      &lt;<span class="nb">command</span>&gt;amixer <span class="nb">set </span>Master 2-&lt;/command&gt;
+      &lt;command&gt;amixer <span class="nb">set</span> Master <span class="m">2</span>-&lt;/command&gt;
     &lt;/action&gt;
   &lt;/keybind&gt;
   &lt;keybind <span class="nv">key</span><span class="o">=</span><span class="s2">&quot;XF86AudioMute&quot;</span>&gt;
     &lt;action <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Execute&quot;</span>&gt;
-      &lt;<span class="nb">command</span>&gt;amixer <span class="nb">set </span>Master toggle&lt;/command&gt;
+      &lt;command&gt;amixer <span class="nb">set</span> Master toggle&lt;/command&gt;
     &lt;/action&gt;
   &lt;/keybind&gt;
 &lt;!--PODSVETKA--&gt;
   &lt;keybind <span class="nv">key</span><span class="o">=</span><span class="s2">&quot;XF86MonBrightnessUp&quot;</span>&gt;
     &lt;action <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Execute&quot;</span>&gt;
-      &lt;<span class="nb">command</span>&gt;sudo setpci -s 00:02.0 f4.b<span class="o">=</span>99&lt;/command&gt;
+      &lt;command&gt;sudo setpci -s <span class="m">00</span>:02.0 f4.b<span class="o">=</span><span class="m">99</span>&lt;/command&gt;
     &lt;/action&gt;
   &lt;/keybind&gt;
   &lt;keybind <span class="nv">key</span><span class="o">=</span><span class="s2">&quot;XF86MonBrightnessDown&quot;</span>&gt;
     &lt;action <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Execute&quot;</span>&gt;
-      &lt;<span class="nb">command</span>&gt;sudo setpci -s 00:02.0 f4.b<span class="o">=</span>30&lt;/command&gt;
+      &lt;command&gt;sudo setpci -s <span class="m">00</span>:02.0 f4.b<span class="o">=</span><span class="m">30</span>&lt;/command&gt;
     &lt;/action&gt;
   &lt;/keybind&gt;
   &lt;keybind <span class="nv">key</span><span class="o">=</span><span class="s2">&quot;XF86Launch1&quot;</span>&gt;
     &lt;action <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Execute&quot;</span>&gt;
-      &lt;<span class="nb">command</span>&gt;sudo setpci -s 00:02.0 f4.b<span class="o">=</span>00&lt;/command&gt;
+      &lt;command&gt;sudo setpci -s <span class="m">00</span>:02.0 f4.b<span class="o">=</span><span class="m">00</span>&lt;/command&gt;
     &lt;/action&gt;
   &lt;/keybind&gt;</code></pre></figure>
 
 <p><em>menu.xml</em></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>&gt;&lt;openbox_menu <span class="nv">xmlns</span><span class="o">=</span><span class="s2">&quot;http://openbox.org/&quot;</span> xmlns:xsi<span class="o">=</span><span class="s2">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> xsi:schemaLocation<span class="o">=</span><span class="s2">&quot;http://openbox.org/ file:///usr/share/openbox/menu.xsd&quot;</span>&gt;
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>&gt;&lt;openbox_menu <span class="nv">xmlns</span><span class="o">=</span><span class="s2">&quot;http://openbox.org/&quot;</span> xmlns:xsi<span class="o">=</span><span class="s2">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> xsi:schemaLocation<span class="o">=</span><span class="s2">&quot;http://openbox.org/ file:///usr/share/openbox/menu.xsd&quot;</span>&gt;
 &lt;menu <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;root-menu&quot;</span> <span class="nv">label</span><span class="o">=</span><span class="s2">&quot;Openbox 3&quot;</span>&gt;
   &lt;item <span class="nv">label</span><span class="o">=</span><span class="s2">&quot;Терминал&quot;</span>&gt;
     &lt;action <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Execute&quot;</span>&gt;
@@ -312,124 +312,124 @@ psi <span class="p">&amp;</span></code></pre></figure>
 
 <p><em>tint2rc</em></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Tint2 config file</span>
-<span class="c"># Generated by tintwizard (http://code.google.com/p/tintwizard/)</span>
-<span class="c"># For information on manually configuring tint2 see http://code.google.com/p/tint2/wiki/Configure</span>
-<span class="c"># To use this as default tint2 config: save as $HOME/.config/tint2/tint2rc</span>
-<span class="c"># Background definitions</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="c1"># Tint2 config file</span>
+<span class="c1"># Generated by tintwizard (http://code.google.com/p/tintwizard/)</span>
+<span class="c1"># For information on manually configuring tint2 see http://code.google.com/p/tint2/wiki/Configure</span>
+<span class="c1"># To use this as default tint2 config: save as $HOME/.config/tint2/tint2rc</span>
+<span class="c1"># Background definitions</span>
 
-<span class="c"># ID 1</span>
-<span class="nv">rounded</span> <span class="o">=</span> 0
-<span class="nv">border_width</span> <span class="o">=</span> 0
-<span class="nv">background_color</span> <span class="o">=</span> <span class="c">#000000 40</span>
-<span class="nv">border_color</span> <span class="o">=</span> <span class="c">#000000 61</span>
+<span class="c1"># ID 1</span>
+<span class="nv">rounded</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">border_width</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">background_color</span> <span class="o">=</span> <span class="c1">#000000 40</span>
+<span class="nv">border_color</span> <span class="o">=</span> <span class="c1">#000000 61</span>
 
-<span class="c"># ID 2</span>
-<span class="nv">rounded</span> <span class="o">=</span> 3
-<span class="nv">border_width</span> <span class="o">=</span> 1
-<span class="nv">background_color</span> <span class="o">=</span> <span class="c">#000000 40</span>
-<span class="nv">border_color</span> <span class="o">=</span> <span class="c">#000000 61</span>
+<span class="c1"># ID 2</span>
+<span class="nv">rounded</span> <span class="o">=</span> <span class="m">3</span>
+<span class="nv">border_width</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">background_color</span> <span class="o">=</span> <span class="c1">#000000 40</span>
+<span class="nv">border_color</span> <span class="o">=</span> <span class="c1">#000000 61</span>
 
-<span class="c"># Panel</span>
+<span class="c1"># Panel</span>
 <span class="nv">panel_monitor</span> <span class="o">=</span> all
 <span class="nv">panel_position</span> <span class="o">=</span> bottom right horizontal
-<span class="nv">panel_size</span> <span class="o">=</span> 100% 40
-<span class="nv">panel_margin</span> <span class="o">=</span> <span class="m">0</span> 5
-<span class="nv">panel_padding</span> <span class="o">=</span> <span class="m">1</span> <span class="m">0</span> 1
-<span class="nv">panel_dock</span> <span class="o">=</span> 0
-<span class="nv">wm_menu</span> <span class="o">=</span> 1
+<span class="nv">panel_size</span> <span class="o">=</span> <span class="m">100</span>% <span class="m">40</span>
+<span class="nv">panel_margin</span> <span class="o">=</span> <span class="m">0</span> <span class="m">5</span>
+<span class="nv">panel_padding</span> <span class="o">=</span> <span class="m">1</span> <span class="m">0</span> <span class="m">1</span>
+<span class="nv">panel_dock</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">wm_menu</span> <span class="o">=</span> <span class="m">1</span>
 <span class="nv">panel_layer</span> <span class="o">=</span> top
-<span class="nv">panel_background_id</span> <span class="o">=</span> 1
-<span class="nv">font_shadow</span> <span class="o">=</span> 1
+<span class="nv">panel_background_id</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">font_shadow</span> <span class="o">=</span> <span class="m">1</span>
 
-<span class="c"># Panel Autohide</span>
-<span class="nv">autohide</span> <span class="o">=</span> 0
-<span class="nv">autohide_show_timeout</span> <span class="o">=</span> 5
-<span class="nv">autohide_hide_timeout</span> <span class="o">=</span> 5
-<span class="nv">autohide_height</span> <span class="o">=</span> 0
+<span class="c1"># Panel Autohide</span>
+<span class="nv">autohide</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">autohide_show_timeout</span> <span class="o">=</span> <span class="m">5</span>
+<span class="nv">autohide_hide_timeout</span> <span class="o">=</span> <span class="m">5</span>
+<span class="nv">autohide_height</span> <span class="o">=</span> <span class="m">0</span>
 <span class="nv">strut_policy</span> <span class="o">=</span> none
 
-<span class="c"># Taskbar</span>
+<span class="c1"># Taskbar</span>
 <span class="nv">taskbar_mode</span> <span class="o">=</span> single_desktop
-<span class="nv">taskbar_padding</span> <span class="o">=</span> <span class="m">2</span> <span class="m">3</span> 2
-<span class="nv">taskbar_background_id</span> <span class="o">=</span> 0
-<span class="c">#taskbar_active_background_id = 0</span>
+<span class="nv">taskbar_padding</span> <span class="o">=</span> <span class="m">2</span> <span class="m">3</span> <span class="m">2</span>
+<span class="nv">taskbar_background_id</span> <span class="o">=</span> <span class="m">0</span>
+<span class="c1">#taskbar_active_background_id = 0</span>
 
-<span class="c"># Tasks</span>
-<span class="nv">urgent_nb_of_blink</span> <span class="o">=</span> 8
-<span class="nv">task_icon</span> <span class="o">=</span> 1
-<span class="nv">task_text</span> <span class="o">=</span> 0
-<span class="nv">task_centered</span> <span class="o">=</span> 1
-<span class="nv">task_maximum_size</span> <span class="o">=</span> <span class="m">80</span> 28
-<span class="nv">task_padding</span> <span class="o">=</span> <span class="m">6</span> 2
-<span class="nv">task_background_id</span> <span class="o">=</span> 0
-<span class="nv">task_active_background_id</span> <span class="o">=</span> 2
-<span class="nv">task_urgent_background_id</span> <span class="o">=</span> 0
-<span class="nv">task_iconified_background_id</span> <span class="o">=</span> 0
+<span class="c1"># Tasks</span>
+<span class="nv">urgent_nb_of_blink</span> <span class="o">=</span> <span class="m">8</span>
+<span class="nv">task_icon</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">task_text</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">task_centered</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">task_maximum_size</span> <span class="o">=</span> <span class="m">80</span> <span class="m">28</span>
+<span class="nv">task_padding</span> <span class="o">=</span> <span class="m">6</span> <span class="m">2</span>
+<span class="nv">task_background_id</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">task_active_background_id</span> <span class="o">=</span> <span class="m">2</span>
+<span class="nv">task_urgent_background_id</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">task_iconified_background_id</span> <span class="o">=</span> <span class="m">0</span>
 
-<span class="c"># Task Icons</span>
-<span class="nv">task_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> 0
-<span class="nv">task_active_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> 0
-<span class="nv">task_urgent_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> 0
-<span class="nv">task_iconified_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> 0
+<span class="c1"># Task Icons</span>
+<span class="nv">task_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> <span class="m">0</span>
+<span class="nv">task_active_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> <span class="m">0</span>
+<span class="nv">task_urgent_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> <span class="m">0</span>
+<span class="nv">task_iconified_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> <span class="m">0</span>
 
-<span class="c"># Fonts</span>
-<span class="nv">task_font</span> <span class="o">=</span> Sans 8
-<span class="nv">task_font_color</span> <span class="o">=</span> <span class="c">#FFFFFF 100</span>
-<span class="nv">task_active_font_color</span> <span class="o">=</span> <span class="c">#FFFFFF 100</span>
-<span class="nv">task_urgent_font_color</span> <span class="o">=</span> <span class="c">#FFFFFF 100</span>
-<span class="nv">task_iconified_font_color</span> <span class="o">=</span> <span class="c">#FFFFFF 100</span>
-<span class="nv">font_shadow</span> <span class="o">=</span> 0
+<span class="c1"># Fonts</span>
+<span class="nv">task_font</span> <span class="o">=</span> Sans <span class="m">8</span>
+<span class="nv">task_font_color</span> <span class="o">=</span> <span class="c1">#FFFFFF 100</span>
+<span class="nv">task_active_font_color</span> <span class="o">=</span> <span class="c1">#FFFFFF 100</span>
+<span class="nv">task_urgent_font_color</span> <span class="o">=</span> <span class="c1">#FFFFFF 100</span>
+<span class="nv">task_iconified_font_color</span> <span class="o">=</span> <span class="c1">#FFFFFF 100</span>
+<span class="nv">font_shadow</span> <span class="o">=</span> <span class="m">0</span>
 
-<span class="c"># System Tray</span>
-<span class="nv">systray</span> <span class="o">=</span> 1
-<span class="nv">systray_padding</span> <span class="o">=</span> <span class="m">5</span> <span class="m">2</span> 5
+<span class="c1"># System Tray</span>
+<span class="nv">systray</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">systray_padding</span> <span class="o">=</span> <span class="m">5</span> <span class="m">2</span> <span class="m">5</span>
 <span class="nv">systray_sort</span> <span class="o">=</span> ascending
-<span class="nv">systray_background_id</span> <span class="o">=</span> 0
-<span class="nv">systray_icon_size</span> <span class="o">=</span> 24
-<span class="nv">systray_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> 0
+<span class="nv">systray_background_id</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">systray_icon_size</span> <span class="o">=</span> <span class="m">24</span>
+<span class="nv">systray_icon_asb</span> <span class="o">=</span> <span class="m">100</span> <span class="m">0</span> <span class="m">0</span>
 
-<span class="c"># Clock</span>
+<span class="c1"># Clock</span>
 <span class="nv">time1_format</span> <span class="o">=</span> %H:%M
-<span class="nv">time1_font</span> <span class="o">=</span> FreeSans 10
+<span class="nv">time1_font</span> <span class="o">=</span> FreeSans <span class="m">10</span>
 <span class="nv">time2_format</span> <span class="o">=</span> %a %d %b
-<span class="nv">time2_font</span> <span class="o">=</span> FreeSans 10
-<span class="nv">clock_font_color</span> <span class="o">=</span> <span class="c">#12D0EB 100</span>
+<span class="nv">time2_font</span> <span class="o">=</span> FreeSans <span class="m">10</span>
+<span class="nv">clock_font_color</span> <span class="o">=</span> <span class="c1">#12D0EB 100</span>
 <span class="nv">clock_tooltip</span> <span class="o">=</span>
-<span class="nv">clock_padding</span> <span class="o">=</span> <span class="m">5</span> <span class="m">2</span> 5
-<span class="nv">clock_background_id</span> <span class="o">=</span> 0
+<span class="nv">clock_padding</span> <span class="o">=</span> <span class="m">5</span> <span class="m">2</span> <span class="m">5</span>
+<span class="nv">clock_background_id</span> <span class="o">=</span> <span class="m">0</span>
 
-<span class="c"># Tooltips</span>
-<span class="nv">tooltip</span> <span class="o">=</span> 0
-<span class="nv">tooltip_padding</span> <span class="o">=</span> <span class="m">0</span> 0
-<span class="nv">tooltip_show_timeout</span> <span class="o">=</span> 0
-<span class="nv">tooltip_hide_timeout</span> <span class="o">=</span> 0
-<span class="nv">tooltip_background_id</span> <span class="o">=</span> 0
-<span class="nv">tooltip_font</span> <span class="o">=</span> Sans 12
-<span class="nv">tooltip_font_color</span> <span class="o">=</span> <span class="c">#FFFFFF 100</span>
+<span class="c1"># Tooltips</span>
+<span class="nv">tooltip</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">tooltip_padding</span> <span class="o">=</span> <span class="m">0</span> <span class="m">0</span>
+<span class="nv">tooltip_show_timeout</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">tooltip_hide_timeout</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">tooltip_background_id</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">tooltip_font</span> <span class="o">=</span> Sans <span class="m">12</span>
+<span class="nv">tooltip_font_color</span> <span class="o">=</span> <span class="c1">#FFFFFF 100</span>
 
-<span class="c"># Mouse</span>
+<span class="c1"># Mouse</span>
 <span class="nv">mouse_middle</span> <span class="o">=</span> none
 <span class="nv">mouse_right</span> <span class="o">=</span> none
 <span class="nv">mouse_scroll_up</span> <span class="o">=</span> none
 <span class="nv">mouse_scroll_down</span> <span class="o">=</span> none
 
-<span class="c"># Battery</span>
-<span class="nv">battery</span> <span class="o">=</span> 1
-<span class="nv">battery_low_status</span> <span class="o">=</span> 20
+<span class="c1"># Battery</span>
+<span class="nv">battery</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">battery_low_status</span> <span class="o">=</span> <span class="m">20</span>
 <span class="nv">battery_low_cmd</span> <span class="o">=</span> notify-send <span class="s2">&quot;battery low&quot;</span>
-<span class="nv">battery_hide</span> <span class="o">=</span> 0
-<span class="nv">bat1_font</span> <span class="o">=</span> FreeSans 11
-<span class="nv">bat2_font</span> <span class="o">=</span> FreeSans 11
-<span class="nv">battery_font_color</span> <span class="o">=</span> <span class="c">#12D0EB 100</span>
-<span class="nv">battery_padding</span> <span class="o">=</span> <span class="m">5</span> <span class="m">2</span> 5
-<span class="nv">battery_background_id</span> <span class="o">=</span> 0
+<span class="nv">battery_hide</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">bat1_font</span> <span class="o">=</span> FreeSans <span class="m">11</span>
+<span class="nv">bat2_font</span> <span class="o">=</span> FreeSans <span class="m">11</span>
+<span class="nv">battery_font_color</span> <span class="o">=</span> <span class="c1">#12D0EB 100</span>
+<span class="nv">battery_padding</span> <span class="o">=</span> <span class="m">5</span> <span class="m">2</span> <span class="m">5</span>
+<span class="nv">battery_background_id</span> <span class="o">=</span> <span class="m">0</span>
 
-<span class="c"># End of config</span></code></pre></figure>
+<span class="c1"># End of config</span></code></pre></figure>
 
 <p><em>Conky</em></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">background no
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>background no
 own_window yes
 own_window_colour brown
 own_window_transparent yes
@@ -439,31 +439,31 @@ double_buffer yes
 use_spacer left
 alignment top_right
 use_xft yes
-gap_x 10
-gap_y 15
+gap_x <span class="m">10</span>
+gap_y <span class="m">15</span>
 
-update_interval 1.0
-maximum_width 370
-stippled_borders 3
-border_width 10
+update_interval <span class="m">1</span>.0
+maximum_width <span class="m">370</span>
+stippled_borders <span class="m">3</span>
+border_width <span class="m">10</span>
 default_color black
 
 draw_outline no
 draw_borders no
-font Sans:size<span class="o">=</span>10:weight<span class="o">=</span>bold
+font Sans:size<span class="o">=</span><span class="m">10</span>:weight<span class="o">=</span>bold
 uppercase no
 draw_shades no
 override_utf8_locale yes
 format_human_readable yes
 
 TEXT
-<span class="k">${</span><span class="nv">color</span><span class="p"> #12D0EB</span><span class="k">}${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=24</span><span class="k">}</span> <span class="k">${</span><span class="nv">time</span><span class="p"> %A</span><span class="k">}</span><span class="nv">$font</span><span class="k">${</span><span class="nv">color</span><span class="k">}</span>
-<span class="k">${</span><span class="nv">color</span><span class="p"> #12D0EB</span><span class="k">}${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=72</span><span class="k">}</span> <span class="k">${</span><span class="nv">time</span><span class="p"> %H:%M</span><span class="k">}</span> <span class="nv">$font</span> <span class="k">${</span><span class="nv">color</span><span class="k">}</span>
-<span class="k">${</span><span class="nv">color</span><span class="p"> #12D0EB</span><span class="k">}${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=26</span><span class="k">}</span> <span class="k">${</span><span class="nv">time</span><span class="p"> %d</span><span class="k">}</span> <span class="k">${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=24</span><span class="k">}</span> <span class="k">${</span><span class="nv">time</span><span class="p"> %B</span><span class="k">}</span> <span class="k">${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=18</span><span class="k">}</span> <span class="k">${</span><span class="nv">time</span><span class="p"> %Y</span><span class="k">}${</span><span class="nv">color</span><span class="k">}</span>
-<span class="c">#${color #33ff00}${font Archangelsk:size=18}CPU:${color #ff0000} $cpu%</span>
-<span class="c">#${color #33ff00}RAM:${color #ff0000} $memperc%</span>
-<span class="c">#${color #711919}wlan0 up: ${upspeedf wlan0}k/s ${alignr}${totalup wlan0} total</span>
-<span class="c">#${color #711919}eth0 up: ${upspeedf eth0}k/s ${alignr}${totalup eth0} total</span></code></pre></figure>
+<span class="si">${</span><span class="nv">color</span><span class="p"> #12D0EB</span><span class="si">}${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=24</span><span class="si">}</span> <span class="si">${</span><span class="nv">time</span><span class="p"> %A</span><span class="si">}</span><span class="nv">$font</span><span class="si">${</span><span class="nv">color</span><span class="si">}</span>
+<span class="si">${</span><span class="nv">color</span><span class="p"> #12D0EB</span><span class="si">}${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=72</span><span class="si">}</span> <span class="si">${</span><span class="nv">time</span><span class="p"> %H:%M</span><span class="si">}</span> <span class="nv">$font</span> <span class="si">${</span><span class="nv">color</span><span class="si">}</span>
+<span class="si">${</span><span class="nv">color</span><span class="p"> #12D0EB</span><span class="si">}${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=26</span><span class="si">}</span> <span class="si">${</span><span class="nv">time</span><span class="p"> %d</span><span class="si">}</span> <span class="si">${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=24</span><span class="si">}</span> <span class="si">${</span><span class="nv">time</span><span class="p"> %B</span><span class="si">}</span> <span class="si">${</span><span class="nv">font</span><span class="p"> Archangelsk:</span><span class="nv">size</span><span class="p">=18</span><span class="si">}</span> <span class="si">${</span><span class="nv">time</span><span class="p"> %Y</span><span class="si">}${</span><span class="nv">color</span><span class="si">}</span>
+<span class="c1">#${color #33ff00}${font Archangelsk:size=18}CPU:${color #ff0000} $cpu%</span>
+<span class="c1">#${color #33ff00}RAM:${color #ff0000} $memperc%</span>
+<span class="c1">#${color #711919}wlan0 up: ${upspeedf wlan0}k/s ${alignr}${totalup wlan0} total</span>
+<span class="c1">#${color #711919}eth0 up: ${upspeedf eth0}k/s ${alignr}${totalup eth0} total</span></code></pre></figure>
 
 <p>P.S. Конфиг conky принадлежит <a href="http://blog.elve.name/" target="_blank"> Ростиславу Беляеву</a>, спасибо ему за терпение и адекватные ответы на мои вопросы.</p>
 

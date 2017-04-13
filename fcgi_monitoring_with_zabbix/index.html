@@ -159,7 +159,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
       <figure>
-  <img src="https://farm6.staticflickr.com/5498/30407849124_bfc7ab4bbe_o.png" />
+  <img src="https://farm6.staticflickr.com/5498/30407849124_bfc7ab4bbe_o.png" />&lt;/a&gt;
 </figure>
 
 <p>Решил у нас в <a href="http://imhonet.ru" target="_blank">Имхонете</a> сделать мониторинг PHP-FPM, чтобы все было как у нормальных пацанов. Советы в интернете сводятся к тому, чтобы включить статус и проксировать запросы в него через Nginx. Но я считаю, что это как ездить на метро с пересадкой, при условии что пешком дойти ближе и быстрее, поэтому сделал все сам.</p>
@@ -172,11 +172,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul id="markdown-toc">
   <li><a href="#php-fpm" id="markdown-toc-php-fpm">PHP-FPM</a></li>
   <li><a href="#zabbix" id="markdown-toc-zabbix">Zabbix</a>    <ul>
-      <li><a href="#c" id="markdown-toc-c">Cкрипт</a></li>
-      <li><a href="#section" id="markdown-toc-section">Шаблон</a></li>
+      <li><a href="#cкрипт" id="markdown-toc-cкрипт">Cкрипт</a></li>
+      <li><a href="#Шаблон" id="markdown-toc-Шаблон">Шаблон</a></li>
     </ul>
   </li>
-  <li><a href="#section-1" id="markdown-toc-section-1">Заключение</a></li>
+  <li><a href="#Заключение" id="markdown-toc-Заключение">Заключение</a></li>
   <li><a href="#upd" id="markdown-toc-upd">UPD:</a></li>
 </ul>
 
@@ -188,35 +188,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>В самом PHP-FPM нам нужно только включить страницу статуса и ответ на пинг запрос. Для этого в конфиг пула (по умолчанию это <code>/etc/php/fpm/pool.d/www.conf</code>) нужно добавить следующие строки:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pm.status_path <span class="o">=</span> /status
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>pm.status_path <span class="o">=</span> /status
 ping.path <span class="o">=</span> /ping</code></pre></figure>
 
 <p>И перезагрузить демон:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>/etc/init.d/php-fpm restart</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ /etc/init.d/php-fpm restart</code></pre></figure>
 
 <h2 id="zabbix">Zabbix</h2>
 
-<h3 id="c">Cкрипт</h3>
+<h3 id="cкрипт">Cкрипт</h3>
 
 <p>Первую реализацию я написал на Bash, сначала напишу его разбор а потом приведу целиком.</p>
 
 <p>Первой строкой указываем чем необходимо выполнять скрипт:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="ch">#!/usr/bin/env bash</span></code></pre></figure>
 
 <p>Записываем в переменную подсказку по использованию скрипта:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">help</span><span class="o">=</span><span class="s2">&quot;Usage: fcgi &lt;ip or dns for check&gt; &lt;port&gt; &lt;check type, maybe ping or status&gt; &lt;parameter, only for status&gt;\nExample: fcgi 127.0.0.1 3000 ping&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">help</span><span class="o">=</span><span class="s2">&quot;Usage: fcgi &lt;ip or dns for check&gt; &lt;port&gt; &lt;check type, maybe ping or status&gt; &lt;parameter, only for status&gt;\nExample: fcgi 127.0.0.1 3000 ping&quot;</span></code></pre></figure>
 
 <p>В скрипте есть три функции <code>ping</code> - для простой проверки, <code>status</code> - для получения пар параметр:значение и <code>status_clear</code> - для получения статуса без парсинга:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">function</span> ping <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="k">function</span> ping <span class="o">{</span>
   <span class="nv">SCRIPT_NAME</span><span class="o">=</span>/ping <span class="nv">SCRIPT_FILENAME</span><span class="o">=</span>/ping <span class="nv">REQUEST_METHOD</span><span class="o">=</span>GET cgi-fcgi -bind -connect <span class="nv">$address</span>:<span class="nv">$port</span>
 <span class="o">}</span>
 
 <span class="k">function</span> status <span class="o">{</span>
-  <span class="nv">SCRIPT_NAME</span><span class="o">=</span>/status <span class="nv">SCRIPT_FILENAME</span><span class="o">=</span>/status <span class="nv">REQUEST_METHOD</span><span class="o">=</span>GET cgi-fcgi -bind -connect <span class="nv">$address</span>:<span class="nv">$port</span> <span class="p">|</span> sed -n <span class="s2">&quot;$1p;$1q&quot;</span> <span class="p">|</span> awk -F: <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/^[ \t]*//;s/[ \t]*$//&#39;</span>
+  <span class="nv">SCRIPT_NAME</span><span class="o">=</span>/status <span class="nv">SCRIPT_FILENAME</span><span class="o">=</span>/status <span class="nv">REQUEST_METHOD</span><span class="o">=</span>GET cgi-fcgi -bind -connect <span class="nv">$address</span>:<span class="nv">$port</span> <span class="p">|</span> sed -n <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">p;</span><span class="nv">$1</span><span class="s2">q&quot;</span> <span class="p">|</span> awk -F: <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/^[ \t]*//;s/[ \t]*$//&#39;</span>
 <span class="o">}</span>
 
 <span class="k">function</span> status_clear <span class="o">{</span>
@@ -225,18 +225,18 @@ ping.path <span class="o">=</span> /ping</code></pre></figure>
 
 <p>После объявления функций сетим переменные:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">address</span><span class="o">=</span><span class="nv">$1</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">address</span><span class="o">=</span><span class="nv">$1</span>
 <span class="nv">port</span><span class="o">=</span><span class="nv">$2</span>
 <span class="nv">parameter</span><span class="o">=</span><span class="nv">$4</span></code></pre></figure>
 
 <p>Ну и дальше основная обработка, в зависимости от типа проверки и параметров вызываются функции и каким-либо образом обрабатываются:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">case</span> <span class="s2">&quot;$3&quot;</span> in
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span> in
   <span class="s2">&quot;ping&quot;</span> <span class="o">)</span>
     ping <span class="p">|</span> tail -n1
   <span class="p">;;</span>
   <span class="s2">&quot;status&quot;</span> <span class="o">)</span>
-    <span class="k">case</span> <span class="s2">&quot;$parameter&quot;</span> in
+    <span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$parameter</span><span class="s2">&quot;</span> in
       <span class="s2">&quot;pool&quot;</span> <span class="o">)</span>
         status_clear <span class="p">|</span> sed -n <span class="s1">&#39;6p;6q&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span>
       <span class="p">;;</span>
@@ -244,53 +244,53 @@ ping.path <span class="o">=</span> /ping</code></pre></figure>
         status_clear <span class="p">|</span> sed -n <span class="s1">&#39;1p;1q&#39;</span> <span class="p">|</span> awk -F/ <span class="s1">&#39;{print $2}&#39;</span>
       <span class="p">;;</span>
       <span class="s2">&quot;process_manager&quot;</span> <span class="o">)</span>
-        status 7
+        status <span class="m">7</span>
       <span class="p">;;</span>
       <span class="s2">&quot;accepted_conn&quot;</span> <span class="o">)</span>
-        status 10
+        status <span class="m">10</span>
       <span class="p">;;</span>
       <span class="s2">&quot;listen_queue&quot;</span> <span class="o">)</span>
-        status 11
+        status <span class="m">11</span>
       <span class="p">;;</span>
       <span class="s2">&quot;max_listen_queue&quot;</span> <span class="o">)</span>
-        status 12
+        status <span class="m">12</span>
       <span class="p">;;</span>
       <span class="s2">&quot;listen_queue_len&quot;</span> <span class="o">)</span>
-        status 13
+        status <span class="m">13</span>
       <span class="p">;;</span>
       <span class="s2">&quot;idle_processes&quot;</span> <span class="o">)</span>
-        status 14
+        status <span class="m">14</span>
       <span class="p">;;</span>
       <span class="s2">&quot;active_processes&quot;</span> <span class="o">)</span>
-        status 15
+        status <span class="m">15</span>
       <span class="p">;;</span>
       <span class="s2">&quot;total_processes&quot;</span> <span class="o">)</span>
-        status 16
+        status <span class="m">16</span>
       <span class="p">;;</span>
       <span class="s2">&quot;max_active_processes&quot;</span> <span class="o">)</span>
-        status 17
+        status <span class="m">17</span>
       <span class="p">;;</span>
       <span class="s2">&quot;max_children_reached&quot;</span> <span class="o">)</span>
-        status 18
+        status <span class="m">18</span>
       <span class="p">;;</span>
       <span class="s2">&quot;slow_requests&quot;</span> <span class="o">)</span>
-        status 19
+        status <span class="m">19</span>
       <span class="p">;;</span>
       <span class="s2">&quot;latency&quot;</span> <span class="o">)</span>
-        <span class="nb">time</span><span class="o">=</span><span class="k">$(</span>date +%s%N<span class="k">)</span>
+        <span class="nv">time</span><span class="o">=</span><span class="k">$(</span>date +%s%N<span class="k">)</span>
         ping &gt;&gt; /dev/null
-        <span class="nb">echo</span> <span class="s2">&quot;$(( ($(date +%s%N)-$time) / 1000000 ))&quot;</span>
+        <span class="nb">echo</span> <span class="s2">&quot;</span><span class="k">$((</span> <span class="o">(</span><span class="k">$(</span>date +%s%N<span class="k">)</span><span class="o">-</span><span class="nv">$time</span><span class="o">)</span> <span class="o">/</span> <span class="m">1000000</span> <span class="k">))</span><span class="s2">&quot;</span>
       <span class="p">;;</span>
       <span class="s2">&quot;all&quot;</span> <span class="o">)</span>
         status_clear
       <span class="p">;;</span>
       * <span class="o">)</span>
-        <span class="nb">echo</span> -e <span class="s2">&quot;Bad command!\n$help&quot;</span>
+        <span class="nb">echo</span> -e <span class="s2">&quot;Bad command!\n</span><span class="nv">$help</span><span class="s2">&quot;</span>
       <span class="p">;;</span>
     <span class="k">esac</span>
   <span class="p">;;</span>
   * <span class="o">)</span>
-  <span class="nb">echo</span> -e <span class="s2">&quot;Bad command $3!\n$help&quot;</span>
+  <span class="nb">echo</span> -e <span class="s2">&quot;Bad command </span><span class="nv">$3</span><span class="s2">!\n</span><span class="nv">$help</span><span class="s2">&quot;</span>
   <span class="p">;;</span>
 <span class="k">esac</span></code></pre></figure>
 
@@ -305,13 +305,13 @@ ping.path <span class="o">=</span> /ping</code></pre></figure>
 
 <p>Также для работы скрипта должна быть установлена программа <code>cgi-fcgi</code> в Debian пакет для установки называется <code>fcgiwrap</code>.</p>
 
-<h3 id="section">Шаблон</h3>
+<h3 id="Шаблон">Шаблон</h3>
 
 <p>Сам шаблон можно скачать <a href="http://s.doam.ru/blog/fcgi_monitoring_with_zabbix/zbx_php-fpm_template.xml" target="_blank">тут</a>. После импорта его необходимо подключить к узлам на которых крутится PHP-FPM. Для запросов используются две переменные: встроенная <code>HOST.CONN</code> и макрос <code>FPM_PORT</code> добавленный мной, по дефолту там стоит значение <code>3000</code>.</p>
 
 <p>В шаблоне несколько итемов, 2 триггера, графики и даже скрины, все как положено.</p>
 
-<h2 id="section-1">Заключение</h2>
+<h2 id="Заключение">Заключение</h2>
 
 <p>Таким образом я решил задачу мониторинга необходимых нам параметров, но эту реализация считаю недостаточной. В дальнейшем хочу переписать его на <a href="https://golang.org/" target="_blank">golang</a> c использованием вот <a href="https://github.com/tomasen/fcgi_client" target="_blank">этой библиотеки</a>. Так как это внешняя проверка она должна работать быстро, а <code>bash</code> не подходит по этому параметру. Если у вас есть рекомендации или доработки пишите мне на почту или в Twitter.</p>
 

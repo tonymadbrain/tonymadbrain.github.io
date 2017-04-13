@@ -168,11 +168,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 При установке/настройке/правке конфигов веб-сервера Nginx, приходится очень часто выполнять команду reload, напомню, что это одна из маленьких фишичек данного веб-сервера, «мягкое» применение конфигов без перезагрузки, так вот, некоторыми днями, я использую service nginx reload 100 раз, а может и больше. Но сегодня, пришло решение:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">nginx –s reload</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>nginx –s reload</code></pre></figure>
 
 <p>Ошибиться в двух словах сложнее чем в трех, или, например, при наборе</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl restart nginx.service</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>systemctl restart nginx.service</code></pre></figure>
 
 <p>И при этом данная конструкция универсальна для всех ОС, так как функциональность предоставляется самими веб-сервером. В общем-то:</p>
 

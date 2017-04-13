@@ -160,27 +160,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="article-wrap">
       <p>Столкнулся с проблемой: монитор поддерживает разрешение 1920x1080 и с драйвером radeon работал нормально, но после того как я решил затестить драйвер radeonhd разрешение изменилось и выхлоп xrandr изменился на</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Screen 0: minimum <span class="m">320</span> x 200, current <span class="m">1920</span> x 1080, maximum <span class="m">1920</span> x 1920
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>Screen <span class="m">0</span>: minimum <span class="m">320</span> x <span class="m">200</span>, current <span class="m">1920</span> x <span class="m">1080</span>, maximum <span class="m">1920</span> x <span class="m">1920</span>
 HDMI-0 disconnected <span class="o">(</span>normal left inverted right x axis y axis<span class="o">)</span>
 VGA-0 connected 1680x1050+0+0 <span class="o">(</span>normal left inverted right x axis y axis<span class="o">)</span> 478mm x 269mm
-1680x1050 60.0*+
-1280x1024 75.0
-1440x900 75.0 59.9
-1280x960 60.0
-1280x800 59.8
-1152x864 75.0
-1280x720 60.0
-1152x720 60.0
-1024x768 75.0 70.1 60.0
-832x624 74.6
-800x600 72.2 75.0 60.3 56.2
-640x480 75.0 72.8 66.7 59.9
-720x400 70.1
+1680x1050 <span class="m">60</span>.0*+
+1280x1024 <span class="m">75</span>.0
+1440x900 <span class="m">75</span>.0 <span class="m">59</span>.9
+1280x960 <span class="m">60</span>.0
+1280x800 <span class="m">59</span>.8
+1152x864 <span class="m">75</span>.0
+1280x720 <span class="m">60</span>.0
+1152x720 <span class="m">60</span>.0
+1024x768 <span class="m">75</span>.0 <span class="m">70</span>.1 <span class="m">60</span>.0
+832x624 <span class="m">74</span>.6
+800x600 <span class="m">72</span>.2 <span class="m">75</span>.0 <span class="m">60</span>.3 <span class="m">56</span>.2
+640x480 <span class="m">75</span>.0 <span class="m">72</span>.8 <span class="m">66</span>.7 <span class="m">59</span>.9
+720x400 <span class="m">70</span>.1
 DVI-0 disconnected <span class="o">(</span>normal left inverted right x axis y axis<span class="o">)</span></code></pre></figure>
 
 <p>Чтобы вручную установить правильно разрешение пришлось добавлять новый режим:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">xrandr -newmode <span class="s2">&quot;1920x1080&quot;</span> 173.00 <span class="m">1920</span> <span class="m">2048</span> <span class="m">2248</span> <span class="m">2576</span> <span class="m">1080</span> <span class="m">1083</span> <span class="m">1088</span> <span class="m">1120</span> -hsync +vsync
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>xrandr -newmode <span class="s2">&quot;1920x1080&quot;</span> <span class="m">173</span>.00 <span class="m">1920</span> <span class="m">2048</span> <span class="m">2248</span> <span class="m">2576</span> <span class="m">1080</span> <span class="m">1083</span> <span class="m">1088</span> <span class="m">1120</span> -hsync +vsync
 xrandr -addmode VGA_1 <span class="s2">&quot;1920x1080&quot;</span>
 xrandr -output VGA_1 -mode 1920x1080</code></pre></figure>
 

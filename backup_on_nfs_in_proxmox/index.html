@@ -164,7 +164,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 <div id="drawer">
 <ul id="markdown-toc">
-  <li><a href="#nfs" id="markdown-toc-nfs">Установка nfs</a></li>
+  <li><a href="#Установка-nfs" id="markdown-toc-Установка-nfs">Установка nfs</a></li>
   <li><a href="#iptables" id="markdown-toc-iptables">Iptables</a></li>
 </ul>
 
@@ -176,7 +176,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Чтобы nfs заработал в контейнере openvz, нужно чтобы в гипервизоре была поддержка nfs, т.е. установлен nfs-utils. В образе с Proxmox этот пакет установлен, если вы устанавливали гипервизор самостоятельно, то его, скорее всего, не будет.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Kernel NFS server
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>Kernel NFS server
 Kernel-space NFS server is supported by latest RHEL5 and RHEL6 based kernels and since vzctl-3.0.24.
 NB! Currently only NFSv3 is supported — no NFSv4 support yet.
 Prerequisites
@@ -184,88 +184,88 @@ In order to run an NFS server inside a container, make sure:
 nfsd kernel module is loaded on host system before starting a container
 nfsd feature <span class="k">for</span> a container is turned on <span class="o">(</span>vzctl <span class="nb">set</span> <span class="nv">$CTID</span> —feature nfsd:on —save<span class="o">)</span></code></pre></figure>
 
-<h3 id="nfs">Установка nfs</h3>
+<h3 id="Установка-nfs">Установка nfs</h3>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>yum install nfs-utils nfs-utils-lib</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ yum install nfs-utils nfs-utils-lib</code></pre></figure>
 
 <p>Запускаем демон rpcbind</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chkconfig rpcbind on <span class="o">&amp;&amp;</span> service rpcbind start</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ chkconfig rpcbind on <span class="o">&amp;&amp;</span> service rpcbind start</code></pre></figure>
 
 <p>Настраиваем nfs</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vim /etc/sysconfig/nfs</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ vim /etc/sysconfig/nfs</code></pre></figure>
 
 <p>Раскомментируем следующие строки</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">MOUNTD_NFS_V3</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">MOUNTD_NFS_V3</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
 <span class="nv">RPCNFSDARGS</span><span class="o">=</span><span class="s2">&quot;-N 4&quot;</span>
 <span class="nv">NFSD_MODULE</span><span class="o">=</span><span class="s2">&quot;noload&quot;</span></code></pre></figure>
 
 <p>Добавим следующие строки</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">LOCKD_TCPPORT</span><span class="o">=</span>32803
-<span class="nv">LOCKD_UDPPORT</span><span class="o">=</span>32769
-<span class="nv">MOUNTD_PORT</span><span class="o">=</span>892
-<span class="nv">RQUOTAD_PORT</span><span class="o">=</span>875
-<span class="nv">STATD_PORT</span><span class="o">=</span>662
-<span class="nv">STATD_OUTGOING_PORT</span><span class="o">=</span>2020</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nv">LOCKD_TCPPORT</span><span class="o">=</span><span class="m">32803</span>
+<span class="nv">LOCKD_UDPPORT</span><span class="o">=</span><span class="m">32769</span>
+<span class="nv">MOUNTD_PORT</span><span class="o">=</span><span class="m">892</span>
+<span class="nv">RQUOTAD_PORT</span><span class="o">=</span><span class="m">875</span>
+<span class="nv">STATD_PORT</span><span class="o">=</span><span class="m">662</span>
+<span class="nv">STATD_OUTGOING_PORT</span><span class="o">=</span><span class="m">2020</span></code></pre></figure>
 
 <p>Стартуем сервис nfs</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>chkconfig nfs on
-<span class="nv">$ </span>service nfs start</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ chkconfig nfs on
+$ service nfs start</code></pre></figure>
 
 <h3 id="iptables">Iptables</h3>
 
 <p>Генерируем файл правил</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>iptables-save</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ iptables-save</code></pre></figure>
 
 <p>Правим файл в соответствии с</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Generated by iptables-save v1.4.7 on Mon Oct  6 02:58:25 2014</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="c1"># Generated by iptables-save v1.4.7 on Mon Oct  6 02:58:25 2014</span>
 *filter
-:INPUT DROP <span class="o">[</span>6251:6489925<span class="o">]</span>
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">111</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">111</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">2049</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">32803</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">32769</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">892</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">892</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">875</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">875</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">662</span> -j ACCEPT
--A INPUT -s 192.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">662</span> -j ACCEPT
+:INPUT DROP <span class="o">[</span><span class="m">6251</span>:6489925<span class="o">]</span>
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">111</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">111</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">2049</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">32803</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">32769</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">892</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">892</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">875</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">875</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p tcp --dport <span class="m">662</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.0.0/24 -m state --state NEW -p udp --dport <span class="m">662</span> -j ACCEPT
 -A INPUT -m state --state NEW -p tcp --dport <span class="m">22</span> -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p icmp -m icmp --icmp-type <span class="m">8</span> -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-:FORWARD ACCEPT <span class="o">[</span>0:0<span class="o">]</span>
-:OUTPUT ACCEPT <span class="o">[</span>3092:284379<span class="o">]</span>
+:FORWARD ACCEPT <span class="o">[</span><span class="m">0</span>:0<span class="o">]</span>
+:OUTPUT ACCEPT <span class="o">[</span><span class="m">3092</span>:284379<span class="o">]</span>
 COMMIT
-<span class="c"># Completed on Mon Oct  6 02:58:25 2014</span>
-<span class="c"># Generated by iptables-save v1.4.7 on Mon Oct  6 02:58:25 2014</span>
+<span class="c1"># Completed on Mon Oct  6 02:58:25 2014</span>
+<span class="c1"># Generated by iptables-save v1.4.7 on Mon Oct  6 02:58:25 2014</span>
 *mangle
-:PREROUTING ACCEPT <span class="o">[</span>6251:6489925<span class="o">]</span>
-:INPUT ACCEPT <span class="o">[</span>6251:6489925<span class="o">]</span>
-:FORWARD ACCEPT <span class="o">[</span>0:0<span class="o">]</span>
-:OUTPUT ACCEPT <span class="o">[</span>3092:284379<span class="o">]</span>
-:POSTROUTING ACCEPT <span class="o">[</span>3092:284379<span class="o">]</span>
+:PREROUTING ACCEPT <span class="o">[</span><span class="m">6251</span>:6489925<span class="o">]</span>
+:INPUT ACCEPT <span class="o">[</span><span class="m">6251</span>:6489925<span class="o">]</span>
+:FORWARD ACCEPT <span class="o">[</span><span class="m">0</span>:0<span class="o">]</span>
+:OUTPUT ACCEPT <span class="o">[</span><span class="m">3092</span>:284379<span class="o">]</span>
+:POSTROUTING ACCEPT <span class="o">[</span><span class="m">3092</span>:284379<span class="o">]</span>
 COMMIT
-<span class="c"># Completed on Mon Oct  6 02:58:25 2014</span>
-<span class="c"># Generated by iptables-save v1.4.7 on Mon Oct  6 02:58:25 2014</span>
+<span class="c1"># Completed on Mon Oct  6 02:58:25 2014</span>
+<span class="c1"># Generated by iptables-save v1.4.7 on Mon Oct  6 02:58:25 2014</span>
 *nat
-:PREROUTING ACCEPT <span class="o">[</span>10:449<span class="o">]</span>
-:POSTROUTING ACCEPT <span class="o">[</span>217:15513<span class="o">]</span>
-:OUTPUT ACCEPT <span class="o">[</span>217:15513<span class="o">]</span>
+:PREROUTING ACCEPT <span class="o">[</span><span class="m">10</span>:449<span class="o">]</span>
+:POSTROUTING ACCEPT <span class="o">[</span><span class="m">217</span>:15513<span class="o">]</span>
+:OUTPUT ACCEPT <span class="o">[</span><span class="m">217</span>:15513<span class="o">]</span>
 COMMIT
-<span class="c"># Completed on Mon Oct  6 02:58:25 2014</span></code></pre></figure>
+<span class="c1"># Completed on Mon Oct  6 02:58:25 2014</span></code></pre></figure>
 
 <p>Применяем новые правила</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>service iptables restart</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ service iptables restart</code></pre></figure>
 
 <p>Ссылки:</p>
 

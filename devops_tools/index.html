@@ -163,13 +163,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h3><i class="fa fa-book"></i> Обзор</h3>
   </header>
 <div id="drawer">
-<ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">Операционная система</a></li>
-  <li><a href="#bash" id="markdown-toc-bash">Bash</a></li>
-  <li><a href="#ssh" id="markdown-toc-ssh">SSH</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">Редакторы</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">Это не конец</a></li>
-</ul>
 
   </div>
 </section>
@@ -181,11 +174,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <img src="https://farm1.staticflickr.com/581/22860156877_dacb02b3ea_o.jpg" />
 <br /></p>
 
-<h3 id="section">Операционная система</h3>
+<p>###Операционная система</p>
 
 <p>Начнем с ОС, и да, это инструмент. В свое время, я получил дельный совет: “использовать на рабочем ПК систему того же семейства, что и на серверах”, стараюсь ему следовать и всем советую. На нынешнем месте работы, в качестве серверной ОС используется debian, поэтому на рабочей станции у меня стоит Mint. Не буду разглагольствовать, скажу только что ubuntu с unity и глючными обновлениями точно не вариант, а вот Mint вполне стабильная и при этом универсальная система. В качестве персонального компьютера я использую macbook pro, с предустановленной mac os (на данный момент El capitan). Mac дает мне unix-like систему с полноценными мультимедийными возможностями.</p>
 
-<h3 id="bash">Bash</h3>
+<p>###Bash</p>
 
 <p>Отдельно хочу выделить bash, это командная оболочка или интерпретатор, т.е. та штука которая ваши команды передает ЭВМ. Shell впринципе является очень мощным инструментом и многие, поняв его преимущества, уже не могут отказаться, а bash, в свою очередь, самый популярный, так как предустановлен на большинстве linux систем. На моем mac он также стоит по умолчанию. Многие вещи в bash можно немножечко оптимизировать, проще говоря облегчить себе жизнь.</p>
 
@@ -195,28 +188,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <p>Примечание: здесь и далее я буду сокращать системный администратор до СА.</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">alias </span><span class="nv">ll</span><span class="o">=</span><span class="s1">&#39;ls -la&#39;</span> <span class="c"># более удобный вывод файлов, особенно для СА.</span>
-<span class="nb">alias </span><span class="nv">r</span><span class="o">=</span><span class="s1">&#39;rails&#39;</span>   <span class="c"># когда активно работаешь с фреймворком</span>
-<span class="nb">alias </span><span class="nv">p</span><span class="o">=</span><span class="s1">&#39;python&#39;</span>  <span class="c"># когда твой босс любит `python` и тебе приходится с ним работать</span>
-<span class="nb">alias </span><span class="nv">server</span><span class="o">=</span><span class="s1">&#39;python -m SimpleHTTPServer &gt; simplehttp.log &amp;&#39;</span> <span class="c"># когда нужно быстро засервить файлы в текущем каталоге</span>
-<span class="nb">alias</span> <span class="s1">&#39;new-bundler&#39;</span><span class="o">=</span><span class="s1">&#39;gem install bundler --no-ri --no-rdoc&#39;</span> <span class="c"># когда создаешь gemset под новый проект, первое что, обычно, требуется это бандлер</span>
-<span class="nb">alias </span>apt-get<span class="o">=</span><span class="s1">&#39;sudo apt-get&#39;</span> <span class="c"># работать из под root - плохо, а вот сделать алиас на часто используемые команды - хорошо</span>
-<span class="nb">alias </span><span class="nv">digs</span><span class="o">=</span><span class="s1">&#39;dig +short&#39;</span> <span class="c"># когда мне нужно узнать IP адрес по доменному имени, я хочу увидеть IP адрес, а не длинный вывод</span>
-<span class="nb">alias </span><span class="nv">cpr</span><span class="o">=</span><span class="s1">&#39;rsync --progress&#39;</span> <span class="c"># копируем с прогрессбаром :)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nb">alias</span> <span class="nv">ll</span><span class="o">=</span><span class="s1">&#39;ls -la&#39;</span> <span class="c1"># более удобный вывод файлов, особенно для СА.</span>
+<span class="nb">alias</span> <span class="nv">r</span><span class="o">=</span><span class="s1">&#39;rails&#39;</span>   <span class="c1"># когда активно работаешь с фреймворком</span>
+<span class="nb">alias</span> <span class="nv">p</span><span class="o">=</span><span class="s1">&#39;python&#39;</span>  <span class="c1"># когда твой босс любит `python` и тебе приходится с ним работать</span>
+<span class="nb">alias</span> <span class="nv">server</span><span class="o">=</span><span class="s1">&#39;python -m SimpleHTTPServer &gt; simplehttp.log &amp;&#39;</span> <span class="c1"># когда нужно быстро засервить файлы в текущем каталоге</span>
+<span class="nb">alias</span> <span class="s1">&#39;new-bundler&#39;</span><span class="o">=</span><span class="s1">&#39;gem install bundler --no-ri --no-rdoc&#39;</span> <span class="c1"># когда создаешь gemset под новый проект, первое что, обычно, требуется это бандлер</span>
+<span class="nb">alias</span> apt-get<span class="o">=</span><span class="s1">&#39;sudo apt-get&#39;</span> <span class="c1"># работать из под root - плохо, а вот сделать алиас на часто используемые команды - хорошо</span>
+<span class="nb">alias</span> <span class="nv">digs</span><span class="o">=</span><span class="s1">&#39;dig +short&#39;</span> <span class="c1"># когда мне нужно узнать IP адрес по доменному имени, я хочу увидеть IP адрес, а не длинный вывод</span>
+<span class="nb">alias</span> <span class="nv">cpr</span><span class="o">=</span><span class="s1">&#39;rsync --progress&#39;</span> <span class="c1"># копируем с прогрессбаром :)</span></code></pre></figure>
 
 <p>Это только часть алиасов, которые я использую в повседневной работе. Остальные либо засекречены, либо узкоспециализированы. Для добавления алиасов в bash можно использовать специальную утилиту <code>alias</code>, а можно просто добавить их в файл <code>~/.bashrc</code>.</p>
 
 <p>В Debian в 8 версии (jessie), наконец добавили systemd, наконец, потому что в Fedora он встраивается с 15 версии. Я фанат systemd, так как это удобный и обширный инструмент, однако его команды управления меня угнетают. Вводить <code>systemctl restart nginx.service</code> вместо <code>service nginx restart</code> со временем надоедает. И тут на помощь приходят алиасы. Приведу только минимум:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">alias </span><span class="nv">start</span><span class="o">=</span><span class="s1">&#39;systemctl start&#39;</span>
-<span class="nb">alias </span><span class="nv">restart</span><span class="o">=</span><span class="s1">&#39;systemctl restart&#39;</span>
-<span class="nb">alias </span><span class="nv">stop</span><span class="o">=</span><span class="s1">&#39;systemctl stop&#39;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="nb">alias</span> <span class="nv">start</span><span class="o">=</span><span class="s1">&#39;systemctl start&#39;</span>
+<span class="nb">alias</span> <span class="nv">restart</span><span class="o">=</span><span class="s1">&#39;systemctl restart&#39;</span>
+<span class="nb">alias</span> <span class="nv">stop</span><span class="o">=</span><span class="s1">&#39;systemctl stop&#39;</span></code></pre></figure>
 
 <p>И теперь, для перезапуска сервиса достаточно набрать <code>restart ntpd.service</code>. Алиасы - вещь!</p>
 
 <p>Также к bash можно отнести и PS1, это переменная которая отвечает за вывод приглашения терминала, такая строка, которая всегда отображается в начале ввода в shell. Про нее много говорить не буду, использую <a href="http://mediadoneright.com/content/ultimate-git-ps1-bash-prompt" target="_blank">такую приблуду</a>, которую допилил под себя.</p>
 
-<h3 id="ssh">SSH</h3>
+<p>###SSH</p>
 
 <p>Мне кажется SSH это та вещь, которую можно настраивать бесконечно. Но общие моменты я все-таки запишу:</p>
 
@@ -226,7 +219,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li>используйте разные ключи для разных хостов без проблем через ~/.ssh/config:</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Host host1.dev
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>Host host1.dev
   User first_user
   IdentityFile ~/.ssh/first_user_id_rsa
 Host superdomen.net
@@ -238,7 +231,7 @@ Host superdomen.net
   <li>хорошенько изучите все настройки этого гребаного файла ~/.ssh/config и используйте только те, которые действительно вам нужны</li>
 </ul>
 
-<h3 id="section-1">Редакторы</h3>
+<p>###Редакторы</p>
 
 <p>Текстовый редактор, это вторая после терминала программа в которой СА проводит большинство времени, конфиги, программный код, логи - все это текст и с ним надо работать. Стоит различать два редактора, тот который используется в терминале и тот что на десктопе. Большинство выбирают что-то одинаковое или очень похожее, например mcedit очень напоминает обычный gui-шный блокнот, gvim и vim и т.д. Уверен и для emacs есть аналог с графическим интерфейсом. Я же разделяю декстопный и терминальный редакторы.</p>
 
@@ -270,7 +263,7 @@ Host superdomen.net
   <li>Theme - Spacegray</li>
 </ul>
 
-<h3 id="section-2">Это не конец</h3>
+<p>###Это не конец</p>
 
 <p>Думаю, это обновляемая статья. Буду добавлять используемые инструменты/убирать не нужное. Так что смело проверяйте эту запись периодически, а лучше подпишитесь на RSS, если вам знаком сей инструмент.</p>
 

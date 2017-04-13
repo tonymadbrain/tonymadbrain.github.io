@@ -163,27 +163,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h3><i class="fa fa-book"></i> Обзор</h3>
   </header>
 <div id="drawer">
-<ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">Предварительные требования</a></li>
-  <li><a href="#lets-encrypt" id="markdown-toc-lets-encrypt">Установка клиента Let’s Encrypt</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">Установка необходимых зависимостей</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">Клонирование репозитория</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-3" id="markdown-toc-section-3">Получение сертификата</a>    <ul>
-      <li><a href="#webroot" id="markdown-toc-webroot">Использование Webroot</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">Файлы сертификата</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">Генерация группы Диффи — Хеллмана</a></li>
-    </ul>
-  </li>
-  <li><a href="#tlsssl--nginx" id="markdown-toc-tlsssl--nginx">Настройка TLS/SSL в Nginx</a></li>
-  <li><a href="#section-6" id="markdown-toc-section-6">Автообновление сертифката</a></li>
-  <li><a href="#lets-encrypt-1" id="markdown-toc-lets-encrypt-1">Обновление клиента Let’s Encrypt</a></li>
-  <li><a href="#section-7" id="markdown-toc-section-7">Повышаем градус безопасности</a>    <ul>
-      <li><a href="#section-8" id="markdown-toc-section-8">Заключение</a></li>
-    </ul>
-  </li>
-</ul>
 
   </div>
 </section>
@@ -196,7 +175,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p><a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt</a> это новый Центр сертификации (CA) который предоставляет простой способ для получения и установки бесплатных TLS/SSL сертификатов, позволяя включить HTTPS шифрование на веб серверах.</p>
 
-<h2 id="section">Предварительные требования</h2>
+<p>##Предварительные требования</p>
 
 <p>Перед тем как начать вам потребуется несколько вещей.</p>
 
@@ -214,25 +193,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li><b>A</b> запись домена должна вести на ваш сервер.</li>
 </ul>
 
-<h2 id="lets-encrypt">Установка клиента Let’s Encrypt</h2>
+<p>##Установка клиента Let’s Encrypt</p>
 
 <p>Во-первых нужно установить программное обеспечение <code>letsencrypt</code>. На данный момент лучший способ это сделать это склонировать официальный git репозиторий на Github. Надеемся в будущем будет доступна адекватная установка через пакетные менеджеры (такие как apt/dpkg и yum/rpm).</p>
 
-<h4 id="section-1">Установка необходимых зависимостей</h4>
+<p>####Установка необходимых зависимостей</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get -y install git bc</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get -y install git bc</code></pre></figure>
 
-<h4 id="section-2">Клонирование репозитория</h4>
+<p>####Клонирование репозитория</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt</code></pre></figure>
 
 <p>После выполнения этой команды у нас должна появится рабочая версия ПО letsencrypt в каталоге <code>/opt/letsencrypt</code></p>
 
-<h2 id="section-3">Получение сертификата</h2>
+<p>##Получение сертификата</p>
 
 <p>Let’s Encrypt предоставляет разные способы получения сертификата. Для <code>Apache</code> например имеется модуль, который “делает все сам”, для <code>Nginx</code> такого плагина нет, поэтому мы будем только получать сертификат, а настраивать его самостоятельно. Для получения сертификата мы будем использовать функцию <code>Webroot</code> доступную в Let’s Encrypt.</p>
 
-<h4 id="webroot">Использование Webroot</h4>
+<p>####Использование Webroot</p>
 
 <p>Плагин <code>Webroot</code> размещает специальный файл в каталоге <code>/.well-known</code> внутри вашего document root.</p>
 
@@ -244,17 +223,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Если вы еще не установили Nginx, сейчас самое время. Сделать это можно командой:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo apt-get install nginx</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sudo apt-get install nginx</code></pre></figure>
 
 <p>Чтобы убедиться что у системы Let’s Encrypt будет доступ к каталогу, добавим в дефолтный конфиг <code>/etc/nginx/sites-available/default</code> следующие строки внутри блока <code>server</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">location ~ /.well-known <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>location ~ /.well-known <span class="o">{</span>
   allow all<span class="p">;</span>
 <span class="o">}</span></code></pre></figure>
 
 <p>По дефолту в Nginx установлен Document root - <code>/usr/share/nginx/html</code>, можете проверить это в конфиге во избежании несоотвтетствий, после чего можно сохранить конфиг и выполнить релоад конфигурации Nginx.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo nginx -s reload</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sudo nginx -s reload</code></pre></figure>
 
 <p>Когда мы знаем <code>webroot-path</code>, можем запросить SSL сертификат. В команде для получения сертификата мы используем ключ <code>-d</code> чтобы указать список доменных имен, если вам нужен сертификат не только на основной домен но и на поддомены, будьте уверены что включили все необходимые доменные имена.</p>
 
@@ -264,8 +243,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Будьте внимательны при выполнении команды, проверьте что <code>webroot-path</code> и доменные имена указаны верно.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> /opt/letsencrypt
-<span class="nv">$ </span>./letsencrypt-auto certonly -a webroot --webroot-path<span class="o">=</span>/usr/share/nginx/html -d <span class="s1">&#39;example.com,www.example.com&#39;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> /opt/letsencrypt
+$ ./letsencrypt-auto certonly -a webroot --webroot-path<span class="o">=</span>/usr/share/nginx/html -d <span class="s1">&#39;example.com,www.example.com&#39;</span></code></pre></figure>
 
 <p>После запуска <code>letsencrypt</code> установит и сконфигурирует некоторые программы, по большей части на Python, а потом запросит дополнительную информацию для генерации сертфикат, обычно это e-mail администратора:</p>
 
@@ -283,12 +262,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Если все прошло как надо, то вы увидите что-то вроде:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">IMPORTANT NOTES:
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>IMPORTANT NOTES:
  - If you lose your account credentials, you can recover through
    e-mails sent to sammy@digitalocean.com
  - Congratulations! Your certificate and chain have been saved at
    /etc/letsencrypt/live/example.com/fullchain.pem. Your
-   cert will expire on 2016-03-15. To obtain a new version of the
+   cert will expire on <span class="m">2016</span>-03-15. To obtain a new version of the
    certificate in the future, simply run Let<span class="s1">&#39;s Encrypt again.</span>
 <span class="s1"> - Your account credentials have been saved in your Let&#39;</span>s Encrypt
    configuration directory at /etc/letsencrypt. You should make a
@@ -300,7 +279,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    Donating to ISRG / Let<span class="err">&#39;</span>s Encrypt:   https://letsencrypt.org/donate
    Donating to EFF:                    https://eff.org/donate-le</code></pre></figure>
 
-<h4 id="section-4">Файлы сертификата</h4>
+<p>####Файлы сертификата</p>
 
 <p>После успешного получения сертификата вам будут доступны следующие PEM-encoded файлы:</p>
 
@@ -313,28 +292,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Важно знать куда сохраняются данные файлы, так как мы будем настраивать Nginx. Сами файлы складываются в каталог <code>/etc/letsencrypt/archive</code>. Однако, Let’s Encrypt создает символические ссылки на них вида <code>/etc/letsencrypt/live/your_domain_name</code>. Таким образом ссылки всегда будут указывать на самые актуальные сертификаты.</p>
 
-<h4 id="section-5">Генерация группы Диффи — Хеллмана</h4>
+<p>####Генерация группы Диффи — Хеллмана</p>
 
 <p>Для повышения градуса безопасности нам нужно сгенерировать группу Диффи — Хеллмана (Diffie-Hellman Group), для этого используем команду:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem <span class="m">2048</span></code></pre></figure>
 
 <p>Это может занять какое-то время, но по завершении команды вы будете иметь сильную ДХ группу по пути <code>/etc/ssl/certs/dhparam.pem</code>.</p>
 
-<h2 id="tlsssl--nginx">Настройка TLS/SSL в Nginx</h2>
+<p>##Настройка TLS/SSL в Nginx</p>
 
 <p>Теперь когда у нас есть SSL сертификат, снова пойдем в конфиг Nginx и изменим настройки.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo nano /etc/nginx/sites-available/default</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sudo nano /etc/nginx/sites-available/default</code></pre></figure>
 
 <p>Найдем следующие строки внутри блока <code>server</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">listen <span class="m">80</span> default_server<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>listen <span class="m">80</span> default_server<span class="p">;</span>
 listen <span class="o">[</span>::<span class="o">]</span>:80 default_server <span class="nv">ipv6only</span><span class="o">=</span>on<span class="p">;</span></code></pre></figure>
 
 <p>И заменим их на:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">listen <span class="m">443</span> ssl<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>listen <span class="m">443</span> ssl<span class="p">;</span>
 
 server_name example.com www.example.com<span class="p">;</span>
 
@@ -343,7 +322,7 @@ ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem<span class="p"
 
 <p>Это собственно и включает шифрование соединений с помощью сертификатов, но для большей безопасности нужно также добавить следующие параметры:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ssl_protocols TLSv1 TLSv1.1 TLSv1.2<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>ssl_protocols TLSv1 TLSv1.1 TLSv1.2<span class="p">;</span>
 ssl_prefer_server_ciphers on<span class="p">;</span>
 ssl_dhparam /etc/ssl/certs/dhparam.pem<span class="p">;</span>
 ssl_ciphers <span class="s1">&#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&#39;</span><span class="p">;</span>
@@ -351,69 +330,69 @@ ssl_session_timeout 1d<span class="p">;</span>
 ssl_session_cache shared:SSL:50m<span class="p">;</span>
 ssl_stapling on<span class="p">;</span>
 ssl_stapling_verify on<span class="p">;</span>
-add_header Strict-Transport-Security max-age<span class="o">=</span>15768000<span class="p">;</span></code></pre></figure>
+add_header Strict-Transport-Security max-age<span class="o">=</span><span class="m">15768000</span><span class="p">;</span></code></pre></figure>
 
 <p>Также перед нашим блоком <code>server</code> использующим SSL, добавим еще один блок <code>server</code>, который будет перенаправлять все обычные, не зашифрованные запросы на SSL:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
-  listen 80<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>server <span class="o">{</span>
+  listen <span class="m">80</span><span class="p">;</span>
   server_name example.com www.example.com<span class="p">;</span>
   <span class="k">return</span> <span class="m">301</span> https://<span class="nv">$host$request_uri</span><span class="p">;</span>
 <span class="o">}</span></code></pre></figure>
 
 <p>Сохраняем, выходим и применяем нашу конфигурацию.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo nginx -s reload</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>sudo nginx -s reload</code></pre></figure>
 
 <p>Теперь все на своих местах. Можем проверить уровень нашей безопасности на сайт SSL Labs (вместо example.com нужно подставить свое доменное имя):</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">https://www.ssllabs.com/ssltest/analyze.html?d<span class="o">=</span>example.com</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>https://www.ssllabs.com/ssltest/analyze.html?d<span class="o">=</span>example.com</code></pre></figure>
 
 <p>В отчете должна светиться оценка - <b>A+</b>.</p>
 
-<h2 id="section-6">Автообновление сертифката</h2>
+<p>##Автообновление сертифката</p>
 
 <p>Сертификаты Let’s Encrypt действительны только в течение 90 дней, это одна из политик, также направленная на обеспечение безопасности. Чтобы обновить, или правильнее сказать, перевыпустить сертификат, нужно выполнить некоторые действия, похожие на получение сертификата.
 <br />
 На самом деле <code>letsencrypt</code> сделает все сам, нужно только запустить команду:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>/opt/letsencrypt/letsencrypt-auto renew</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ /opt/letsencrypt/letsencrypt-auto renew</code></pre></figure>
 
 <p>Чтобы не забыть про перевыпуск сертификата, нужно автоматизировать запуск данной команды, для этого воспользуемся cron’ом.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo crontab -e</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ sudo crontab -e</code></pre></figure>
 
 <p>Добавим следующие строки:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="m">30</span> <span class="m">2</span> * * <span class="m">1</span> /opt/letsencrypt/letsencrypt-auto renew &gt;&gt; /var/log/le-renew.log
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="m">30</span> <span class="m">2</span> * * <span class="m">1</span> /opt/letsencrypt/letsencrypt-auto renew &gt;&gt; /var/log/le-renew.log
 <span class="m">35</span> <span class="m">2</span> * * <span class="m">1</span> /etc/init.d/nginx reload</code></pre></figure>
 
 <p>Сохраняем файл и выходим, после этого команда будет выполняться каждый понедельник в 2.30 ночи, после чего в 2.35 будет применяться конфигурация Nginx.</p>
 
-<h2 id="lets-encrypt-1">Обновление клиента Let’s Encrypt</h2>
+<p>##Обновление клиента Let’s Encrypt</p>
 
 <p>Если для установки вы использовали клонирование репозитория то обновление сводится к выкачиванию изменений из репозитория. Это можно сделать с помощью команд:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> /opt/letsencrypt
-<span class="nv">$ </span>sudo git pull</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> /opt/letsencrypt
+$ sudo git pull</code></pre></figure>
 
-<h2 id="section-7">Повышаем градус безопасности</h2>
+<p>##Повышаем градус безопасности</p>
 
 <p>В принципе на этом можно остановиться, у нас уже есть шифрование на сайте. Однако для более полной безопасности нашего приложения стоит установить некоторые заголовки:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">resolver            8.8.8.8<span class="p">;</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>resolver            <span class="m">8</span>.8.8.8<span class="p">;</span>
 
 add_header          X-Xss-Protection <span class="s2">&quot;1&quot;</span><span class="p">;</span>
 add_header          X-Frame-Options SAMEORIGIN<span class="p">;</span>
 add_header          X-Content-Type-Options nosniff<span class="p">;</span>
 add_header          Strict-Transport-Security <span class="s2">&quot;max-age=31557600&quot;</span><span class="p">;</span>
 
-<span class="c"># Read about this before including!</span>
+<span class="c1"># Read about this before including!</span>
 add_header          Content-Security-Policy <span class="s2">&quot;default-src &#39;self&#39; googleapis.com&quot;</span><span class="p">;</span></code></pre></figure>
 
 <p>Проверить заголовки можно <a href="https://securityheaders.io/" target="_blank">тут</a>.</p>
 
-<h3 id="section-8">Заключение</h3>
+<p>###Заключение</p>
 
 <p>Данный метод был протестирован и применен мной на нескольких проектах, на таких операционных системах как Debian, Ubuntu, Centos. Например, теперь мы шифруем все в магазине беспроводного оборудования - <a href="https://www.isbis.ru" target="_blank">https://www.isbis.ru</a>. Чтобы разобраться в вопросе я перечитал много всего, но наиболее полезными оказались следующие статьи:</p>
 

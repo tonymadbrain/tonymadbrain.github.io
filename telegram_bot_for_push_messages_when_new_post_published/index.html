@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <h3 id="section">Вступление</h3>
+      <h3 id="Вступление">Вступление</h3>
 
 <p>Заикнулся в присутствии нового коллеги о своем блоге, первый его вопрос был “что за блог?”, а второй “а телеграм бот у тебя есть?”. Поймал себя на мысли <em>неужели я стал ретроградом</em>. Когда начался хайп вокруг влогов и youtube каналов я остался верен теплому ламповому формату текстовых статей, так и сейчас, считаю что нет необходимости иметь свой Telegram канал, но задача меня заинтересовала.
 <br />
@@ -171,18 +171,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 <div id="drawer">
 <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">Вступление</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">Наивная реализация или <em>тупой бот</em></a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">Используем простую БД или <em>чуть более умный бот</em></a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">Прикручиваем РСУБД или <em>умеренно сообразительный бот</em></a></li>
-  <li><a href="#section-4" id="markdown-toc-section-4">Заключение</a></li>
+  <li><a href="#Вступление" id="markdown-toc-Вступление">Вступление</a></li>
+  <li><a href="#Наивная-реализация-или-тупой-бот" id="markdown-toc-Наивная-реализация-или-тупой-бот">Наивная реализация или <em>тупой бот</em></a></li>
+  <li><a href="#Используем-простую-БД-или-чуть-более-умный-бот" id="markdown-toc-Используем-простую-БД-или-чуть-более-умный-бот">Используем простую БД или <em>чуть более умный бот</em></a></li>
+  <li><a href="#Прикручиваем-РСУБД-или-умеренно-сообразительный-бот" id="markdown-toc-Прикручиваем-РСУБД-или-умеренно-сообразительный-бот">Прикручиваем РСУБД или <em>умеренно сообразительный бот</em></a></li>
+  <li><a href="#Заключение" id="markdown-toc-Заключение">Заключение</a></li>
 </ul>
 
   </div>
 </section>
 <!-- /#table-of-contents -->
 
-<h3 id="section-1">Наивная реализация или <em>тупой бот</em></h3>
+<h3 id="Наивная-реализация-или-тупой-бот">Наивная реализация или <em>тупой бот</em></h3>
 
 <blockquote>
   <p>Первое что нужно сделать это создать бота и получить API токен.</p>
@@ -190,7 +190,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Недолго думая, я взял самую популярную либу-обертку для ботов Telegram - <a href="https://github.com/atipugin/telegram-bot-ruby" target="_blank">gem telegram-bot-ruby</a> и наваял следующий код:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
 
 <span class="n">token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">]</span>
@@ -205,12 +205,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Что же тут происходит? Все очень просто, вот здесь:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span></code></pre></figure>
 
 <p>подключаем библиотеки для работы с RSS и Telegram, а вот здесь:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">]</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="n">token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">]</span></code></pre></figure>
 
 <p>сетим в переменную с именем <code>token</code> наш API токен, который получили от <code>@BotFather</code>.</p>
 
@@ -220,11 +220,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Затем, с помощью строчки:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rss</span> <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://doam.ru/feed.xml&#39;</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="n">rss</span> <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://doam.ru/feed.xml&#39;</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span></code></pre></figure>
 
 <p>сохраняем в объект <code>rss</code> всю <code>RSS</code> ленту моего блога (я точно знаю что у меня там только 10 записей, поэтому не боюсь никаких переполнений или задержек).</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Telegram</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">bot</span><span class="o">|</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="no">Telegram</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">bot</span><span class="o">|</span>
   <span class="n">rss</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
     <span class="n">bot</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="ss">chat_id</span><span class="p">:</span> <span class="s2">&quot;@doam_ru&quot;</span><span class="p">,</span> <span class="ss">text</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">href</span><span class="p">)</span>
   <span class="k">end</span>
@@ -241,11 +241,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>На этом этапе я понял что нужно хранить состояние постов, т.е. запоминать информацию какие записи уже отправлены в канал, а какие еще нет.</p>
 
-<h3 id="section-2">Используем простую БД или <em>чуть более умный бот</em></h3>
+<h3 id="Используем-простую-БД-или-чуть-более-умный-бот">Используем простую БД или <em>чуть более умный бот</em></h3>
 
 <p>На самом деле новая версия бота растянулась на 55 строк кода, и вот он целиком:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;sdbm&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
@@ -302,7 +302,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Опять же приведу разбор этого кода по кусочкам далее по тексту.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;sdbm&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
@@ -310,7 +310,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Я использую теже две библиотеки что и раньше <code>rss</code> и <code>telegram</code>, затем подключаю <code>sdbm</code> это встроенная либа Ruby, которая предоставляет простое хранилище типа ключ-значение (key-value), в качестве ключей или значений могут выступать только строки. Далее я подключаю <code>json</code>, чтобы легко кодировать объекты в строки и декодировать обратно. И еще одной библиотекой является <code>logger</code>, который предоставляет простой способ для отладки.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;TELEGRAM_BOT_API_KEY&#39;</span><span class="o">].</span><span class="n">nil?</span>
   <span class="n">logger</span><span class="o">.</span><span class="n">fatal</span> <span class="s2">&quot;Environment variable TELEGRAM_BOT_API_KEY not set!&quot;</span>
@@ -329,11 +329,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Парсинг <code>RSS</code> ленты происходит таким же образом как и ранее.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">SDBM</span><span class="o">.</span><span class="n">open</span> <span class="s1">&#39;doam_posts.db&#39;</span> <span class="k">do</span> <span class="o">|</span><span class="n">posts</span><span class="o">|</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="no">SDBM</span><span class="o">.</span><span class="n">open</span> <span class="s1">&#39;doam_posts.db&#39;</span> <span class="k">do</span> <span class="o">|</span><span class="n">posts</span><span class="o">|</span></code></pre></figure>
 
 <p>Далее, этой строчкой мы открываем нашу базу данных, которая является просто файлами в нашей файловой системе, в случае если базы не существует она будет создана с нуля.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">rss</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span>  <span class="n">rss</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
     <span class="n">key</span>       <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">href</span>
     <span class="n">title</span>     <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">content</span>
     <span class="n">published</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">content</span>
@@ -351,7 +351,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>И после этого мы начинаем первый цикл: обходим все полученные rss итемы, записываем ссылки, заголовок и дату публикации соответственно в переменные key, title и published. Проверяем есть ли в нашей базе ключ с таким же значением как наш и если есть просто выводим в лог текст, что не будем ничего перезаписывать (это нужно только на этапе отладки, но вообще не обязательно), в обратном случае, если в базе нет записи с таким ключом мы генерируем json строку и записываем её в базу. В качестве ключа я выбрал URL, так как они обеспечивают уникальность, всегда написаны в одном регистре и латиницей.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span>  <span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
   <span class="n">posts</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span>
   <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
   <span class="k">if</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="s2">&quot;sended&quot;</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span>
@@ -379,11 +379,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Теперь уже я решил попробовать задеплоить мой код на Heroku и выполнить его там. С использоавнием раннера задач все получилось, да только вот Heroku не сохраняет файлы между запусками задачи (да и вообще). Так что мое решение с SDBM является быстрым и простым, но может быть использовано только как selfhosted.</p>
 
-<h3 id="section-3">Прикручиваем РСУБД или <em>умеренно сообразительный бот</em></h3>
+<h3 id="Прикручиваем-РСУБД-или-умеренно-сообразительный-бот">Прикручиваем РСУБД или <em>умеренно сообразительный бот</em></h3>
 
 <p>Пост становится довольно длинным, но вы же вместе сомной прошли все этапы разработки этого бота и уже в курсе дела, поэтому привожу код обновленной версии:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="nb">require</span> <span class="s1">&#39;telegram/bot&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;sdbm&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
@@ -405,7 +405,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span class="vi">@url</span>      <span class="o">=</span> <span class="n">url</span>
     <span class="vi">@channel</span>  <span class="o">=</span> <span class="n">channel</span>
     <span class="n">uri</span>       <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;DATABASE_URL&#39;</span><span class="o">]</span><span class="p">)</span>
-    <span class="vi">@db</span>       <span class="o">=</span> <span class="no">PG</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">path</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
+    <span class="vi">@db</span>       <span class="o">=</span> <span class="no">PG</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">path</span><span class="o">[</span><span class="mi">1</span><span class="o">..-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
     <span class="vi">@rss</span>      <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
 
     <span class="vi">@db</span><span class="o">.</span><span class="n">exec</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE IF NOT EXISTS posts (id serial, url varchar(450) NOT NULL, sended bool DEFAULT false)&quot;</span><span class="p">)</span>
@@ -451,7 +451,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Здесь проделывается точно такая же работа: иницилизируются необходимые компоннеты, синхронизируется <code>rss</code> лента и локальная база данных и отправляются ссылки на записи которые числятся в базе как “неотправленные”. Только в качестве базы используется <code>PostgreSQL</code> и все это обернуто в класс и методы. Метод <code>initialize</code> выполняется при вызове метода <code>new</code> на объекте класса <code>DoamTelegramBot</code>, остальные методы нужно вызывать отдельно. И чтобы выполнить всё правильно, я создал каталог <code>bin</code> в который положил файл с именем <code>doam_bot</code> и содержимым:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#!/usr/bin/env ruby</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="ch">#!/usr/bin/env ruby</span>
 <span class="n">require_relative</span> <span class="s1">&#39;../app&#39;</span>
 
 <span class="n">telegram</span> <span class="o">=</span> <span class="no">DoamTelegramBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;http://doam.ru/feed.xml&quot;</span><span class="p">,</span> <span class="s2">&quot;@doam_ru&quot;</span><span class="p">)</span>
@@ -462,7 +462,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 <br /></p>
 
-<h3 id="section-4">Заключение</h3>
+<h3 id="Заключение">Заключение</h3>
 
 <p>Полностью это маленькое приложение можно посмотреть у меня в <a href="https://gitlab.com/tonymadbrain/telegram_bot" target="_blank">gitlab</a> (для этого нужно залогиниться в gitlab.com). Лицензия пока не указана, но она MIT, т.е. можете править и использовать в своих целях. Если будет время я хотел бы прикрутить еще несколько функций, например отправку не только в телеграм но и другие сервисы, а также решить проблему первого запуска, когда база наполняется новыми записями с флагом “не отправлено” но неизвестно точно какие записи уже были отправлены в канал. В любом случае готов рассмотреть ваши Merge Requests.</p>
 
