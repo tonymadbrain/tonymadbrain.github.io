@@ -5,15 +5,15 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Скрипты внешних проверок Nginx и PHP-FPM для Zabbix &#8211; Diary of madman</title>
-<meta name="description" content="Заопенсорсил свой "говнокод" на Golang">
+<title>Squash последних git коммитов в один &#8211; Diary of madman</title>
+<meta name="description" content="Перевел заметку по git squash чтобы, наконец, запомнить как это делать">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Zabbix, Golang, DevOps">
+<meta name="keywords" content="Git, Tutorial">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Скрипты внешних проверок Nginx и PHP-FPM для Zabbix">
-<meta name="twitter:description" content="Заопенсорсил свой "говнокод" на Golang">
+<meta name="twitter:title" content="Squash последних git коммитов в один">
+<meta name="twitter:description" content="Перевел заметку по git squash чтобы, наконец, запомнить как это делать">
 <meta name="twitter:site" content="@tonymadbrain">
 <meta name="twitter:creator" content="@tonymadbrain">
 
@@ -23,16 +23,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Скрипты внешних проверок Nginx и PHP-FPM для Zabbix">
-<meta property="og:description" content="Заопенсорсил свой "говнокод" на Golang">
-<meta property="og:url" content="http://doam.ru/open_source_some_zabbix_scripts/">
+<meta property="og:title" content="Squash последних git коммитов в один">
+<meta property="og:description" content="Перевел заметку по git squash чтобы, наконец, запомнить как это делать">
+<meta property="og:url" content="http://doam.ru/git_squash_your_latests_commits_into_one/">
 <meta property="og:site_name" content="Diary of madman">
 
 
 
 
 
-<link rel="canonical" href="http://doam.ru/open_source_some_zabbix_scripts/">
+<link rel="canonical" href="http://doam.ru/git_squash_your_latests_commits_into_one/">
 <link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -41,8 +41,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Open Graph Image-->
-
-  <meta property="og:image" content="https://farm1.staticflickr.com/574/32639476871_cf88b37084_o.jpg" />
 
 <!-- End Open Graph Image -->
 
@@ -156,55 +154,79 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://doam.ru/open_source_some_zabbix_scripts/" rel="bookmark" title="Скрипты внешних проверок Nginx и PHP-FPM для Zabbix">Скрипты внешних проверок Nginx и PHP-FPM для Zabbix</a></h1>
+        <h1><a href="http://doam.ru/git_squash_your_latests_commits_into_one/" rel="bookmark" title="Squash последних git коммитов в один">Squash последних git коммитов в один</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
       <figure>
-  <img src="https://farm1.staticflickr.com/574/32639476871_cf88b37084_o.jpg" />&lt;/a&gt;
+  <img src="" />
 </figure>
 
-<p><a href="http://doam.ru/fcgi_monitoring_with_zabbix/">Вот здесь</a> я писал про мониторинг PHP-FPM в Zabbix и в заключении указал что собираюсь переписать скрипт на Golang. Как и обещал, я это сделал, правда, будучи новичком в этом языке, предполагаю что там говнокодец. Помимо мониторинга PHP-FPM также сделал скрипт для чека Nginx. Оба скрипта я заопенсорсил, выложив на Github:</p>
+<blockquote>
+  <p>От переводчика: <a href="https://www.devroom.io/2011/07/05/git-squash-your-latests-commits-into-one/" target="_blank">Оригинал статьи</a></p>
+</blockquote>
 
-<ul>
-  <li><a href="https://github.com/tonymadbrain/fcgi_stat_getter">PHP-FPM</a></li>
-  <li><a href="https://github.com/tonymadbrain/nginx_stat_getter">Nginx</a></li>
-</ul>
+<blockquote>
+  <p>От переводчика: Перевел заметку по git squash чтобы, наконец, запомнить как это делать.</p>
+</blockquote>
 
-<p>А также на share.zabbix.com:</p>
+<p>В git есть возможность сжимать (to squash) несколько последних коммитов в один. Это замечательный способ группировать несколько мелких изменений в одно перед тем как поделиться кодом с остальными (командой или сообществом, например). Ниже описан способ как это сделать. Допустим, ваша история коммитов выглядит так:</p>
 
-<ul>
-  <li><a href="https://share.zabbix.com/cat-app/web-servers/fcgi-stat-getter-monitor-php-fpm-without-nginx-proxy">PHP-FPM</a></li>
-  <li><a href="https://share.zabbix.com/cat-app/web-servers/nginx-stat-getter-simple-check-for-nginx-stats">Nginx</a></li>
-</ul>
+<pre><code class="language-bash">* df71a27 - (HEAD feature_x) Updated CSS for new elements (4 minutes ago)
+* ba9dd9a - Added new elements to page design (15 minutes ago)
+* f392171 - Added new feature X (1 day ago)
+* d7322aa - (origin/feature_x) Proof of concept for feature X (3 days ago)
+</code></pre>
 
-<p>В обоих шаблонах присутствуют графики и даже скрины. Скомпилированный бинарник Golang отрабатывает почти также быстро как и проверки самого Zabbix. Код тривиальный и может быть доработан с минимальными знаниями.</p>
+<p>Здесь представлена ветка <code>feature_x</code>. Вы уже запушили коммит <code>d7322aa</code> с наивной реализацией новой фичи Х. После этого вы доработали некоторые моменты, добавили элементы и поправили CSS и теперь хотите сжать последний три коммита в один, чтобы история выглядела симпатичнее.
+Чтобы сделать это, потребуется команда:</p>
+
+<pre><code class="language-bash">$ git rebase -i HEAD~3
+</code></pre>
+
+<p>Она откроет ваш текстовый редактор с содержимым:</p>
+
+<pre><code class="language-bash">pick f392171 Added new feature X
+pick ba9dd9a Added new elements to page design
+pick df71a27 Updated CSS for new elements
+</code></pre>
+
+<p>Теперь вы можете указать git, что делать с каждым коммитом. Давайте оставим коммит <code>f392171</code> тот где мы изначально добавили нашу фичу и сожмем остальные два в него, избавившись от мусора. Изменим файл таким образом:</p>
+
+<pre><code class="language-bash">pick f392171 Added new feature X
+squash ba9dd9a Added new elements to page design
+squash df71a27 Updated CSS for new elements
+</code></pre>
+
+<p>После этого сохраним файл и выйдем из редактора. Git сожмет коммиты в один и на этом все!</p>
+
+<blockquote>
+  <p>Важное замечание: Не сжимайте коммиты, которыми вы уже поделились с остальными. Это изменяет историю и приведет к проблемам у ваших коллег.</p>
+</blockquote>
 
       
-        <a href="/tag/zabbix">#Zabbix</a>
+        <a href="/tag/git">#Git</a>
       
-        <a href="/tag/golang">#Golang</a>
+        <a href="/tag/tutorial">#Tutorial</a>
       
-        <a href="/tag/devops">#DevOps</a>
-      
-        <!-- <a href="/tag/zabbix/" rel="tag">Zabbix</a>, <a href="/tag/golang/" rel="tag">Golang</a>, <a href="/tag/devops/" rel="tag">DevOps</a> -->
+        <!-- <a href="/tag/git/" rel="tag">Git</a>, <a href="/tag/tutorial/" rel="tag">Tutorial</a> -->
       <hr />
       <footer role="contentinfo">
-        <p class="byline"><strong>Скрипты внешних проверок Nginx и PHP-FPM для Zabbix</strong> опубликовано <time datetime="2017-02-07T11:45:03+03:00">07 February, 2017</time>.</p>
+        <p class="byline"><strong>Squash последних git коммитов в один</strong> опубликовано <time datetime="2017-05-29T22:36:55+03:00">29 May, 2017</time>.</p>
         <div style="text-align: center;" class="social-share">
   <h4>Поделиться</h4>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=Скрипты внешних проверок Nginx и PHP-FPM для Zabbix %23doamru http://doam.ru/open_source_some_zabbix_scripts/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=Squash последних git коммитов в один %23doamru http://doam.ru/git_squash_your_latests_commits_into_one/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="http://vk.com/share.php?url=http://doam.ru/open_source_some_zabbix_scripts/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+      <a href="http://vk.com/share.php?url=http://doam.ru/git_squash_your_latests_commits_into_one/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/open_source_some_zabbix_scripts/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/git_squash_your_latests_commits_into_one/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://doam.ru/open_source_some_zabbix_scripts/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://doam.ru/git_squash_your_latests_commits_into_one/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
   <div class="mailerlite-subscribe-form">
@@ -224,11 +246,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
     <ul>
     
-      <li><a href="http://doam.ru/git_squash_your_latests_commits_into_one/" title="Squash последних git коммитов в один">Squash последних git коммитов в один</a></li>
-    
       <li><a href="http://doam.ru/about_blog_tech/" title="Под капотом у блога">Под капотом у блога</a></li>
     
       <li><a href="http://doam.ru/setting_up_react_and_rails_has_never_been_easier/" title="Настройка React + Rails никогда не была проще">Настройка React + Rails никогда не была проще</a></li>
+    
+      <li><a href="http://doam.ru/open_source_some_zabbix_scripts/" title="Скрипты внешних проверок Nginx и PHP-FPM для Zabbix">Скрипты внешних проверок Nginx и PHP-FPM для Zabbix</a></li>
     
     </ul>
     <hr />
