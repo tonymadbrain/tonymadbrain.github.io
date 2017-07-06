@@ -4,13 +4,41 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2017-06-13T23:34:49+03:00</updated>
+<updated>2017-07-06T10:19:43+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Уличная фотография (Street photography)]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/street_photography/" />
+  <id>http://doam.ru/street_photography</id>
+  <published>2017-06-14T09:34:26+03:00</published>
+  <updated>2017-06-14T09:34:26+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;figure&gt;
+  &lt;img src=&quot;https://farm5.staticflickr.com/4013/35364231100_5c694701e2_o.jpg&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;tldr&quot;&gt;TL;DR&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Стоп экспозиции (F-stop) F8.0, F11, F16&lt;/li&gt;
+  &lt;li&gt;Не ссы и задирай ISO&lt;/li&gt;
+  &lt;li&gt;Определись с режимом (P, Tv, Av, M)&lt;/li&gt;
+  &lt;li&gt;Фикс объектив приближенный к ...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/street_photography/&quot;&gt;Уличная фотография (Street photography)&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on June 14, 2017.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -211,33 +239,6 @@
 
 &lt;p&gt;Когда используете систему для управления конфигурацией как Ansible или любую другую, рано или поздно вы столкнетесь с доставкой/выкладкой/деплоем приватных ключей SSL. Деплой публичных S...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/deploying_ssl_private_keys_with_ansible/&quot;&gt;Деплой приватных SSL ключей с помощью Ansible&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 03, 2016.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Мелкие заметки из redmine]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru/small_notes_from_redmine/" />
-  <id>http://doam.ru/small_notes_from_redmine</id>
-  <published>2016-10-23T14:45:37+03:00</published>
-  <updated>2016-10-23T14:45:37+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri>http://doam.ru</uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;blockquote&gt;
-  &lt;p&gt;У меня в redmine лежат заметки, к которым не обращаюсь, но выглядят они полезными, поэтому перенесу их сюда, как бы в архив.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
-  &lt;header&gt;
-    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Обзор&lt;/h3&gt;
-  &lt;/header&gt;
-&lt;div id=&quot;drawer&quot;&gt;
-&lt;ul...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru/small_notes_from_redmine/&quot;&gt;Мелкие заметки из redmine&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on October 23, 2016.&lt;/p&gt;
   </content>
 </entry>
 
