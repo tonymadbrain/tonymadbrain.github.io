@@ -1,0 +1,370 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Зашифрованные секретные данные в Rails 5.1 &#8211; Diary of madman</title>
+<meta name="description" content="">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Rails, Security">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Зашифрованные секретные данные в Rails 5.1">
+<meta name="twitter:description" content="">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://doam.ru/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Зашифрованные секретные данные в Rails 5.1">
+<meta property="og:description" content="">
+<meta property="og:url" content="http://doam.ru/encrypted_rails_secrets_on_rails_5.1/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="http://doam.ru/encrypted_rails_secrets_on_rails_5.1/">
+<link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph Image-->
+
+<!-- End Open Graph Image -->
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://doam.ru/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://doam.ru/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://doam.ru/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://doam.ru/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://doam.ru/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://doam.ru/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://doam.ru/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://doam.ru/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXNSQJ');</script>
+<!-- End Google Tag Manager -->
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://doam.ru/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://doam.ru/tags/" >Теги</a></li>
+				
+				    
+				    <li><a href="http://doam.ru/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side sticky">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://doam.ru/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://doam.ru/encrypted_rails_secrets_on_rails_5.1/" rel="bookmark" title="Зашифрованные секретные данные в Rails 5.1">Зашифрованные секретные данные в Rails 5.1</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <figure>
+  <img src="https://farm5.staticflickr.com/4013/35364231100_5c694701e2_o.jpg" />
+</figure>
+
+<blockquote>
+  <p>От переводчика: <a href="https://www.engineyard.com/blog/encrypted-rails-secrets-on-rails-5.1" target="_blank">Оригинал статьи</a></p>
+</blockquote>
+
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#Секретные-данные-без-шифрования" id="markdown-toc-Секретные-данные-без-шифрования">Секретные данные без шифрования</a></li>
+  <li><a href="#Шифрованные-секретные-данные" id="markdown-toc-Шифрованные-секретные-данные">Шифрованные секретные данные</a></li>
+  <li><a href="#Чтение-секретных-данных" id="markdown-toc-Чтение-секретных-данных">Чтение секретных данных</a></li>
+  <li><a href="#Преимущества-использования-шифрованных-секретных-данных" id="markdown-toc-Преимущества-использования-шифрованных-секретных-данных">Преимущества использования шифрованных секретных данных</a></li>
+  <li><a href="#Управление-ключом" id="markdown-toc-Управление-ключом">Управление ключом</a></li>
+  <li><a href="#Заметки-про-secret-key-base" id="markdown-toc-Заметки-про-secret-key-base">Заметки про Secret Key Base</a></li>
+  <li><a href="#Заключение" id="markdown-toc-Заключение">Заключение</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p>В Rails давно уже есть функионал для работаты с секретными данными (паролями, токенами и т.д.), но в релизе 5.1 его значительно улучшили добавив шифрование. Из данной статьи вы узнаете как использовать новые возможности и что нужно изменить в текущем Rails приолжении.</p>
+
+<h1 id="Секретные-данные-без-шифрования">Секретные данные без шифрования</h1>
+
+<p>В любом Rails приложении, рано или поздно нужно работать с секретными данными. Как минимум вам нужен ключ - secret key base, чаще всего в приложениях нужны токены для сторонних API. Хорошим тоном для работы с секретными данными в Rails будет - никогда не коммитить эти данные в репозиторий, наврядли вы хотите чтобы их видели те у кого есть доступ в репозиторий или те кто получит к нему доступ в принципе.</p>
+
+<p>Существует два способа:</p>
+
+<ol>
+  <li>Читать секретные данные из переменных окружения. Коммитить <code>secrets.yml</code> в репозиторий</li>
+</ol>
+
+<p>Сгенерированный Rails по умолчанию файл <code>secrets.yml</code> читает <code>secret_key_base</code> из переменной окружения <code>SECRET_KEY_BASE</code>, вы можете использовать подобную тактику для добавления своих секретных данных.</p>
+
+<pre><code class="language-Ruby">production:
+  secret_key_base: &lt;%= ENV["SECRET_KEY_BASE"] %&gt;
+  my_secret_token: &lt;%= ENV["MY_SECRET_TOKEN"] %&gt;
+</code></pre>
+
+<p>Использование переменных окружения это удобный, но не самый безопасный способ работы с секретными данными. Процесс, запущенный на вашем сервере может получить доступ к переменным окружения. Библиотека для логирования используемая в Rails может передавать ваши секретные данные во внешний сервисы.</p>
+
+<ol>
+  <li>Сохранить все ваши секретные данные в <code>secrets.yml</code> и не коммитить его в репозиторий</li>
+</ol>
+
+<p>В таком случае, те у кого есть доступ к вашей кодовой базе не смогут увидеть секретные данные, однако вам придется искать способ загрузить файл <code>secrets.yml</code> на сервера обходными путями, не через репозиторий.</p>
+
+<p>Этот способ безопасный до тех пор, пока вы можете безопасно переносить <code>secrets.yml</code> на сервера. Например, можно использовать программы scp или sftp. Если вы достаточно продвинутый инженер, также можете использовать что-то вроде Chef Data Bags или Vault.</p>
+
+<h1 id="Шифрованные-секретные-данные">Шифрованные секретные данные</h1>
+
+<p>Итак, начиная с версии 5.1 вы можете использовать шифрование. Без ключа шифрования, вы не сможете прочитать секретные данные а увидите только беспорядочный набор символом. Такие данные уже можно спокойно коммитить в репозиторий, главное никогда не сохраняйте туда ключ шифрования. У шифрованных секретов есть плюсы по сравнению с вариантами перечисленными выше. Перед тем как рассказть про них, давайте посмотрим как их исопльзовать.</p>
+
+<p>По умолчанию, данный функционал отключен. Чтобы начать пользвоаться шифрованными секретами, нужно сгенерировать ключ. В корневой директории Rails приложения выполните команду:</p>
+
+<pre><code class="language-Ruby">bin/rails secrets:setup
+</code></pre>
+
+<p>Данная команда создает два файла: <code>config/secrets.yml.key</code> - содержит ключ, которым мы будем шифровать и дешифровать секретные данные, именно он НЕ должен быть закоммичен в репозиторий; <code>config/secrets.yml.enc</code> - содержит, собственно зашифрованные данные и этот файл, как раз таки можно сохранить в репозиторий. Если кто-то заполучит <code>config/secrets.yml.enc</code>, но у него не будет ключа, он не сможет расшифровать данные.</p>
+
+<p>После создания ключа, даже если <code>config/secrets.yml.enc</code> не пустой, он не содержит ни одного секрета. Чтобы добавить ваши данные, запустите</p>
+
+<pre><code class="language-Ruby">bin/rails secrets:edit
+</code></pre>
+
+<p>Ваш текстовый редактор откроет незашифрованную версию секретных данных (которые по началу просто комментарии), похожую на то, что вы видите в <code>secrets.yml</code>. Если у вас не установлена переменная <code>EDITOR</code>, можете запустить команду таким образом:</p>
+
+<pre><code class="language-Ruby">EDITOR=vi bin/rails secrets:edit
+</code></pre>
+
+<p>подставив вместо vi, свой любимый редактор.</p>
+
+<p>Вы можете перенести все ключи из <code>secrets.yml</code> и удалить сам файл в принципе. Как вариант, можете перенести только production данные и продолжить использовать <code>secrets.yml</code> для окружений development и test. Если секреты для production окружения у вас есть и в <code>secrets.yml</code>, и в <code>secrets.yml.enc</code>, то они будут совмещены (merged).</p>
+
+<p>После сохранения файла, содержимое config/secrets.yml.enc будет зашифрованно.</p>
+
+<h1 id="Чтение-секретных-данных">Чтение секретных данных</h1>
+
+<p>Rails приложение не будет читать секретные данные автоматически, даже если у вас есть ключ и зашифрованные данные на месте. Вам нужно добавить в <code>config/environments/production.rb</code> строку:</p>
+
+<pre><code class="language-Ruby">config.read_encrypted_secrets = true
+</code></pre>
+
+<p>После этого секреты будут доступны через <code>Rails.application.secrets</code>, но если вы захотите просмотреть их в консоли, нужно выполнить:</p>
+
+<pre><code class="language-Ruby">bin/rails runner "puts Rails::Secrets.read"
+</code></pre>
+
+<h1 id="Преимущества-использования-шифрованных-секретных-данных">Преимущества использования шифрованных секретных данных</h1>
+
+<ol>
+  <li>Во-первых, и это очевидно - шифрование, никто не сможет прочитать ваши данные не имея ключа</li>
+  <li>Секретные данные будут хранится в репозитории и можно будет проследить кем и что было изменено</li>
+  <li>Новые секретные данные попадают на сервера вместе с кодом, например если вы добавили в код обращение к API, секретный токен также попадет на сервера и функционал сразу заработает, тогда как ранее, вам необходимо было убедится что переменная окружения установлена, перед тем как заливать код.</li>
+  <li>Все секретные данные в одном месте, вместо того чтобы поддерживать нексколько переменных окружения у вас все в одном файле.</li>
+</ol>
+
+<h1 id="Управление-ключом">Управление ключом</h1>
+
+<p>В то время как шифрованные секреты имеют преимущество перед незашифрованными секретами, у нас все еще есть задача, найти способ положить ключ на свое место. Наши варианты похожи на работу с секретными данными до Rails 5.1, так как нельзя просто сохранить ключ в репозитории.</p>
+
+<ol>
+  <li>Загрузка <code>secrets.yml.key</code> безопасным способом</li>
+</ol>
+
+<p>Вы можете использовать <code>scp</code> или <code>sftp</code> для загрузки файла. В Engine Yard, например, это нужно сделать только один раз, во время масштабирования, новые сервера будут автоматически получать копию <code>secrets.yml.key</code>.</p>
+
+<p>Загрузите ключ в общую папку, “общую” здесь означает, то, что она доступна между релизами, а не всем пользователям. При каждом релизе, вы созадете символическую ссылку для <code>config/secrets.yml.key</code> указывающую на <code>/path/to/shared/config/secrets.yml.key</code>. Это можно сделать через deploy хуки в Engine Yard или в Capistrano.</p>
+
+<p>Если вам нужно предоставить копию ключа разработчику, не стоит отправлять его по электронной почте, а воспользуйтесь менеджером паролей, они (более-менее) безопасные.</p>
+
+<ol>
+  <li>Сохраните ключ в переменной окружения - RAILS_MASTER_KEY</li>
+</ol>
+
+<p>В тех случаях, когда вы не можете загрузить сам файл, это единственный оставшийся вариант. Даже если это удобно, помните о рисках безопасности, упомянутые выше, поэтому старайтесь найти способ загрузить файл.</p>
+
+<h1 id="Заметки-про-secret-key-base">Заметки про Secret Key Base</h1>
+
+<p>Ключ, используемый для шифрования секретов отличается от <code>secret key base</code>, он используется для шифрования и дешифрования всех секретных данных и не заменяет <code>secret key base</code>. <code>secret key base</code> - это, по умолчанию, единственный секретный ключ, необходимый для работы Rails приложения. Если вы захотите его перегенированить, запустите:</p>
+
+<pre><code class="language-Ruby">bin/rails secret
+</code></pre>
+
+<p>Эта команда отличается от команды, которую мы использовали для шифрованных секретных данных, которые используют ключ <code>secrets</code> для своих команд.</p>
+
+<h1 id="Заключение">Заключение</h1>
+
+<p>Шифрованные секретные данные имеют несколько преимуществ перед хранением доступов в открытом тексте или переменных окружения. Rails, как и в старые добрые времена, предлагает нам простой воркфлоу, попробуйте новый функицонал и дайте нам знать в комментариях что вы о нем думаете. Спасибо всем контрибьютерам Rails, которые сделали это возможным.</p>
+
+<blockquote>
+  <p>От переводчика: Я не согласен с автором статьи в плане копирования файлов и “небезопасности” переменных окружения, но данная заметка знакомит нас с хорошим новым функционалом, который стоит исползовать в разработке каждого вашего приложения на Rails</p>
+</blockquote>
+
+      
+        <a href="/tag/rails">#Rails</a>
+      
+        <a href="/tag/security">#Security</a>
+      
+        <!-- <a href="/tag/rails/" rel="tag">Rails</a>, <a href="/tag/security/" rel="tag">Security</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <p class="byline"><strong>Зашифрованные секретные данные в Rails 5.1</strong> опубликовано <time datetime="2017-08-17T22:27:14+03:00">17 August, 2017</time>.</p>
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Зашифрованные секретные данные в Rails 5.1 %23doamru http://doam.ru/encrypted_rails_secrets_on_rails_5.1/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/encrypted_rails_secrets_on_rails_5.1/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/encrypted_rails_secrets_on_rails_5.1/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/encrypted_rails_secrets_on_rails_5.1/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+  <div class="mailerlite-subscribe-form">
+    <script type="text/javascript" src="//app.mailerlite.com/data/webforms/225081/h4i6o3.js?v1"></script>
+  </div>
+</div><!-- /.social-share -->
+
+
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://doam.ru/street_photography/" title="Уличная фотография (Street photography)">Уличная фотография (Street photography)</a></li>
+    
+      <li><a href="http://doam.ru/git_squash_your_latests_commits_into_one/" title="Squash последних git коммитов в один">Squash последних git коммитов в один</a></li>
+    
+      <li><a href="http://doam.ru/about_blog_tech/" title="Под капотом у блога">Под капотом у блога</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    <a href="#" class="go-top">Наверх</a>
+
+
+<div style="text-align: center;"><span>&copy; 2011 - 2017 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://doam.ru/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://doam.ru/assets/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>

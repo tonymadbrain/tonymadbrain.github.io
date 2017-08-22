@@ -4,13 +4,39 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2017-07-07T14:57:46+03:00</updated>
+<updated>2017-08-22T21:20:29+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Зашифрованные секретные данные в Rails 5.1]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/encrypted_rails_secrets_on_rails_5.1/" />
+  <id>http://doam.ru/encrypted_rails_secrets_on_rails_5-1</id>
+  <published>2017-08-17T22:27:14+03:00</published>
+  <updated>2017-08-17T22:27:14+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;figure&gt;
+  &lt;img src=&quot;https://farm5.staticflickr.com/4013/35364231100_5c694701e2_o.jpg&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;От переводчика: &lt;a href=&quot;https://www.engineyard.com/blog/encrypted-rails-secrets-on-rails-5.1&quot; target=&quot;_blank&quot;&gt;Оригинал статьи&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;section id=&quot;table-of-conten...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/encrypted_rails_secrets_on_rails_5.1/&quot;&gt;Зашифрованные секретные данные в Rails 5.1&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on August 17, 2017.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -216,29 +242,6 @@
 &lt;blockquote&gt;
   &lt;p&gt;&lt;a href=&quot;http://doam.ru/first_bicycle_report/&quot; target=&quot;_blank&quot;&gt;Вот здесь&lt;/a&gt; я...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/closing_the_2016_cycling_season/&quot;&gt;Закрытие велосезона 2016&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 13, 2016.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Деплой приватных SSL ключей с помощью Ansible]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru/deploying_ssl_private_keys_with_ansible/" />
-  <id>http://doam.ru/deploying-ssl-private-keys-with-ansible</id>
-  <published>2016-11-03T10:49:52+03:00</published>
-  <updated>2016-11-03T10:49:52+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri>http://doam.ru</uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;&lt;br /&gt;
-&lt;img src=&quot;https://farm6.staticflickr.com/5488/30713598396_b204277003_o.png&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Когда используете систему для управления конфигурацией как Ansible или любую другую, рано или поздно вы столкнетесь с доставкой/выкладкой/деплоем приватных ключей SSL. Деплой публичных S...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru/deploying_ssl_private_keys_with_ansible/&quot;&gt;Деплой приватных SSL ключей с помощью Ansible&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 03, 2016.&lt;/p&gt;
   </content>
 </entry>
 
