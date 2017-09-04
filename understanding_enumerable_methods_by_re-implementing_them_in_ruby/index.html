@@ -165,6 +165,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h3><i class="fa fa-book"></i> Обзор</h3>
   </header>
 <div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#map" id="markdown-toc-map">map</a></li>
+  <li><a href="#find" id="markdown-toc-find">find</a></li>
+  <li><a href="#find_all" id="markdown-toc-find_all">find_all</a></li>
+  <li><a href="#reduce" id="markdown-toc-reduce">reduce</a></li>
+  <li><a href="#reduce-magic" id="markdown-toc-reduce-magic">reduce magic</a></li>
+</ul>
 
   </div>
 </section>
@@ -199,7 +206,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Здесь не так много кода, инклудим <code>CustomEnumerable</code> (нашу собственную реализацию <em>Enumerable</em>) и пишем враппер для Array. Также реализован метод <code>==</code>, который необязателен для функциональности <em>Enumerable</em>, но нужен нам чтобы легче использовать матчеры Rspec.</p>
 
-<p>###map</p>
+<h1 id="map">map</h1>
 
 <p>В документации про <code>map</code> написано:</p>
 
@@ -234,7 +241,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <span class="n">expect</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">eq</span><span class="p">(</span><span class="o">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="o">]</span><span class="p">)</span>
 <span class="k">end</span></code></pre></figure>
 
-<p>###find</p>
+<h1 id="find">find</h1>
 
 <p>Вот что говорит документация о <code>find</code>:</p>
 
@@ -300,7 +307,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Все отлично, <code>find</code> возвращает первое совпадение в коллекции, но что если я хочу найти вернуть все значения внутри <em>Enumerable</em> удовлетворяющие критериям? Нам нужно использовать метод <code>find_all</code>!</p>
 
-<p>###find_all</p>
+<h1 id="find_all">find_all</h1>
 
 <p>Снова обратимся к документации:</p>
 
@@ -342,7 +349,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Даже если совпадений не будет, код вернет массив (хоть и пустой), так что при использовании <code>find_all</code> нужно не забывать проверять что массив имеет объекты или нет (вместо проверки на nil, как это было сделано в <code>find</code>).</p>
 
-<p>###reduce</p>
+<h1 id="reduce">reduce</h1>
 
 <p><code>reduce</code> или <code>inject</code> (также известный как <code>foldLeft</code> в других языках как OCaml или Scala) это метод который обрабатывает элементы <em>enum</em> применяя к ним блок, принимающий два параметра - аккумулятор (memo) и обрабатываемый элемент. На каждом шаге аккумулятору <em>memo</em> присваивается значение, возвращенное блоком. Первая форма позволяет присвоить аккумулятору некоторое исходное значение. Вторая форма в качестве исходного значения аккумулятора использует первый элемент коллекции (пропуская этот элемент при проходе). Хоть и звучит странно, это очень полезная функция.</p>
 
@@ -588,7 +595,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>И это завершает реализацию метода <code>reduce</code>, посмотрите можете ли вы найти более быстрое или качественное решение, безусловно есть варианты лучше моего.</p>
 
-<p>###reduce magic</p>
+<h1 id="reduce-magic">reduce magic</h1>
 
 <p>Теперь, когда у нас есть реализация <code>reduce</code>, есть много методов, которые мы можем построить на его базе, например <code>min</code> и <code>max</code>:</p>
 
