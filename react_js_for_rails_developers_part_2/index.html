@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>##Вместо вступления</p>
+      <h2 id="Вместо-вступления">Вместо вступления</h2>
 
 <p>Так как материал получается довольно объемным, я решил разделить его на две части и это вторая:</p>
 
@@ -174,6 +174,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h3><i class="fa fa-book"></i> Обзор</h3>
   </header>
 <div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#Вместо-вступления" id="markdown-toc-Вместо-вступления">Вместо вступления</a></li>
+  <li><a href="#setstatereplacestate-Удаляем-записи" id="markdown-toc-setstatereplacestate-Удаляем-записи">setState/replaceState: Удаляем записи</a></li>
+  <li><a href="#Рефакторинг-Хелперы-состояний" id="markdown-toc-Рефакторинг-Хелперы-состояний">Рефакторинг: Хелперы состояний</a></li>
+  <li><a href="#reactive-data-flow-Редактирование-записей" id="markdown-toc-reactive-data-flow-Редактирование-записей">Reactive Data Flow: Редактирование записей</a></li>
+  <li><a href="#Заключение-Простота-и-гибкость-reactjs" id="markdown-toc-Заключение-Простота-и-гибкость-reactjs">Заключение: Простота и гибкость React.js</a></li>
+</ul>
 
   </div>
 </section>
@@ -187,7 +194,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <p>От переводчика: <a href="https://www.airpair.com/reactjs/posts/reactjs-a-guide-for-rails-developers" target="_blank">Оригинал статьи</a></p>
 </blockquote>
 
-<p>##setState/replaceState: Удаляем записи</p>
+<h2 id="setstatereplacestate-Удаляем-записи">setState/replaceState: Удаляем записи</h2>
 
 <p>Следующая функция в нашем списке это возможность удалять записи, нам нужна новая колонка <code>Actions</code> в таблице с записями. В этой колонке будет находиться кнопка <code>Delete</code> для каждой записи. Как и в предыдущем примере, нам нужно создать метод <code>destroy</code> в контроллере Rails:</p>
 
@@ -328,7 +335,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/1a4dc646e53fecebc821c709347aae774e9ef170" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/1a4dc646e53fecebc821c709347aae774e9ef170" target="_blank">здесь</a>.</p>
 
-<p>##Рефакторинг: Хелперы состояний</p>
+<h2 id="Рефакторинг-Хелперы-состояний">Рефакторинг: Хелперы состояний</h2>
 
 <p>На данный момент, у нас есть пачка методов в которых состояния обновляются без каких-либо сложностей, так как наши данные сложно назвать сложными. Но подумайте о более сложном приложении с многоуровневыми JSON состояниями, представьте себя делающего большое количество копий и жонглирующего состояними данных. React включает несколько чудных хелперов состояний нам в помощь. Неважно как глубоко (вложены) состояния, хелперы позволяют манипулировать ими (состояними) с большой свободой, используя аналог языка запросов MongoDB (по крайней мере вот что <a href="https://facebook.github.io/react/docs/update.html">говорит документация React</a> ).</p>
 
@@ -369,7 +376,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/d19127f40ae2f795a30b7de6470cde95d3734eee" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/d19127f40ae2f795a30b7de6470cde95d3734eee" target="_blank">здесь</a>.</p>
 
-<p>##Reactive Data Flow: Редактирование записей</p>
+<h2 id="reactive-data-flow-Редактирование-записей">Reactive Data Flow: Редактирование записей</h2>
 
 <p>Для финальной функциональности, мы добавим кнопку <code>Edit</code> рядом с каждой кнопкой <code>Delete</code> в нашей таблице записей. Когда эта кнопка будет нажата, строка с записью будет переключена из режима read-only (wink wink) в состояние редактирования, появится строчная форма, в которой пользователь сможет обновить содержимое полей записи. После отправки изменений или их отмены, строка с записью вернется в исходное состояние read-only.</p>
 
@@ -554,7 +561,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Вы можете посмотреть на результирующий код этой секции <a href="https://github.com/fervisa/accounts-react-rails/tree/1a62dd0e48b31aa55659e0035e754cee1776aa61" target="_blank">здесь</a> или только изменения <a href="https://github.com/fervisa/accounts-react-rails/commit/1a62dd0e48b31aa55659e0035e754cee1776aa61" target="_blank">здесь</a>.</p>
 
-<p>##Заключение: Простота и гибкость React.js</p>
+<h2 id="Заключение-Простота-и-гибкость-reactjs">Заключение: Простота и гибкость React.js</h2>
 
 <p>Мы изучили некоторые функции React и едва ли выучили какие-то новые концепции. Я слышал как люди говорили - JavaScript фреймворк X или Y имеет крутую кривую обучения …</p>
 

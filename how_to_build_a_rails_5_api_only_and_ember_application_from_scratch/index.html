@@ -8,7 +8,7 @@
 <title>Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля &#8211; Diary of madman</title>
 <meta name="description" content="">
 <meta name="theme-color" content="#00d900">
-<meta name="keywords" content="Rails, Ember, Ruby, Javascript, API, Tutorial">
+<meta name="keywords" content="RubyOnRails, Ember, Tutorial">
 
 
 <!-- Twitter Cards -->
@@ -165,6 +165,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h3><i class="fa fa-book"></i> Обзор</h3>
   </header>
 <div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#Создаем-бекенд" id="markdown-toc-Создаем-бекенд">Создаем бекенд</a>    <ul>
+      <li><a href="#Генерируем-ресурс-пользователи" id="markdown-toc-Генерируем-ресурс-пользователи">Генерируем ресурс пользователи</a></li>
+      <li><a href="#Установим-json-формат-сериализации-данных" id="markdown-toc-Установим-json-формат-сериализации-данных">Установим JSON формат сериализации данных</a></li>
+      <li><a href="#Установка-cors" id="markdown-toc-Установка-cors">Установка CORS</a></li>
+    </ul>
+  </li>
+  <li><a href="#Создаем-фронтенд" id="markdown-toc-Создаем-фронтенд">Создаем фронтенд</a>    <ul>
+      <li><a href="#Установка-ember-cli-и-созадние-фронтенд" id="markdown-toc-Установка-ember-cli-и-созадние-фронтенд">Установка Ember CLI и созадние фронтенд</a></li>
+      <li><a href="#Генерируем-адаптер-приложения" id="markdown-toc-Генерируем-адаптер-приложения">Генерируем адаптер приложения</a></li>
+      <li><a href="#Добавляем-ресурс-users-в-routerjs" id="markdown-toc-Добавляем-ресурс-users-в-routerjs">Добавляем ресурс Users в router.js</a></li>
+      <li><a href="#Генерируем-модель-user" id="markdown-toc-Генерируем-модель-user">Генерируем модель User</a></li>
+      <li><a href="#Генерируем-маршрут-usersindex" id="markdown-toc-Генерируем-маршрут-usersindex">Генерируем маршрут Users/index</a></li>
+      <li><a href="#Пишем-шаблон-для-usersindex" id="markdown-toc-Пишем-шаблон-для-usersindex">Пишем шаблон для Users/index</a></li>
+    </ul>
+  </li>
+  <li><a href="#Тестируем-приложение" id="markdown-toc-Тестируем-приложение">Тестируем приложение</a></li>
+</ul>
 
   </div>
 </section>
@@ -182,7 +200,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <p><a href="https://github.com/rails/rails/pull/19832" target="_blank">Rails API был влит в мастер ветку Rails</a></p>
 </blockquote>
 
-<p>###Создаем бекенд</p>
+<h3 id="Создаем-бекенд">Создаем бекенд</h3>
 
 <p>На момент написания статьи Rails 5 требует Ruby версии 2.2.2 и выше, если вы используете <a href="https://rvm.io/" target="_blank">rvm</a>, выполните <code>rvm install 2.2.3</code>, чтобы установить требуемую версию. Чтобы использовать в качестве дефолтной версии <code>rvm use 2.2.3 --default</code>.</p>
 
@@ -201,7 +219,7 @@ bundle <span class="nb">exec</span> railties/exe/rails new ../my_api_app --api -
   <p>От переводчика: Лично у меня, на третьей команде возникли трудности с установкой гема nokogiri, помогла команда <code>gem install nokogiri -v 1.6.7rc3 --pre</code>.</p>
 </blockquote>
 
-<p>####Генерируем ресурс пользователи</p>
+<h4 id="Генерируем-ресурс-пользователи">Генерируем ресурс пользователи</h4>
 
 <p>Мы сгенерируем очень простое приложение с помощью генератора rails (<code>rails generate scaffold</code>) и выполним миграции:</p>
 
@@ -209,7 +227,7 @@ bundle <span class="nb">exec</span> railties/exe/rails new ../my_api_app --api -
 bin/rails g scaffold user name
 bin/rake db:migrate</code></pre></figure>
 
-<p>####Установим JSON формат сериализации данных</p>
+<h4 id="Установим-json-формат-сериализации-данных">Установим JSON формат сериализации данных</h4>
 
 <p>REST адаптер Ember требует чтобы root объекты были представлены в JSON. Это можно достигнуть установкой json адаптера вместо flatten_json сериалайзера Active Model.
 Создаем новый файл инициализации <code>config/initializers/ams_json_adapter.rb</code> включающий следующий текст:</p>
@@ -223,7 +241,7 @@ bin/rake db:migrate</code></pre></figure>
 
 <p>Открыв в браузере <code>localhost:3000/users</code>, мы можем увидеть только что созданного пользователя и то что данные отображаются в формате, который мы указали.</p>
 
-<p>####Установка CORS</p>
+<h4 id="Установка-cors">Установка CORS</h4>
 
 <p>Так как наши бекенд и фронтенд будут запускаться отдельно, нам нужно сконфигурировать Cross Origin Resource Sharing (CORS). Мы будем пробовать бекенд на localhost:3000 и фронтенд на localhost:4200. В начале, нам нужно раскомментировать <code>rack-cors</code> в Gemfile, запустить <code>bundle</code> и добавить следующий код в config/initializers/cors.rb:</p>
 
@@ -246,11 +264,11 @@ bin/rake db:migrate</code></pre></figure>
   <p>От переводчика: здесь и далее, я советую использовать адрес 0.0.0.0 для запуска серверов вместо localhost.</p>
 </blockquote>
 
-<p>###Создаем фронтенд</p>
+<h3 id="Создаем-фронтенд">Создаем фронтенд</h3>
 
 <p>Данная инструкция включает Ember приложение, которое использует простой ресурс <code>Users</code> чтобы получать данные от Rails API и показывать их на главной странице.</p>
 
-<p>####Установка Ember CLI и созадние фронтенд</p>
+<h4 id="Установка-ember-cli-и-созадние-фронтенд">Установка Ember CLI и созадние фронтенд</h4>
 
 <p>Для установки Ember CLI, мы используем –no-optional, так как он менее подвержен ошибкам. Используя nvm, нам не нужно запускать npm от пользователя root, это исключает проблемы прав:</p>
 
@@ -264,7 +282,7 @@ ember new my_ember_frontend
 
 <p>На момент написания статьи, даже с использованием текущей версии node.js, появляется предупреждение: <code>Future versions of Ember CLI will not support v4.1.0. Please update to Node 0.12 or io.js.</code>. Не волнуйтесь: фикс этого ошибочного сообщения анонсирован и будет добавлен в следущих версиях Ember CLI.</p>
 
-<p>####Генерируем адаптер приложения</p>
+<h4 id="Генерируем-адаптер-приложения">Генерируем адаптер приложения</h4>
 
 <p>Чтобы заставить наше приложение на Ember общаться с Rails приложением, мы сгенерируем адаптер:</p>
 
@@ -278,7 +296,7 @@ ember new my_ember_frontend
   <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;http://localhost:3000&#39;</span>
 <span class="p">});</span></code></pre></figure>
 
-<p>####Добавляем ресурс Users в router.js</p>
+<h4 id="Добавляем-ресурс-users-в-routerjs">Добавляем ресурс Users в router.js</h4>
 
 <p>Редактируем <code>app/router.js</code>:</p>
 
@@ -295,7 +313,7 @@ ember new my_ember_frontend
 
 <span class="kr">export</span> <span class="k">default</span> <span class="nx">Router</span><span class="p">;</span></code></pre></figure>
 
-<p>####Генерируем модель User</p>
+<h4 id="Генерируем-модель-user">Генерируем модель User</h4>
 
 <p>Вначале,</p>
 
@@ -309,7 +327,7 @@ ember new my_ember_frontend
     <span class="nx">name</span><span class="o">:</span> <span class="nx">DS</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
 <span class="p">});</span></code></pre></figure>
 
-<p>####Генерируем маршрут Users/index</p>
+<h4 id="Генерируем-маршрут-usersindex">Генерируем маршрут Users/index</h4>
 
 <p>Теперь,</p>
 
@@ -325,7 +343,7 @@ ember new my_ember_frontend
     <span class="p">}</span>
 <span class="p">});</span></code></pre></figure>
 
-<p>####Пишем шаблон для Users/index</p>
+<h4 id="Пишем-шаблон-для-usersindex">Пишем шаблон для Users/index</h4>
 
 <p>Редактируем <code>app/templates/users/index.hbs</code>:</p>
 
@@ -336,7 +354,7 @@ ember new my_ember_frontend
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 { {outlet}}</code></pre></figure>
 
-<p>###Тестируем приложение</p>
+<h3 id="Тестируем-приложение">Тестируем приложение</h3>
 
 <p>Чтобы протестировать наше приложение, запустим в директроии Rails приложения:</p>
 
@@ -352,19 +370,13 @@ ember new my_ember_frontend
 Большое спасибо уходит <a href="http://moritz-breit.de/" target="_blank">Moritz</a> за корректировку данного поста!</p>
 
       
-        <a href="/tag/rails">#Rails</a>
+        <a href="/tag/rubyonrails">#RubyOnRails</a>
       
         <a href="/tag/ember">#Ember</a>
       
-        <a href="/tag/ruby">#Ruby</a>
-      
-        <a href="/tag/javascript">#Javascript</a>
-      
-        <a href="/tag/api">#API</a>
-      
         <a href="/tag/tutorial">#Tutorial</a>
       
-        <!-- <a href="/tag/rails/" rel="tag">Rails</a>, <a href="/tag/ember/" rel="tag">Ember</a>, <a href="/tag/ruby/" rel="tag">Ruby</a>, <a href="/tag/javascript/" rel="tag">Javascript</a>, <a href="/tag/api/" rel="tag">API</a>, <a href="/tag/tutorial/" rel="tag">Tutorial</a> -->
+        <!-- <a href="/tag/rubyonrails/" rel="tag">RubyOnRails</a>, <a href="/tag/ember/" rel="tag">Ember</a>, <a href="/tag/tutorial/" rel="tag">Tutorial</a> -->
       <hr />
       <footer role="contentinfo">
         <p class="byline"><strong>Создаем Rails 5 API бекенд и Ember.js фронтенд c нуля</strong> опубликовано <time datetime="2015-10-09T22:39:13+03:00">09 October, 2015</time>.</p>
