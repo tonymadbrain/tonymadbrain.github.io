@@ -1,0 +1,362 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Автоматическое выписывание сертификатов Let's Encrypt с подтверждением через dns01 метод &#8211; Diary of madman</title>
+<meta name="description" content="Отвечаю на вопрос 'Как выписывать сертификаты Let's Encrypt если на запрос может ответить любой из нескольких web серверов?'">
+<meta name="theme-color" content="#00d900">
+<meta name="keywords" content="Letsencrypt">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Автоматическое выписывание сертификатов Let's Encrypt с подтверждением через dns01 метод">
+<meta name="twitter:description" content="Отвечаю на вопрос 'Как выписывать сертификаты Let's Encrypt если на запрос может ответить любой из нескольких web серверов?'">
+<meta name="twitter:site" content="@tonymadbrain">
+<meta name="twitter:creator" content="@tonymadbrain">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://doam.ru/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Автоматическое выписывание сертификатов Let's Encrypt с подтверждением через dns01 метод">
+<meta property="og:description" content="Отвечаю на вопрос 'Как выписывать сертификаты Let's Encrypt если на запрос может ответить любой из нескольких web серверов?'">
+<meta property="og:url" content="http://doam.ru/letsencrypt_certs_through_dns/">
+<meta property="og:site_name" content="Diary of madman">
+
+
+
+
+
+<link rel="canonical" href="http://doam.ru/letsencrypt_certs_through_dns/">
+<link href="http://doam.ru/feed.xml" type="application/atom+xml" rel="alternate" title="Diary of madman Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph Image-->
+
+<!-- End Open Graph Image -->
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://doam.ru/assets/css/main.css">
+
+<style type="text/css">
+  @media screen and (min-width: 300px) {.footer_img {height: 50px;}}
+  @media screen and (min-width: 600px) {.footer_img {height: 90px;}}
+  @media screen and (min-width: 900px) {.footer_img {height: 90px;}}
+</style>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://doam.ru/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://doam.ru/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://doam.ru/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://doam.ru/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://doam.ru/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://doam.ru/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://doam.ru/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://doam.ru/images/apple-touch-icon-144x144-precomposed.png">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXNSQJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXNSQJ');</script>
+<!-- End Google Tag Manager -->
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13571732 = new Ya.Metrika({id:13571732, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/13571732" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://doam.ru/">Diary of madman</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://doam.ru/tags/" >Теги</a></li>
+				
+				    
+				    <li><a href="http://doam.ru/cv/" >Резюме</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side sticky">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://doam.ru/images/bio-photo.jpg" class="bio-photo" alt="Антон Рябов bio photo">
+
+
+  <h3 itemprop="name">Антон Рябов</h3>
+  <p>Не люблю бриться и у меня умный взгляд.</p>
+  <a href="mailto:mail@doam.ru" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i>Email</a>
+  <a href="http://twitter.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  <a href="http://github.com/tonymadbrain" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://doam.ru/feed.xml" class="author-social" target="_blank"><i class="fa fa-fw fa-rss-square"></i> RSS</a>
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://doam.ru/letsencrypt_certs_through_dns/" rel="bookmark" title="Автоматическое выписывание сертификатов Let's Encrypt с подтверждением через dns01 метод">Автоматическое выписывание сертификатов Let's Encrypt с подтверждением через dns01 метод</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>Заголовная картинка</p>
+
+<p class="notice">Статья будет понятна и полезна только тем, кто уже знаком с процессом выписывания сертификатов через <a href="https://letsencrypt.org/">Let’s Encrypt</a>, возможно, в начале вам стоит ознакомиться с подробной статьей <a href="http://doam.ru/https_in_nginx_using_letsencrypt/" target="_blank">HTTPS в Nginx с сертификатом от Let’s Encrypt</a></p>
+
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Обзор</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#Предисловие" id="markdown-toc-Предисловие">Предисловие</a></li>
+  <li><a href="#Почему-dns01-метод" id="markdown-toc-Почему-dns01-метод">Почему dns01 метод?</a></li>
+  <li><a href="#Свой-велосипед" id="markdown-toc-Свой-велосипед">Свой велосипед</a></li>
+  <li><a href="#А-теперь-рисуем-сову" id="markdown-toc-А-теперь-рисуем-сову">А теперь рисуем сову</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<h1 id="Предисловие">Предисловие</h1>
+
+<p>Самый распространненый способ подтверждения владения доменом при выписывании сертификата в Let’s Encrypt является http01, при котором резолвится ваше доменное имя и на полученный адрес отправляется http запрос файла с хешем и ваш веб-сервер должен ответить правильным файлом иначе валидация не пройдет. Но что делать если у вас несколько веб-серверов и ответить может любой из них, при этом только на одном будет нужный файл с хешем? За ответами предлагаю нырнуть в основной текст статьи.</p>
+
+<h1 id="Почему-dns01-метод">Почему dns01 метод?</h1>
+
+<p>Чтобы ответить на этот вопрос, в начале, нужно понять какие вообще варианты существуют. Официальные ответы на форуме Let’s Encrypt предалагают следующие:</p>
+
+<ul>
+  <li>Проксировать запросы в папку /.well-known всегда на один и тот же сервер и на нем же выполнять обновление сертификатов.</li>
+  <li>Сделать папку /.well-known общей для всех веб-серверво и тогда неважно на каком сервер запускать обновление сертфикатов, все веб-серверы смогут ответить правильным файлом.</li>
+</ul>
+
+<p>Мы в <a href="https://partner.onetwotrip.com/dl.HyEOFhEyf" target="_blank">OneTwoTrip</a> столкнулись с описанной выше проблемой и почитав предложенные варианты, решили что нам они не подходят и пошли искать дальше. Нашли малопопулярный вариант с подтверждением через DNS. Предположительно, люди им не пользуются потому что операции с DNS записями очень медленные, некоторые регистраторы и сервисы обновляют записи сутки (как они вообще существуют?). Однако в наше время есть достаточно прогрессивные, которые даже предоставляют API для внесения изменений. Мы пользуемся одним из таких это AWS Route53, он позволяет создавать, обновлять, редактировать и удалять любые DNS записи через aws-sdk и времени на это уходит не больше пары минут.</p>
+
+<p class="notice">Amazon Route53 я также использую на данном сайте, о чем писал в статье <a href="http://localhost:4000/about_blog_tech/" target="_blank">Под капотом у блога</a></p>
+
+<h1 id="Свой-велосипед">Свой велосипед</h1>
+
+<blockquote>
+  <p>“Я буду долго гнать велосипед…”</p>
+</blockquote>
+
+<p>Помимо основного инструмента для выписывания сертификатов от Let’s Encrypt <a href="https://certbot.eff.org/">certbot</a> существуют уже много реализаций, на разных языках программирования. Но автоматических аналогов работающих с подтверждением через DNS мы не нашли (если плохо искал, жду ваших комментариев). Поэтому было принято решение запилить свой велосипед, удовлетрворяющий нашим потребностям и вписывающийся в текующую инфраструктуру. Так как разработка велась быстро и код там пах не очень приятно, приводить его здесь нет смысла, скажу лишь, что первая реализация была самописным демоном, который засыпал на 12 часов с помощью простого <code>sleep</code>, в дальнейшем демон был переписан на rufus-scheduler.
+<br />
+<br />
+Процесс выписывания точно такой же как и при методе http01, отличается только валидацией, в случае c dns01, вам возвращается хеш, который нужно записать в TXT запись <code>_acme-challenge.exmaple.com.</code>, где exmaple.com доменное имя для которого запрошена валидация, сервера Let’s Encrypt проверяют наличие данной записи и если она присутствует и содержит правильный хеш, можно продолжить процесс получения сертификата.
+<br />
+<br />
+В рамках рефакторинга было решено переписать приложение и заодно добавить возможность использовать любой DNS сервис, который предоставляет программное API.</p>
+
+<figure>
+  <img src="https://farm5.staticflickr.com/4693/38360397795_d2db95eb60_o.jpg" />
+    <figcaption>Присвоил блокам разные цвета, чтобы было легче понимать что есть что на диаграммах.</figcaption>
+</figure>
+
+<figure>
+  <img src="https://farm5.staticflickr.com/4729/38360398695_14f693d120_o.jpg" />
+</figure>
+
+<p>Всего в процессе выписывания участвуют следующие компоненты:</p>
+
+<ul>
+  <li>Cron - внутренняя разработка <a href="https://partner.onetwotrip.com/dl.HyEOFhEyf" target="_blank">OneTwoTrip</a>, которой скармливается урл и расписание по которому его нужно дергать</li>
+  <li>Legdns App - приложение на <a href="http://www.sinatrarb.com/">Sinatra</a>, в котором, на данный момент, всего один endpoint</li>
+  <li>Sidekiq - фоновый обработчик задач, использующий redis как очередь</li>
+  <li>File System - Файловая система, на которую записываются выписанные сертификаты</li>
+</ul>
+
+<figure>
+  <img src="https://farm5.staticflickr.com/4689/25370278638_8f2f2482b5_o.jpg" />
+</figure>
+
+<p>Логику сервиса можно описать приведенной выше диаграммой. В Sinatra приложение прилетает POST запрос у которого в теле JSON с массивом доменов, для которых нужно выписать сертификаты:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="p">{</span>
+<span class="s2">&quot;domains&quot;</span><span class="o">:</span><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;a.example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;b.example.com&quot;</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;example.net&quot;</span>
+    <span class="p">]</span>
+<span class="p">]</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Этот json прокидывается в Sidekiq Worker, который проводит проверку, есть ли необходимость обновления сертификата. Делает он это по двум параметрам:</p>
+
+<ul>
+  <li>Время до истечения сертификата (меньше 30 дней)</li>
+  <li>Совпадают ли запрошенные домен и поддомены с теми что в выписанном сертифкате</li>
+</ul>
+
+<p>Далее воркер, используюя предоставленный провайдер добавляет необходимую DNS запись, после чего получает сертификат и записывает его в файлы. В конце запускается очистка DNS записей. Провайдер должен соответствовать некоторым требованиям - имя класса должно быть <code>LegdnsProvider</code> и он должен предоставлять два метода <code>upsert</code> и <code>cleanup</code>.
+<br />
+<br />
+Чтобы сервис заработал нужно установить все зависимости через</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>bundle install</code></pre></figure>
+
+<p>а также запустить Redis сервер. После чего запустить Sidekiq, с помощью команды:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>sidekiq -r app.rb</code></pre></figure>
+
+<p>и собственно Sinatra приложение:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>bundle <span class="nb">exec</span> rackup -p <span class="m">3000</span></code></pre></figure>
+
+<p>Запустить выписывание можно например так:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>curl -X POST -is <span class="s1">&#39;http://127.0.0.1:3000/cert&#39;</span> -d <span class="s1">&#39;{&quot;domains&quot;:[[&quot;example.com&quot;, &quot;a.example.com&quot;, &quot;b.example.com&quot;], [&quot;example.net&quot;]]}&#39;</span></code></pre></figure>
+
+<p>Если запустить приложение с установленной переменной окружения <code>RACK_ENV=production</code> все не https запросы будут отброшены. Приложение не предусматривает ни какой авторизации, самым простым способом ограничить доступ будет установка впереди Nginx, также через него можно будет отдавать файлы с сертифкатами.</p>
+
+<h1 id="А-теперь-рисуем-сову">А теперь рисуем сову</h1>
+
+<p>Наша доблестная команда DevOps любит все автоматизировать а для управления конфигурацией использует <a href="https://www.chef.io/chef/">Chef</a>, поэтому мало просто сохранить сертификат в файл. Нужно еще загрузить его на Сhef сервер, откуда в свою очередь сертифкаты разливаются во все места где необходимы, а также нужно отправлять уведомления в слак, чтобы знать если выписывание сертификатов сломается.
+<br />
+<br />
+Включая загрузку в Chef диаграмма приложения будет выглядеть следущим образом.</p>
+
+<figure>
+  <img src="https://farm5.staticflickr.com/4693/38360397795_d2db95eb60_o.jpg" />
+</figure>
+
+<p>Таким образом, если полностью заменить чтение и запись сертификатов на работу с Сhef сервером, приложение можно легко запустить в Docker контейнере, но это уже тема другой статьи.
+<br />
+<br />
+Open Source версия приложения доступна на <a href="https://github.com/tonymadbrain/legdns" target="_blank">GitHub</a>
+<br />
+<br />
+Мы хантим! Список открытых вакансий и информацию о компании можно посмотреть на нашем <a href="https://www.onetwotrip-jobs.com/" target="_blank">специальном сайте</a></p>
+
+      
+        <a href="/tag/letsencrypt">#Letsencrypt</a>
+      
+        <!-- <a href="/tag/letsencrypt/" rel="tag">Letsencrypt</a> -->
+      <hr />
+      <footer role="contentinfo">
+        <p class="byline"><strong>Автоматическое выписывание сертификатов Let's Encrypt с подтверждением через dns01 метод</strong> опубликовано <time datetime="2017-12-23T12:57:53+03:00">23 December, 2017</time>.</p>
+        <div style="text-align: center;" class="social-share">
+  <h4>Поделиться</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=Автоматическое выписывание сертификатов Let's Encrypt с подтверждением через dns01 метод %23doamru http://doam.ru/letsencrypt_certs_through_dns/" target="_blank" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="http://vk.com/share.php?url=http://doam.ru/letsencrypt_certs_through_dns/" class="vk" title="Share on VK" target="_blank"><i class="fa fa-vk"></i><span>ВКонтакте</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://doam.ru/letsencrypt_certs_through_dns/" target="_blank" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://doam.ru/letsencrypt_certs_through_dns/" target="_blank"class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+  <div class="mailerlite-subscribe-form">
+    <script type="text/javascript" src="//app.mailerlite.com/data/webforms/225081/h4i6o3.js?v1"></script>
+  </div>
+</div><!-- /.social-share -->
+
+
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>Вас могут заинтересовать <small class="pull-right">(<a href="http://doam.ru">Смотреть все записи</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://doam.ru/encrypted_rails_secrets_on_rails_5.1/" title="Зашифрованные секретные данные в Rails 5.1">Зашифрованные секретные данные в Rails 5.1</a></li>
+    
+      <li><a href="http://doam.ru/street_photography/" title="Уличная фотография (Street photography)">Уличная фотография (Street photography)</a></li>
+    
+      <li><a href="http://doam.ru/git_squash_your_latests_commits_into_one/" title="Squash последних git коммитов в один">Squash последних git коммитов в один</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  <footer>
+    <a href="#" class="go-top">Наверх</a>
+
+
+<div style="text-align: center;"><span>&copy; 2011 - 2017 Diary of madman.</span></div><br>
+<div style="text-align: center;"><span><a href="http://doam.ru/license/" target="_blank"><img src="http://doam.ru/license.png"></a></span></div>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://doam.ru/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://doam.ru/assets/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>

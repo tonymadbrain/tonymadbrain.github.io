@@ -4,13 +4,33 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://doam.ru/feed.xml" />
 <link rel="alternate" type="text/html" href="http://doam.ru" />
-<updated>2017-12-22T16:46:59+03:00</updated>
+<updated>2017-12-23T14:14:51+03:00</updated>
 <id>http://doam.ru/</id>
 <author>
   <name>Антон Рябов</name>
   <uri>http://doam.ru/</uri>
   <email>mail@doam.ru</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Автоматическое выписывание сертификатов Let's Encrypt с подтверждением через dns01 метод]]></title>
+  <link rel="alternate" type="text/html" href="http://doam.ru/letsencrypt_certs_through_dns/" />
+  <id>http://doam.ru/letsencrypt_certs_through_dns</id>
+  <published>2017-12-23T12:57:53+03:00</published>
+  <updated>2017-12-23T12:57:53+03:00</updated>
+  <author>
+    <name>Антон Рябов</name>
+    <uri>http://doam.ru</uri>
+    <email>mail@doam.ru</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Заголовная картинка&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;Статья будет понятна и полезна только тем, кто уже знаком с процессом выписывания сертификатов через &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;Let’s Encrypt&lt;/a&gt;, возможно, в начале вам стоит ознакомиться с подробной статьей &lt;a href=&quot;http://doam.ru/https_in_n...
+    &lt;p&gt;&lt;a href=&quot;http://doam.ru/letsencrypt_certs_through_dns/&quot;&gt;Автоматическое выписывание сертификатов Let's Encrypt с подтверждением через dns01 метод&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on December 23, 2017.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -221,27 +241,6 @@
 
 &lt;p&gt;Решил у нас в &lt;a href=&quot;http://imhonet.ru&quot; target=&quot;_blank&quot;&gt;Имхонете&lt;/a&gt; сделать мониторинг PHP-FPM, чтобы все было как у нормальных пацанов. Советы в интернете сводятся к тому, чтобы включить ст...
     &lt;p&gt;&lt;a href=&quot;http://doam.ru/fcgi_monitoring_with_zabbix/&quot;&gt;Мониторинг PHP-FPM через FastCGI в Zabbix&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 23, 2016.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Закрытие велосезона 2016]]></title>
-  <link rel="alternate" type="text/html" href="http://doam.ru/closing_the_2016_cycling_season/" />
-  <id>http://doam.ru/closing_the_2016_cycling_season</id>
-  <published>2016-11-13T13:59:07+03:00</published>
-  <updated>2016-11-13T13:59:07+03:00</updated>
-  <author>
-    <name>Антон Рябов</name>
-    <uri>http://doam.ru</uri>
-    <email>mail@doam.ru</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;В этой записи хочу зафиксировать некоторые моменты прошедшего лета на велосипеде. Для меня это был первый сезон и пусть я отъездил не столько сколько хотелось бы, все равно считаю его удачным.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;http://doam.ru/first_bicycle_report/&quot; target=&quot;_blank&quot;&gt;Вот здесь&lt;/a&gt; я...
-    &lt;p&gt;&lt;a href=&quot;http://doam.ru/closing_the_2016_cycling_season/&quot;&gt;Закрытие велосезона 2016&lt;/a&gt; was originally published by Антон Рябов at &lt;a href=&quot;http://doam.ru&quot;&gt;Diary of madman&lt;/a&gt; on November 13, 2016.&lt;/p&gt;
   </content>
 </entry>
 
